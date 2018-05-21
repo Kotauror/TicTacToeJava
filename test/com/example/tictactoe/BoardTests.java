@@ -3,6 +3,8 @@ package com.example.tictactoe;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import java.util.ArrayList;
+
 
 public class BoardTests {
 
@@ -13,8 +15,13 @@ public class BoardTests {
         board = new Board();
         assertEquals(board.finished,false);
     }
-}
 
+    @Test
+    public void Board_is_created_with_places_ArrayList() {
+        board = new Board();
+        assertThat(board.places,isA(ArrayList.class));
+    }
+}
 
 
 
