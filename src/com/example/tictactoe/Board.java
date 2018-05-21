@@ -2,5 +2,9 @@ package com.example.tictactoe;
 
 public class Board {
 
-    Board() {}
+    public boolean finished;
+
+    Board() {
+        this.finished = false;
+    }
 }
