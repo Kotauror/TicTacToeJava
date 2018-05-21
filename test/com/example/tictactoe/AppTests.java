@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.jupiter.api.*;
 import static org.hamcrest.CoreMatchers.*;
 
 public class AppTests {
