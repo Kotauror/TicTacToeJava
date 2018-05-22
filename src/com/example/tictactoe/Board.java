@@ -33,13 +33,9 @@ public class Board {
     public void checkForPlacesLeft() {
         int numberOfIntegers = 0;
         for(int i = 0; i < 9; i++) {
-            if (this.places.contains(i)) {
-                numberOfIntegers += 1;
-            }
+            if (this.places.contains(i)) numberOfIntegers += 1;
         }
-        if (numberOfIntegers == 0) {
-            this.placesLeft = false;
-        }
+        if (numberOfIntegers == 0) this.placesLeft = false;
     }
 
     public void checkForWon() {

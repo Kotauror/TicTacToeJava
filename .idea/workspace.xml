@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4cf65c8d-b6c5-4798-93d8-49733e6d0fd1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,8 +92,8 @@
                   <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="521">
-                          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+                        <state relative-caret-position="401">
+                          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
                           <folding>
                             <element signature="imports" expanded="true" />
                             <element signature="e#364#365#0" expanded="true" />
@@ -184,8 +183,8 @@
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java" />
-        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" />
+        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" />
       </list>
     </option>
   </component>
@@ -430,9 +429,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GameTests_switchesActivePlayer - 2018.05.22 at 15h 18m 28s.xml">
-      <configuration name="GameTests.switchesActivePlayer" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_TicTacToe - 2018.05.22 at 15h 18m 40s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
@@ -459,6 +455,9 @@
     </history-entry>
     <history-entry file="BoardTests_checksIfThereArePlacesLeftFalse - 2018.05.22 at 16h 30m 30s.xml">
       <configuration name="BoardTests.checksIfThereArePlacesLeftFalse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_TicTacToe - 2018.05.22 at 16h 34m 19s.xml">
+      <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -526,7 +525,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -781,8 +788,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        <state relative-caret-position="401">
+          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#364#365#0" expanded="true" />
