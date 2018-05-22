@@ -1,5 +1,7 @@
 package com.example.tictactoe;
 
+import java.io.IOException;
+
 public class Game {
 
     Board board;
@@ -17,9 +19,12 @@ public class Game {
         this.over = false;
     }
 
-    public void playGame() {
+    public void playGame() throws IOException {
         if (!this.over) {
             this.displayer.showBoard(this.board.places);
+            int position = this.displayer.askForPosition();
+            System.out.println(position);
         }
     }
+
 }

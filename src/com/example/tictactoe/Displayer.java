@@ -1,5 +1,7 @@
 package com.example.tictactoe;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Displayer {
@@ -15,4 +17,12 @@ public class Displayer {
     public void greetUsers(){
         System.out.println("Hello and welcome to Tic-Tac-Toe");
     }
+
+    public int askForPosition() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Pick a position");
+        String position = scanner.nextLine();
+        return Integer.parseInt(position);
+    }
 }
+

@@ -3,8 +3,7 @@ package com.example.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -38,4 +37,14 @@ public class DisplayerTests {
 
         assertEquals("0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n", outContent.toString());
     }
+
+    @Test
+    public void returnsPositionGivenByPlayer() throws IOException {
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertEquals(0, displayer.askForPosition());
+    }
+
+
 }
