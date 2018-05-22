@@ -8,13 +8,13 @@ public class Board {
 
     public boolean won;
     public boolean tie;
-    public boolean over;
+    public boolean placesLeft;
     public ArrayList places;
 
     Board() {
         this.won = false;
         this.tie = false;
-        this.over = false;
+        this.placesLeft = true;
         this.places = new ArrayList<Integer>();
         fillPlaces();
     }
@@ -25,8 +25,13 @@ public class Board {
 
     public void putSignOnBoard(String sign, int position) {
         this.places.set(position, sign);
+        this.checkForPlacesLeft();
         this.checkForWon();
         this.checkForTie();
+    }
+
+    public void checkForPlacesLeft() {
+
     }
 
     public void checkForWon() {
@@ -34,7 +39,7 @@ public class Board {
     }
 
     public void checkForTie() {
-        if (!this.won && this.over) {
+        if (!this.won && !this.placesLeft) {
             this.tie = true;
         }
     }

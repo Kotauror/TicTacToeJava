@@ -21,16 +21,14 @@ public class BoardTests {
 
     @Test
     public void BoardHasInitialIsGameWonStatusFalse() {
-        assertEquals(board.won,false);
+        assertEquals(false, board.won);
     }
 
     @Test
-    public void BoardHasInitialIsTieStatusFalse() {
-        assertEquals(board.tie,false);
-    }
+    public void BoardHasInitialIsTieStatusFalse() { assertEquals(false, board.tie); }
 
     @Test
-    public void BoardHasInitialOverStatusFalse() { assertEquals(board.over,false); }
+    public void BoardHasInitialOverStatusTrue() { assertEquals(true,board.placesLeft); }
 
     @Test
     public void BoardIsCreatedWithPlacesArray() {
@@ -54,7 +52,13 @@ public class BoardTests {
     }
 
     @Test
-    public void changesStatusOfBoardToWon() {
+    public void checksIfTheBoardIsOver() { {
+        board.putSignOnBoard("X", 0);
+
+        board.checkForPlacesLeft();
+
+        assertEquals(true, board.placesLeft);
+    }
 
     }
 }
