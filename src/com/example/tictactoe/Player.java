@@ -2,5 +2,9 @@ package com.example.tictactoe;
 
 public class Player {
 
-    Player(){}
+    public boolean active;
+
+    Player(){
+        this.active = false;
+    }
 }
