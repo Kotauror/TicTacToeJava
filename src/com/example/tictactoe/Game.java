@@ -24,7 +24,7 @@ public class Game {
     }
 
     public void playGame() throws IOException {
-        if (!this.over) {
+        while (!this.board.won && !this.board.tie) {
             this.displayer.showBoard(this.board.places);
             int position = this.displayer.askForPosition();
             // validation

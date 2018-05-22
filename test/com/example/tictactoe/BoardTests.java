@@ -30,6 +30,9 @@ public class BoardTests {
     }
 
     @Test
+    public void BoardHasInitialOverStatusFalse() { assertEquals(board.over,false); }
+
+    @Test
     public void BoardIsCreatedWithPlacesArray() {
         assertThat(board.places,isA(ArrayList.class));
     }
@@ -48,6 +51,11 @@ public class BoardTests {
         board.putSignOnBoard("X", 0);
 
         assertEquals("X", board.places.get(0));
+    }
+
+    @Test
+    public void changesStatusOfBoardToWon() {
+
     }
 }
 
