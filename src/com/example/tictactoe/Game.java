@@ -12,8 +12,8 @@ public class Game {
     Game(Displayer displayer) {
         this.board = new Board();
         this.displayer = displayer;
-        this.playerOne = new Player();
-        this.playerTwo = new Player();
+        this.playerOne = new Player("X");
+        this.playerTwo = new Player("Y");
         this.over = false;
     }
 

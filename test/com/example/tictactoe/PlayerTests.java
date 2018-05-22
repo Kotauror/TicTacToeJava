@@ -11,12 +11,17 @@ public class PlayerTests {
 
     @BeforeEach
     public void instantiatePlayer() {
-        player = new Player();
+        player = new Player("X");
     }
 
     @Test
     public void playerHasInitialActiveStatusFalse() {
         assertEquals(player.active,false);
+    }
+
+    @Test
+    public void playerHasSign() {
+        assertEquals(player.sign, "X");
     }
 
 
