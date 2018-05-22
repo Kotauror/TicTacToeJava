@@ -22,6 +22,12 @@ public class GameTests {
     }
 
     @Test
+    public void Game_creates_an_instance_of_player() {
+        assertThat(game.playerOne,isA(Player.class));
+        assertThat(game.playerTwo,isA(Player.class));
+    }
+
+    @Test
     public void Game_has_an_instance_of_displayer() {
         assertThat(game.displayer,isA(Displayer.class));
     }
