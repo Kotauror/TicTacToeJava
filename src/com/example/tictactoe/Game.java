@@ -29,7 +29,17 @@ public class Game {
             int position = this.displayer.askForPosition();
             // validation
             this.board.putSignOnBoard(this.active.sign, position);
-            this.displayer.showBoard(this.board.places);
+            this.switchPlayers();
+        }
+    }
+
+    public void switchPlayers() {
+        if (this.active == this.playerOne) {
+            this.active = this.playerTwo;
+            this.passive = this.playerOne;
+        } else {
+            this.passive = this.playerTwo;
+            this.active = this.playerOne;
         }
     }
 

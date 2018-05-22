@@ -48,7 +48,13 @@ public class GameTests {
         assertThat(game.displayer,isA(Displayer.class));
     }
 
+    @Test
+    public void switchesActivePlayer() {
+        game.switchPlayers();
 
+        assertEquals(game.playerTwo, game.active);
+        assertEquals(game.playerOne, game.passive);
+    }
 
 }
 
