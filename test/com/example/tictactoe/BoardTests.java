@@ -40,9 +40,9 @@ public class BoardTests {
     public void BoardPlacesAreFillesWithNumbers() {
         board.fillPlaces();
 
-        assertEquals(board.places.get(0),0);
-        assertEquals(board.places.get(1),1);
-        assertEquals(board.places.get(8),8);
+        for(int i = 0; i < 9; i++) {
+            assertEquals(board.places.get(i),i);
+        }
     }
 
     @Test
