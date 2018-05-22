@@ -5,8 +5,8 @@ public class Game {
     Board board;
     Displayer displayer;
 
-    Game() {
+    Game(Displayer displayer) {
         this.board = new Board();
-        this.displayer = new Displayer();
+        this.displayer = displayer;
     }
 }

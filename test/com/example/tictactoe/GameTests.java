@@ -1,22 +1,28 @@
 package com.example.tictactoe;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.CoreMatchers.isA;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 public class GameTests {
 
-    public Game game;
+    public static Game game;
+
+    @BeforeAll
+    public static void createInstance() {
+        game = new Game(new Displayer());
+    }
 
     @Test
     public void Game_creates_an_instance_of_board() {
-        game = new Game();
         assertThat(game.board,isA(Board.class));
     }
 
     @Test
-    public void Game_creates_an_instance_of_displayer() {
-        game = new Game();
+    public void Game_has_an_instance_of_displayer() {
         assertThat(game.displayer,isA(Displayer.class));
     }
 

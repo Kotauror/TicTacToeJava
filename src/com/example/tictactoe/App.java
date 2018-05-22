@@ -2,13 +2,10 @@ package com.example.tictactoe;
 
 public class App {
 
-    Game game;
-
-    App() {
-        this.game = new Game();
-    }
-
     public static void main(String[] args) {
-        App app = new App();
+        Displayer displayer = new Displayer();
+        Game game = new Game(displayer);
+        game.board.fillPlaces();
+        game.displayer.showBoard(game.board.places);
     }
 }
