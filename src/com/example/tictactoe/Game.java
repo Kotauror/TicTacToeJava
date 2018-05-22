@@ -18,8 +18,8 @@ public class Game {
     }
 
     public void playGame() {
-//        while (!this.board.finished) {
-//            System.out.println("hello");
-//        }
+        if (!this.over) {
+            this.displayer.showBoard(this.board.places);
+        }
     }
 }
