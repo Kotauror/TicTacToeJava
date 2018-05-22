@@ -23,9 +23,6 @@ public class GameTests {
     }
 
     @Test
-    public void GameHasInitialOverStatusFalse() { assertEquals(game.over,false); }
-
-    @Test
     public void GameCreatesAnInstanceOfPlayer() {
         assertThat(game.playerOne,isA(Player.class));
         assertThat(game.playerTwo,isA(Player.class));

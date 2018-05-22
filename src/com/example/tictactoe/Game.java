@@ -10,7 +10,6 @@ public class Game {
     Player playerTwo;
     public Player active;
     public Player passive;
-    public boolean over;
 
 
     Game(Displayer displayer) {
@@ -20,7 +19,6 @@ public class Game {
         this.playerTwo = new Player("Y");
         this.active = playerOne;
         this.passive = playerTwo;
-        this.over = false;
     }
 
     public void playGame() throws IOException {
