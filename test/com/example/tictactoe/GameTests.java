@@ -23,9 +23,7 @@ public class GameTests {
     }
 
     @Test
-    public void GameHasInitialOverStatusFalse() {
-        assertEquals(game.over,false);
-    }
+    public void GameHasInitialOverStatusFalse() { assertEquals(game.over,false); }
 
     @Test
     public void GameCreatesAnInstanceOfPlayer() {

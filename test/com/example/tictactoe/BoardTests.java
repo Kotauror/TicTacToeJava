@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
@@ -52,15 +53,26 @@ public class BoardTests {
     }
 
     @Test
-    public void checksIfTheBoardIsOver() { {
+    public void checksIfThereArePlacesLeftTrue() {
         board.putSignOnBoard("X", 0);
 
         board.checkForPlacesLeft();
 
-        assertEquals(true, board.placesLeft);
+        assertTrue(board.placesLeft);
     }
 
+    @Test
+    public void checksIfThereArePlacesLeftFalse() {
+        for(int i = 0; i < 9; i++) {
+            board.putSignOnBoard("X", i);
+        }
+
+        board.checkForPlacesLeft();
+
+        assertEquals(false, board.placesLeft);
     }
+
+
 }
 
 
