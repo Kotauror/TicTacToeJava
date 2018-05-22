@@ -34,6 +34,16 @@ public class GameTests {
     }
 
     @Test
+    public void GameHasActivePlayerOne() {
+        assertEquals(game.playerOne, game.active);
+    }
+
+    @Test
+    public void GameHasPassivePlayerTwo() {
+        assertEquals(game.playerTwo, game.passive);
+    }
+
+    @Test
     public void GameHasAnInstanceOfDisplayer() {
         assertThat(game.displayer,isA(Displayer.class));
     }

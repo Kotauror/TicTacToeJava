@@ -4,6 +4,8 @@ import java.io.IOException;
 
 public class Game {
 
+    public Player active;
+    public Player passive;
     Board board;
     Displayer displayer;
     Player playerOne;
@@ -16,6 +18,8 @@ public class Game {
         this.displayer = displayer;
         this.playerOne = new Player("X");
         this.playerTwo = new Player("Y");
+        this.active = playerOne;
+        this.passive = playerTwo;
         this.over = false;
     }
 
@@ -23,7 +27,6 @@ public class Game {
         if (!this.over) {
             this.displayer.showBoard(this.board.places);
             int position = this.displayer.askForPosition();
-            System.out.println(position);
         }
     }
 
