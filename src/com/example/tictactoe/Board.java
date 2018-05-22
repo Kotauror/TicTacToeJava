@@ -20,4 +20,8 @@ public class Board {
     public void fillPlaces() {
         Collections.addAll(this.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
+
+    public void putSignOnBoard(String sign, int position) {
+        this.places.set(position, sign);
+    }
 }

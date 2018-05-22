@@ -37,9 +37,17 @@ public class BoardTests {
     @Test
     public void BoardPlacesAreFillesWithNumbers() {
         board.fillPlaces();
+
         assertEquals(board.places.get(0),0);
         assertEquals(board.places.get(1),1);
         assertEquals(board.places.get(8),8);
+    }
+
+    @Test
+    public void changesSignOnBoardToPlayerSign() {
+        board.putSignOnBoard("X", 0);
+
+        assertEquals("X", board.places.get(0));
     }
 }
 

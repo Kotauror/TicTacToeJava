@@ -4,12 +4,12 @@ import java.io.IOException;
 
 public class Game {
 
-    public Player active;
-    public Player passive;
     Board board;
     Displayer displayer;
     Player playerOne;
     Player playerTwo;
+    public Player active;
+    public Player passive;
     public boolean over;
 
 
@@ -27,6 +27,9 @@ public class Game {
         if (!this.over) {
             this.displayer.showBoard(this.board.places);
             int position = this.displayer.askForPosition();
+            // validation
+            this.board.putSignOnBoard(this.active.sign, position);
+            this.displayer.showBoard(this.board.places);
         }
     }
 
