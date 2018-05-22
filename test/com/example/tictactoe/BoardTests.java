@@ -73,10 +73,98 @@ public class BoardTests {
     }
 
     @Test
-    public void checkIfGameIsWonTrue() {
+    public void checkIfGameIsWonFalse() {
+        board.putSignOnBoard("X", 0);
+        board.putSignOnBoard("X", 5);
+        board.putSignOnBoard("X", 2);
+
+        board.checkForWon();
+
+        assertEquals(false, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV1() {
         board.putSignOnBoard("X", 0);
         board.putSignOnBoard("X", 1);
         board.putSignOnBoard("X", 2);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV2() {
+        board.putSignOnBoard("X", 3);
+        board.putSignOnBoard("X", 4);
+        board.putSignOnBoard("X", 5);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV3() {
+        board.putSignOnBoard("X", 6);
+        board.putSignOnBoard("X", 7);
+        board.putSignOnBoard("X", 8);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV4() {
+        board.putSignOnBoard("X", 0);
+        board.putSignOnBoard("X", 3);
+        board.putSignOnBoard("X", 6);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV5() {
+        board.putSignOnBoard("X", 1);
+        board.putSignOnBoard("X", 4);
+        board.putSignOnBoard("X", 7);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV6() {
+        board.putSignOnBoard("X", 2);
+        board.putSignOnBoard("X", 5);
+        board.putSignOnBoard("X", 8);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV7() {
+        board.putSignOnBoard("X", 0);
+        board.putSignOnBoard("X", 4);
+        board.putSignOnBoard("X", 8);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
+    @Test
+    public void checkIfGameIsWonTrueV8() {
+        board.putSignOnBoard("X", 2);
+        board.putSignOnBoard("X", 4);
+        board.putSignOnBoard("X", 6);
 
         board.checkForWon();
 

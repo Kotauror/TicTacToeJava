@@ -28,8 +28,8 @@ public class Game {
             // validation
             this.board.putSignOnBoard(this.active.sign, position);
             this.switchPlayers();
-            System.out.println(this.board.placesLeft);
         }
+        this.displayer.showBoard(this.board.places);
     }
 
     public void switchPlayers() {
