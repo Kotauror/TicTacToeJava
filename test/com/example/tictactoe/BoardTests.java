@@ -72,6 +72,17 @@ public class BoardTests {
         assertEquals(false, board.placesLeft);
     }
 
+    @Test
+    public void checkIfGameIsWonTrue() {
+        board.putSignOnBoard("X", 0);
+        board.putSignOnBoard("X", 1);
+        board.putSignOnBoard("X", 2);
+
+        board.checkForWon();
+
+        assertEquals(true, board.won);
+    }
+
 
 }
 
