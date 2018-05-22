@@ -4,8 +4,8 @@ public class App {
 
     public static void main(String[] args) {
         Displayer displayer = new Displayer();
+        displayer.greetUsers();
         Game game = new Game(displayer);
-        game.board.fillPlaces();
-        game.displayer.showBoard(game.board.places);
+        game.playGame();
     }
 }

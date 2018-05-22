@@ -20,8 +20,13 @@ public class BoardTests {
     }
 
     @Test
-    public void BoardHasInitialStatusFalse() {
-        assertEquals(board.finished,false);
+    public void BoardHasInitialIsGameWonStatusFalse() {
+        assertEquals(board.won,false);
+    }
+
+    @Test
+    public void BoardHasInitialIsTieStatusFalse() {
+        assertEquals(board.tie,false);
     }
 
     @Test

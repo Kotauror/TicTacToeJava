@@ -6,12 +6,15 @@ import java.util.Collections;
 
 public class Board {
 
-    public boolean finished;
+    public boolean won;
+    public boolean tie;
     public ArrayList places;
 
     Board() {
-        this.finished = false;
+        this.won = false;
+        this.tie = false;
         this.places = new ArrayList<Integer>();
+        fillPlaces();
     }
 
     public void fillPlaces() {

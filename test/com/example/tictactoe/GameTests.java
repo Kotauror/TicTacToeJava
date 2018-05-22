@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class GameTests {
@@ -19,6 +20,11 @@ public class GameTests {
     @Test
     public void Game_creates_an_instance_of_board() {
         assertThat(game.board,isA(Board.class));
+    }
+
+    @Test
+    public void GameHasInitialOverStatusFalse() {
+        assertEquals(game.over,false);
     }
 
     @Test
