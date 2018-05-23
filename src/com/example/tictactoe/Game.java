@@ -6,15 +6,17 @@ public class Game {
 
     Board board;
     Displayer displayer;
+    Validator validator;
     Player playerOne;
     Player playerTwo;
     public Player active;
     public Player passive;
 
 
-    Game(Displayer displayer) {
+    Game(Displayer displayer, Validator validator) {
         this.board = new Board();
         this.displayer = displayer;
+        this.validator = validator;
         this.playerOne = new Player("X");
         this.playerTwo = new Player("Y");
         this.active = playerOne;
