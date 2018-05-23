@@ -18,18 +18,26 @@ public class Displayer {
         System.out.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    public int getPosition(Board board, Validator validator) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+//    public int getPosition(Board board, Validator validator) throws IOException {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Pick a position");
+//        while (true) {
+//            String position = scanner.nextLine();
+//            if (validator.isNumeric(position)) {
+//                if (board.isNonTaken(position)) {
+//                    return Integer.parseInt(position);
+//                }
+//            }
+//            System.out.print("Pick a non-taken number on board");
+//        }
+//    }
+
+    public void askForPosition() {
         System.out.println("Pick a position");
-        while (true) {
-            String position = scanner.nextLine();
-            if (validator.isNumeric(position)) {
-                if (board.isNonTaken(position)) {
-                    return Integer.parseInt(position);
-                }
-            }
-            System.out.println("Pick a non-taken number on board");
-        }
+    }
+
+    public void askAgainForPosition() {
+        System.out.println("Pick a non-taken number on board");
     }
 }
 

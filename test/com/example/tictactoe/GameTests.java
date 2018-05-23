@@ -3,6 +3,8 @@ package com.example.tictactoe;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
+
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,6 +52,43 @@ public class GameTests {
 
         assertEquals(game.playerTwo, game.active);
         assertEquals(game.playerOne, game.passive);
+    }
+
+    @Test
+    public void returnsPositionGivenByPlayerWhenValid() throws IOException {
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertEquals(0, game.getPositionFromUser());
+    }
+
+    @Test
+    public void returnsOnlyTheCorrectValuesWhenGettingAWrongPosition1() throws IOException {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        String input = "J";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String inputTwo = "0";
+        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
+        System.setIn(inTwo);
+
+        assertEquals(0, game.getPositionFromUser());
+    }
+
+    @Test
+    public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
+        game.board.putSignOnBoard("X", 0);
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String inputTwo = "1";
+        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
+        System.setIn(inTwo);
+
+        assertEquals(1, game.getPositionFromUser());
     }
 
 }

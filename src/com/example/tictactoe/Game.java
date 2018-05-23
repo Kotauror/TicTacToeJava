@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Game {
 
@@ -26,7 +27,7 @@ public class Game {
     public void playGame() throws IOException {
         while (!this.board.won && !this.board.tie) {
             this.displayer.showBoard(this.board.places);
-            int position = this.displayer.getPosition(this.board, this.validator);
+            int position = this.getPositionFromUser();
             this.board.putSignOnBoard(this.active.sign, position);
             this.switchPlayers();
         }
@@ -40,6 +41,20 @@ public class Game {
         } else {
             this.passive = this.playerTwo;
             this.active = this.playerOne;
+        }
+    }
+
+    public int getPositionFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        this.displayer.askForPosition();
+        while (true) {
+            String position = scanner.nextLine();
+            if (this.validator.isNumeric(position)) {
+                if (this.board.isNonTaken(position)) {
+                    return Integer.parseInt(position);
+                }
+            }
+            this.displayer.askAgainForPosition();
         }
     }
 

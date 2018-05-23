@@ -43,79 +43,25 @@ public class DisplayerTests {
     }
 
     @Test
-    public void returnsPositionGivenByPlayerWhenValid() throws IOException {
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        assertEquals(0, displayer.getPosition(board, validator));
-    }
-
-    @Test
-    public void returnsOnlyTheCorrectValuesWhenGettingAPosition1() throws IOException {
+    public void asksForPosition() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        String input = "J";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String inputTwo = "0";
-        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
-        System.setIn(inTwo);
 
-        assertEquals(0, displayer.getPosition(board, validator));
-    }
-
-    @Test
-    public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
-        board.putSignOnBoard("X", 0);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String inputTwo = "1";
-        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
-        System.setIn(inTwo);
-
-        assertEquals(1, displayer.getPosition(board, validator));
-    }
-
-    @Test
-    public void displayerAsksForPosition() throws IOException {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        displayer.getPosition(board, validator);
+        displayer.askForPosition();
 
         assertEquals("Pick a position\n", outContent.toString());
+
     }
-//
-//    @Test
-//    public void returnsOnlyTheCorrectValuesWhenGettingAPosition3() throws IOException {
-//        try {
-//            board.putSignOnBoard("X", 0);
-//            String input = "0";
-//            InputStream in = new ByteArrayInputStream(input.getBytes());
-//            System.setIn(in);
-//
-//            displayer.getPosition(board, validator);
-//
-//            String input3 = "0";
-//            InputStream in3 = new ByteArrayInputStream(input3.getBytes());
-//            System.setIn(in3);
-//
-//            final ByteArrayOutputStream outContentTwo = new ByteArrayOutputStream();
-//            System.setOut(new PrintStream(outContentTwo));
-//
-//            assertEquals("Pick a non-taken number on board", outContentTwo.toString());
-//        } finally {
-//            String inputTwo = "1";
-//            InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
-//            System.setIn(inTwo);
-//        }
-//
-//    }
+
+    @Test
+    public void asksAgainForPosition() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        displayer.askAgainForPosition();
+
+        assertEquals("Pick a non-taken number on board\n", outContent.toString());
+
+    }
 
 }

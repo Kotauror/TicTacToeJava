@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4cf65c8d-b6c5-4798-93d8-49733e6d0fd1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,26 +18,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TicTacToe$All_in_TicTacToe.ic" NAME="All in TicTacToe Coverage Results" MODIFIED="1527089632418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/TicTacToe$All_in_TicTacToe.ic" NAME="All in TicTacToe Coverage Results" MODIFIED="1527096182084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.22454308">
+    <splitter split-orientation="horizontal" split-proportion="0.44168097">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/App.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+                <state>
+                  <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Validator.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Validator.java">
+          <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Game.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+                <state relative-caret-position="279">
+                  <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -42,113 +48,20 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.3303324">
-          <split-first>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Game.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="660">
-                      <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="GameTests.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="393">
-                      <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <splitter split-orientation="horizontal" split-proportion="0.39778534">
-              <split-first>
-                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="675">
-                          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-                          <folding>
-                            <element signature="imports" expanded="true" />
-                            <element signature="e#2040#2041#0" expanded="true" />
-                            <element signature="e#2110#2111#0" expanded="true" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="ValidatorTests.java" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/ValidatorTests.java">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="390">
-                          <caret line="26" selection-start-line="26" selection-end-line="26" />
-                          <folding>
-                            <element signature="imports" expanded="true" />
-                            <element signature="e#158#159#0" expanded="true" />
-                            <element signature="e#200#201#0" expanded="true" />
-                            <element signature="e#401#402#0" expanded="true" />
-                            <element signature="e#453#454#0" expanded="true" />
-                            <element signature="e#515#516#0" expanded="true" />
-                            <element signature="e#568#569#0" expanded="true" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="BoardTests.java" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="225">
-                          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-                          <folding>
-                            <element signature="imports" expanded="true" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                </leaf>
-              </split-first>
-              <split-second>
-                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="Displayer.java" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="420">
-                          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-                          <folding>
-                            <element signature="imports" expanded="true" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="DisplayerTests.java" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="246">
-                          <caret line="89" selection-start-line="89" selection-end-line="89" />
-                          <folding>
-                            <element signature="imports" expanded="true" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                </leaf>
-              </split-second>
-            </splitter>
-          </split-second>
-        </splitter>
+        <leaf>
+          <file leaf-file-name="GameTests.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="288">
+                  <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-second>
     </splitter>
   </component>
@@ -178,19 +91,18 @@
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Player.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/PlayerTests.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/App.java" />
-        <option value="$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java" />
-        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Validator.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/ValidatorTests.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" />
+        <option value="$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="2536" />
     <option name="height" value="1337" />
@@ -413,9 +325,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in TicTacToe" />
-        <item itemvalue="JUnit.DisplayerTests.displayerAsksForPosition" />
-        <item itemvalue="JUnit.DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" />
+        <item itemvalue="JUnit.DisplayerTests.displayerAsksForPosition" />
         <item itemvalue="JUnit.DisplayerTests.asksAgainWhenUserGivesInvalidPosition" />
       </list>
     </recent_temporary>
@@ -434,56 +346,56 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 05m 23s.xml">
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 25m 26s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 06m 50s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 12m 24s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 13m 29s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 14m 40s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 15m 46s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 16m 10s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 16m 42s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 19m 46s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_displayerAsksForPosition - 2018.05.23 at 17h 22m 35s.xml">
+    <history-entry file="DisplayerTests_displayerAsksForPosition - 2018.05.23 at 17h 53m 01s.xml">
       <configuration name="DisplayerTests.displayerAsksForPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 54m 56s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 55m 59s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 56m 59s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 57m 42s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 58m 32s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 59m 28s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 18h 00m 39s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 18h 01m 24s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="23" width="2536" height="1337" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="807" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286771" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32751092" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2933443" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2576419" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32919005" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.093023255" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16595136" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -495,7 +407,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -542,6 +453,10 @@
           <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -617,6 +532,8 @@
           <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="196" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -627,6 +544,10 @@
           <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -702,6 +623,8 @@
           <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="196" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -712,6 +635,10 @@
           <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -775,6 +702,8 @@
           <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -785,6 +714,10 @@
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -841,6 +774,8 @@
           <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -858,6 +793,10 @@
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -877,13 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="88" column="19" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -913,6 +845,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+            <element signature="e#2110#2111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/ValidatorTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -935,26 +879,54 @@
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        <state relative-caret-position="120">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2040#2041#0" expanded="true" />
-            <element signature="e#2110#2111#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+        <state relative-caret-position="288">
+          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -963,32 +935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="279">
+          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
