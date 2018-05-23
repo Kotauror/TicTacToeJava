@@ -18,10 +18,8 @@ public class Game {
         this.board = new Board();
         this.displayer = displayer;
         this.validator = validator;
-        this.playerOne = new Player("X");
-        this.playerTwo = new Player("Y");
-        this.active = playerOne;
-        this.passive = playerTwo;
+        this.active = new Player("X");
+        this.passive = new Player("Y");
     }
 
     public void playGame() throws IOException {
@@ -36,13 +34,9 @@ public class Game {
     }
 
     public void switchPlayers() {
-        if (this.active == this.playerOne) {
-            this.active = this.playerTwo;
-            this.passive = this.playerOne;
-        } else {
-            this.passive = this.playerTwo;
-            this.active = this.playerOne;
-        }
+        Player playerTemp = this.active;
+        this.active = this.passive;
+        this.passive = playerTemp;
     }
 
     public int getPositionFromUser() {
@@ -50,10 +44,8 @@ public class Game {
         this.displayer.askForPosition();
         while (true) {
             String position = scanner.nextLine();
-            if (this.validator.isNumeric(position)) {
-                if (this.board.isNonTaken(position)) {
-                    return Integer.parseInt(position);
-                }
+            if (this.validator.isNumeric(position) && this.board.isNonTaken(position)) {
+                return Integer.parseInt(position);
             }
             this.displayer.askAgainForPosition();
         }

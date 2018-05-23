@@ -52,7 +52,7 @@ public class Board {
                 {this.places.get(2), this.places.get(4), this.places.get(6)}
         };
         for(int i = 0; i < sets.length; i++) {
-            if (sets[i][0] == sets[i][1] && sets[i][0] == sets[i][2] && sets[i][1] == sets[i][2]) {
+            if (sets[i][0] == sets[i][1] && sets[i][0] == sets[i][2]) {
                 this.won = true;
                 this.winnerSign = sets[i][0].toString();
             }
@@ -64,6 +64,6 @@ public class Board {
     }
 
     public boolean isNonTaken(String position){
-        return this.places.contains(Integer.parseInt(position)) ? true : false;
+        return this.places.contains(Integer.parseInt(position));
     }
 }

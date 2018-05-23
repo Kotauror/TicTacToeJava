@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DisplayerTests {
 
     public Displayer displayer;
-    public Board board;
-    public Validator validator;
 
     @BeforeEach
     public void instantiate() {
@@ -31,14 +30,14 @@ public class DisplayerTests {
 
     @Test
     public void showsTheBoard() {
-        board = new Board();
-        Collections.addAll(board.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
+        ArrayList board = new ArrayList();
+        Collections.addAll(board, 0, 1, 2, 3, "X", 5, 6, 7, 8);
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.showBoard(board.places);
+        displayer.showBoard(board);
 
-        assertEquals("0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n", outContent.toString());
+        assertEquals("0 | 1 | 2\n3 | X | 5\n6 | 7 | 8\n", outContent.toString());
     }
 
     @Test

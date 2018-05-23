@@ -24,18 +24,8 @@ public class GameTests {
 
     @Test
     public void GameCreatesAnInstanceOfPlayer() {
-        assertThat(game.playerOne,isA(Player.class));
-        assertThat(game.playerTwo,isA(Player.class));
-    }
-
-    @Test
-    public void GameHasActivePlayerOne() {
-        assertEquals(game.playerOne, game.active);
-    }
-
-    @Test
-    public void GameHasPassivePlayerTwo() {
-        assertEquals(game.playerTwo, game.passive);
+        assertThat(game.active,isA(Player.class));
+        assertThat(game.passive,isA(Player.class));
     }
 
     @Test
@@ -48,10 +38,13 @@ public class GameTests {
 
     @Test
     public void switchesActivePlayer() {
+        Player player1 = game.active;
+        Player player2 = game.passive;
+
         game.switchPlayers();
 
-        assertEquals(game.playerTwo, game.active);
-        assertEquals(game.playerOne, game.passive);
+        assertEquals(player2, game.active);
+        assertEquals(player1, game.passive);
     }
 
     @Test
