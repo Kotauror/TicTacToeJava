@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4cf65c8d-b6c5-4798-93d8-49733e6d0fd1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -135,8 +135,8 @@
                   <file leaf-file-name="DisplayerTests.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="593">
-                          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+                        <state relative-caret-position="246">
+                          <caret line="89" selection-start-line="89" selection-end-line="89" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -319,6 +319,29 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="DisplayerTests.displayerAsksForPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.tictactoe.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.example.tictactoe" />
+      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.DisplayerTests" />
+      <option name="METHOD_NAME" value="displayerAsksForPosition" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TicTacToe" />
       <extension name="coverage">
@@ -332,29 +355,6 @@
       <option name="PACKAGE_NAME" value="com.example.tictactoe" />
       <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.DisplayerTests" />
       <option name="METHOD_NAME" value="returnsOnlyTheCorrectValuesWhenGettingAPosition3" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="DisplayerTests.returnsPositionGivenByPlayerWhenValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TicTacToe" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.tictactoe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.example.tictactoe" />
-      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.DisplayerTests" />
-      <option name="METHOD_NAME" value="returnsPositionGivenByPlayerWhenValid" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -406,17 +406,17 @@
     <list>
       <item itemvalue="JUnit.All in TicTacToe" />
       <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.DisplayerTests.returnsPositionGivenByPlayerWhenValid" />
       <item itemvalue="JUnit.DisplayerTests.asksAgainWhenUserGivesInvalidPosition" />
       <item itemvalue="JUnit.DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" />
+      <item itemvalue="JUnit.DisplayerTests.displayerAsksForPosition" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in TicTacToe" />
+        <item itemvalue="JUnit.DisplayerTests.displayerAsksForPosition" />
         <item itemvalue="JUnit.DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" />
         <item itemvalue="Application.App" />
         <item itemvalue="JUnit.DisplayerTests.asksAgainWhenUserGivesInvalidPosition" />
-        <item itemvalue="JUnit.DisplayerTests.returnsPositionGivenByPlayerWhenValid" />
       </list>
     </recent_temporary>
   </component>
@@ -434,35 +434,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 50m 14s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 51m 03s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 54m 16s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 54m 49s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 55m 26s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 56m 40s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 16h 57m 59s.xml">
-      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 01m 07s.xml">
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 05m 23s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 01m 58s.xml">
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 06m 50s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 17h 03m 31s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 12m 24s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 13m 29s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 14m 40s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 15m 46s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 16m 10s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 16m 42s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsOnlyTheCorrectValuesWhenGettingAPosition3 - 2018.05.23 at 17h 19m 46s.xml">
+      <configuration name="DisplayerTests.returnsOnlyTheCorrectValuesWhenGettingAPosition3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_displayerAsksForPosition - 2018.05.23 at 17h 22m 35s.xml">
+      <configuration name="DisplayerTests.displayerAsksForPosition" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -471,13 +471,13 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3286771" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286771" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2933443" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2933443" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32919005" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -532,7 +532,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -951,13 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -985,10 +978,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="246">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1012,7 +1012,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
