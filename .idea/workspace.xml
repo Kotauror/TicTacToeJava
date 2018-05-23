@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf65c8d-b6c5-4798-93d8-49733e6d0fd1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_api_client_google_api_client_apache_1_2_3_alpha.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_7_javadoc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/BoardTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/BoardTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,11 +86,11 @@
             <splitter split-orientation="horizontal" split-proportion="0.5150529">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+                  <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="483">
-                          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+                        <state relative-caret-position="678">
+                          <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -107,11 +98,11 @@
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="BoardTests.java" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="BoardTests.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="690">
-                          <caret line="197" column="19" selection-start-line="197" selection-start-column="19" selection-end-line="197" selection-end-column="19" />
+                        <state relative-caret-position="648">
+                          <caret line="200" selection-start-line="200" selection-end-line="200" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -127,7 +118,7 @@
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="345">
-                          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+                          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -182,9 +173,9 @@
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/PlayerTests.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/App.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/GameTests.java" />
-        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" />
+        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" />
       </list>
@@ -265,7 +256,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.All in TicTacToe">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.App" />
       <module name="TicTacToe" />
@@ -413,8 +404,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.All in TicTacToe" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.BoardTests.changeWinnerSignWhenWon" />
         <item itemvalue="JUnit.BoardTests.checkIfGameIsWonTrueV1" />
         <item itemvalue="JUnit.com.example.tictactoe in TicTacToe" />
@@ -435,9 +426,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 10h 34m 12s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="BoardTests_changeWinnerSignWhenWon - 2018.05.23 at 10h 37m 39s.xml">
       <configuration name="BoardTests.changeWinnerSignWhenWon" configurationId="JUnit" />
     </history-entry>
@@ -463,6 +451,9 @@
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
     <history-entry file="All_in_TicTacToe - 2018.05.23 at 13h 56m 15s.xml">
+      <configuration name="All in TicTacToe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 13h 57m 38s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -952,10 +943,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
+    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        <state relative-caret-position="648">
+          <caret line="200" selection-start-line="200" selection-end-line="200" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -964,18 +955,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+        <state relative-caret-position="678">
+          <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="197" column="19" selection-start-line="197" selection-start-column="19" selection-end-line="197" selection-end-column="19" />
+        <state relative-caret-position="345">
+          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -999,7 +990,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

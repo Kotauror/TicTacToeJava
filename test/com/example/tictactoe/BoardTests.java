@@ -188,14 +188,14 @@ public class BoardTests {
     public void returnsTrueWhenMoveIsValid() {
         board.putSignOnBoard("X", 6);
 
-        assertTrue(board.isAValidMove("2"));
+        assertTrue(board.isAValidInteger("2"));
     }
 
     @Test
     public void returnsFalseWhenMoveIsNotValid() {
         board.putSignOnBoard("X", 6);
 
-        assertFalse(board.isAValidMove("J"));
+        assertFalse(board.isAValidInteger("J"));
     }
 
 

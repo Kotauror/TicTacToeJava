@@ -69,8 +69,8 @@ public class Board {
         }
     }
 
-    public static boolean isAValidMove(String move) {
+    public static boolean isAValidInteger(String move) {
         String regex = "[0-8]";
-        return move.matches(regex) ? true : false ;
+        return move.matches(regex) ? true : false;
     }
 }
