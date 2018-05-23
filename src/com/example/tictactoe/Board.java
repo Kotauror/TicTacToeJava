@@ -69,10 +69,10 @@ public class Board {
         }
     }
 
-    public static boolean isNumeric(String position) {
-        String regex = "[0-8]";
-        return position.matches(regex) ? true : false;
-    }
+//    public static boolean isNumeric(String position) {
+//        String regex = "[0-8]";
+//        return position.matches(regex) ? true : false;
+//    }
 
     public boolean isNonTaken(String position){
         return this.places.contains(Integer.parseInt(position)) ? true : false;

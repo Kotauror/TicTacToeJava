@@ -212,20 +212,6 @@ public class BoardTests {
     }
 
     @Test
-    public void returnsTrueWhenMoveIsValid() {
-        board.putSignOnBoard("X", 6);
-
-        assertTrue(board.isNumeric("2"));
-    }
-
-    @Test
-    public void returnsFalseWhenMoveIsNotValid() {
-        board.putSignOnBoard("X", 6);
-
-        assertFalse(board.isNumeric("J"));
-    }
-
-    @Test
     public void returnTrueWHenPositionIsNonTaken() {
         board.putSignOnBoard("X", 6);
 

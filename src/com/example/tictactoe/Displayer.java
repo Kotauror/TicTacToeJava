@@ -18,12 +18,12 @@ public class Displayer {
         System.out.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    public int getPosition(Board board) throws IOException {
+    public int getPosition(Board board, Validator validator) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pick a position");
         while (true) {
             String position = scanner.nextLine();
-            if (board.isNumeric(position) == true) {
+            if (validator.isNumeric(position) == true) {
                 if (board.isNonTaken(position)) {
                     return Integer.parseInt(position);
                 }
