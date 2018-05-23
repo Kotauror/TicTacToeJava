@@ -39,7 +39,7 @@ public class DisplayerTests {
     }
 
     @Test
-    public void returnsPositionGivenByPlayer() throws IOException {
+    public void returnsPositionGivenByPlayerWhenValid() throws IOException {
         ArrayList board = new ArrayList<Integer>();
         Collections.addAll(board, 0, 1, 2, 3, 4, 5, 6, 7, 8);
         String input = "0";

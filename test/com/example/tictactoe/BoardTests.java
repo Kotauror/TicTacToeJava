@@ -184,6 +184,19 @@ public class BoardTests {
         assertEquals("X", board.winnerSign);
     }
 
+    @Test
+    public void returnsTrueWhenMoveIsValid() {
+        assertTrue(board.isAValidMove(2));
+    }
+
+    @Test
+    public void returnsFalseWhenMoveIsNotValid() {
+        board.putSignOnBoard("X", 6);
+
+        assertFalse(board.isValidMove(6));
+    }
+
+
 }
 
 
