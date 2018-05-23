@@ -28,6 +28,7 @@ public class Displayer {
                     return Integer.parseInt(position);
                 }
             }
+            System.out.println("Pick a non-taken number on board");
         }
     }
 }

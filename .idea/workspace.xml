@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf65c8d-b6c5-4798-93d8-49733e6d0fd1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/com/example/tictactoe/Displayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/com/example/tictactoe/Displayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/DisplayerTests.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" afterDir="false" />
     </list>
@@ -68,13 +71,13 @@
             </leaf>
           </split-first>
           <split-second>
-            <splitter split-orientation="horizontal" split-proportion="0.5150529">
+            <splitter split-orientation="horizontal" split-proportion="0.30068144">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
                   <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="554">
+                        <state relative-caret-position="555">
                           <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
                           <folding>
                             <element signature="imports" expanded="true" />
@@ -122,8 +125,8 @@
                   <file leaf-file-name="Displayer.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="330">
-                          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+                        <state relative-caret-position="420">
+                          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -134,8 +137,8 @@
                   <file leaf-file-name="DisplayerTests.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="649">
-                          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+                        <state relative-caret-position="618">
+                          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -263,7 +266,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DisplayerTests.returnsPositionGivenByPlayerWhenValid">
+  <component name="RunManager" selected="JUnit.All in TicTacToe">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.App" />
       <module name="TicTacToe" />
@@ -295,7 +298,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="BoardTests.returnTrueWHenPositionIsNonTaken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TicTacToe" />
       <extension name="coverage">
         <pattern>
@@ -306,8 +309,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.example.tictactoe" />
-      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.BoardTests" />
-      <option name="METHOD_NAME" value="returnTrueWHenPositionIsNonTaken" />
+      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.DisplayerTests" />
+      <option name="METHOD_NAME" value="asksAgainWhenUserGivesInvalidPosition" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -405,17 +408,17 @@
     <list>
       <item itemvalue="JUnit.All in TicTacToe" />
       <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.BoardTests.returnTrueWHenPositionIsNonTaken" />
       <item itemvalue="JUnit.com.example.tictactoe in TicTacToe" />
       <item itemvalue="JUnit.DisplayerTests.returnsPositionGivenByPlayerWhenValid" />
+      <item itemvalue="JUnit.DisplayerTests.asksAgainWhenUserGivesInvalidPosition" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DisplayerTests.returnsPositionGivenByPlayerWhenValid" />
-        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.All in TicTacToe" />
+        <item itemvalue="JUnit.DisplayerTests.asksAgainWhenUserGivesInvalidPosition" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.DisplayerTests.returnsPositionGivenByPlayerWhenValid" />
         <item itemvalue="JUnit.com.example.tictactoe in TicTacToe" />
-        <item itemvalue="JUnit.BoardTests.returnTrueWHenPositionIsNonTaken" />
       </list>
     </recent_temporary>
   </component>
@@ -433,35 +436,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 14h 54m 09s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 05m 00s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 08m 56s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 10m 16s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 12m 26s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 14m 58s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 19m 19s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 38m 47s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 45m 27s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
     <history-entry file="All_in_TicTacToe - 2018.05.23 at 15h 49m 01s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_returnsPositionGivenByPlayerWhenValid - 2018.05.23 at 15h 52m 06s.xml">
+      <configuration name="DisplayerTests.returnsPositionGivenByPlayerWhenValid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 15h 58m 41s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 16h 06m 17s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 16h 11m 33s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 16h 22m 50s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 16h 27m 23s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 16h 29m 15s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DisplayerTests_asksAgainWhenUserGivesInvalidPosition - 2018.05.23 at 16h 29m 52s.xml">
+      <configuration name="DisplayerTests.asksAgainWhenUserGivesInvalidPosition" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -956,7 +959,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
+        <state relative-caret-position="555">
           <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -975,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="420">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -985,8 +988,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        <state relative-caret-position="618">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1010,7 +1013,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
