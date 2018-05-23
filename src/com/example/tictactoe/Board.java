@@ -74,7 +74,7 @@ public class Board {
         return move.matches(regex) ? true : false;
     }
 
-    public static boolean isANontakenPosition(String move){
-        return true;
+    public boolean isANontakenPosition(String move){
+        return this.places.contains(Integer.parseInt(move)) ? true : false;
     }
 }

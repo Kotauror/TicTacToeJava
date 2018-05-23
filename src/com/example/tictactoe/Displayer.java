@@ -24,7 +24,9 @@ public class Displayer {
         while (true) {
             String position = scanner.nextLine();
             if (board.isAValidInteger(position) == true) {
-                return Integer.parseInt(position);
+                if (board.isANontakenPosition(position)) {
+                    return Integer.parseInt(position);
+                }
             }
         }
     }

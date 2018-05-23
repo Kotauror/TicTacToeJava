@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf65c8d-b6c5-4798-93d8-49733e6d0fd1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/com/example/tictactoe/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/com/example/tictactoe/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/com/example/tictactoe/Displayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/com/example/tictactoe/Displayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/BoardTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/TicTacToe/com/example/tictactoe/BoardTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,8 +92,8 @@
                   <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="738">
-                          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+                        <state relative-caret-position="715">
+                          <caret line="79" selection-start-line="79" selection-end-line="79" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -100,8 +104,8 @@
                   <file leaf-file-name="BoardTests.java" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="738">
-                          <caret line="206" column="1" lean-forward="true" selection-start-line="206" selection-start-column="1" selection-end-line="206" selection-end-column="1" />
+                        <state relative-caret-position="2895">
+                          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -116,8 +120,8 @@
                   <file leaf-file-name="Displayer.java" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="345">
-                          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+                        <state relative-caret-position="420">
+                          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
                           <folding>
                             <element signature="imports" expanded="true" />
                           </folding>
@@ -175,8 +179,8 @@
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/DisplayerTests.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Game.java" />
         <option value="$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java" />
-        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" />
         <option value="$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java" />
+        <option value="$PROJECT_DIR$/src/com/example/tictactoe/Board.java" />
       </list>
     </option>
   </component>
@@ -255,7 +259,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTests.returnFalseWHenPositionIsTaken">
+  <component name="RunManager" selected="JUnit.All in TicTacToe">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.App" />
       <module name="TicTacToe" />
@@ -310,29 +314,6 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="BoardTests.checkIfGameIsWonTrueV1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TicTacToe" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.tictactoe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.example.tictactoe" />
-      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.BoardTests" />
-      <option name="METHOD_NAME" value="checkIfGameIsWonTrueV1" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration name="BoardTests.returnFalseWHenPositionIsTaken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TicTacToe" />
       <extension name="coverage">
@@ -346,6 +327,29 @@
       <option name="PACKAGE_NAME" value="com.example.tictactoe" />
       <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.BoardTests" />
       <option name="METHOD_NAME" value="returnFalseWHenPositionIsTaken" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="BoardTests.returnTrueWHenPositionIsNonTaken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TicTacToe" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.tictactoe.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.example.tictactoe" />
+      <option name="MAIN_CLASS_NAME" value="com.example.tictactoe.BoardTests" />
+      <option name="METHOD_NAME" value="returnTrueWHenPositionIsNonTaken" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -397,17 +401,17 @@
     <list>
       <item itemvalue="JUnit.All in TicTacToe" />
       <item itemvalue="Application.App" />
-      <item itemvalue="JUnit.BoardTests.checkIfGameIsWonTrueV1" />
       <item itemvalue="JUnit.BoardTests.changeWinnerSignWhenWon" />
       <item itemvalue="JUnit.BoardTests.returnFalseWHenPositionIsTaken" />
+      <item itemvalue="JUnit.BoardTests.returnTrueWHenPositionIsNonTaken" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BoardTests.returnFalseWHenPositionIsTaken" />
         <item itemvalue="JUnit.All in TicTacToe" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.BoardTests.returnTrueWHenPositionIsNonTaken" />
+        <item itemvalue="JUnit.BoardTests.returnFalseWHenPositionIsTaken" />
         <item itemvalue="JUnit.BoardTests.changeWinnerSignWhenWon" />
-        <item itemvalue="JUnit.BoardTests.checkIfGameIsWonTrueV1" />
       </list>
     </recent_temporary>
   </component>
@@ -425,21 +429,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BoardTests_changeWinnerSignWhenWon - 2018.05.23 at 10h 39m 04s.xml">
-      <configuration name="BoardTests.changeWinnerSignWhenWon" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 10h 39m 24s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 10h 44m 26s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 10h 45m 36s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_TicTacToe - 2018.05.23 at 11h 04m 23s.xml">
-      <configuration name="All in TicTacToe" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_TicTacToe - 2018.05.23 at 13h 54m 35s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
@@ -453,6 +442,21 @@
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
     <history-entry file="All_in_TicTacToe - 2018.05.23 at 14h 15m 48s.xml">
+      <configuration name="All in TicTacToe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 14h 20m 24s.xml">
+      <configuration name="All in TicTacToe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTests_returnFalseWHenPositionIsTaken - 2018.05.23 at 14h 21m 12s.xml">
+      <configuration name="BoardTests.returnFalseWHenPositionIsTaken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 14h 32m 44s.xml">
+      <configuration name="All in TicTacToe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTests_returnTrueWHenPositionIsNonTaken - 2018.05.23 at 14h 33m 13s.xml">
+      <configuration name="BoardTests.returnTrueWHenPositionIsNonTaken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_TicTacToe - 2018.05.23 at 14h 34m 05s.xml">
       <configuration name="All in TicTacToe" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -944,8 +948,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Displayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+        <state relative-caret-position="420">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -954,8 +958,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/example/tictactoe/BoardTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="206" column="1" lean-forward="true" selection-start-line="206" selection-start-column="1" selection-end-line="206" selection-end-column="1" />
+        <state relative-caret-position="2895">
+          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -964,8 +968,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/tictactoe/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="715">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -989,7 +993,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
