@@ -25,7 +25,6 @@ public class Game {
         while (!this.board.won && !this.board.tie) {
             this.displayer.showBoard(this.board.places);
             int position = this.displayer.getPosition(this.board);
-            // validation
             this.board.putSignOnBoard(this.active.sign, position);
             this.switchPlayers();
         }

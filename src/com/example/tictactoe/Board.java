@@ -1,5 +1,9 @@
 package com.example.tictactoe;
 
+import org.junit.platform.commons.util.StringUtils;
+//import org.apache.commons.lang.StringUtils;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -65,5 +69,8 @@ public class Board {
         }
     }
 
-
+    public static boolean isAValidMove(String move) {
+        String regex = "[0-8]";
+        return move.matches(regex) ? true : false ;
+    }
 }

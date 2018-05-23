@@ -18,12 +18,14 @@ public class Displayer {
         System.out.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    public int getPosition(Object board) throws IOException {
+    public int getPosition(Board board) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pick a position");
         while (true) {
             String position = scanner.nextLine();
-            if (board.isAValidMove(position) == true) {return Integer.parseInt(position);} ;
+            if (board.isAValidMove(position) == true) {
+                return Integer.parseInt(position);
+            }
         }
     }
 }
