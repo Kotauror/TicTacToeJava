@@ -31,12 +31,12 @@ public class Board {
 
     public void putSignOnBoard(String sign, int position) {
         this.places.set(position, sign);
-        this.checkForPlacesLeft();
-        this.isWon();
-        this.isTie();
+        this.placesLeftCheck();
+        this.wonStatusCheck();
+        this.tieStatusCheck();
     }
 
-    public void checkForPlacesLeft() {
+    public void placesLeftCheck() {
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.size(); i++) {
             if (this.places.contains(i)) numberOfEmptyPlaces += 1;
@@ -44,7 +44,7 @@ public class Board {
         if (numberOfEmptyPlaces == 0) this.placesLeft = false;
     }
 
-    public void isWon() {
+    public void wonStatusCheck() {
         Object [][] sets = {
                 {this.places.get(0), this.places.get(1), this.places.get(2)},
                 {this.places.get(3), this.places.get(4), this.places.get(5)},
@@ -63,7 +63,7 @@ public class Board {
         }
     }
 
-    public void isTie() {
+    public void tieStatusCheck() {
         if (!this.won && !this.placesLeft) {
             this.tie = true;
         }

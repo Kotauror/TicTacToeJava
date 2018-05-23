@@ -58,7 +58,7 @@ public class BoardTests {
     public void checksIfThereArePlacesLeftTrue() {
         board.putSignOnBoard("X", 0);
 
-        board.checkForPlacesLeft();
+        board.placesLeftCheck();
 
         assertTrue(board.placesLeft);
     }
@@ -69,10 +69,37 @@ public class BoardTests {
             board.putSignOnBoard("X", i);
         }
 
-        board.checkForPlacesLeft();
+        board.placesLeftCheck();
 
         assertFalse(board.placesLeft);
     }
+
+    @Test
+    public void checksIfThereIsATieFalse() {
+        board.putSignOnBoard("X", 0);
+
+        board.tieStatusCheck();
+
+        assertEquals(false, board.tie);
+    }
+
+    @Test
+    public void checksIfThereIsATieTrue() {
+        board.putSignOnBoard("Y", 0);
+        board.putSignOnBoard("X", 1);
+        board.putSignOnBoard("Y", 2);
+        board.putSignOnBoard("X", 3);
+        board.putSignOnBoard("X", 4);
+        board.putSignOnBoard("Y", 5);
+        board.putSignOnBoard("X", 6);
+        board.putSignOnBoard("Y", 7);
+        board.putSignOnBoard("X", 8);
+
+        board.tieStatusCheck();
+
+        assertEquals(true, board.tie);
+    }
+
 
     @Test
     public void checkIfGameIsWonFalse() {
@@ -80,7 +107,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 5);
         board.putSignOnBoard("X", 2);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertFalse(board.won);
     }
@@ -91,7 +118,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 1);
         board.putSignOnBoard("X", 2);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -102,7 +129,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 5);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -113,7 +140,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 7);
         board.putSignOnBoard("X", 8);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -124,7 +151,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 3);
         board.putSignOnBoard("X", 6);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -135,7 +162,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 7);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -146,7 +173,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 5);
         board.putSignOnBoard("X", 8);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -157,7 +184,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 8);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -168,7 +195,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 6);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertTrue(board.won);
     }
@@ -179,7 +206,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 6);
 
-        board.isWon();
+        board.wonStatusCheck();
 
         assertEquals("X", board.winnerSign);
     }
