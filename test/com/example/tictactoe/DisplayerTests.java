@@ -37,10 +37,10 @@ public class DisplayerTests {
 
         assertEquals("0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n", outContent.toString());
     }
-//
+
 //    @Test
 //    public void returnsPositionGivenByPlayerWhenValid() throws IOException {
-//        ArrayList board = new ArrayList<Integer>();
+//        Board board = new Board();
 //        Collections.addAll(board, 0, 1, 2, 3, 4, 5, 6, 7, 8);
 //        String input = "0";
 //        InputStream in = new ByteArrayInputStream(input.getBytes());

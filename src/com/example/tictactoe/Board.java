@@ -32,8 +32,8 @@ public class Board {
     public void putSignOnBoard(String sign, int position) {
         this.places.set(position, sign);
         this.checkForPlacesLeft();
-        this.checkForWon();
-        this.checkForTie();
+        this.isWon();
+        this.isTie();
     }
 
     public void checkForPlacesLeft() {
@@ -44,7 +44,7 @@ public class Board {
         if (numberOfEmptyPlaces == 0) this.placesLeft = false;
     }
 
-    public void checkForWon() {
+    public void isWon() {
         Object [][] sets = {
                 {this.places.get(0), this.places.get(1), this.places.get(2)},
                 {this.places.get(3), this.places.get(4), this.places.get(5)},
@@ -63,18 +63,18 @@ public class Board {
         }
     }
 
-    public void checkForTie() {
+    public void isTie() {
         if (!this.won && !this.placesLeft) {
             this.tie = true;
         }
     }
 
-    public static boolean isAValidInteger(String move) {
+    public static boolean isNumeric(String position) {
         String regex = "[0-8]";
-        return move.matches(regex) ? true : false;
+        return position.matches(regex) ? true : false;
     }
 
-    public boolean isANontakenPosition(String move){
-        return this.places.contains(Integer.parseInt(move)) ? true : false;
+    public boolean isNonTaken(String position){
+        return this.places.contains(Integer.parseInt(position)) ? true : false;
     }
 }

@@ -80,7 +80,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 5);
         board.putSignOnBoard("X", 2);
 
-        board.checkForWon();
+        board.isWon();
 
         assertFalse(board.won);
     }
@@ -91,7 +91,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 1);
         board.putSignOnBoard("X", 2);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -102,7 +102,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 5);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -113,7 +113,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 7);
         board.putSignOnBoard("X", 8);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -124,7 +124,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 3);
         board.putSignOnBoard("X", 6);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -135,7 +135,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 7);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -146,7 +146,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 5);
         board.putSignOnBoard("X", 8);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -157,7 +157,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 8);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -168,7 +168,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 6);
 
-        board.checkForWon();
+        board.isWon();
 
         assertTrue(board.won);
     }
@@ -179,7 +179,7 @@ public class BoardTests {
         board.putSignOnBoard("X", 4);
         board.putSignOnBoard("X", 6);
 
-        board.checkForWon();
+        board.isWon();
 
         assertEquals("X", board.winnerSign);
     }
@@ -188,28 +188,28 @@ public class BoardTests {
     public void returnsTrueWhenMoveIsValid() {
         board.putSignOnBoard("X", 6);
 
-        assertTrue(board.isAValidInteger("2"));
+        assertTrue(board.isNumeric("2"));
     }
 
     @Test
     public void returnsFalseWhenMoveIsNotValid() {
         board.putSignOnBoard("X", 6);
 
-        assertFalse(board.isAValidInteger("J"));
+        assertFalse(board.isNumeric("J"));
     }
 
     @Test
     public void returnTrueWHenPositionIsNonTaken() {
         board.putSignOnBoard("X", 6);
 
-        assertTrue(board.isANontakenPosition("2"));
+        assertTrue(board.isNonTaken("2"));
     }
 
     @Test
     public void returnFalseWHenPositionIsTaken() {
         board.putSignOnBoard("X", 6);
 
-        assertFalse(board.isANontakenPosition("6"));
+        assertFalse(board.isNonTaken("6"));
     }
 }
 
