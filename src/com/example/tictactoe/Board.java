@@ -35,48 +35,29 @@ public class Board {
 
     public void checkForPlacesLeft() {
         int numberOfEmptyPlaces = 0;
-        for(int i = 0; i < 9; i++) {
+        for(int i = 0; i < this.places.size(); i++) {
             if (this.places.contains(i)) numberOfEmptyPlaces += 1;
         }
         if (numberOfEmptyPlaces == 0) this.placesLeft = false;
     }
 
     public void checkForWon() {
-        // Stream.of(0, 1, 2).map(i -> this.places.get(i)).all
-        if (this.places.get(0) == this.places.get(1) && this.places.get(0) == this.places.get(2) && this.places.get(1) == this.places.get(2)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(0).toString().charAt(0);
+        Object [][] sets = {
+                {this.places.get(0), this.places.get(1), this.places.get(2)},
+                {this.places.get(3), this.places.get(4), this.places.get(5)},
+                {this.places.get(6), this.places.get(7), this.places.get(8)},
+                {this.places.get(0), this.places.get(3), this.places.get(6)},
+                {this.places.get(1), this.places.get(4), this.places.get(7)},
+                {this.places.get(2), this.places.get(5), this.places.get(8)},
+                {this.places.get(0), this.places.get(4), this.places.get(8)},
+                {this.places.get(2), this.places.get(4), this.places.get(6)}
+        };
+        for(int i = 0; i < sets.length; i++) {
+            if (sets[i][0] == sets[i][1] && sets[i][0] == sets[i][2] && sets[i][1] == sets[i][2]) {
+                this.won = true;
+//                this.winnerSign = this.places.get(0).toString().charAt(0);
+            }
         }
-        if (this.places.get(3) == this.places.get(4) && this.places.get(3) == this.places.get(5) && this.places.get(4) == this.places.get(5)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(3).toString().charAt(0);
-        }
-        if (this.places.get(6) == this.places.get(7) && this.places.get(6) == this.places.get(8) && this.places.get(7) == this.places.get(8)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(6).toString().charAt(0);
-        }
-        if (this.places.get(0) == this.places.get(3) && this.places.get(0) == this.places.get(6) && this.places.get(3) == this.places.get(6)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(0).toString().charAt(0);
-        }
-        if (this.places.get(1) == this.places.get(4) && this.places.get(1) == this.places.get(7) && this.places.get(4) == this.places.get(7)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(1).toString().charAt(0);
-        }
-        if (this.places.get(2) == this.places.get(5) && this.places.get(2) == this.places.get(8) && this.places.get(5) == this.places.get(8)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(2).toString().charAt(0);
-        }
-        if (this.places.get(0) == this.places.get(4) && this.places.get(0) == this.places.get(8) && this.places.get(4) == this.places.get(8)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(0).toString().charAt(0);
-        }
-        if (this.places.get(2) == this.places.get(4) && this.places.get(2) == this.places.get(6) && this.places.get(4) == this.places.get(6)) {
-            this.won = true;
-//            this.winnerSign = this.places.get(2).toString().charAt(0);
-        }
-
-
     }
 
     public void checkForTie() {
