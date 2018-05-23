@@ -1,9 +1,5 @@
 package com.example.tictactoe;
 
-import org.junit.platform.commons.util.StringUtils;
-//import org.apache.commons.lang.StringUtils;
-
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -64,15 +60,8 @@ public class Board {
     }
 
     public void tieStatusCheck() {
-        if (!this.won && !this.placesLeft) {
-            this.tie = true;
-        }
+        if (!this.won && !this.placesLeft) { this.tie = true; }
     }
-
-//    public static boolean isNumeric(String position) {
-//        String regex = "[0-8]";
-//        return position.matches(regex) ? true : false;
-//    }
 
     public boolean isNonTaken(String position){
         return this.places.contains(Integer.parseInt(position)) ? true : false;
