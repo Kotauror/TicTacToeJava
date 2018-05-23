@@ -18,7 +18,7 @@ public class Displayer {
         System.out.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    public int askForPosition() throws IOException {
+    public int getPosition(Object board) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pick a position");
         String position = scanner.nextLine();

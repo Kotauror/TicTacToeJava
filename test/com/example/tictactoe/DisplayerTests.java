@@ -40,10 +40,12 @@ public class DisplayerTests {
 
     @Test
     public void returnsPositionGivenByPlayer() throws IOException {
+        ArrayList board = new ArrayList<Integer>();
+        Collections.addAll(board, 0, 1, 2, 3, 4, 5, 6, 7, 8);
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertEquals(0, displayer.askForPosition());
+        assertEquals(0, displayer.getPosition(board));
     }
 
 
