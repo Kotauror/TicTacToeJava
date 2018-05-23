@@ -4,8 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
@@ -27,6 +26,9 @@ public class BoardTests {
 
     @Test
     public void BoardHasInitialIsTieStatusFalse() { assertEquals(false, board.tie); }
+
+    @Test
+    public void BoardHasInitialWinnerSignN() { assertEquals("N", board.winnerSign); }
 
     @Test
     public void BoardHasInitialOverStatusTrue() { assertEquals(true,board.placesLeft); }
@@ -69,7 +71,7 @@ public class BoardTests {
 
         board.checkForPlacesLeft();
 
-        assertEquals(false, board.placesLeft);
+        assertFalse(board.placesLeft);
     }
 
     @Test
@@ -80,7 +82,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(false, board.won);
+        assertFalse(board.won);
     }
 
     @Test
@@ -91,7 +93,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -102,7 +104,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -113,7 +115,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -124,7 +126,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -135,7 +137,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -146,7 +148,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -157,7 +159,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
     @Test
@@ -168,7 +170,7 @@ public class BoardTests {
 
         board.checkForWon();
 
-        assertEquals(true, board.won);
+        assertTrue(board.won);
     }
 
 

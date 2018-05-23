@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.stream.Stream;
 
 
 public class Board {
@@ -11,14 +10,14 @@ public class Board {
     public boolean tie;
     public boolean placesLeft;
     public ArrayList places;
-//    public String winnerSign;
+    public String winnerSign;
 
     Board() {
         this.won = false;
         this.tie = false;
         this.placesLeft = true;
         this.places = new ArrayList<Integer>();
-//        this.winnerSign = "N";
+        this.winnerSign = "N";
         fillPlaces();
     }
 
