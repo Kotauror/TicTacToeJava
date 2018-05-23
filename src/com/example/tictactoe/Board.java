@@ -54,7 +54,7 @@ public class Board {
         for(int i = 0; i < sets.length; i++) {
             if (sets[i][0] == sets[i][1] && sets[i][0] == sets[i][2] && sets[i][1] == sets[i][2]) {
                 this.won = true;
-//                this.winnerSign = this.places.get(0).toString().charAt(0);
+                this.winnerSign = sets[i][0].toString();
             }
         }
     }

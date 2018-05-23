@@ -173,6 +173,16 @@ public class BoardTests {
         assertTrue(board.won);
     }
 
+    @Test
+    public void changeWinnerSignWhenWon() {
+        board.putSignOnBoard("X", 2);
+        board.putSignOnBoard("X", 4);
+        board.putSignOnBoard("X", 6);
+
+        board.checkForWon();
+
+        assertEquals("X", board.winnerSign);
+    }
 
 }
 
