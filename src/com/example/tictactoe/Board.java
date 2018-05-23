@@ -73,4 +73,8 @@ public class Board {
         String regex = "[0-8]";
         return move.matches(regex) ? true : false;
     }
+
+    public static boolean isANontakenPosition(String move){
+        return true;
+    }
 }

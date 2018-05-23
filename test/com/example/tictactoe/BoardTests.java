@@ -198,7 +198,19 @@ public class BoardTests {
         assertFalse(board.isAValidInteger("J"));
     }
 
+    @Test
+    public void returnTrueWHenPositionIsNonTaken() {
+        board.putSignOnBoard("X", 6);
 
+        assertTrue(board.isANontakenPosition("2"));
+    }
+
+    @Test
+    public void returnFalseWHenPositionIsTaken() {
+        board.putSignOnBoard("X", 6);
+
+        assertFalse(board.isANontakenPosition("6"));
+    }
 }
 
 
