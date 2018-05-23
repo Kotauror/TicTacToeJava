@@ -23,7 +23,7 @@ public class Displayer {
         System.out.println("Pick a position");
         while (true) {
             String position = scanner.nextLine();
-            if (validator.isNumeric(position) == true) {
+            if (validator.isNumeric(position)) {
                 if (board.isNonTaken(position)) {
                     return Integer.parseInt(position);
                 }
