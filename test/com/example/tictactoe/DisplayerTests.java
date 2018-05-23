@@ -17,9 +17,6 @@ public class DisplayerTests {
     @BeforeEach
     public void instantiate() {
         displayer = new Displayer();
-        board = new Board();
-        validator = new Validator();
-        Collections.addAll(board.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
     @Test
@@ -34,6 +31,8 @@ public class DisplayerTests {
 
     @Test
     public void showsTheBoard() {
+        board = new Board();
+        Collections.addAll(board.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 

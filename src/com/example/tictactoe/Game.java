@@ -25,6 +25,7 @@ public class Game {
     }
 
     public void playGame() throws IOException {
+        this.displayer.greetUsers();
         while (!this.board.won && !this.board.tie) {
             this.displayer.showBoard(this.board.places);
             int position = this.getPositionFromUser();
