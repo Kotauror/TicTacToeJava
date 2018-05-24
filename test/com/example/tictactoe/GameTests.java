@@ -1,21 +1,24 @@
 package com.example.tictactoe;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class GameTests {
 
     public static Game game;
 
-    @BeforeAll
-    public static void createInstance() { game = new Game(new Displayer()); }
+    @BeforeEach
+    public void createInstance() { game = new Game(new Displayer()); }
 
     @Test
     public void GameCreatesAnInstanceOfBoard() {
@@ -54,8 +57,6 @@ public class GameTests {
 
     @Test
     public void returnsOnlyTheCorrectValuesWhenGettingAWrongPosition1() throws IOException {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         String input = "J";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -67,10 +68,21 @@ public class GameTests {
     }
 
     @Test
+    public void afterOneRound() throws IOException {
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        game.playMove();
+
+        assertEquals("Y", game.active.sign);
+        assertTrue(game.board.hasPlacesLeft);
+        assertEquals("X", game.board.places.get(0));
+    }
+
+    @Test
     public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
         game.board.putSignOnBoard("X", 0);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -80,6 +92,51 @@ public class GameTests {
 
         assertEquals(1, game.getPositionFromUser());
     }
+
+
+//    @Rule
+//    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+//
+//    @Test
+//    public void expectSystemExit() {
+//        exit.expectSystemExit();
+//        game.playAgainMenu();
+//    }
+
+//    @Test
+//    public void startsANewGameWhenPlayAgainInputCorrect () throws IOException {
+//             String input = "1";
+//             InputStream in = new ByteArrayInputStream(input.getBytes());
+//             System.setIn(in);
+
+//             Validator validatorSpy = Mockito.spy(game.validator);
+//             Mockito.when(validatorSpy.playAgainValid("1")).thenReturn(true);
+//            final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+//            System.setOut(new PrintStream(outContent));
+//            String input2 = "0";
+//            InputStream in2 = new ByteArrayInputStream(input2.getBytes());
+//            System.setIn(in2);
+//            String input3 = "1";
+//            InputStream in3 = new ByteArrayInputStream(input3.getBytes());
+//            System.setIn(in3);
+//            String input4= "2";
+//            InputStream in4 = new ByteArrayInputStream(input4.getBytes());
+//            System.setIn(in4);
+//            String input5 = "2";
+//            InputStream in5 = new ByteArrayInputStream(input5.getBytes());
+//            System.setIn(in5);
+//            int gameCode = System.identityHashCode(game);
+//
+//            game.playAgainMenu();
+//            verify(game, times(1)).playANewGame();
+
+
+            // int gameCode = System.identityHashCode(game);
+           // assertEquals(true, game.board.hasPlacesLeft);
+
+
+
+//    }
 
 }
 

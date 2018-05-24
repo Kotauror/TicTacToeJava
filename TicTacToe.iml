@@ -28,5 +28,7 @@
     </orderEntry>
     <orderEntry type="library" name="commons-lang3-3" level="project" />
     <orderEntry type="library" name="commons-lang3-3.7-javadoc" level="project" />
+    <orderEntry type="library" name="org.mockito:mockito-core:2.0.106-beta" level="project" />
+    <orderEntry type="library" name="org.mockito:mockito-all:2.0.2-beta" level="project" />
   </component>
 </module>

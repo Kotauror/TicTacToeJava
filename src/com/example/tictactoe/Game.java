@@ -8,6 +8,7 @@ public class Game {
     Displayer displayer;
     public Player active;
     public Player passive;
+    Validator validator;
 
 
     Game(Displayer displayer) {
@@ -15,19 +16,24 @@ public class Game {
         this.displayer = displayer;
         this.active = new Player("X");
         this.passive = new Player("Y");
+        this.validator = new Validator();
     }
 
      protected void playGame() {
         this.displayer.greetUsers();
         while (!this.board.won && !this.board.tie) {
-            this.displayer.showBoard(this.board.places);
-            int position = this.getPositionFromUser();
-            this.board.putSignOnBoard(this.active.sign, position);
-            this.switchPlayers();
+            playMove();
         }
         this.displayer.showBoard(this.board.places);
         this.displayer.announceWinner(this.board.winnerSign);
-        this.playAgainMenu();
+//        this.playAgainMenu();
+    }
+
+    protected void playMove() {
+        this.displayer.showBoard(this.board.places);
+        int position = this.getPositionFromUser();
+        this.board.putSignOnBoard(this.active.sign, position);
+        this.switchPlayers();
     }
 
     protected void switchPlayers() {
@@ -48,8 +54,23 @@ public class Game {
         }
     }
 
-    protected void playAgainMenu() {
-
-    }
+//    public void playAgainMenu() {
+//        Scanner scanner = new Scanner(System.in);
+//        this.displayer.playAgainMenu();
+//        while (true) {
+//            String pickedOption = scanner.nextLine();
+//            if (this.validator.playAgainValid(pickedOption)) {
+//                this.playANewGame();
+//            } else if (this.validator.exitValid(pickedOption)) {
+//                System.exit(0);
+//            }
+//            this.displayer.playAgainMenu();
+//        }
+//    }
+//
+//    public void playANewGame() {
+//        Game newGame = new Game(new Displayer());
+//        newGame.playGame();
+//    }
 
 }
