@@ -22,14 +22,18 @@ public class Game {
      protected void playGame() {
         this.displayer.greetUsers();
         while (!this.board.won && !this.board.tie) {
-            playMove();
+            this.playOneRound();
         }
-        this.displayer.showBoard(this.board.places);
-        this.displayer.announceWinner(this.board.winnerSign);
-//        this.playAgainMenu();
+        this.postGame();
     }
 
-    protected void playMove() {
+    protected void postGame() {
+        this.displayer.showBoard(this.board.places);
+        this.displayer.announceWinner(this.board.winnerSign);
+//      this.playAgainMenu();
+    }
+
+    protected void playOneRound() {
         this.displayer.showBoard(this.board.places);
         int position = this.getPositionFromUser();
         this.board.putSignOnBoard(this.active.sign, position);

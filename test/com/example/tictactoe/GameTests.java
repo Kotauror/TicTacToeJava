@@ -3,9 +3,7 @@ package com.example.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -73,11 +71,21 @@ public class GameTests {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        game.playMove();
+        game.playOneRound();
 
         assertEquals("Y", game.active.sign);
         assertTrue(game.board.hasPlacesLeft);
         assertEquals("X", game.board.places.get(0));
+    }
+
+    @Test
+    public void postGameTest() throws IOException {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        game.postGame();
+
+        assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
     }
 
     @Test
