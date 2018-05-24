@@ -27,5 +27,9 @@ public class Displayer {
     public void askAgainForPosition(String sign) {
         System.out.println(sign + ", pick a non-taken number on board");
     }
+
+    public void announceWinner(String sign) {
+        System.out.println(sign != null ? sign + " won!" : "It's a tie!");
+    }
 }
 

@@ -19,13 +19,14 @@ public class Game {
 
      protected void playGame() {
         this.displayer.greetUsers();
-        while (this.board.hasPlacesLeft) {
+        while (!this.board.won && !this.board.tie) {
             this.displayer.showBoard(this.board.places);
             int position = this.getPositionFromUser();
             this.board.putSignOnBoard(this.active.sign, position);
             this.switchPlayers();
         }
         this.displayer.showBoard(this.board.places);
+        this.displayer.announceWinner(this.board.winnerSign);
     }
 
     protected void switchPlayers() {

@@ -28,7 +28,7 @@ public class BoardTests {
     public void BoardHasInitialIsTieStatusFalse() { assertEquals(false, board.tie); }
 
     @Test
-    public void BoardHasInitialWinnerSignN() { assertEquals("N", board.winnerSign); }
+    public void BoardHasInitialWinnerSignN() { assertEquals(null, board.winnerSign); }
 
     @Test
     public void BoardHasInitialOverStatusTrue() { assertEquals(true,board.hasPlacesLeft); }

@@ -17,7 +17,7 @@ public class Board {
         this.tie = false;
         this.hasPlacesLeft = true;
         this.places = new ArrayList<Integer>();
-        this.winnerSign = "N";
+        this.winnerSign = null;
         fillPlaces();
     }
 

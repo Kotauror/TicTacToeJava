@@ -62,4 +62,26 @@ public class DisplayerTests {
 
     }
 
+    @Test
+    public void announcesWinnerWHenThereIsOne() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        displayer.announceWinner("X");
+
+        assertEquals("X won!\n", outContent.toString());
+
+    }
+
+    @Test
+    public void announcesTieIfNoWInner() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        displayer.announceWinner(null);
+
+        assertEquals("It's a tie!\n", outContent.toString());
+
+    }
+
 }
