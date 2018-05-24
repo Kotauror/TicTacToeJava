@@ -10,26 +10,23 @@ public class GamesController {
         this.displayer = displayer;
     }
 
-    public String getUserOption() {
+    public void gamesMenu() {
+        int pickedOption = this.getUserOption();
+        if (pickedOption == 1) {
+            this.playANewGame();
+        } else if (pickedOption == 2) {
+            System.exit(0);
+        } else {
+            this.gamesMenu();
+        }
+    }
+
+    public int getUserOption() {
         this.displayer.gamingMenu();
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String outputString = scanner.nextLine();
+        return Integer.parseInt(outputString);
     }
-
-    public void gamesMenu() {
-        String option = this.getUserOption();
-    }
-
-//        while (true) {
-//            String pickedOption = scanner.nextLine();
-//            if (Validator.playAgainValid(pickedOption)) {
-//                this.playANewGame();
-//            } else if (Validator.exitValid(pickedOption)) {
-//                System.exit(0);
-//            }
-//            this.displayer.gamingMenu();
-//        }
-//    }
 
     public void playANewGame() {
         Game newGame = new Game(displayer);

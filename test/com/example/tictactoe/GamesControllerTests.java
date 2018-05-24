@@ -30,7 +30,12 @@ public class GamesControllerTests {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertEquals("6", gamesController.getUserOption());
+        assertEquals(6, gamesController.getUserOption());
+    }
+
+    @Test
+    public void playAGameCreatesAGame() {
+
     }
 
 }
