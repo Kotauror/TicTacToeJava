@@ -11,21 +11,21 @@ public class GamesController {
     }
 
     public void gamesMenu() {
-        int pickedOption = this.getUserOption();
-        if (pickedOption == 1) {
+        String pickedOption = this.getUserOption();
+        if (Validator.playAgainValid(pickedOption)) {
             this.playANewGame();
-        } else if (pickedOption == 2) {
+        } else if (Validator.exitValid(pickedOption)) {
             System.exit(0);
         } else {
             this.gamesMenu();
         }
     }
 
-    public int getUserOption() {
+    public String getUserOption() {
         this.displayer.gamingMenu();
         Scanner scanner = new Scanner(System.in);
         String outputString = scanner.nextLine();
-        return Integer.parseInt(outputString);
+        return outputString;
     }
 
     public void playANewGame() {
