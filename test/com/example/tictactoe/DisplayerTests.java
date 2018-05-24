@@ -84,4 +84,15 @@ public class DisplayerTests {
 
     }
 
+    @Test
+    public void askForPlayingAgain() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        displayer.playAgainMenu();
+
+        assertEquals("If you want to play again type 1, if you want to exit type 2\n", outContent.toString());
+
+    }
+
 }

@@ -31,5 +31,10 @@ public class Displayer {
     public void announceWinner(String sign) {
         System.out.println(sign != null ? sign + " won!" : "It's a tie!");
     }
+
+    public void playAgainMenu() {
+        System.out.println("If you want to play again type 1, if you want to exit type 2");
+    }
+
 }
 
