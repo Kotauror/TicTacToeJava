@@ -1,7 +1,5 @@
 package com.example.tictactoe;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Displayer {
@@ -32,8 +30,8 @@ public class Displayer {
         System.out.println(sign != null ? sign + " won!" : "It's a tie!");
     }
 
-    public void playAgainMenu() {
-        System.out.println("If you want to play again type 1, if you want to exit type 2");
+    public void gamingMenu() {
+        System.out.println("If you want to play type 1, if you want to exit type 2");
     }
 
 }

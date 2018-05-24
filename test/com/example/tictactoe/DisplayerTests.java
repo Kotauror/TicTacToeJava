@@ -85,9 +85,9 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.playAgainMenu();
+        displayer.gamingMenu();
 
-        assertEquals("If you want to play again type 1, if you want to exit type 2\n", outContent.toString());
+        assertEquals("If you want to play type 1, if you want to exit type 2\n", outContent.toString());
     }
 
 }

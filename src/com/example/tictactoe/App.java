@@ -6,7 +6,7 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         Displayer displayer = new Displayer();
-        Game game = new Game(displayer);
-        game.playGame();
+        GamesController gamesController  = new GamesController(displayer);
+        gamesController.gamesMenu();
     }
 }

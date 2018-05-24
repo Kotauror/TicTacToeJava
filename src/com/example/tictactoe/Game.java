@@ -30,7 +30,7 @@ public class Game {
     protected void postGame() {
         this.displayer.showBoard(this.board.places);
         this.displayer.announceWinner(this.board.winnerSign);
-//      this.playAgainMenu();
+//        this.playAgainMenu();
     }
 
     protected void playOneRound() {
@@ -60,7 +60,7 @@ public class Game {
 
 //    public void playAgainMenu() {
 //        Scanner scanner = new Scanner(System.in);
-//        this.displayer.playAgainMenu();
+//        this.displayer.gamingMenu();
 //        while (true) {
 //            String pickedOption = scanner.nextLine();
 //            if (this.validator.playAgainValid(pickedOption)) {
@@ -68,7 +68,7 @@ public class Game {
 //            } else if (this.validator.exitValid(pickedOption)) {
 //                System.exit(0);
 //            }
-//            this.displayer.playAgainMenu();
+//            this.displayer.gamingMenu();
 //        }
 //    }
 //

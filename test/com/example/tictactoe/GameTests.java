@@ -115,52 +115,6 @@ public class GameTests {
 
         assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
     }
-
-
-//    @Rule
-//    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
-//
-//    @Test
-//    public void expectSystemExit() {
-//        exit.expectSystemExit();
-//        game.playAgainMenu();
-//    }
-
-//    @Test
-//    public void startsANewGameWhenPlayAgainInputCorrect () throws IOException {
-//             String input = "1";
-//             InputStream in = new ByteArrayInputStream(input.getBytes());
-//             System.setIn(in);
-
-//             Validator validatorSpy = Mockito.spy(game.validator);
-//             Mockito.when(validatorSpy.playAgainValid("1")).thenReturn(true);
-//            final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-//            System.setOut(new PrintStream(outContent));
-//            String input2 = "0";
-//            InputStream in2 = new ByteArrayInputStream(input2.getBytes());
-//            System.setIn(in2);
-//            String input3 = "1";
-//            InputStream in3 = new ByteArrayInputStream(input3.getBytes());
-//            System.setIn(in3);
-//            String input4= "2";
-//            InputStream in4 = new ByteArrayInputStream(input4.getBytes());
-//            System.setIn(in4);
-//            String input5 = "2";
-//            InputStream in5 = new ByteArrayInputStream(input5.getBytes());
-//            System.setIn(in5);
-//            int gameCode = System.identityHashCode(game);
-//
-//            game.playAgainMenu();
-//            verify(game, times(1)).playANewGame();
-
-
-            // int gameCode = System.identityHashCode(game);
-           // assertEquals(true, game.board.hasPlacesLeft);
-
-
-
-//    }
-
 }
 
 
