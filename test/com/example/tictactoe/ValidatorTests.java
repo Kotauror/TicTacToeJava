@@ -35,4 +35,13 @@ public class ValidatorTests {
         assertFalse(validator.playAgainValid("3"));
     }
 
+    @Test
+    public void checkExitTrue() {
+        assertTrue(validator.exitValid("2"));
+    }
+
+    @Test
+    public void checkExitFalse() {
+        assertFalse(validator.exitValid("3"));
+    }
 }
