@@ -68,9 +68,9 @@ public class GameTests {
     @Test
     public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
         game.board.putSignOnBoard("X", 0);
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+         String input = "0";
+         InputStream in = new ByteArrayInputStream(input.getBytes());
+         System.setIn(in);
         String inputTwo = "1";
         InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
         System.setIn(inTwo);

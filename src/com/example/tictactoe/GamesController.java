@@ -11,15 +11,23 @@ public class GamesController {
     }
 
     public void gamesMenu() {
-        String pickedOption = this.getUserOption();
-        if (Validator.playAgainValid(pickedOption)) {
-            this.playANewGame();
-        } else if (Validator.exitValid(pickedOption)) {
-            System.exit(0);
-        } else {
-            this.gamesMenu();
+        boolean loopThroughOptions = true;
+        while (loopThroughOptions) {
+            String pickedOption = this.getUserOption();
+            loopThroughOptions = actOnOption(pickedOption);
         }
     }
+
+   public boolean actOnOption(String pickedOption) {
+       if (Validator.playAgainValid(pickedOption)) {
+           this.playANewGame();
+           return true;
+       } else if (Validator.exitValid(pickedOption)) {
+           return false;
+       } else {
+           return true;
+       }
+   }
 
     public String getUserOption() {
         this.displayer.gamingMenu();
