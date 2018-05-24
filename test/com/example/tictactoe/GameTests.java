@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class GameTests {
@@ -66,6 +66,19 @@ public class GameTests {
     }
 
     @Test
+    public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
+        game.board.putSignOnBoard("X", 0);
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String inputTwo = "1";
+        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
+        System.setIn(inTwo);
+
+        assertEquals(1, game.getPositionFromUser());
+    }
+
+    @Test
     public void afterOneRound() throws IOException {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -79,6 +92,21 @@ public class GameTests {
     }
 
     @Test
+    public void fullGamePlayer() throws IOException {
+        game.board.putSignOnBoard("X", 0);
+        game.board.putSignOnBoard("X", 1);
+        String input1 = "2";
+        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(in1);
+
+        game.playGame();
+
+        assertEquals(true, game.board.won);
+        assertEquals("X", game.board.winnerSign);
+        assertEquals(true, game.board.hasPlacesLeft);
+    }
+
+    @Test
     public void postGameTest() throws IOException {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -86,19 +114,6 @@ public class GameTests {
         game.postGame();
 
         assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
-    }
-
-    @Test
-    public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
-        game.board.putSignOnBoard("X", 0);
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String inputTwo = "1";
-        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
-        System.setIn(inTwo);
-
-        assertEquals(1, game.getPositionFromUser());
     }
 
 
