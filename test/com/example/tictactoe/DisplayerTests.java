@@ -37,7 +37,7 @@ public class DisplayerTests {
 
         displayer.showBoard(board);
 
-        assertEquals("0 | 1 | 2\n3 | X | 5\n6 | 7 | 8\n", outContent.toString());
+        assertEquals("\n0 | 1 | 2\n3 | X | 5\n6 | 7 | 8\n\n", outContent.toString());
     }
 
     @Test
@@ -45,9 +45,9 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.askForPosition();
+        displayer.askForPosition("X");
 
-        assertEquals("Pick a position\n", outContent.toString());
+        assertEquals("X, pick a position\n", outContent.toString());
 
     }
 
@@ -56,9 +56,9 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.askAgainForPosition();
+        displayer.askAgainForPosition("X");
 
-        assertEquals("Pick a non-taken number on board\n", outContent.toString());
+        assertEquals("X, pick a non-taken number on board\n", outContent.toString());
 
     }
 

@@ -15,7 +15,7 @@ public class GameTests {
     public static Game game;
 
     @BeforeAll
-    public static void createInstance() { game = new Game(new Displayer(), new Validator()); }
+    public static void createInstance() { game = new Game(new Displayer()); }
 
     @Test
     public void GameCreatesAnInstanceOfBoard() {
@@ -32,9 +32,6 @@ public class GameTests {
     public void GameHasAnInstanceOfDisplayer() {
         assertThat(game.displayer,isA(Displayer.class));
     }
-
-    @Test
-    public void GameHasAnInstanceOfValidator() { assertThat(game.validator,isA(Validator.class));}
 
     @Test
     public void switchesActivePlayer() {

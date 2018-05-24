@@ -8,39 +8,39 @@ public class Board {
 
     public boolean won;
     public boolean tie;
-    public boolean placesLeft;
+    public boolean hasPlacesLeft;
     public ArrayList places;
     public String winnerSign;
 
     Board() {
         this.won = false;
         this.tie = false;
-        this.placesLeft = true;
+        this.hasPlacesLeft = true;
         this.places = new ArrayList<Integer>();
         this.winnerSign = "N";
         fillPlaces();
     }
 
-    public void fillPlaces() {
+    protected void fillPlaces() {
         Collections.addAll(this.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
-    public void putSignOnBoard(String sign, int position) {
+    protected void putSignOnBoard(String sign, int position) {
         this.places.set(position, sign);
         this.placesLeftCheck();
         this.wonStatusCheck();
         this.tieStatusCheck();
     }
 
-    public void placesLeftCheck() {
+    protected void placesLeftCheck() {
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.size(); i++) {
             if (this.places.contains(i)) numberOfEmptyPlaces += 1;
         }
-        if (numberOfEmptyPlaces == 0) this.placesLeft = false;
+        if (numberOfEmptyPlaces == 0) this.hasPlacesLeft = false;
     }
 
-    public void wonStatusCheck() {
+    protected void wonStatusCheck() {
         Object [][] sets = {
                 {this.places.get(0), this.places.get(1), this.places.get(2)},
                 {this.places.get(3), this.places.get(4), this.places.get(5)},
@@ -51,19 +51,19 @@ public class Board {
                 {this.places.get(0), this.places.get(4), this.places.get(8)},
                 {this.places.get(2), this.places.get(4), this.places.get(6)}
         };
-        for(int i = 0; i < sets.length; i++) {
-            if (sets[i][0] == sets[i][1] && sets[i][0] == sets[i][2]) {
+        for (Object[] set : sets) {
+            if (set[0] == set[1] && set[0] == set[2]) {
                 this.won = true;
-                this.winnerSign = sets[i][0].toString();
+                this.winnerSign = set[0].toString();
             }
         }
     }
 
-    public void tieStatusCheck() {
-        if (!this.won && !this.placesLeft) { this.tie = true; }
+    protected void tieStatusCheck() {
+        if (!this.won && !this.hasPlacesLeft) { this.tie = true; }
     }
 
-    public boolean isNonTaken(String position){
+    protected boolean isNonTaken(String position){
         return this.places.contains(Integer.parseInt(position));
     }
 }

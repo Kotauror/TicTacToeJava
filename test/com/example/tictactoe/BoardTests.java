@@ -31,7 +31,7 @@ public class BoardTests {
     public void BoardHasInitialWinnerSignN() { assertEquals("N", board.winnerSign); }
 
     @Test
-    public void BoardHasInitialOverStatusTrue() { assertEquals(true,board.placesLeft); }
+    public void BoardHasInitialOverStatusTrue() { assertEquals(true,board.hasPlacesLeft); }
 
     @Test
     public void BoardIsCreatedWithPlacesArray() {
@@ -60,7 +60,7 @@ public class BoardTests {
 
         board.placesLeftCheck();
 
-        assertTrue(board.placesLeft);
+        assertTrue(board.hasPlacesLeft);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class BoardTests {
 
         board.placesLeftCheck();
 
-        assertFalse(board.placesLeft);
+        assertFalse(board.hasPlacesLeft);
     }
 
     @Test
