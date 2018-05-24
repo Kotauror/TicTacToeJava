@@ -27,6 +27,7 @@ public class Game {
         }
         this.displayer.showBoard(this.board.places);
         this.displayer.announceWinner(this.board.winnerSign);
+        this.playAgainMenu();
     }
 
     protected void switchPlayers() {
@@ -45,6 +46,10 @@ public class Game {
             }
             this.displayer.askAgainForPosition(this.active.sign);
         }
+    }
+
+    protected void playAgainMenu() {
+
     }
 
 }

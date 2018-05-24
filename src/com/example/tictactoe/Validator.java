@@ -6,4 +6,8 @@ public class Validator {
         String regex = "[0-8]";
         return position.matches(regex) ? true : false;
     }
+
+    public static boolean playAgainValid(String number) {
+        return number == "1" || number == "2";
+    }
 }

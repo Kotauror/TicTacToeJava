@@ -48,7 +48,6 @@ public class DisplayerTests {
         displayer.askForPosition("X");
 
         assertEquals("X, pick a position\n", outContent.toString());
-
     }
 
     @Test
@@ -59,7 +58,6 @@ public class DisplayerTests {
         displayer.askAgainForPosition("X");
 
         assertEquals("X, pick a non-taken number on board\n", outContent.toString());
-
     }
 
     @Test
@@ -70,7 +68,6 @@ public class DisplayerTests {
         displayer.announceWinner("X");
 
         assertEquals("X won!\n", outContent.toString());
-
     }
 
     @Test
@@ -81,7 +78,6 @@ public class DisplayerTests {
         displayer.announceWinner(null);
 
         assertEquals("It's a tie!\n", outContent.toString());
-
     }
 
     @Test
@@ -92,7 +88,6 @@ public class DisplayerTests {
         displayer.playAgainMenu();
 
         assertEquals("If you want to play again type 1, if you want to exit type 2\n", outContent.toString());
-
     }
 
 }

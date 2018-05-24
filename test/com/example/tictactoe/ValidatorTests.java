@@ -25,4 +25,14 @@ public class ValidatorTests {
         assertFalse(validator.isNumeric("J"));
     }
 
+    @Test
+    public void checkPlayAgainMenuTrue() {
+        assertTrue(validator.playAgainValid("1"));
+    }
+
+    @Test
+    public void checkPlayAgainMenuFalse() {
+        assertFalse(validator.playAgainValid("3"));
+    }
+
 }
