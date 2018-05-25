@@ -13,6 +13,17 @@ public class Board {
         fillPlaces();
     }
 
+    int [][] winningPositions = {
+            {0, 1, 2},
+            {3, 4, 5},
+            {6, 7, 8},
+            {0, 3, 6},
+            {1, 4, 7},
+            {2, 5, 8},
+            {0, 4, 8},
+            {2, 4, 6}
+    };
+
     protected void fillPlaces() {
         Collections.addAll(this.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
@@ -30,18 +41,8 @@ public class Board {
     }
 
     protected boolean isWon() {
-        Object [][] sets = {
-                {this.places.get(0), this.places.get(1), this.places.get(2)},
-                {this.places.get(3), this.places.get(4), this.places.get(5)},
-                {this.places.get(6), this.places.get(7), this.places.get(8)},
-                {this.places.get(0), this.places.get(3), this.places.get(6)},
-                {this.places.get(1), this.places.get(4), this.places.get(7)},
-                {this.places.get(2), this.places.get(5), this.places.get(8)},
-                {this.places.get(0), this.places.get(4), this.places.get(8)},
-                {this.places.get(2), this.places.get(4), this.places.get(6)}
-        };
-        for (Object[] set : sets) {
-            if (set[0] == set[1] && set[0] == set[2]) {
+        for (int[] set : winningPositions) {
+            if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
                 return true;
             }
         }
@@ -57,19 +58,9 @@ public class Board {
     }
 
     protected String winnerSign() {
-        Object[][] sets = {
-                {this.places.get(0), this.places.get(1), this.places.get(2)},
-                {this.places.get(3), this.places.get(4), this.places.get(5)},
-                {this.places.get(6), this.places.get(7), this.places.get(8)},
-                {this.places.get(0), this.places.get(3), this.places.get(6)},
-                {this.places.get(1), this.places.get(4), this.places.get(7)},
-                {this.places.get(2), this.places.get(5), this.places.get(8)},
-                {this.places.get(0), this.places.get(4), this.places.get(8)},
-                {this.places.get(2), this.places.get(4), this.places.get(6)}
-        };
-        for (Object[] set : sets) {
-            if (set[0] == set[1] && set[0] == set[2]) {
-                return set[0].toString();
+        for (int[] set : winningPositions) {
+            if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
+                return this.places.get(set[0]).toString();
             }
         }
         return "none";
