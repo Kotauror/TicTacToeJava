@@ -3,17 +3,24 @@ package com.example.tictactoe;
 public class Game {
 
     Board board;
-    public Player active;
-    public Player passive;
+    Player active;
+    Player passive;
+    Displayer displayer;
+    IOHelper iohelper;
+    Validator validator;
 
-    Game () {
+
+    Game (Displayer displayer, IOHelper iohelper, Validator validator) {
         this.board = new Board();
         this.active = new Player("X");
         this.passive = new Player("Y");
+        this.displayer = displayer;
+        this.iohelper = iohelper;
+        this.validator = validator;
     }
 
      protected void playOneGame() {
-        Displayer.greetUsers();
+        this.displayer.greetUsers();
         while (!this.board.won && !this.board.tie) {
             this.playOneRound();
         }
@@ -23,7 +30,7 @@ public class Game {
     protected void playOneRound() {
         boolean loopThrough = true;
         while (loopThrough) {
-            Displayer.showBoard(this.board.places);
+            this.displayer.showBoard(this.board.places);
             String position = this.getUserPosition();
             loopThrough = this.actUponOption(position);
         }
@@ -36,12 +43,12 @@ public class Game {
     }
 
     protected String getUserPosition() {
-        Displayer.askForPosition(this.active.sign);
-        return IOHelper.getUserInput();
+        this.displayer.askForPosition(this.active.sign);
+        return this.iohelper.getUserInput();
     }
 
     protected boolean actUponOption(String position) {
-        if (Validator.isNumeric(position) && this.board.isNonTaken(position)) {
+        if (this.validator.isNumeric(position) && this.board.isNonTaken(position)) {
             this.board.putSignOnBoard(this.active.sign, Integer.parseInt(position));
             this.switchPlayers();
             return false;
@@ -51,7 +58,7 @@ public class Game {
     }
 
     protected void postGame() {
-        Displayer.showBoard(this.board.places);
-        Displayer.announceWinner(this.board.winnerSign);
+        this.displayer.showBoard(this.board.places);
+        this.displayer.announceWinner(this.board.winnerSign);
     }
 }

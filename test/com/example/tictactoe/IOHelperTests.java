@@ -1,5 +1,6 @@
 package com.example.tictactoe;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -10,13 +11,21 @@ import static org.junit.Assert.assertEquals;
 
 public class IOHelperTests {
 
+    public IOHelper iohelper;
+
+    @BeforeEach
+    public void instantiateValidtor() {
+        iohelper = new IOHelper();
+    }
+
+
     @Test
     public void returnsPositionGivenByPlayer() throws IOException {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertEquals("0", IOHelper.getUserInput());
+        assertEquals("0", iohelper.getUserInput());
     }
 
 }

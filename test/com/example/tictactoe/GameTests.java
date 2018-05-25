@@ -16,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     public void createInstance() {
-        game = new Game();
+        game = new Game(new Displayer(), new IOHelper(), new Validator());
     }
 
     @Test

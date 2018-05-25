@@ -7,6 +7,8 @@ import org.mockito.Mockito;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import static org.hamcrest.CoreMatchers.isA;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -17,7 +19,22 @@ public class GamesControllerTests {
 
     @BeforeEach
     public void instantiate() {
-        gamesController = new GamesController();
+        gamesController = new GamesController(new Displayer(), new Validator(), new IOHelper());
+    }
+
+    @Test
+    public void GameCreatesAnInstanceOfDisplayer() {
+        assertThat(gamesController.displayer, isA(Displayer.class));
+    }
+
+    @Test
+    public void GameCreatesAnInstanceOfIOHelper() {
+        assertThat(gamesController.iohelper, isA(IOHelper.class));
+    }
+
+    @Test
+    public void GameCreatesAnInstanceOfValidator() {
+        assertThat(gamesController.validator, isA(Validator.class));
     }
 
     @Test
