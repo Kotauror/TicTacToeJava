@@ -73,10 +73,10 @@ public class GameTests {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        game.playOneRound();
+        game.playTurn();
 
         assertEquals("Y", game.active.sign);
-        assertTrue(game.board.hasPlacesLeft());
+        assertTrue(game.board.hasFreePlaces());
         assertEquals("X", game.board.places.get(0));
     }
 
@@ -88,12 +88,12 @@ public class GameTests {
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);
 
-        game.playOneGame();
+        game.run();
 
         assertTrue(game.board.isWon());
         assertFalse(game.board.isTie());
         assertEquals("X", game.board.winnerSign());
-        assertTrue(game.board.hasPlacesLeft());
+        assertTrue(game.board.hasFreePlaces());
     }
 
     @Test
@@ -110,12 +110,12 @@ public class GameTests {
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);
 
-        game.playOneGame();
+        game.run();
 
         assertFalse(game.board.isWon());
         assertTrue(game.board.isTie());
         assertEquals("none", game.board.winnerSign());
-        assertFalse(game.board.hasPlacesLeft());
+        assertFalse(game.board.hasFreePlaces());
     }
 
     @Test

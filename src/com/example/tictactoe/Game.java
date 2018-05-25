@@ -19,15 +19,15 @@ public class Game {
         this.validator = validator;
     }
 
-     protected void playOneGame() {
+     protected void run() {
         this.displayer.greetUsers();
         while (!this.board.isWon() && !this.board.isTie()) {
-            this.playOneRound();
+            this.playTurn();
         }
         this.postGame();
     }
 
-    protected void playOneRound() {
+    protected void playTurn() {
         boolean loopThrough = true;
         while (loopThrough) {
             this.displayer.showBoard(this.board.places);

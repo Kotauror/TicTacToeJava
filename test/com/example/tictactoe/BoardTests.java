@@ -50,7 +50,7 @@ public class BoardTests {
     public void checksIfThereArePlacesLeftTrue() {
         board.putSignOnBoard("X", 0);
 
-        assertEquals(true, board.hasPlacesLeft());
+        assertEquals(true, board.hasFreePlaces());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class BoardTests {
             board.putSignOnBoard("X", i);
         }
 
-        assertFalse(board.hasPlacesLeft());
+        assertFalse(board.hasFreePlaces());
     }
 
     @Test

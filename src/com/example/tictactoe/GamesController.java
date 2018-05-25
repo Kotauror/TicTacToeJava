@@ -38,7 +38,7 @@ public class GamesController {
 
     protected void playANewGame() {
         Game newGame = new Game(this.displayer, this.iohelper, this.validator);
-        newGame.playOneGame();
+        newGame.run();
     }
 
 }

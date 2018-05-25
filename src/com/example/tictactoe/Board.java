@@ -32,7 +32,7 @@ public class Board {
         this.places.set(position, sign);
     }
 
-    protected boolean hasPlacesLeft() {
+    protected boolean hasFreePlaces() {
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.size(); i++) {
             if (this.places.contains(i)) numberOfEmptyPlaces += 1;
@@ -50,7 +50,7 @@ public class Board {
     }
 
     protected boolean isTie() {
-        return !this.isWon() && !this.hasPlacesLeft();
+        return !this.isWon() && !this.hasFreePlaces();
     }
 
     protected boolean isNonTaken(String position){
