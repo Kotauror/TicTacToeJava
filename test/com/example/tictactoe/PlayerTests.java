@@ -15,14 +15,8 @@ public class PlayerTests {
     }
 
     @Test
-    public void playerHasInitialActiveStatusFalse() {
-        assertEquals(player.active,false);
-    }
-
-    @Test
     public void playerHasSign() {
         assertEquals(player.sign, "X");
     }
-
 
 }

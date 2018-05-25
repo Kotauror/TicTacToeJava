@@ -6,11 +6,11 @@ import java.util.Collections;
 
 public class Board {
 
-    public boolean won;
-    public boolean tie;
-    public boolean hasPlacesLeft;
-    public ArrayList places;
-    public String winnerSign;
+    protected boolean won;
+    protected boolean tie;
+    protected boolean hasPlacesLeft;
+    protected ArrayList places;
+    protected String winnerSign;
 
     Board() {
         this.won = false;

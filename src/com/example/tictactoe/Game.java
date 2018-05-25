@@ -8,15 +8,12 @@ public class Game {
     Displayer displayer;
     public Player active;
     public Player passive;
-    Validator validator;
-
 
     Game(Displayer displayer) {
         this.board = new Board();
         this.displayer = displayer;
         this.active = new Player("X");
         this.passive = new Player("Y");
-        this.validator = new Validator();
     }
 
      protected void playOneGame() {

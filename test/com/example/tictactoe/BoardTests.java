@@ -2,11 +2,12 @@ package com.example.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
 
 
 
@@ -21,17 +22,23 @@ public class BoardTests {
 
     @Test
     public void BoardHasInitialIsGameWonStatusFalse() {
-        assertEquals(false, board.won);
+        assertFalse(board.won);
     }
 
     @Test
-    public void BoardHasInitialIsTieStatusFalse() { assertEquals(false, board.tie); }
+    public void BoardHasInitialIsTieStatusFalse() {
+        assertFalse(board.tie);
+    }
 
     @Test
-    public void BoardHasInitialWinnerSignN() { assertEquals(null, board.winnerSign); }
+    public void BoardHasInitialWinnerSignN() {
+        assertNull(board.winnerSign);
+    }
 
     @Test
-    public void BoardHasInitialOverStatusTrue() { assertEquals(true,board.hasPlacesLeft); }
+    public void BoardHasInitialOverStatusTrue() {
+        assertTrue(board.hasPlacesLeft);
+    }
 
     @Test
     public void BoardIsCreatedWithPlacesArray() {

@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 public class Validator {
 
-
     Validator() {
     }
 
@@ -21,8 +20,5 @@ public class Validator {
         String regex = "[2]";
         return number.matches(regex) ? true : false;
     }
-
-
-
 
 }
