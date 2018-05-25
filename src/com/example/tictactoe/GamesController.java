@@ -1,7 +1,5 @@
 package com.example.tictactoe;
 
-import java.util.Scanner;
-
 public class GamesController {
 
     public Displayer displayer;
@@ -20,9 +18,7 @@ public class GamesController {
 
     public String getUserOption() {
         this.displayer.gamingMenu();
-        Scanner scanner = new Scanner(System.in);
-        String outputString = scanner.nextLine();
-        return outputString;
+        return IOHelper.getUserInput();
     }
 
     public boolean actOnOption(String pickedOption) {

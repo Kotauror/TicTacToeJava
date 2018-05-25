@@ -13,7 +13,6 @@ public class Validator {
     public static boolean playAgainValid(String number) {
         String regex = "[1]";
         return number.matches(regex) ? true : false;
-     //   return number == "1" || number == "2";
     }
 
     public static boolean exitValid(String number) {

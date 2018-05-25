@@ -1,7 +1,5 @@
 package com.example.tictactoe;
 
-import java.util.Scanner;
-
 public class Game {
 
     Board board;
@@ -41,9 +39,7 @@ public class Game {
 
     protected String getUserPosition() {
         this.displayer.askForPosition(this.active.sign);
-        Scanner scanner = new Scanner(System.in);
-        String position = scanner.nextLine();
-        return position;
+        return IOHelper.getUserInput();
     }
 
     protected boolean actUponOption(String position) {
