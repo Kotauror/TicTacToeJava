@@ -92,15 +92,9 @@ public class BoardTests {
 
     @Test
     public void checksIfThereIsATieTrue() {
-        board.putSignOnBoard("Y", 0);
-        board.putSignOnBoard("X", 1);
-        board.putSignOnBoard("Y", 2);
-        board.putSignOnBoard("X", 3);
-        board.putSignOnBoard("X", 4);
-        board.putSignOnBoard("Y", 5);
-        board.putSignOnBoard("X", 6);
-        board.putSignOnBoard("Y", 7);
-        board.putSignOnBoard("X", 8);
+        int[] array1 = {1, 3, 4, 6, 8};
+        int[] array2 = {0, 2, 5, 7};
+        playWholeGame("X", "Y", array1, array2);
 
         board.tieStatusCheck();
 
@@ -110,9 +104,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonFalse() {
-        board.putSignOnBoard("X", 0);
-        board.putSignOnBoard("X", 5);
-        board.putSignOnBoard("X", 2);
+        playMoves("x", 0, 5, 2);
 
         board.wonStatusCheck();
 
@@ -121,9 +113,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV1() {
-        board.putSignOnBoard("X", 0);
-        board.putSignOnBoard("X", 1);
-        board.putSignOnBoard("X", 2);
+        playMoves("x", 0, 1, 2);
 
         board.wonStatusCheck();
 
@@ -132,9 +122,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV2() {
-        board.putSignOnBoard("X", 3);
-        board.putSignOnBoard("X", 4);
-        board.putSignOnBoard("X", 5);
+        playMoves("x", 3, 4, 5);
 
         board.wonStatusCheck();
 
@@ -143,9 +131,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV3() {
-        board.putSignOnBoard("X", 6);
-        board.putSignOnBoard("X", 7);
-        board.putSignOnBoard("X", 8);
+        playMoves("x", 6, 7, 8);
 
         board.wonStatusCheck();
 
@@ -154,9 +140,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV4() {
-        board.putSignOnBoard("X", 0);
-        board.putSignOnBoard("X", 3);
-        board.putSignOnBoard("X", 6);
+        playMoves("x", 0, 3, 6);
 
         board.wonStatusCheck();
 
@@ -165,9 +149,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV5() {
-        board.putSignOnBoard("X", 1);
-        board.putSignOnBoard("X", 4);
-        board.putSignOnBoard("X", 7);
+        playMoves("x", 1, 4, 7);
 
         board.wonStatusCheck();
 
@@ -176,9 +158,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV6() {
-        board.putSignOnBoard("X", 2);
-        board.putSignOnBoard("X", 5);
-        board.putSignOnBoard("X", 8);
+        playMoves("x", 2, 5, 8);
 
         board.wonStatusCheck();
 
@@ -187,9 +167,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV7() {
-        board.putSignOnBoard("X", 0);
-        board.putSignOnBoard("X", 4);
-        board.putSignOnBoard("X", 8);
+        playMoves("x", 0, 4, 8);
 
         board.wonStatusCheck();
 
@@ -198,9 +176,7 @@ public class BoardTests {
 
     @Test
     public void checkIfGameIsWonTrueV8() {
-        board.putSignOnBoard("X", 2);
-        board.putSignOnBoard("X", 4);
-        board.putSignOnBoard("X", 6);
+        playMoves("x", 2, 4, 6);
 
         board.wonStatusCheck();
 
@@ -209,9 +185,7 @@ public class BoardTests {
 
     @Test
     public void changeWinnerSignWhenWon() {
-        board.putSignOnBoard("X", 2);
-        board.putSignOnBoard("X", 4);
-        board.putSignOnBoard("X", 6);
+        playMoves("x", 2, 4, 6);
 
         board.wonStatusCheck();
 
@@ -230,6 +204,21 @@ public class BoardTests {
         board.putSignOnBoard("X", 6);
 
         assertFalse(board.isNonTaken("6"));
+    }
+
+    public void playMoves(String string, int a, int b, int c) {
+        board.putSignOnBoard(string, a);
+        board.putSignOnBoard(string, b);
+        board.putSignOnBoard(string, c);
+    }
+
+    public void playWholeGame(String sign1, String sign2, int[] arraySign1, int[] arraySign2) {
+        for(int i = 0; i < arraySign1.length; i++) {
+            board.putSignOnBoard(sign1, arraySign1[i]);
+        }
+        for(int i = 0; i < arraySign2.length; i++) {
+            board.putSignOnBoard(sign2, arraySign2[i]);
+        }
     }
 }
 

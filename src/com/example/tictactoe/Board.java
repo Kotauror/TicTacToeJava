@@ -13,9 +13,9 @@ public class Board {
     protected String winnerSign;
 
     Board() {
-        this.won = false;
-        this.tie = false;
-        this.hasPlacesLeft = true;
+        //this.won = false;
+        // this.tie = false;
+        // this.hasPlacesLeft = true;
         this.places = new ArrayList<Integer>();
         this.winnerSign = null;
         fillPlaces();
@@ -27,9 +27,9 @@ public class Board {
 
     protected void putSignOnBoard(String sign, int position) {
         this.places.set(position, sign);
-        this.placesLeftCheck();
-        this.wonStatusCheck();
-        this.tieStatusCheck();
+        // this.placesLeftCheck();
+        // this.wonStatusCheck();
+       //  this.tieStatusCheck();
     }
 
     protected void placesLeftCheck() {
