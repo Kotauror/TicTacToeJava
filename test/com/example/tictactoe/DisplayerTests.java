@@ -1,9 +1,9 @@
 package com.example.tictactoe;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,19 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DisplayerTests {
 
-    public Displayer displayer;
-
-    @BeforeEach
-    public void instantiate() {
-        displayer = new Displayer();
-    }
 
     @Test
     public void greetsTheUsers() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.greetUsers();
+        Displayer.greetUsers();
 
         assertEquals("Hello and welcome to Tic-Tac-Toe\n", outContent.toString());
     }
@@ -35,7 +29,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.showBoard(board);
+        Displayer.showBoard(board);
 
         assertEquals("\n0 | 1 | 2\n3 | X | 5\n6 | 7 | 8\n\n", outContent.toString());
     }
@@ -45,7 +39,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.askForPosition("X");
+        Displayer.askForPosition("X");
 
         assertEquals("X, pick a position\n", outContent.toString());
     }
@@ -55,7 +49,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.askAgainForPosition("X");
+        Displayer.askAgainForPosition("X");
 
         assertEquals("X, pick a non-taken number on board\n", outContent.toString());
     }
@@ -65,7 +59,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.announceWinner("X");
+        Displayer.announceWinner("X");
 
         assertEquals("X won!\n", outContent.toString());
     }
@@ -75,7 +69,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.announceWinner(null);
+        Displayer.announceWinner(null);
 
         assertEquals("It's a tie!\n", outContent.toString());
     }
@@ -85,7 +79,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.gamingMenu();
+        Displayer.gamingMenu();
 
         assertEquals("If you want to play type 1, if you want to exit type 2\n", outContent.toString());
     }

@@ -2,12 +2,6 @@ package com.example.tictactoe;
 
 public class GamesController {
 
-    public Displayer displayer;
-
-    GamesController(Displayer displayer) {
-        this.displayer = displayer;
-    }
-
     public void gamesMenu() {
         boolean loopThroughOptions = true;
         while (loopThroughOptions) {
@@ -17,7 +11,7 @@ public class GamesController {
     }
 
     public String getUserOption() {
-        this.displayer.gamingMenu();
+        Displayer.gamingMenu();
         return IOHelper.getUserInput();
     }
 
@@ -33,7 +27,7 @@ public class GamesController {
     }
 
     public void playANewGame() {
-        Game newGame = new Game(displayer);
+        Game newGame = new Game();
         newGame.playOneGame();
     }
 

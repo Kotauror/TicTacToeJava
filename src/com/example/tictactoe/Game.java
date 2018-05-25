@@ -3,19 +3,17 @@ package com.example.tictactoe;
 public class Game {
 
     Board board;
-    Displayer displayer;
     public Player active;
     public Player passive;
 
-    Game(Displayer displayer) {
+    Game () {
         this.board = new Board();
-        this.displayer = displayer;
         this.active = new Player("X");
         this.passive = new Player("Y");
     }
 
      protected void playOneGame() {
-        this.displayer.greetUsers();
+        Displayer.greetUsers();
         while (!this.board.won && !this.board.tie) {
             this.playOneRound();
         }
@@ -25,7 +23,7 @@ public class Game {
     protected void playOneRound() {
         boolean loopThrough = true;
         while (loopThrough) {
-            this.displayer.showBoard(this.board.places);
+            Displayer.showBoard(this.board.places);
             String position = this.getUserPosition();
             loopThrough = this.actUponOption(position);
         }
@@ -38,7 +36,7 @@ public class Game {
     }
 
     protected String getUserPosition() {
-        this.displayer.askForPosition(this.active.sign);
+        Displayer.askForPosition(this.active.sign);
         return IOHelper.getUserInput();
     }
 
@@ -53,7 +51,7 @@ public class Game {
     }
 
     protected void postGame() {
-        this.displayer.showBoard(this.board.places);
-        this.displayer.announceWinner(this.board.winnerSign);
+        Displayer.showBoard(this.board.places);
+        Displayer.announceWinner(this.board.winnerSign);
     }
 }

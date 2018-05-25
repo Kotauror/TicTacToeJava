@@ -7,9 +7,7 @@ import java.io.*;
 
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class GameTests {
@@ -18,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     public void createInstance() {
-        game = new Game(new Displayer());
+        game = new Game();
     }
 
     @Test
@@ -30,11 +28,6 @@ public class GameTests {
     public void GameCreatesAnInstanceOfPlayer() {
         assertThat(game.active, isA(Player.class));
         assertThat(game.passive, isA(Player.class));
-    }
-
-    @Test
-    public void GameHasAnInstanceOfDisplayer() {
-        assertThat(game.displayer, isA(Displayer.class));
     }
 
     @Test
@@ -97,10 +90,10 @@ public class GameTests {
 
         game.playOneGame();
 
-        assertEquals(true, game.board.won);
-        assertEquals(false, game.board.tie);
+        assertTrue(game.board.won);
+        assertFalse(game.board.tie);
         assertEquals("X", game.board.winnerSign);
-        assertEquals(true, game.board.hasPlacesLeft);
+        assertTrue(game.board.hasPlacesLeft);
     }
 
     @Test
@@ -119,10 +112,10 @@ public class GameTests {
 
         game.playOneGame();
 
-        assertEquals(false, game.board.won);
-        assertEquals(true, game.board.tie);
-        assertEquals(null, game.board.winnerSign);
-        assertEquals(false, game.board.hasPlacesLeft);
+        assertFalse(game.board.won);
+        assertTrue(game.board.tie);
+        assertNull(game.board.winnerSign);
+        assertFalse(game.board.hasPlacesLeft);
     }
 
     @Test
