@@ -21,7 +21,7 @@ public class Game {
 
      protected void playOneGame() {
         this.displayer.greetUsers();
-        while (!this.board.won && !this.board.tie) {
+        while (!this.board.isWon() && !this.board.isTie()) {
             this.playOneRound();
         }
         this.postGame();
@@ -59,6 +59,6 @@ public class Game {
 
     protected void postGame() {
         this.displayer.showBoard(this.board.places);
-        this.displayer.announceWinner(this.board.winnerSign);
+        this.displayer.announceWinner(this.board.winnerSign());
     }
 }

@@ -76,7 +76,7 @@ public class GameTests {
         game.playOneRound();
 
         assertEquals("Y", game.active.sign);
-        assertTrue(game.board.hasPlacesLeft);
+        assertTrue(game.board.hasPlacesLeft());
         assertEquals("X", game.board.places.get(0));
     }
 
@@ -90,10 +90,10 @@ public class GameTests {
 
         game.playOneGame();
 
-        assertTrue(game.board.won);
-        assertFalse(game.board.tie);
-        assertEquals("X", game.board.winnerSign);
-        assertTrue(game.board.hasPlacesLeft);
+        assertTrue(game.board.isWon());
+        assertFalse(game.board.isTie());
+        assertEquals("X", game.board.winnerSign());
+        assertTrue(game.board.hasPlacesLeft());
     }
 
     @Test
@@ -112,10 +112,10 @@ public class GameTests {
 
         game.playOneGame();
 
-        assertFalse(game.board.won);
-        assertTrue(game.board.tie);
-        assertNull(game.board.winnerSign);
-        assertFalse(game.board.hasPlacesLeft);
+        assertFalse(game.board.isWon());
+        assertTrue(game.board.isTie());
+        assertEquals("none", game.board.winnerSign());
+        assertFalse(game.board.hasPlacesLeft());
     }
 
     @Test

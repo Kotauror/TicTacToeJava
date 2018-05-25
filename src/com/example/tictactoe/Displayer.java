@@ -27,7 +27,7 @@ public class Displayer {
     }
 
     protected void announceWinner(String sign) {
-        System.out.println(sign != null ? sign + " won!" : "It's a tie!");
+        System.out.println(sign != "none" ? sign + " won!" : "It's a tie!");
     }
 
     protected void gamingMenu() {

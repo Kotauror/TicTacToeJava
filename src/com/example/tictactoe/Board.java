@@ -6,18 +6,10 @@ import java.util.Collections;
 
 public class Board {
 
-    protected boolean won;
-    protected boolean tie;
-    protected boolean hasPlacesLeft;
     protected ArrayList places;
-    protected String winnerSign;
 
     Board() {
-        //this.won = false;
-        // this.tie = false;
-        // this.hasPlacesLeft = true;
         this.places = new ArrayList<Integer>();
-        this.winnerSign = null;
         fillPlaces();
     }
 
@@ -27,20 +19,17 @@ public class Board {
 
     protected void putSignOnBoard(String sign, int position) {
         this.places.set(position, sign);
-        // this.placesLeftCheck();
-        // this.wonStatusCheck();
-       //  this.tieStatusCheck();
     }
 
-    protected void placesLeftCheck() {
+    protected boolean hasPlacesLeft() {
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.size(); i++) {
             if (this.places.contains(i)) numberOfEmptyPlaces += 1;
         }
-        if (numberOfEmptyPlaces == 0) this.hasPlacesLeft = false;
+        return numberOfEmptyPlaces != 0;
     }
 
-    protected void wonStatusCheck() {
+    protected boolean isWon() {
         Object [][] sets = {
                 {this.places.get(0), this.places.get(1), this.places.get(2)},
                 {this.places.get(3), this.places.get(4), this.places.get(5)},
@@ -53,17 +42,36 @@ public class Board {
         };
         for (Object[] set : sets) {
             if (set[0] == set[1] && set[0] == set[2]) {
-                this.won = true;
-                this.winnerSign = set[0].toString();
+                return true;
             }
         }
+        return false;
     }
 
-    protected void tieStatusCheck() {
-        if (!this.won && !this.hasPlacesLeft) { this.tie = true; }
+    protected boolean isTie() {
+        return !this.isWon() && !this.hasPlacesLeft();
     }
 
     protected boolean isNonTaken(String position){
         return this.places.contains(Integer.parseInt(position));
+    }
+
+    protected String winnerSign() {
+        Object[][] sets = {
+                {this.places.get(0), this.places.get(1), this.places.get(2)},
+                {this.places.get(3), this.places.get(4), this.places.get(5)},
+                {this.places.get(6), this.places.get(7), this.places.get(8)},
+                {this.places.get(0), this.places.get(3), this.places.get(6)},
+                {this.places.get(1), this.places.get(4), this.places.get(7)},
+                {this.places.get(2), this.places.get(5), this.places.get(8)},
+                {this.places.get(0), this.places.get(4), this.places.get(8)},
+                {this.places.get(2), this.places.get(4), this.places.get(6)}
+        };
+        for (Object[] set : sets) {
+            if (set[0] == set[1] && set[0] == set[2]) {
+                return set[0].toString();
+            }
+        }
+        return "none";
     }
 }

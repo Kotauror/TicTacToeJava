@@ -77,7 +77,7 @@ public class DisplayerTests {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        displayer.announceWinner(null);
+        displayer.announceWinner("none");
 
         assertEquals("It's a tie!\n", outContent.toString());
     }
