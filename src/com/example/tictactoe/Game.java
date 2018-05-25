@@ -19,7 +19,7 @@ public class Game {
         this.validator = new Validator();
     }
 
-     protected void playGame() {
+     protected void playOneGame() {
         this.displayer.greetUsers();
         while (!this.board.won && !this.board.tie) {
             this.playOneRound();
@@ -27,17 +27,13 @@ public class Game {
         this.postGame();
     }
 
-    protected void postGame() {
-        this.displayer.showBoard(this.board.places);
-        this.displayer.announceWinner(this.board.winnerSign);
-//        this.playAgainMenu();
-    }
-
     protected void playOneRound() {
-        this.displayer.showBoard(this.board.places);
-        int position = this.getPositionFromUser();
-        this.board.putSignOnBoard(this.active.sign, position);
-        this.switchPlayers();
+        boolean loopThrough = true;
+        while (loopThrough) {
+            this.displayer.showBoard(this.board.places);
+            String position = this.getUserPosition();
+            loopThrough = this.actUponOption(position);
+        }
     }
 
     protected void switchPlayers() {
@@ -46,35 +42,25 @@ public class Game {
         this.passive = playerTemp;
     }
 
-    protected int getPositionFromUser() {
-        Scanner scanner = new Scanner(System.in);
+    protected String getUserPosition() {
         this.displayer.askForPosition(this.active.sign);
-        while (true) {
-            String position = scanner.nextLine();
-            if (Validator.isNumeric(position) && this.board.isNonTaken(position)) {
-                return Integer.parseInt(position);
-            }
-            this.displayer.askAgainForPosition(this.active.sign);
+        Scanner scanner = new Scanner(System.in);
+        String position = scanner.nextLine();
+        return position;
+    }
+
+    protected boolean actUponOption(String position) {
+        if (Validator.isNumeric(position) && this.board.isNonTaken(position)) {
+            this.board.putSignOnBoard(this.active.sign, Integer.parseInt(position));
+            this.switchPlayers();
+            return false;
+        } else {
+            return true;
         }
     }
 
-//    public void playAgainMenu() {
-//        Scanner scanner = new Scanner(System.in);
-//        this.displayer.gamingMenu();
-//        while (true) {
-//            String pickedOption = scanner.nextLine();
-//            if (this.validator.playAgainValid(pickedOption)) {
-//                this.playANewGame();
-//            } else if (this.validator.exitValid(pickedOption)) {
-//                System.exit(0);
-//            }
-//            this.displayer.gamingMenu();
-//        }
-//    }
-//
-//    public void playANewGame() {
-//        Game newGame = new Game(new Displayer());
-//        newGame.playGame();
-//    }
-
+    protected void postGame() {
+        this.displayer.showBoard(this.board.places);
+        this.displayer.announceWinner(this.board.winnerSign);
+    }
 }

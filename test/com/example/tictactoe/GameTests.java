@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class GameTests {
@@ -16,22 +17,24 @@ public class GameTests {
     public static Game game;
 
     @BeforeEach
-    public void createInstance() { game = new Game(new Displayer()); }
+    public void createInstance() {
+        game = new Game(new Displayer());
+    }
 
     @Test
     public void GameCreatesAnInstanceOfBoard() {
-        assertThat(game.board,isA(Board.class));
+        assertThat(game.board, isA(Board.class));
     }
 
     @Test
     public void GameCreatesAnInstanceOfPlayer() {
-        assertThat(game.active,isA(Player.class));
-        assertThat(game.passive,isA(Player.class));
+        assertThat(game.active, isA(Player.class));
+        assertThat(game.passive, isA(Player.class));
     }
 
     @Test
     public void GameHasAnInstanceOfDisplayer() {
-        assertThat(game.displayer,isA(Displayer.class));
+        assertThat(game.displayer, isA(Displayer.class));
     }
 
     @Test
@@ -46,40 +49,33 @@ public class GameTests {
     }
 
     @Test
-    public void returnsPositionGivenByPlayerWhenValid() throws IOException {
+    public void returnsPositionGivenByPlayer() throws IOException {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertEquals(0, game.getPositionFromUser());
+
+        assertEquals("0", game.getUserPosition());
     }
 
     @Test
-    public void returnsOnlyTheCorrectValuesWhenGettingAWrongPosition1() throws IOException {
-        String input = "J";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        String inputTwo = "0";
-        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
-        System.setIn(inTwo);
-
-        assertEquals(0, game.getPositionFromUser());
+    public void returnsFalseIfPositionWasAccepted() {
+        assertFalse(game.actUponOption("0"));
     }
 
     @Test
-    public void returnsOnlyTheCorrectValuesWhenGettingAPosition2() throws IOException {
+    public void returnsTrueWhenPositionWasTaken() {
         game.board.putSignOnBoard("X", 0);
-         String input = "0";
-         InputStream in = new ByteArrayInputStream(input.getBytes());
-         System.setIn(in);
-        String inputTwo = "1";
-        InputStream inTwo = new ByteArrayInputStream(inputTwo.getBytes());
-        System.setIn(inTwo);
 
-        assertEquals(1, game.getPositionFromUser());
+        assertTrue(game.actUponOption("0"));
     }
 
     @Test
-    public void afterOneRound() throws IOException {
+    public void returnsTrueWhenPositionInvalid() {
+        assertTrue(game.actUponOption("test"));
+    }
+
+    @Test
+    public void gameStateafterOneRound() throws IOException {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -92,18 +88,41 @@ public class GameTests {
     }
 
     @Test
-    public void fullGamePlayer() throws IOException {
+    public void playsAFullWonGame() throws IOException {
         game.board.putSignOnBoard("X", 0);
         game.board.putSignOnBoard("X", 1);
         String input1 = "2";
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);
 
-        game.playGame();
+        game.playOneGame();
 
         assertEquals(true, game.board.won);
+        assertEquals(false, game.board.tie);
         assertEquals("X", game.board.winnerSign);
         assertEquals(true, game.board.hasPlacesLeft);
+    }
+
+    @Test
+    public void playsAFullTieGame() throws IOException {
+        game.board.putSignOnBoard("Y", 0);
+        game.board.putSignOnBoard("X", 1);
+        game.board.putSignOnBoard("Y", 2);
+        game.board.putSignOnBoard("X", 3);
+        game.board.putSignOnBoard("X", 4);
+        game.board.putSignOnBoard("Y", 5);
+        game.board.putSignOnBoard("X", 6);
+        game.board.putSignOnBoard("Y", 7);
+        String input1 = "8";
+        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(in1);
+
+        game.playOneGame();
+
+        assertEquals(false, game.board.won);
+        assertEquals(true, game.board.tie);
+        assertEquals(null, game.board.winnerSign);
+        assertEquals(false, game.board.hasPlacesLeft);
     }
 
     @Test
@@ -115,8 +134,7 @@ public class GameTests {
 
         assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
     }
+
 }
-
-
 
 

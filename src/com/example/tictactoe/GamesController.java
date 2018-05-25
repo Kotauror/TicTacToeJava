@@ -14,20 +14,9 @@ public class GamesController {
         boolean loopThroughOptions = true;
         while (loopThroughOptions) {
             String pickedOption = this.getUserOption();
-            loopThroughOptions = actOnOption(pickedOption);
+            loopThroughOptions = this.actOnOption(pickedOption);
         }
     }
-
-   public boolean actOnOption(String pickedOption) {
-       if (Validator.playAgainValid(pickedOption)) {
-           this.playANewGame();
-           return true;
-       } else if (Validator.exitValid(pickedOption)) {
-           return false;
-       } else {
-           return true;
-       }
-   }
 
     public String getUserOption() {
         this.displayer.gamingMenu();
@@ -36,9 +25,20 @@ public class GamesController {
         return outputString;
     }
 
+    public boolean actOnOption(String pickedOption) {
+        if (Validator.playAgainValid(pickedOption)) {
+            this.playANewGame();
+            return true;
+        } else if (Validator.exitValid(pickedOption)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void playANewGame() {
         Game newGame = new Game(displayer);
-        newGame.playGame();
+        newGame.playOneGame();
     }
 
 }

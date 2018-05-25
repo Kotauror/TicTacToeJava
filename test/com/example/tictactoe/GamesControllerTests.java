@@ -10,8 +10,7 @@ import java.io.InputStream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.isA;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class GamesControllerTests {
 
@@ -23,12 +22,30 @@ public class GamesControllerTests {
     }
 
     @Test
-    public void gamesControllerHasDisplayer() {
+    public void gamesControllerHasADisplayer() {
         assertThat(gamesController.displayer,isA(Displayer.class));
     }
 
     @Test
-    public void gamesMenuReturnsUserString() {
+    public void actOnOptionReturnsTrueOn1() {
+        GamesController spy = Mockito.spy(gamesController);
+        Mockito.doNothing().when(spy).playANewGame();
+
+        assertEquals(true, spy.actOnOption("1"));
+    }
+
+    @Test
+    public void actOnOnptionReturnsFalseOn2() {
+        assertEquals(false, gamesController.actOnOption("2"));
+    }
+
+    @Test
+    public void actOnOptionReturnsTrueOnNot1or2() {
+        assertEquals(true, gamesController.actOnOption("test"));
+    }
+
+    @Test
+    public void getUserOptionReturnsUsersOption() {
         String input = "6";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -37,7 +54,7 @@ public class GamesControllerTests {
     }
 
     @Test
-    public void option1playsANewGame() {
+    public void option1CallsPlayANewGame() {
         GamesController spy = Mockito.spy(gamesController);
         Mockito.doNothing().when(spy).playANewGame();
         spy.actOnOption("1");
@@ -46,11 +63,22 @@ public class GamesControllerTests {
     }
 
     @Test
-    public void option2DoesntPlayGame() {
+    public void optionsOtherThen1DontCallPlayANewGame() {
         GamesController spy = Mockito.spy(gamesController);
-        spy.actOnOption("2");
+        spy.actOnOption("5");
 
         verify(spy, times(0)).playANewGame();
     }
 
+    @Test
+    public void gamesMenuStopsOnFalse() {
+        GamesController spy = Mockito.spy(gamesController);
+        Mockito.doReturn("2").when(spy).getUserOption();
+        Mockito.doReturn(false).when(spy).actOnOption("2");
+
+        spy.gamesMenu();
+
+        verify(spy, times(1)).getUserOption();
+        verify(spy, times(1)).actOnOption("2");
+    }
 }
