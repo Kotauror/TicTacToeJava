@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.core.tictactoe;
 
 import java.util.ArrayList;
 import java.util.Collections;
