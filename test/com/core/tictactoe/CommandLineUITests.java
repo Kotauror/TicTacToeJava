@@ -11,89 +11,71 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 public class CommandLineUITests {
+
     public CommandLineUI commandLineUI;
+    private ByteArrayOutputStream output;
     public Board board;
     public Player player;
     public Player player2;
 
-//    @Before
-//    public void setup() {
-//        output = new ByteArrayOutputStream();
-//
-//    }
 
     @BeforeEach
-    public void createInstance() {
-        commandLineUI = new CommandLineUI(System.out);
-        board = new Board();
+    public void setup() {
+        this.output = new ByteArrayOutputStream();
+        commandLineUI = new CommandLineUI(new PrintStream(output));
         player = new Player("X");
         player2 = new Player("Y");
+        board = new Board();
     }
 
     @Test
     public void greetsTheUsers() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         commandLineUI.greetUsers();
 
-        assertEquals("Hello and welcome to Tic-Tac-Toe\n", outContent.toString());
+        assertTrue(output.toString().contains("Hello and welcome to Tic-Tac-Toe"));
+    }
+
+    @Test
+    public void showsTheGamingMenu() {
+        commandLineUI.gamingMenu();
+
+        assertTrue(output.toString().contains("If you want to play type 1, if you want to exit type 2"));
     }
 
     @Test
     public void showsTheBoard() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         commandLineUI.showBoard(board);
 
-        assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\n", outContent.toString());
+        assertTrue(output.toString().contains("0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8"));
     }
 
     @Test
     public void asksForPosition() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         commandLineUI.askForPosition(player);
 
-        assertEquals("X, pick a position\n", outContent.toString());
+        assertTrue(output.toString().contains("X, pick a position\n"));
     }
 
     @Test
     public void announcesWinnerWHenThereIsOne() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         int[] array1 = {0, 1, 2, 3, 4};
         int[] array2 = {5, 6, 7, 8};
         playWholeGame(player, player2, array1, array2);
 
         commandLineUI.announceWinner(board);
 
-        assertEquals("X won!\n", outContent.toString());
+        assertTrue(output.toString().contains("X won!\n"));
     }
 
     @Test
     public void announcesTieIfNoWInner() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
         playWholeGame(player, player2, array1, array2);
 
         commandLineUI.announceWinner(board);
 
-        assertEquals("It's a tie!\n", outContent.toString());
-    }
-
-
-    @Test
-    public void returnsPositionGivenByPlayer() throws IOException {
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        assertEquals("0", commandLineUI.getUserInput());
+        assertTrue(output.toString().contains("It's a tie!\n"));
     }
 
     @Test
@@ -104,6 +86,15 @@ public class CommandLineUITests {
     @Test
     public void returnsFalseWhenMoveIsNotNumeric() {
         assertFalse(commandLineUI.isNumeric("J"));
+    }
+
+    @Test
+    public void returnsPositionGivenByPlayer() throws IOException {
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertEquals("0", commandLineUI.getUserInput());
     }
 
     @Test
