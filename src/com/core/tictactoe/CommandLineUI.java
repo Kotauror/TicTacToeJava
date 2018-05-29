@@ -1,10 +1,15 @@
 package com.core.tictactoe;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CommandLineUI {
 
-    CommandLineUI(){}
+    private final PrintStream output;
+
+    CommandLineUI(PrintStream output){
+        this.output = output;
+    }
 
     protected void showBoard(Board board) {
         System.out.println();

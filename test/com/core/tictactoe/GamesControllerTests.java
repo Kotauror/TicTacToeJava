@@ -19,7 +19,7 @@ public class GamesControllerTests {
 
     @BeforeEach
     public void instantiate() {
-        gamesController = new GamesController(new CommandLineUI());
+        gamesController = new GamesController(new CommandLineUI(System.out));
     }
 
     @Test

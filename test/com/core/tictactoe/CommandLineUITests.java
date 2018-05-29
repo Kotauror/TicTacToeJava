@@ -16,9 +16,15 @@ public class CommandLineUITests {
     public Player player;
     public Player player2;
 
+//    @Before
+//    public void setup() {
+//        output = new ByteArrayOutputStream();
+//
+//    }
+
     @BeforeEach
     public void createInstance() {
-        commandLineUI = new CommandLineUI();
+        commandLineUI = new CommandLineUI(System.out);
         board = new Board();
         player = new Player("X");
         player2 = new Player("Y");

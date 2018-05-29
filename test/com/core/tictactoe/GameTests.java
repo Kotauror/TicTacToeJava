@@ -16,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     public void createInstance() {
-        game = new Game(new CommandLineUI());
+        game = new Game(new CommandLineUI(System.out));
     }
 
     @Test
