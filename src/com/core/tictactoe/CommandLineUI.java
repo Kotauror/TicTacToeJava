@@ -32,13 +32,23 @@ public class CommandLineUI {
 
     protected String getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        String picked = scanner.nextLine();
-        return picked;
+        String userString = scanner.nextLine();
+        return userString;
     }
 
     protected boolean isNumeric(String position) {
         String regex = "[0-8]";
         return position.matches(regex) ? true : false;
+    }
+
+    protected int getPosition(Board board, Player player) {
+        while (true) {
+           this.askForPosition(player);
+           String position = this.getUserInput();
+            if (this.isNumeric(position) && board.isNonTaken(position)) {
+                return Integer.parseInt(position);
+            }
+        }
     }
 
 }

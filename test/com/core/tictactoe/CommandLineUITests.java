@@ -2,12 +2,13 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class CommandLineUITests {
     public CommandLineUI commandLineUI;
@@ -21,7 +22,6 @@ public class CommandLineUITests {
         board = new Board();
         player = new Player("X");
         player2 = new Player("Y");
-
     }
 
     @Test
@@ -80,14 +80,6 @@ public class CommandLineUITests {
         assertEquals("It's a tie!\n", outContent.toString());
     }
 
-    public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
-        for(int i = 0; i < arraySign1.length; i++) {
-            board.putSignOnBoard(player, arraySign1[i]);
-        }
-        for(int i = 0; i < arraySign2.length; i++) {
-            board.putSignOnBoard(player2, arraySign2[i]);
-        }
-    }
 
     @Test
     public void returnsPositionGivenByPlayer() throws IOException {
@@ -99,32 +91,40 @@ public class CommandLineUITests {
     }
 
     @Test
-    public void returnsTrueWhenMoveIsValid() {
+    public void returnsTrueWhenMoveIsNumeric() {
         assertTrue(commandLineUI.isNumeric("2"));
     }
 
     @Test
-    public void returnsFalseWhenMoveIsNotValid() {
+    public void returnsFalseWhenMoveIsNotNumeric() {
         assertFalse(commandLineUI.isNumeric("J"));
     }
 
-//    @Test
-//    public void checkPlayAgainMenuTrue() {
-//        assertTrue(commandLineUI.playAgainValid("1"));
-//    }
-//
-//    @Test
-//    public void checkPlayAgainMenuFalse() {
-//        assertFalse(commandLineUI.playAgainValid("3"));
-//    }
-//
-//    @Test
-//    public void checkExitTrue() {
-//        assertTrue(commandLineUI.exitValid("2"));
-//    }
-//
-//    @Test
-//    public void checkExitFalse() {
-//        assertFalse(commandLineUI.exitValid("3"));
-//    }
+    @Test
+    public void returnsPlayerPositionAsIntegerOnValidInput() throws IOException {
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertEquals(0, commandLineUI.getPosition(board, player));
+    }
+
+    @Test
+    public void callsAgainForMoveOnInvalidInput() throws IOException {
+        CommandLineUI spy = Mockito.spy(commandLineUI);
+        Mockito.doReturn("10").doReturn("5").when(spy).getUserInput();
+        spy.getPosition(board, player);
+
+        verify(spy, times(2)).askForPosition(player);
+    }
+
+    public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
+        for(int i = 0; i < arraySign1.length; i++) {
+            board.putSignOnBoard(player, arraySign1[i]);
+        }
+        for(int i = 0; i < arraySign2.length; i++) {
+            board.putSignOnBoard(player2, arraySign2[i]);
+        }
+    }
+
 }

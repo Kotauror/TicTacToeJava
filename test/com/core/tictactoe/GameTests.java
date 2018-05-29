@@ -13,14 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTests {
 
     public static Game game;
-    public Player player;
-    public Player player2;
 
     @BeforeEach
     public void createInstance() {
         game = new Game(new CommandLineUI());
-        player = new Player("X");
-        player2 = new Player("Y");
     }
 
     @Test
@@ -52,32 +48,6 @@ public class GameTests {
     }
 
     @Test
-    public void returnsPositionGivenByPlayer() throws IOException {
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        assertEquals("0", game.getUserPosition());
-    }
-
-    @Test
-    public void returnsFalseIfPositionWasAccepted() {
-        assertFalse(game.actUponOption("0"));
-    }
-
-    @Test
-    public void returnsTrueWhenPositionWasTaken() {
-        game.board.putSignOnBoard(player, 0);
-
-        assertTrue(game.actUponOption("0"));
-    }
-
-    @Test
-    public void returnsTrueWhenPositionInvalid() {
-        assertTrue(game.actUponOption("test"));
-    }
-
-    @Test
     public void gameStateafterOneRound() throws IOException {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -92,8 +62,8 @@ public class GameTests {
 
     @Test
     public void playsAFullWonGame() throws IOException {
-        game.board.putSignOnBoard(player, 0);
-        game.board.putSignOnBoard(player, 1);
+        game.board.putSignOnBoard(game.active, 0);
+        game.board.putSignOnBoard(game.active, 1);
         String input1 = "2";
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);
@@ -110,7 +80,7 @@ public class GameTests {
     public void playsAFullTieGame() throws IOException {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
-        playWholeGame(player, player2, array1, array2);
+        playWholeGame(game.active, game.passive, array1, array2);
 
         game.run();
 
