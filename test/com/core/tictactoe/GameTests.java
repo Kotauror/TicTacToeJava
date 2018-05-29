@@ -112,18 +112,6 @@ public class GameTests {
         int[] array2 = {0, 2, 5, 7};
         playWholeGame(player, player2, array1, array2);
 
-//        game.board.putSignOnBoard("Y", 0);
-//        game.board.putSignOnBoard("X", 1);
-//        game.board.putSignOnBoard("Y", 2);
-//        game.board.putSignOnBoard("X", 3);
-//        game.board.putSignOnBoard("X", 4);
-//        game.board.putSignOnBoard("Y", 5);
-//        game.board.putSignOnBoard("X", 6);
-//        game.board.putSignOnBoard("Y", 7);
-//        String input1 = "8";
-//        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
-//        System.setIn(in1);
-
         game.run();
 
         assertFalse(game.board.isWon());

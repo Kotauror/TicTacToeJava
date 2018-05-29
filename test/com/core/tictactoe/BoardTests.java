@@ -24,11 +24,6 @@ public class BoardTests {
         player2 = new Player("Y");
     }
 
-    //@Test
-    //public void BoardHasInitialWinnerSignN() {
-     //   assertNull(board.winnerSign);
-   // }
-
     @Test
     public void BoardIsCreatedWithPlacesArray() {
         assertThat(board.places,isA(ArrayList.class));

@@ -27,16 +27,6 @@ public class GamesControllerTests {
         assertThat(gamesController.commandLineUI, isA(CommandLineUI.class));
     }
 
-//    @Test
-//    public void GameCreatesAnInstanceOfIOHelper() {
-//        assertThat(gamesController.iohelper, isA(IOHelper.class));
-//    }
-//
-//    @Test
-//    public void GameCreatesAnInstanceOfValidator() {
-//        assertThat(gamesController.validator, isA(Validator.class));
-//    }
-
     @Test
     public void actOnOptionReturnsTrueOn1() {
         GamesController spy = Mockito.spy(gamesController);

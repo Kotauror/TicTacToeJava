@@ -6,17 +6,11 @@ public class Game {
     Player active;
     Player passive;
     CommandLineUI commandLineUI;
-    // Displayer displayer;
-    // IOHelper iohelper;
-    // Validator validator;
-
 
     Game (CommandLineUI commandLineUI) {
         this.board = new Board();
         this.active = new Player("X");
         this.passive = new Player("Y");
-       // this.displayer = displayer;
-       // this.iohelper = iohelper;
         this.commandLineUI = commandLineUI;
     }
 

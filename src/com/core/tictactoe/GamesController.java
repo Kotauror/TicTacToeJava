@@ -3,13 +3,9 @@ package com.core.tictactoe;
 public class GamesController {
 
     public CommandLineUI commandLineUI;
-    // public IOHelper iohelper;
-    // public Validator validator;
 
     GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
-        // this.iohelper = iohelper;
-        // this.validator = validator;
     }
 
     protected void gamesMenu() {
