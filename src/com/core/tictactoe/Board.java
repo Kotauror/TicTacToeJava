@@ -24,20 +24,20 @@ public class Board {
             {2, 4, 6}
     };
 
-    protected void fillPlaces() {
+    private void fillPlaces() {
         Collections.addAll(this.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
-    protected void putSignOnBoard(Player player, int position) {
-        this.places.set(position, player.sign);
-    }
-
-    protected boolean hasFreePlaces() {
+    private boolean hasFreePlaces() {
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.size(); i++) {
             if (this.places.contains(i)) numberOfEmptyPlaces += 1;
         }
         return numberOfEmptyPlaces != 0;
+    }
+
+    protected void putSignOnBoard(Player player, int position) {
+        this.places.set(position, player.sign);
     }
 
     protected boolean isWon() {

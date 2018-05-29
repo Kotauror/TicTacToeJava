@@ -30,9 +30,7 @@ public class BoardTests {
     }
 
     @Test
-    public void BoardPlacesAreFillesWithNumbers() {
-        board.fillPlaces();
-
+    public void BoardHasFilledPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
             assertEquals(board.places.get(i),i);
         }
@@ -45,21 +43,7 @@ public class BoardTests {
         assertEquals("X", board.places.get(0));
     }
 
-    @Test
-    public void checksIfThereArePlacesLeftTrue() {
-        board.putSignOnBoard(player, 0);
 
-        assertEquals(true, board.hasFreePlaces());
-    }
-
-    @Test
-    public void checksIfThereArePlacesLeftFalse() {
-        for(int i = 0; i < 9; i++) {
-            board.putSignOnBoard(player, i);
-        }
-
-        assertFalse(board.hasFreePlaces());
-    }
 
     @Test
     public void checksIfThereIsATieFalse() {
@@ -172,6 +156,22 @@ public class BoardTests {
         board.putSignOnBoard(player, b);
         board.putSignOnBoard(player, c);
     }
+
+//    @Test
+//    public void checksIfThereArePlacesLeftTrue() {
+//        board.putSignOnBoard(player, 0);
+//
+//        assertEquals(true, board.hasFreePlaces());
+//    }
+//
+//    @Test
+//    public void checksIfThereArePlacesLeftFalse() {
+//        for(int i = 0; i < 9; i++) {
+//            board.putSignOnBoard(player, i);
+//        }
+//
+//        assertFalse(board.hasFreePlaces());
+//    }
 
     public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for(int i = 0; i < arraySign1.length; i++) {
