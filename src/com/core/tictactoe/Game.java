@@ -22,20 +22,20 @@ public class Game {
         this.postGame();
     }
 
-    protected void playTurn() {
+    private void playTurn() {
         this.commandLineUI.showBoard(this.board);
         int position = this.commandLineUI.getPosition(this.board, this.active);;
         this.board.putSignOnBoard(this.active, position);
         this.switchPlayers();
     }
 
-    protected void switchPlayers() {
+    private void switchPlayers() {
         Player playerTemp = this.active;
         this.active = this.passive;
         this.passive = playerTemp;
     }
 
-    protected void postGame() {
+    private void postGame() {
         this.commandLineUI.showBoard(this.board);
         this.commandLineUI.announceWinner(this.board);
     }

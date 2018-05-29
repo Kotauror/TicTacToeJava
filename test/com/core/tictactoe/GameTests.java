@@ -29,35 +29,10 @@ public class GameTests {
         assertThat(game.commandLineUI, isA(CommandLineUI.class));
     }
 
-
     @Test
     public void GameCreatesAnInstanceOfPlayer() {
         assertThat(game.active, isA(Player.class));
         assertThat(game.passive, isA(Player.class));
-    }
-
-    @Test
-    public void switchesActivePlayer() {
-        Player player1 = game.active;
-        Player player2 = game.passive;
-
-        game.switchPlayers();
-
-        assertEquals(player2, game.active);
-        assertEquals(player1, game.passive);
-    }
-
-    @Test
-    public void gameStateafterOneRound() throws IOException {
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        game.playTurn();
-
-        assertEquals("Y", game.active.sign);
-        assertTrue(game.board.hasFreePlaces());
-        assertEquals("X", game.board.places.get(0));
     }
 
     @Test
@@ -74,6 +49,7 @@ public class GameTests {
         assertFalse(game.board.isTie());
         assertEquals("X", game.board.winnerSign());
         assertTrue(game.board.hasFreePlaces());
+        assertEquals("Y", game.active.sign);
     }
 
     @Test
@@ -89,16 +65,39 @@ public class GameTests {
         assertEquals("none", game.board.winnerSign());
         assertFalse(game.board.hasFreePlaces());
     }
+//    @Test
+//    public void switchesActivePlayer() {
+//        Player player1 = game.active;
+//        Player player2 = game.passive;
+//
+//        game.switchPlayers();
+//
+//        assertEquals(player2, game.active);
+//        assertEquals(player1, game.passive);
+//    }
 
-    @Test
-    public void postGameTest() throws IOException {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+//    @Test
+//    public void gameStateafterOneRound() throws IOException {
+//        String input = "0";
+//        InputStream in = new ByteArrayInputStream(input.getBytes());
+//        System.setIn(in);
+//
+//        game.playTurn();
+//
+//        assertEquals("Y", game.active.sign);
+//        assertTrue(game.board.hasFreePlaces());
+//        assertEquals("X", game.board.places.get(0));
+//    }
 
-        game.postGame();
-
-        assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
-    }
+//    @Test
+//    public void postGameTest() throws IOException {
+//        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(outContent));
+//
+//        game.postGame();
+//
+//        assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
+//    }
 
     public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for(int i = 0; i < arraySign1.length; i++) {
