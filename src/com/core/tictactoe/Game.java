@@ -5,22 +5,23 @@ public class Game {
     Board board;
     Player active;
     Player passive;
-    Displayer displayer;
-    IOHelper iohelper;
-    Validator validator;
+    CommandLineUI commandLineUI;
+    // Displayer displayer;
+    // IOHelper iohelper;
+    // Validator validator;
 
 
-    Game (Displayer displayer, IOHelper iohelper, Validator validator) {
+    Game (CommandLineUI commandLineUI) {
         this.board = new Board();
         this.active = new Player("X");
         this.passive = new Player("Y");
-        this.displayer = displayer;
-        this.iohelper = iohelper;
-        this.validator = validator;
+       // this.displayer = displayer;
+       // this.iohelper = iohelper;
+        this.commandLineUI = commandLineUI;
     }
 
      protected void run() {
-        this.displayer.greetUsers();
+        this.commandLineUI.greetUsers();
         while (!this.board.isWon() && !this.board.isTie()) {
             this.playTurn();
         }
@@ -30,7 +31,7 @@ public class Game {
     protected void playTurn() {
         boolean loopThrough = true;
         while (loopThrough) {
-            this.displayer.showBoard(this.board);
+            this.commandLineUI.showBoard(this.board);
             String position = this.getUserPosition();
             loopThrough = this.actUponOption(position);
         }
@@ -43,12 +44,12 @@ public class Game {
     }
 
     protected String getUserPosition() {
-        this.displayer.askForPosition(this.active);
-        return this.iohelper.getUserInput();
+        this.commandLineUI.askForPosition(this.active);
+        return this.commandLineUI.getUserInput();
     }
 
     protected boolean actUponOption(String position) {
-        if (this.validator.isNumeric(position) && this.board.isNonTaken(position)) {
+        if (this.commandLineUI.isNumeric(position) && this.board.isNonTaken(position)) {
             this.board.putSignOnBoard(this.active, Integer.parseInt(position));
             this.switchPlayers();
             return false;
@@ -58,7 +59,7 @@ public class Game {
     }
 
     protected void postGame() {
-        this.displayer.showBoard(this.board);
-        this.displayer.announceWinner(this.board);
+        this.commandLineUI.showBoard(this.board);
+        this.commandLineUI.announceWinner(this.board);
     }
 }

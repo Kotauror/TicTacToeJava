@@ -2,14 +2,14 @@ package com.core.tictactoe;
 
 public class GamesController {
 
-    public Displayer displayer;
-    public IOHelper iohelper;
-    public Validator validator;
+    public CommandLineUI commandLineUI;
+    // public IOHelper iohelper;
+    // public Validator validator;
 
-    GamesController(Displayer displayer, Validator validator, IOHelper iohelper) {
-        this.displayer = displayer;
-        this.iohelper = iohelper;
-        this.validator = validator;
+    GamesController(CommandLineUI commandLineUI) {
+        this.commandLineUI = commandLineUI;
+        // this.iohelper = iohelper;
+        // this.validator = validator;
     }
 
     protected void gamesMenu() {
@@ -21,15 +21,15 @@ public class GamesController {
     }
 
     protected String getUserOption() {
-        this.displayer.gamingMenu();
-        return this.iohelper.getUserInput();
+        this.commandLineUI.gamingMenu();
+        return this.commandLineUI.getUserInput();
     }
 
     protected boolean actOnOption(String pickedOption) {
-        if (this.validator.playAgainValid(pickedOption)) {
+        if (this.commandLineUI.playAgainValid(pickedOption)) {
             this.playANewGame();
             return true;
-        } else if (this.validator.exitValid(pickedOption)) {
+        } else if (this.commandLineUI.exitValid(pickedOption)) {
             return false;
         } else {
             return true;
@@ -37,7 +37,7 @@ public class GamesController {
     }
 
     protected void playANewGame() {
-        Game newGame = new Game(this.displayer, this.iohelper, this.validator);
+        Game newGame = new Game(this.commandLineUI);
         newGame.run();
     }
 

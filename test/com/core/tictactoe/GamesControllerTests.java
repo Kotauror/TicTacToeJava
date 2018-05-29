@@ -19,23 +19,23 @@ public class GamesControllerTests {
 
     @BeforeEach
     public void instantiate() {
-        gamesController = new GamesController(new Displayer(), new Validator(), new IOHelper());
+        gamesController = new GamesController(new CommandLineUI());
     }
 
     @Test
     public void GameCreatesAnInstanceOfDisplayer() {
-        assertThat(gamesController.displayer, isA(Displayer.class));
+        assertThat(gamesController.commandLineUI, isA(CommandLineUI.class));
     }
 
-    @Test
-    public void GameCreatesAnInstanceOfIOHelper() {
-        assertThat(gamesController.iohelper, isA(IOHelper.class));
-    }
-
-    @Test
-    public void GameCreatesAnInstanceOfValidator() {
-        assertThat(gamesController.validator, isA(Validator.class));
-    }
+//    @Test
+//    public void GameCreatesAnInstanceOfIOHelper() {
+//        assertThat(gamesController.iohelper, isA(IOHelper.class));
+//    }
+//
+//    @Test
+//    public void GameCreatesAnInstanceOfValidator() {
+//        assertThat(gamesController.validator, isA(Validator.class));
+//    }
 
     @Test
     public void actOnOptionReturnsTrueOn1() {

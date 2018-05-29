@@ -18,7 +18,7 @@ public class GameTests {
 
     @BeforeEach
     public void createInstance() {
-        game = new Game(new Displayer(), new IOHelper(), new Validator());
+        game = new Game(new CommandLineUI());
         player = new Player("X");
         player2 = new Player("Y");
     }
@@ -27,6 +27,12 @@ public class GameTests {
     public void GameCreatesAnInstanceOfBoard() {
         assertThat(game.board, isA(Board.class));
     }
+
+    @Test
+    public void GameHasInstanceOfCommandLineUI() {
+        assertThat(game.commandLineUI, isA(CommandLineUI.class));
+    }
+
 
     @Test
     public void GameCreatesAnInstanceOfPlayer() {

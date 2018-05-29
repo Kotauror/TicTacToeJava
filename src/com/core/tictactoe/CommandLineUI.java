@@ -1,7 +1,10 @@
 package com.core.tictactoe;
-public class Displayer {
 
-    Displayer(){}
+import java.util.Scanner;
+
+public class CommandLineUI {
+
+    CommandLineUI(){}
 
     protected void showBoard(Board board) {
         System.out.println();
@@ -19,10 +22,6 @@ public class Displayer {
         System.out.println(player.sign + ", pick a position");
     }
 
-   // protected void askAgainForPosition(String sign) {
-     //   System.out.println(sign + ", pick a non-taken number on board");
-   // }
-
     protected void announceWinner(Board board) {
         System.out.println(board.winnerSign() != "none" ? board.winnerSign() + " won!" : "It's a tie!");
     }
@@ -31,5 +30,25 @@ public class Displayer {
         System.out.println("If you want to play type 1, if you want to exit type 2");
     }
 
-}
+    protected String getUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        String position = scanner.nextLine();
+        return position;
+    }
 
+    protected boolean isNumeric(String position) {
+        String regex = "[0-8]";
+        return position.matches(regex) ? true : false;
+    }
+
+    protected boolean playAgainValid(String number) {
+        String regex = "[1]";
+        return number.matches(regex) ? true : false;
+    }
+
+    protected boolean exitValid(String number) {
+        String regex = "[2]";
+        return number.matches(regex) ? true : false;
+    }
+
+}
