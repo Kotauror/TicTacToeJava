@@ -108,23 +108,23 @@ public class CommandLineUITests {
         assertFalse(commandLineUI.isNumeric("J"));
     }
 
-    @Test
-    public void checkPlayAgainMenuTrue() {
-        assertTrue(commandLineUI.playAgainValid("1"));
-    }
-
-    @Test
-    public void checkPlayAgainMenuFalse() {
-        assertFalse(commandLineUI.playAgainValid("3"));
-    }
-
-    @Test
-    public void checkExitTrue() {
-        assertTrue(commandLineUI.exitValid("2"));
-    }
-
-    @Test
-    public void checkExitFalse() {
-        assertFalse(commandLineUI.exitValid("3"));
-    }
+//    @Test
+//    public void checkPlayAgainMenuTrue() {
+//        assertTrue(commandLineUI.playAgainValid("1"));
+//    }
+//
+//    @Test
+//    public void checkPlayAgainMenuFalse() {
+//        assertFalse(commandLineUI.playAgainValid("3"));
+//    }
+//
+//    @Test
+//    public void checkExitTrue() {
+//        assertTrue(commandLineUI.exitValid("2"));
+//    }
+//
+//    @Test
+//    public void checkExitFalse() {
+//        assertFalse(commandLineUI.exitValid("3"));
+//    }
 }

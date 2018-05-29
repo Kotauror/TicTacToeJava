@@ -32,23 +32,13 @@ public class CommandLineUI {
 
     protected String getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        String position = scanner.nextLine();
-        return position;
+        String picked = scanner.nextLine();
+        return picked;
     }
 
     protected boolean isNumeric(String position) {
         String regex = "[0-8]";
         return position.matches(regex) ? true : false;
-    }
-
-    protected boolean playAgainValid(String number) {
-        String regex = "[1]";
-        return number.matches(regex) ? true : false;
-    }
-
-    protected boolean exitValid(String number) {
-        String regex = "[2]";
-        return number.matches(regex) ? true : false;
     }
 
 }

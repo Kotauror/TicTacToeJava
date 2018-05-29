@@ -11,25 +11,22 @@ public class GamesController {
     protected void gamesMenu() {
         boolean loopThroughOptions = true;
         while (loopThroughOptions) {
-            String pickedOption = this.getUserOption();
-            loopThroughOptions = this.actOnOption(pickedOption);
+            this.commandLineUI.gamingMenu();
+            loopThroughOptions = this.actOnOption(this.getUserOption());
         }
     }
 
     protected String getUserOption() {
-        this.commandLineUI.gamingMenu();
         return this.commandLineUI.getUserInput();
     }
 
     protected boolean actOnOption(String pickedOption) {
-        if (this.commandLineUI.playAgainValid(pickedOption)) {
+        if (pickedOption.matches("[1]")) {
             this.playANewGame();
-            return true;
-        } else if (this.commandLineUI.exitValid(pickedOption)) {
+        } else if (pickedOption.matches("[2]")) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     protected void playANewGame() {
