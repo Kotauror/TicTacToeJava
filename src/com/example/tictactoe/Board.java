@@ -28,8 +28,8 @@ public class Board {
         Collections.addAll(this.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
-    protected void putSignOnBoard(String sign, int position) {
-        this.places.set(position, sign);
+    protected void putSignOnBoard(Player player, int position) {
+        this.places.set(position, player.sign);
     }
 
     protected boolean hasFreePlaces() {

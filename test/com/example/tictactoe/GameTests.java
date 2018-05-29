@@ -13,10 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTests {
 
     public static Game game;
+    public Player player;
+    public Player player2;
 
     @BeforeEach
     public void createInstance() {
         game = new Game(new Displayer(), new IOHelper(), new Validator());
+        player = new Player("X");
+        player2 = new Player("Y");
     }
 
     @Test
@@ -57,7 +61,7 @@ public class GameTests {
 
     @Test
     public void returnsTrueWhenPositionWasTaken() {
-        game.board.putSignOnBoard("X", 0);
+        game.board.putSignOnBoard(player, 0);
 
         assertTrue(game.actUponOption("0"));
     }
@@ -82,8 +86,8 @@ public class GameTests {
 
     @Test
     public void playsAFullWonGame() throws IOException {
-        game.board.putSignOnBoard("X", 0);
-        game.board.putSignOnBoard("X", 1);
+        game.board.putSignOnBoard(player, 0);
+        game.board.putSignOnBoard(player, 1);
         String input1 = "2";
         InputStream in1 = new ByteArrayInputStream(input1.getBytes());
         System.setIn(in1);
@@ -98,17 +102,21 @@ public class GameTests {
 
     @Test
     public void playsAFullTieGame() throws IOException {
-        game.board.putSignOnBoard("Y", 0);
-        game.board.putSignOnBoard("X", 1);
-        game.board.putSignOnBoard("Y", 2);
-        game.board.putSignOnBoard("X", 3);
-        game.board.putSignOnBoard("X", 4);
-        game.board.putSignOnBoard("Y", 5);
-        game.board.putSignOnBoard("X", 6);
-        game.board.putSignOnBoard("Y", 7);
-        String input1 = "8";
-        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
-        System.setIn(in1);
+        int[] array1 = {1, 3, 4, 6, 8};
+        int[] array2 = {0, 2, 5, 7};
+        playWholeGame(player, player2, array1, array2);
+
+//        game.board.putSignOnBoard("Y", 0);
+//        game.board.putSignOnBoard("X", 1);
+//        game.board.putSignOnBoard("Y", 2);
+//        game.board.putSignOnBoard("X", 3);
+//        game.board.putSignOnBoard("X", 4);
+//        game.board.putSignOnBoard("Y", 5);
+//        game.board.putSignOnBoard("X", 6);
+//        game.board.putSignOnBoard("Y", 7);
+//        String input1 = "8";
+//        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+//        System.setIn(in1);
 
         game.run();
 
@@ -126,6 +134,15 @@ public class GameTests {
         game.postGame();
 
         assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
+    }
+
+    public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
+        for(int i = 0; i < arraySign1.length; i++) {
+            game.board.putSignOnBoard(player, arraySign1[i]);
+        }
+        for(int i = 0; i < arraySign2.length; i++) {
+            game.board.putSignOnBoard(player2, arraySign2[i]);
+        }
     }
 
 }

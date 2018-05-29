@@ -30,7 +30,7 @@ public class Game {
     protected void playTurn() {
         boolean loopThrough = true;
         while (loopThrough) {
-            this.displayer.showBoard(this.board.places);
+            this.displayer.showBoard(this.board);
             String position = this.getUserPosition();
             loopThrough = this.actUponOption(position);
         }
@@ -43,13 +43,13 @@ public class Game {
     }
 
     protected String getUserPosition() {
-        this.displayer.askForPosition(this.active.sign);
+        this.displayer.askForPosition(this.active);
         return this.iohelper.getUserInput();
     }
 
     protected boolean actUponOption(String position) {
         if (this.validator.isNumeric(position) && this.board.isNonTaken(position)) {
-            this.board.putSignOnBoard(this.active.sign, Integer.parseInt(position));
+            this.board.putSignOnBoard(this.active, Integer.parseInt(position));
             this.switchPlayers();
             return false;
         } else {
@@ -58,7 +58,7 @@ public class Game {
     }
 
     protected void postGame() {
-        this.displayer.showBoard(this.board.places);
-        this.displayer.announceWinner(this.board.winnerSign());
+        this.displayer.showBoard(this.board);
+        this.displayer.announceWinner(this.board);
     }
 }
