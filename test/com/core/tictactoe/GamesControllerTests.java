@@ -53,20 +53,22 @@ public class GamesControllerTests {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
         gamesController = new GamesController(commandLineUI);
-        // String input = "6";
-        // InputStream in = new ByteArrayInputStream(input.getBytes());
-        // System.setIn(in);
 
         assertEquals("6", gamesController.getUserOption());
     }
 
     @Test
     public void option1CallsPlayANewGame() {
-        GamesController spy = Mockito.spy(gamesController);
-        Mockito.doNothing().when(spy).playANewGame();
-        spy.actOnOption("1");
+        StubbGamesController stubbGamesController = new StubbGamesController();
 
-        verify(spy, times(1)).playANewGame();
+        //stubbGamesController.playANewGame();
+
+        //GamesController spy = Mockito.spy(gamesController);
+        //Mockito.doNothing().when(spy).playANewGame();
+        //spy.actOnOption("1");
+        assertEquals("tested", stubbGamesController.playANewGame());
+
+        //verify(spy, times(1)).playANewGame();
     }
 
     @Test
