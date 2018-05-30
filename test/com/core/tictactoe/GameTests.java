@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,12 +38,13 @@ public class GameTests {
 
     @Test
     public void playsAFullWonGame() throws IOException {
-        InputStream input = new ByteArrayInputStream("2".getBytes());
+        InputStream input = new ByteArrayInputStream("5".getBytes());
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
         game = new Game(commandLineUI);
-        game.board.putSignOnBoard(game.active, 0);
-        game.board.putSignOnBoard(game.active, 1);
+        int[] array1 = {3, 4, 7, 2};
+        int[] array2 = {0, 1, 6, 8};
+        setBoard(game.active, game.passive, array1, array2);
 
         game.run();
 
@@ -50,13 +52,14 @@ public class GameTests {
         assertFalse(game.board.isTie());
         assertEquals("X", game.board.winnerSign());
         assertEquals("Y", game.active.sign);
+        assertEquals(asList("Y", "Y", "X", "X", "X", "X", "Y", "X", "Y"), game.board.places);
     }
 
     @Test
     public void playsAFullTieGame() throws IOException {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
-        playWholeGame(game.active, game.passive, array1, array2);
+        setBoard(game.active, game.passive, array1, array2);
 
         game.run();
 
@@ -64,41 +67,8 @@ public class GameTests {
         assertTrue(game.board.isTie());
         assertEquals("none", game.board.winnerSign());
     }
-//    @Test
-//    public void switchesActivePlayer() {
-//        Player player1 = game.active;
-//        Player player2 = game.passive;
-//
-//        game.switchPlayers();
-//
-//        assertEquals(player2, game.active);
-//        assertEquals(player1, game.passive);
-//    }
 
-//    @Test
-//    public void gameStateafterOneRound() throws IOException {
-//        String input = "0";
-//        InputStream in = new ByteArrayInputStream(input.getBytes());
-//        System.setIn(in);
-//
-//        game.playTurn();
-//
-//        assertEquals("Y", game.active.sign);
-//        assertTrue(game.board.hasFreePlaces());
-//        assertEquals("X", game.board.places.get(0));
-//    }
-
-//    @Test
-//    public void postGameTest() throws IOException {
-//        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-//        System.setOut(new PrintStream(outContent));
-//
-//        game.postGame();
-//
-//        assertEquals("\n0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8\n\nIt's a tie!\n", outContent.toString());
-//    }
-
-    public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
+    public void setBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for(int i = 0; i < arraySign1.length; i++) {
             game.board.putSignOnBoard(player, arraySign1[i]);
         }
