@@ -92,18 +92,16 @@ public class CommandLineUITests {
 
     @Test
     public void returnsPositionGivenByPlayer() throws IOException {
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        InputStream input = new ByteArrayInputStream("0".getBytes());
+        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
         assertEquals("0", commandLineUI.getUserInput());
     }
 
     @Test
     public void returnsPlayerPositionAsIntegerOnValidInput() throws IOException {
-        String input = "0";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        InputStream input = new ByteArrayInputStream("0".getBytes());
+        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
         assertEquals(0, commandLineUI.getPosition(board, player));
     }

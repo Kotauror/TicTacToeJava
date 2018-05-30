@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -47,9 +49,13 @@ public class GamesControllerTests {
 
     @Test
     public void getUserOptionReturnsUsersOption() {
-        String input = "6";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        InputStream input = new ByteArrayInputStream("6".getBytes());
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+        gamesController = new GamesController(commandLineUI);
+        // String input = "6";
+        // InputStream in = new ByteArrayInputStream(input.getBytes());
+        // System.setIn(in);
 
         assertEquals("6", gamesController.getUserOption());
     }

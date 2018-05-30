@@ -37,11 +37,16 @@ public class GameTests {
 
     @Test
     public void playsAFullWonGame() throws IOException {
+        InputStream input = new ByteArrayInputStream("2".getBytes());
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+        game = new Game(commandLineUI);
+
         game.board.putSignOnBoard(game.active, 0);
         game.board.putSignOnBoard(game.active, 1);
-        String input1 = "2";
-        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
-        System.setIn(in1);
+      //  String input1 = "2";
+       // InputStream in1 = new ByteArrayInputStream(input1.getBytes());
+       // System.setIn(in1);
 
         game.run();
 
