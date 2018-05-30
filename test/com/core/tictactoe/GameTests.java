@@ -41,19 +41,14 @@ public class GameTests {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
         game = new Game(commandLineUI);
-
         game.board.putSignOnBoard(game.active, 0);
         game.board.putSignOnBoard(game.active, 1);
-      //  String input1 = "2";
-       // InputStream in1 = new ByteArrayInputStream(input1.getBytes());
-       // System.setIn(in1);
 
         game.run();
 
         assertTrue(game.board.isWon());
         assertFalse(game.board.isTie());
         assertEquals("X", game.board.winnerSign());
-       // assertTrue(game.board.hasFreePlaces());
         assertEquals("Y", game.active.sign);
     }
 
@@ -68,7 +63,6 @@ public class GameTests {
         assertFalse(game.board.isWon());
         assertTrue(game.board.isTie());
         assertEquals("none", game.board.winnerSign());
-       // assertFalse(game.board.hasFreePlaces());
     }
 //    @Test
 //    public void switchesActivePlayer() {
