@@ -14,6 +14,7 @@ public class CommandLineUITests {
 
     public CommandLineUI commandLineUI;
     private ByteArrayOutputStream output;
+    private ByteArrayInputStream input;
     public Board board;
     public Player player;
     public Player player2;
@@ -22,7 +23,8 @@ public class CommandLineUITests {
     @BeforeEach
     public void setup() {
         this.output = new ByteArrayOutputStream();
-        commandLineUI = new CommandLineUI(new PrintStream(output));
+        this.input = new ByteArrayInputStream("".getBytes());
+        commandLineUI = new CommandLineUI(new PrintStream(this.output), this.input);
         player = new Player("X");
         player2 = new Player("Y");
         board = new Board();

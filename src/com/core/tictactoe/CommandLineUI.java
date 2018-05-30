@@ -1,14 +1,17 @@
 package com.core.tictactoe;
 
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CommandLineUI {
 
     private final PrintStream output;
+    private final Scanner input;
 
-    CommandLineUI(PrintStream output){
+    CommandLineUI(PrintStream output, InputStream input){
         this.output = output;
+        this.input = new Scanner(input);
     }
 
     protected void showBoard(Board board) {
@@ -36,8 +39,8 @@ public class CommandLineUI {
     }
 
     protected String getUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        String userString = scanner.nextLine();
+//        Scanner scanner = new Scanner(System.in);
+        String userString = input.nextLine();
         return userString;
     }
 
