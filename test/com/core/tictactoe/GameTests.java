@@ -38,13 +38,7 @@ public class GameTests {
 
     @Test
     public void playsAFullWonGame() throws IOException {
-        InputStream input = new ByteArrayInputStream("5".getBytes());
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
-        game = new Game(commandLineUI);
-        int[] array1 = {3, 4, 7, 2};
-        int[] array2 = {0, 1, 6, 8};
-        setBoard(game.active, game.passive, array1, array2);
+        game = new Game(new StubbCommandLineUI(System.out, System.in));
 
         game.run();
 
@@ -52,7 +46,7 @@ public class GameTests {
         assertFalse(game.board.isTie());
         assertEquals("X", game.board.winnerSign());
         assertEquals("Y", game.active.sign);
-        assertEquals(asList("Y", "Y", "X", "X", "X", "X", "Y", "X", "Y"), game.board.places);
+        assertEquals(asList("X", "Y", "X", "Y", "X", "Y", "X", 7, 8), game.board.places);
     }
 
     @Test

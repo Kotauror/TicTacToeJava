@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class CommandLineUI {
 
-    private final PrintStream output;
-    private final Scanner input;
+    PrintStream output;
+    Scanner input;
+
+    CommandLineUI(){}
 
     CommandLineUI(PrintStream output, InputStream input){
         this.output = output;

@@ -59,14 +59,18 @@ public class GamesControllerTests {
 
     @Test
     public void option1CallsPlayANewGame() {
-        StubbGamesController stubbGamesController = new StubbGamesController();
-
-        //stubbGamesController.playANewGame();
+        StubbGame stubbgame = new StubbGame();
+        System.out.println(stubbgame.board.places);
+       stubbgame.run();
+        // stubbgame.run();
+        stubbgame.testing();
+        stubbgame.runFake();
+        // System.out.println(int numer);
 
         //GamesController spy = Mockito.spy(gamesController);
         //Mockito.doNothing().when(spy).playANewGame();
         //spy.actOnOption("1");
-        assertEquals("tested", stubbGamesController.playANewGame());
+        // assertEquals("tested", stubbGamesController.playANewGame());
 
         //verify(spy, times(1)).playANewGame();
     }
