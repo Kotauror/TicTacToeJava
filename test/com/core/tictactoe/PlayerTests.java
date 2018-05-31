@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,22 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTests {
 
-    public Player player;
+    private Player player;
 
     @BeforeEach
-    public void instantiatePlayer() {
+    void instantiatePlayer() {
         player = new Player("X");
     }
 
     @Test
-    public void playerHasInitialActiveStatusFalse() {
-        assertEquals(player.active,false);
-    }
-
-    @Test
-    public void playerHasSign() {
+    void playerHasSign() {
         assertEquals(player.sign, "X");
     }
-
 
 }
