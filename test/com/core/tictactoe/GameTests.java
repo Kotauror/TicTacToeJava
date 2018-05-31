@@ -52,24 +52,15 @@ public class GameTests {
 
     @Test
     public void playsAFullTieGame() throws IOException {
-        int[] array1 = {1, 3, 4, 6, 8};
-        int[] array2 = {0, 2, 5, 7};
-        setBoard(game.active, game.passive, array1, array2);
+        String[] fakeUsersInputs = {"1", "0", "3", "2", "4", "5", "6", "7", "8"};
+        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
         game.run();
 
         assertFalse(game.board.isWon());
         assertTrue(game.board.isTie());
+        assertEquals(asList("Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"), game.board.places);
         assertEquals("none", game.board.winnerSign());
-    }
-
-    public void setBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
-        for(int i = 0; i < arraySign1.length; i++) {
-            game.board.putSignOnBoard(player, arraySign1[i]);
-        }
-        for(int i = 0; i < arraySign2.length; i++) {
-            game.board.putSignOnBoard(player2, arraySign2[i]);
-        }
     }
 
 }

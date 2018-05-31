@@ -15,10 +15,10 @@ public class StubbCommandLineUI extends CommandLineUI {
         this.output = output;
         this.input = new Scanner(input);
         this.inputs = new ArrayList<String>();
-        fillNumbers(fakeUsersInputs);
+        fillInputs(fakeUsersInputs);
     }
 
-    private void fillNumbers(String[] fakeUsersInputs) {
+    private void fillInputs(String[] fakeUsersInputs) {
         for (int i = 0; i < fakeUsersInputs.length; i++) {
             Collections.addAll(this.inputs, fakeUsersInputs[i]);
         }

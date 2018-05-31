@@ -12,8 +12,6 @@ import java.io.PrintStream;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 public class GamesControllerTests {
 
@@ -56,42 +54,42 @@ public class GamesControllerTests {
 
         assertEquals("6", gamesController.getUserOption());
     }
-
-    @Test
-    public void option1CallsPlayANewGame() {
-        StubbGame stubbgame = new StubbGame();
-        System.out.println(stubbgame.board.places);
-       stubbgame.run();
-        // stubbgame.run();
-        stubbgame.testing();
-        stubbgame.runFake();
-        // System.out.println(int numer);
-
-        //GamesController spy = Mockito.spy(gamesController);
-        //Mockito.doNothing().when(spy).playANewGame();
-        //spy.actOnOption("1");
-        // assertEquals("tested", stubbGamesController.playANewGame());
-
-        //verify(spy, times(1)).playANewGame();
-    }
-
-    @Test
-    public void optionsOtherThen1DontCallPlayANewGame() {
-        GamesController spy = Mockito.spy(gamesController);
-        spy.actOnOption("5");
-
-        verify(spy, times(0)).playANewGame();
-    }
-
-    @Test
-    public void gamesMenuStopsOnFalse() {
-        GamesController spy = Mockito.spy(gamesController);
-        Mockito.doReturn("2").when(spy).getUserOption();
-        Mockito.doReturn(false).when(spy).actOnOption("2");
-
-        spy.gamesMenu();
-
-        verify(spy, times(1)).getUserOption();
-        verify(spy, times(1)).actOnOption("2");
-    }
+//
+//    @Test
+//    public void option1CallsPlayANewGame() {
+//        StubbGame stubbgame = new StubbGame();
+//        System.out.println(stubbgame.board.places);
+//       stubbgame.run();
+//        // stubbgame.run();
+//        stubbgame.testing();
+//        stubbgame.runFake();
+//        // System.out.println(int numer);
+//
+//        //GamesController spy = Mockito.spy(gamesController);
+//        //Mockito.doNothing().when(spy).playANewGame();
+//        //spy.actOnOption("1");
+//        // assertEquals("tested", stubbGamesController.playANewGame());
+//
+//        //verify(spy, times(1)).playANewGame();
+//    }
+//
+//    @Test
+//    public void optionsOtherThen1DontCallPlayANewGame() {
+//        GamesController spy = Mockito.spy(gamesController);
+//        spy.actOnOption("5");
+//
+//        verify(spy, times(0)).playANewGame();
+//    }
+//
+//    @Test
+//    public void gamesMenuStopsOnFalse() {
+//        GamesController spy = Mockito.spy(gamesController);
+//        Mockito.doReturn("2").when(spy).getUserOption();
+//        Mockito.doReturn(false).when(spy).actOnOption("2");
+//
+//        spy.gamesMenu();
+//
+//        verify(spy, times(1)).getUserOption();
+//        verify(spy, times(1)).actOnOption("2");
+//    }
 }
