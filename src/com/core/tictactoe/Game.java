@@ -7,8 +7,6 @@ public class Game {
     Player passive;
     CommandLineUI commandLineUI;
 
-    protected int numer = 5;
-
     Game(){}
 
     Game (CommandLineUI commandLineUI) {
@@ -44,7 +42,4 @@ public class Game {
         this.commandLineUI.announceWinner(this.board);
     }
 
-    protected void testing() {
-        System.out.println("hehehhe");
-    }
 }

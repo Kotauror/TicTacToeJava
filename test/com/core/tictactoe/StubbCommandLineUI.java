@@ -38,6 +38,6 @@ public class StubbCommandLineUI extends CommandLineUI {
 
     protected void announceWinner(Board board) {}
 
-
+    protected void gamingMenu() {}
 
 }
