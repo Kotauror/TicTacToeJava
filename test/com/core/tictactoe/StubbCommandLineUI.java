@@ -30,7 +30,13 @@ public class StubbCommandLineUI extends CommandLineUI {
         return first;
     }
 
+    protected void showBoard(Board board) {}
 
+    protected void greetUsers() {}
+
+    protected void askForPosition(Player player) {}
+
+    protected void announceWinner(Board board) {}
 
 
 
