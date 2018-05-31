@@ -33,7 +33,7 @@ public class CommandLineUI {
     }
 
     protected void announceWinner(Board board) {
-        output.println(board.winnerSign() != "none" ? board.winnerSign() + " won!" : "It's a tie!");
+        output.println(!board.winnerSign().equals("none") ? board.winnerSign() + " won!" : "It's a tie!");
     }
 
     protected void gamingMenu() {
@@ -41,16 +41,15 @@ public class CommandLineUI {
     }
 
     protected String getUserInput() {
-        String userString = input.nextLine();
-        return userString;
+        return input.nextLine();
     }
 
-    protected boolean isNumeric(String position) {
+    private boolean isNumeric(String position) {
         String regex = "[0-8]";
-        return position.matches(regex) ? true : false;
+        return position.matches(regex);
     }
 
-    protected int getPosition(Board board, Player player) {
+    int getPosition(Board board, Player player) {
         while (true) {
            this.askForPosition(player);
            String position = this.getUserInput();

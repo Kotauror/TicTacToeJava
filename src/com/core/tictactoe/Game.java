@@ -14,7 +14,7 @@ public class Game {
         this.commandLineUI = commandLineUI;
     }
 
-     protected void run() {
+     void run() {
         this.commandLineUI.greetUsers();
         while (!this.board.isWon() && !this.board.isTie()) {
             this.playTurn();
@@ -24,7 +24,7 @@ public class Game {
 
     private void playTurn() {
         this.commandLineUI.showBoard(this.board);
-        int position = this.commandLineUI.getPosition(this.board, this.active);;
+        int position = this.commandLineUI.getPosition(this.board, this.active);
         this.board.putSignOnBoard(this.active, position);
         this.switchPlayers();
     }

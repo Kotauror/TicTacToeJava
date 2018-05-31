@@ -6,14 +6,14 @@ import java.util.Collections;
 
 public class Board {
 
-    protected ArrayList places;
+    ArrayList places;
 
     Board() {
         this.places = new ArrayList<Integer>();
         fillPlaces();
     }
 
-    int [][] winningPositions = {
+    private final int [][] winningPositions = {
             {0, 1, 2},
             {3, 4, 5},
             {6, 7, 8},
@@ -36,11 +36,11 @@ public class Board {
         return numberOfEmptyPlaces != 0;
     }
 
-    protected void putSignOnBoard(Player player, int position) {
+    void putSignOnBoard(Player player, int position) {
         this.places.set(position, player.sign);
     }
 
-    protected boolean isWon() {
+    boolean isWon() {
         for (int[] set : winningPositions) {
             if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
                 return true;
@@ -49,15 +49,15 @@ public class Board {
         return false;
     }
 
-    protected boolean isTie() {
+    boolean isTie() {
         return !this.isWon() && !this.hasFreePlaces();
     }
 
-    protected boolean isNonTaken(String position){
+    boolean isNonTaken(String position){
         return this.places.contains(Integer.parseInt(position));
     }
 
-    protected String winnerSign() {
+    String winnerSign() {
         for (int[] set : winningPositions) {
             if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
                 return this.places.get(set[0]).toString();

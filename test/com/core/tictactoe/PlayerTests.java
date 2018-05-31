@@ -7,15 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTests {
 
-    public Player player;
+    private Player player;
 
     @BeforeEach
-    public void instantiatePlayer() {
+    void instantiatePlayer() {
         player = new Player("X");
     }
 
     @Test
-    public void playerHasSign() {
+    void playerHasSign() {
         assertEquals(player.sign, "X");
     }
 

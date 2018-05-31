@@ -2,15 +2,15 @@ package com.core.tictactoe;
 
 public class GamesController {
 
-    public CommandLineUI commandLineUI;
-    public Game game;
+    CommandLineUI commandLineUI;
+    Game game;
 
     GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
         this.game = null;
     }
 
-    protected void gamesMenu() {
+    void gamesMenu() {
         boolean loopThroughOptions = true;
         while (loopThroughOptions) {
             this.commandLineUI.gamingMenu();
@@ -25,9 +25,7 @@ public class GamesController {
     private boolean actOnOption(String pickedOption) {
         if (pickedOption.matches("[1]")) {
             this.playANewGame();
-        } else if (pickedOption.matches("[2]")) {
-            return false;
-        }
+        } else return !pickedOption.matches("[2]");
         return true;
     }
 

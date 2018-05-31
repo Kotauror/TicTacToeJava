@@ -10,20 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GamesControllerTests {
 
-    public GamesController gamesController;
+    private GamesController gamesController;
 
     @BeforeEach
-    public void instantiate() {
+    void instantiate() {
         gamesController = new GamesController(new CommandLineUI(System.out, System.in));
     }
 
     @Test
-    public void GameCreatesAnInstanceOfDisplayer() {
+    void GameCreatesAnInstanceOfDisplayer() {
         assertThat(gamesController.commandLineUI, isA(CommandLineUI.class));
     }
 
     @Test
-    public void option1PlaysAGame() {
+    void option1PlaysAGame() {
         String[] fakeUsersInputs = {"1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "2"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
@@ -33,7 +33,7 @@ public class GamesControllerTests {
     }
 
     @Test
-    public void option2ExitsTheProgram() {
+    void option2ExitsTheProgram() {
         String[] fakeUsersInputs = {"2"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 

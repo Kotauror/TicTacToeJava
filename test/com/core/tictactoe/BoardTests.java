@@ -13,31 +13,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTests {
 
-    public Board board;
-    public Player player;
-    public Player player2;
+    private Board board;
+    private Player player;
+    private Player player2;
 
     @BeforeEach
-    public void instantiateBoard() {
+    void instantiateBoard() {
         board = new Board();
         player = new Player("X");
         player2 = new Player("Y");
     }
 
     @Test
-    public void BoardIsCreatedWithPlacesArray() {
+    void BoardIsCreatedWithPlacesArray() {
         assertThat(board.places,isA(ArrayList.class));
     }
 
     @Test
-    public void BoardHasFilledPlacesWhenCreated() {
+    void BoardHasFilledPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
             assertEquals(board.places.get(i),i);
         }
     }
 
     @Test
-    public void changesSignOnBoardToPlayerSign() {
+    void changesSignOnBoardToPlayerSign() {
         board.putSignOnBoard(player, 0);
 
         assertEquals("X", board.places.get(0));
@@ -46,91 +46,91 @@ public class BoardTests {
 
 
     @Test
-    public void checksIfThereIsATieFalse() {
+    void checksIfThereIsATieFalse() {
         board.putSignOnBoard(player, 0);
 
         board.isTie();
 
-        assertEquals(false, board.isTie());
+        assertFalse(board.isTie());
     }
 
     @Test
-    public void checksIfThereIsATieTrue() {
+    void checksIfThereIsATieTrue() {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
         playWholeGame(player, player2, array1, array2);
 
         board.isTie();
 
-        assertEquals(true, board.isTie());
+        assertTrue(board.isTie());
     }
 
 
     @Test
-    public void checkIfGameIsWonFalse() {
+    void checkIfGameIsWonFalse() {
         playMoves(player, 0, 5, 2);
 
-        assertEquals(false, board.isWon());
+        assertFalse(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV1() {
+    void checkIfGameIsWonTrueV1() {
         playMoves(player, 0, 1, 2);
 
-        assertEquals(true, board.isWon());
+        assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV2() {
+    void checkIfGameIsWonTrueV2() {
         playMoves(player, 3, 4, 5);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV3() {
+    void checkIfGameIsWonTrueV3() {
         playMoves(player, 6, 7, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV4() {
+    void checkIfGameIsWonTrueV4() {
         playMoves(player, 0, 3, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV5() {
+    void checkIfGameIsWonTrueV5() {
         playMoves(player, 1, 4, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV6() {
+    void checkIfGameIsWonTrueV6() {
         playMoves(player, 2, 5, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV7() {
+    void checkIfGameIsWonTrueV7() {
         playMoves(player, 0, 4, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void checkIfGameIsWonTrueV8() {
+    void checkIfGameIsWonTrueV8() {
         playMoves(player, 2, 4, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    public void changeWinnerSignWhenWon() {
+    void changeWinnerSignWhenWon() {
         playMoves(player, 2, 4, 6);
 
         board.isWon();
@@ -138,47 +138,31 @@ public class BoardTests {
     }
 
     @Test
-    public void returnTrueWHenPositionIsNonTaken() {
+    void returnTrueWHenPositionIsNonTaken() {
         board.putSignOnBoard(player, 6);
 
         assertTrue(board.isNonTaken("2"));
     }
 
     @Test
-    public void returnFalseWHenPositionIsTaken() {
+    void returnFalseWHenPositionIsTaken() {
         board.putSignOnBoard(player, 6);
 
         assertFalse(board.isNonTaken("6"));
     }
 
-    public void playMoves(Player player, int a, int b, int c) {
+    private void playMoves(Player player, int a, int b, int c) {
         board.putSignOnBoard(player, a);
         board.putSignOnBoard(player, b);
         board.putSignOnBoard(player, c);
     }
 
-//    @Test
-//    public void checksIfThereArePlacesLeftTrue() {
-//        board.putSignOnBoard(player, 0);
-//
-//        assertEquals(true, board.hasFreePlaces());
-//    }
-//
-//    @Test
-//    public void checksIfThereArePlacesLeftFalse() {
-//        for(int i = 0; i < 9; i++) {
-//            board.putSignOnBoard(player, i);
-//        }
-//
-//        assertFalse(board.hasFreePlaces());
-//    }
-
-    public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
-        for(int i = 0; i < arraySign1.length; i++) {
-            board.putSignOnBoard(player, arraySign1[i]);
+    private void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
+        for (int anArraySign1 : arraySign1) {
+            board.putSignOnBoard(player, anArraySign1);
         }
-        for(int i = 0; i < arraySign2.length; i++) {
-            board.putSignOnBoard(player2, arraySign2[i]);
+        for (int anArraySign2 : arraySign2) {
+            board.putSignOnBoard(player2, anArraySign2);
         }
     }
 }

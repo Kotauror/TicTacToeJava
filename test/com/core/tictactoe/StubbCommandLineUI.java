@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class StubbCommandLineUI extends CommandLineUI {
 
 
-    public ArrayList inputs;
+    private ArrayList inputs;
 
     public StubbCommandLineUI(PrintStream output, InputStream input, String[] fakeUsersInputs) {
         this.output = output;
@@ -19,8 +19,8 @@ public class StubbCommandLineUI extends CommandLineUI {
     }
 
     private void fillInputs(String[] fakeUsersInputs) {
-        for (int i = 0; i < fakeUsersInputs.length; i++) {
-            Collections.addAll(this.inputs, fakeUsersInputs[i]);
+        for (String fakeUsersInput : fakeUsersInputs) {
+            Collections.addAll(this.inputs, fakeUsersInput);
         }
     }
 
