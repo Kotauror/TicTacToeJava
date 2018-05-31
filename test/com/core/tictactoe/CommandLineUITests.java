@@ -2,13 +2,10 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 public class CommandLineUITests {
 
@@ -62,7 +59,7 @@ public class CommandLineUITests {
     public void announcesWinnerWHenThereIsOne() {
         int[] array1 = {0, 1, 2, 3, 4};
         int[] array2 = {5, 6, 7, 8};
-        playWholeGame(player, player2, array1, array2);
+        setUpBoard(player, player2, array1, array2);
 
         commandLineUI.announceWinner(board);
 
@@ -73,7 +70,7 @@ public class CommandLineUITests {
     public void announcesTieIfNoWInner() {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
-        playWholeGame(player, player2, array1, array2);
+        setUpBoard(player, player2, array1, array2);
 
         commandLineUI.announceWinner(board);
 
@@ -108,14 +105,15 @@ public class CommandLineUITests {
 
     @Test
     public void callsAgainForMoveOnInvalidInput() throws IOException {
-        CommandLineUI spy = Mockito.spy(commandLineUI);
-        Mockito.doReturn("10").doReturn("5").when(spy).getUserInput();
-        spy.getPosition(board, player);
+        String[] fakeUsersInputs = {"10", "5"};
+        StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(System.out, System.in, fakeUsersInputs);
 
-        verify(spy, times(2)).askForPosition(player);
+        Object userPosition = fakeCommandLineUI.getPosition(new Board(), new Player("X"));
+
+        assertTrue(userPosition.toString().contains("5"));
     }
 
-    public void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
+    public void setUpBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for(int i = 0; i < arraySign1.length; i++) {
             board.putSignOnBoard(player, arraySign1[i]);
         }

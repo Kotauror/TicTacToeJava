@@ -5,8 +5,6 @@ public class GamesController {
     public CommandLineUI commandLineUI;
     public Game game;
 
-    GamesController(){}
-
     GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
         this.game = null;
