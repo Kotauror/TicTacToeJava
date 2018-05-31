@@ -1,10 +1,10 @@
 package com.core.tictactoe;
 
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+        import java.io.InputStream;
+        import java.io.PrintStream;
+        import java.util.ArrayList;
+        import java.util.Collections;
+        import java.util.Scanner;
 
 public class StubbCommandLineUI extends CommandLineUI {
 
@@ -41,3 +41,4 @@ public class StubbCommandLineUI extends CommandLineUI {
     protected void gamingMenu() {}
 
 }
+
