@@ -10,7 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.junit.jupiter:junit-jupiter-api:5.0.0-M4" level="project" />
     <orderEntry type="library" name="com.bluecatcode.junit:junit-4.12-extended:1.0.3" level="project" />
-    <orderEntry type="library" name="com.google.api.client:google-api-client-apache:1.2.3-alpha" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -26,8 +25,5 @@
         <jarDirectory url="file://$USER_HOME$/Downloads/commons-lang3-3.7" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="commons-lang3-3" level="project" />
-    <orderEntry type="library" name="commons-lang3-3.7-javadoc" level="project" />
-    <orderEntry type="library" name="org.mockito:mockito-all:1.10.19" level="project" />
   </component>
 </module>
