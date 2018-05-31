@@ -38,7 +38,8 @@ public class GameTests {
 
     @Test
     public void playsAFullWonGame() throws IOException {
-        game = new Game(new StubbCommandLineUI(System.out, System.in));
+        String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
         game.run();
 

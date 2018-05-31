@@ -9,22 +9,24 @@ import java.util.Scanner;
 public class StubbCommandLineUI extends CommandLineUI {
 
 
-    public ArrayList numbers;
+    public ArrayList inputs;
 
-    public StubbCommandLineUI(PrintStream output, InputStream input) {
+    public StubbCommandLineUI(PrintStream output, InputStream input, String[] fakeUsersInputs) {
         this.output = output;
         this.input = new Scanner(input);
-        this.numbers = new ArrayList<String>();
-        fillNumbers();
+        this.inputs = new ArrayList<String>();
+        fillNumbers(fakeUsersInputs);
     }
 
-    private void fillNumbers() {
-        Collections.addAll(this.numbers, "0", "1", "2", "3", "4", "5", "6", "7", "8");
+    private void fillNumbers(String[] fakeUsersInputs) {
+        for (int i = 0; i < fakeUsersInputs.length; i++) {
+            Collections.addAll(this.inputs, fakeUsersInputs[i]);
+        }
     }
 
     protected String getUserInput() {
-        String first = this.numbers.get(0).toString();
-        this.numbers.remove(0);
+        String first = this.inputs.get(0).toString();
+        this.inputs.remove(0);
         return first;
     }
 
