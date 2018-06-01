@@ -2,7 +2,6 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTests {
@@ -18,5 +17,4 @@ public class PlayerTests {
     void playerHasSign() {
         assertEquals(player.sign, "X");
     }
-
 }

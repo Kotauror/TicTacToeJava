@@ -2,7 +2,6 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNull;
@@ -18,7 +17,7 @@ public class GamesControllerTests {
     }
 
     @Test
-    void GameCreatesAnInstanceOfDisplayer() {
+    void gameCreatesAnInstanceOfDisplayer() {
         assertThat(gamesController.commandLineUI, isA(CommandLineUI.class));
     }
 
@@ -27,7 +26,7 @@ public class GamesControllerTests {
         String[] fakeUsersInputs = {"1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "2"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
-        gamesController.gamesMenu();
+        gamesController.run();
 
         assertTrue(gamesController.game.board.isWon());
     }
@@ -37,9 +36,8 @@ public class GamesControllerTests {
         String[] fakeUsersInputs = {"2"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
-        gamesController.gamesMenu();
+        gamesController.run();
 
         assertNull(gamesController.game);
     }
-
 }

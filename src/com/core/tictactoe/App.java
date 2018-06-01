@@ -5,6 +5,6 @@ public class App {
     public static void main(String[] args) {
         CommandLineUI commandLineUI = new CommandLineUI(System.out, System.in);
         GamesController gamesController  = new GamesController(commandLineUI);
-        gamesController.gamesMenu();
+        gamesController.run();
     }
 }
