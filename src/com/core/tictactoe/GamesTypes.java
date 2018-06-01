@@ -1,7 +1,7 @@
 package com.core.tictactoe;
 
-public interface GamesTypes {
+public class GamesTypes {
 
-    String HUMAN_VS_HUMAN = "1"; // public, static, final
-    String EXIT = "2";
+    public static final String HUMAN_VS_HUMAN = "1"; // public, static, final
+    public static final String EXIT = "2";
 }
