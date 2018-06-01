@@ -7,7 +7,7 @@ public class Game {
     Player passive;
     CommandLineUI commandLineUI;
 
-    Game (CommandLineUI commandLineUI, Board board) {
+    Game(CommandLineUI commandLineUI, Board board) {
         this.commandLineUI = commandLineUI;
         this.board = board;
         this.active = new Player("X");
