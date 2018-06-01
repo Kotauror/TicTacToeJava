@@ -30,9 +30,8 @@ public class GamesController implements GamesTypes {
     }
 
     private void playANewGame() {
-        Game newGame = new Game(this.commandLineUI);
+        Game newGame = new Game(this.commandLineUI, new Board());
         this.game = newGame;
         newGame.run();
     }
-
 }
