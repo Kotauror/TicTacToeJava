@@ -45,9 +45,12 @@ public class Board {
 
     boolean isWon() {
         for (int[] set : winningPositions) {
-            if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
-                return true;
+            Object matcher = this.valueAtPosition(set[0]);
+            int numberOfMatchedPairs = 0;
+            for (int i = 1; i < set.length; i++) {
+                if (this.valueAtPosition(set[i]).equals(matcher)) numberOfMatchedPairs ++;
             }
+            if (numberOfMatchedPairs == set.length-1) return true;
         }
         return false;
     }
@@ -62,9 +65,12 @@ public class Board {
 
     String winnerSign() {
         for (int[] set : winningPositions) {
-            if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
-                return this.places.get(set[0]).toString();
+            Object matcher = this.valueAtPosition(set[0]);
+            int numberOfMatchedPairs = 0;
+            for (int i = 1; i < set.length; i++) {
+                if (this.valueAtPosition(set[i]).equals(matcher)) numberOfMatchedPairs ++;
             }
+            if (numberOfMatchedPairs == set.length-1) return matcher.toString();
         }
         return "none";
     }
