@@ -2,14 +2,10 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-
-
 
 public class BoardTests {
 
@@ -25,12 +21,12 @@ public class BoardTests {
     }
 
     @Test
-    void BoardIsCreatedWithPlacesArray() {
+    void boardIsCreatedWithPlacesArray() {
         assertThat(board.places,isA(ArrayList.class));
     }
 
     @Test
-    void BoardHasFilledPlacesWhenCreated() {
+    void boardHasFilledPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
             assertEquals(board.places.get(i),i);
         }

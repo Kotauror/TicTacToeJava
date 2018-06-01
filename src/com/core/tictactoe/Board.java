@@ -3,7 +3,6 @@ package com.core.tictactoe;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Board {
 
     ArrayList places;

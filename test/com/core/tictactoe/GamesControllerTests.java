@@ -2,7 +2,6 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNull;
@@ -18,7 +17,7 @@ public class GamesControllerTests {
     }
 
     @Test
-    void GameCreatesAnInstanceOfDisplayer() {
+    void gameCreatesAnInstanceOfDisplayer() {
         assertThat(gamesController.commandLineUI, isA(CommandLineUI.class));
     }
 
@@ -41,5 +40,4 @@ public class GamesControllerTests {
 
         assertNull(gamesController.game);
     }
-
 }

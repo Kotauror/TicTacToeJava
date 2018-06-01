@@ -2,9 +2,7 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CommandLineUITests {
@@ -110,5 +108,4 @@ public class CommandLineUITests {
             board.putSignOnBoard(player2, anArraySign2);
         }
     }
-
 }
