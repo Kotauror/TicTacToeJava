@@ -35,7 +35,7 @@ public class GameTests {
     }
 
     @Test
-    void playsAFullWonGame() {
+    void playsAWinningGame() {
         String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
         game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
@@ -49,7 +49,7 @@ public class GameTests {
     }
 
     @Test
-    void playsAFullTieGame() {
+    void playsATieGame() {
         String[] fakeUsersInputs = {"1", "0", "3", "2", "4", "5", "6", "7", "8"};
         game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
@@ -60,7 +60,6 @@ public class GameTests {
         assertEquals(asList("Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"), game.board.places);
         assertEquals("none", game.board.winnerSign());
     }
-
 }
 
 
