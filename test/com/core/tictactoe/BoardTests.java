@@ -58,7 +58,7 @@ public class BoardTests {
     void checksIfThereIsATieTrue() {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
-        playWholeGame(player, player2, array1, array2);
+        setupBoard(player, player2, array1, array2);
 
         board.isTie();
 
@@ -157,7 +157,7 @@ public class BoardTests {
         board.putSignOnBoard(player, c);
     }
 
-    private void playWholeGame(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
+    private void setupBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for (int anArraySign1 : arraySign1) {
             board.putSignOnBoard(player, anArraySign1);
         }
