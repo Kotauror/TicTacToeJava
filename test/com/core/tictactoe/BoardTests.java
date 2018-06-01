@@ -28,27 +28,20 @@ public class BoardTests {
     @Test
     void itHasIntegersFrom0to8InPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
-            assertEquals(board.places.get(i),i);
+            assertEquals(i, board.valueAtPosition(i));
         }
     }
 
     @Test
-    void itReturnsValueFromPosition() {
+    void itReturnsStringValueFromPosition() {
         board.putSignOnBoard(player, 0);
 
         assertEquals("X", board.valueAtPosition(0));
     }
 
     @Test
-    void itReturnsValueFromPosition2() {
+    void itReturnsIntegerValueFromPosition2() {
         assertEquals(5, board.valueAtPosition(5));
-    }
-
-    @Test
-    void itChangesSignOnBoardToPlayerSign() {
-        board.putSignOnBoard(player, 0);
-
-        assertEquals("X", board.places.get(0));
     }
 
     @Test
