@@ -10,7 +10,7 @@ public class GamesController implements GamesTypes {
         this.game = null;
     }
 
-    void gamesMenu() {
+    void run() {
         boolean loopThroughOptions = true;
         while (loopThroughOptions) {
             this.commandLineUI.gamingMenu();

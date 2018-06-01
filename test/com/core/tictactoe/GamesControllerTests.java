@@ -27,7 +27,7 @@ public class GamesControllerTests {
         String[] fakeUsersInputs = {"1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "2"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
-        gamesController.gamesMenu();
+        gamesController.run();
 
         assertTrue(gamesController.game.board.isWon());
     }
@@ -37,7 +37,7 @@ public class GamesControllerTests {
         String[] fakeUsersInputs = {"2"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
-        gamesController.gamesMenu();
+        gamesController.run();
 
         assertNull(gamesController.game);
     }
