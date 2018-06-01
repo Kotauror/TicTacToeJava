@@ -7,11 +7,11 @@ public class Game {
     Player passive;
     CommandLineUI commandLineUI;
 
-    Game (CommandLineUI commandLineUI) {
-        this.board = new Board();
+    Game(CommandLineUI commandLineUI, Board board) {
+        this.commandLineUI = commandLineUI;
+        this.board = board;
         this.active = new Player("X");
         this.passive = new Player("Y");
-        this.commandLineUI = commandLineUI;
     }
 
      void run() {
@@ -39,5 +39,4 @@ public class Game {
         this.commandLineUI.showBoard(this.board);
         this.commandLineUI.announceWinner(this.board);
     }
-
 }

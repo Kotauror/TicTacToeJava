@@ -3,7 +3,6 @@ package com.core.tictactoe;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Board {
 
     ArrayList places;
@@ -40,11 +39,15 @@ public class Board {
         this.places.set(position, player.sign);
     }
 
+    Object valueAtPosition(int position) {
+        return this.places.get(position);
+    }
+
     boolean isWon() {
         for (int[] set : winningPositions) {
-            if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
-                return true;
-            }
+            Object matcher = this.valueAtPosition(set[0]);
+            int numberOfMatchesInSet = countMatchesInSet(set, matcher);
+            if (numberOfMatchesInSet == set.length) return true;
         }
         return false;
     }
@@ -59,10 +62,18 @@ public class Board {
 
     String winnerSign() {
         for (int[] set : winningPositions) {
-            if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
-                return this.places.get(set[0]).toString();
-            }
+            Object matcher = this.valueAtPosition(set[0]);
+            int numberOfMatchesInSet = countMatchesInSet(set, matcher);
+            if (numberOfMatchesInSet == set.length) return matcher.toString();
         }
         return "none";
+    }
+
+    private int countMatchesInSet(int[] set, Object matcher) {
+        int numberOfMatchedPairs = 0;
+        for (int i = 0; i < set.length; i++) {
+            if (this.valueAtPosition(set[i]).equals(matcher)) numberOfMatchedPairs ++;
+        }
+        return numberOfMatchedPairs;
     }
 }

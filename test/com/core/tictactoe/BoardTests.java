@@ -2,14 +2,10 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-
-
 
 public class BoardTests {
 
@@ -25,112 +21,110 @@ public class BoardTests {
     }
 
     @Test
-    void BoardIsCreatedWithPlacesArray() {
+    void itIsCreatedWithPlacesArray() {
         assertThat(board.places,isA(ArrayList.class));
     }
 
     @Test
-    void BoardHasFilledPlacesWhenCreated() {
+    void itHasIntegersFrom0to8InPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
-            assertEquals(board.places.get(i),i);
+            assertEquals(i, board.valueAtPosition(i));
         }
     }
 
     @Test
-    void changesSignOnBoardToPlayerSign() {
+    void itReturnsStringValueFromPosition() {
         board.putSignOnBoard(player, 0);
 
-        assertEquals("X", board.places.get(0));
+        assertEquals("X", board.valueAtPosition(0));
     }
 
-
+    @Test
+    void itReturnsIntegerValueFromPosition() {
+        assertEquals(5, board.valueAtPosition(5));
+    }
 
     @Test
-    void checksIfThereIsATieFalse() {
+    void isNotATie() {
         board.putSignOnBoard(player, 0);
-
-        board.isTie();
 
         assertFalse(board.isTie());
     }
 
     @Test
-    void checksIfThereIsATieTrue() {
+    void isATie() {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
         setupBoard(player, player2, array1, array2);
 
-        board.isTie();
-
         assertTrue(board.isTie());
     }
 
-
     @Test
-    void checkIfGameIsWonFalse() {
+    void doesNotHaveAWin() {
         playMoves(player, 0, 5, 2);
 
         assertFalse(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV1() {
+    void hasWinFor0_1_2() {
         playMoves(player, 0, 1, 2);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV2() {
+    void hasWinFor3_4_5() {
         playMoves(player, 3, 4, 5);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV3() {
+    void hasWinFor6_7_8() {
         playMoves(player, 6, 7, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV4() {
+    void hasWinFor0_3_6() {
         playMoves(player, 0, 3, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV5() {
+    void hasWinFor1_4_7() {
         playMoves(player, 1, 4, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV6() {
+    void hasWinFor2_5_8() {
         playMoves(player, 2, 5, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV7() {
+    void hasWinFor0_4_8() {
         playMoves(player, 0, 4, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void checkIfGameIsWonTrueV8() {
+    void hasWinFor2_4_6() {
         playMoves(player, 2, 4, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void changeWinnerSignWhenWon() {
+    void itChangesWinnerSignWhenGameIsWon() {
         playMoves(player, 2, 4, 6);
 
         board.isWon();
@@ -138,14 +132,14 @@ public class BoardTests {
     }
 
     @Test
-    void returnTrueWHenPositionIsNonTaken() {
+    void returnsTrueWhenPositionIsNonTaken() {
         board.putSignOnBoard(player, 6);
 
         assertTrue(board.isNonTaken("2"));
     }
 
     @Test
-    void returnFalseWHenPositionIsTaken() {
+    void returnsFalseWhenPositionIsTaken() {
         board.putSignOnBoard(player, 6);
 
         assertFalse(board.isNonTaken("6"));
