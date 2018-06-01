@@ -40,88 +40,84 @@ public class BoardTests {
     }
 
     @Test
-    void itReturnsIntegerValueFromPosition2() {
+    void itReturnsIntegerValueFromPosition() {
         assertEquals(5, board.valueAtPosition(5));
     }
 
     @Test
-    void itChecksIfThereIsATie1() {
+    void isNotATie() {
         board.putSignOnBoard(player, 0);
-
-        board.isTie();
 
         assertFalse(board.isTie());
     }
 
     @Test
-    void itChecksIfThereIsATie2() {
+    void isATie() {
         int[] array1 = {1, 3, 4, 6, 8};
         int[] array2 = {0, 2, 5, 7};
         setupBoard(player, player2, array1, array2);
-
-        board.isTie();
 
         assertTrue(board.isTie());
     }
 
     @Test
-    void itChecksIfGameIsWon1() {
+    void doesNotHaveAWin() {
         playMoves(player, 0, 5, 2);
 
         assertFalse(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon2() {
+    void hasWinFor0_1_2() {
         playMoves(player, 0, 1, 2);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon3() {
+    void hasWinFor3_4_5() {
         playMoves(player, 3, 4, 5);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon4() {
+    void hasWinFor6_7_8() {
         playMoves(player, 6, 7, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon5() {
+    void hasWinFor0_3_6() {
         playMoves(player, 0, 3, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon6() {
+    void hasWinFor1_4_7() {
         playMoves(player, 1, 4, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon7() {
+    void hasWinFor2_5_8() {
         playMoves(player, 2, 5, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon8() {
+    void hasWinFor0_4_8() {
         playMoves(player, 0, 4, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void itChecksIfGameIsWon9() {
+    void hasWinFor2_4_6() {
         playMoves(player, 2, 4, 6);
 
         assertTrue(board.isWon());
