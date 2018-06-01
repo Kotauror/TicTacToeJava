@@ -13,7 +13,6 @@ public class CommandLineUITests {
     private Player player;
     private Player player2;
 
-
     @BeforeEach
     void setup() {
         this.output = new ByteArrayOutputStream();

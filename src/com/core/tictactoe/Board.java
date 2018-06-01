@@ -39,6 +39,10 @@ public class Board {
         this.places.set(position, player.sign);
     }
 
+    Object valueAtPosition(int position) {
+        return this.places.get(position);
+    }
+
     boolean isWon() {
         for (int[] set : winningPositions) {
             if (this.places.get(set[0]) == this.places.get(set[1]) && this.places.get(set[0]) == this.places.get(set[2])) {
