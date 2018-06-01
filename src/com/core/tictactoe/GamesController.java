@@ -1,6 +1,6 @@
 package com.core.tictactoe;
 
-public class GamesController {
+public class GamesController implements GamesTypes {
 
     CommandLineUI commandLineUI;
     Game game;
@@ -23,9 +23,9 @@ public class GamesController {
     }
 
     private boolean actOnOption(String pickedOption) {
-        if (pickedOption.matches("[1]")) {
+        if (pickedOption.equals(HUMAN_VS_HUMAN)) {
             this.playANewGame();
-        } else return !pickedOption.matches("[2]");
+        } else return !(pickedOption.equals(EXIT));
         return true;
     }
 
