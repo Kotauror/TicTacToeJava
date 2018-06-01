@@ -11,22 +11,19 @@ public class GamesController implements GamesTypes {
     }
 
     void run() {
-        boolean loopThroughOptions = true;
-        while (loopThroughOptions) {
-            this.commandLineUI.gamingMenu();
-            loopThroughOptions = this.actOnOption(this.getUserOption());
+        boolean exitGame = false;
+        while (!exitGame) {
+            String userOption = this.getUserOption();
+            if (userOption.equals(HUMAN_VS_HUMAN)) {
+                this.playANewGame();
+            } else if (userOption.equals(EXIT))
+                exitGame = true;
         }
     }
 
     private String getUserOption() {
+        this.commandLineUI.gamingMenu();
         return this.commandLineUI.getUserInput();
-    }
-
-    private boolean actOnOption(String pickedOption) {
-        if (pickedOption.equals(HUMAN_VS_HUMAN)) {
-            this.playANewGame();
-        } else return !(pickedOption.equals(EXIT));
-        return true;
     }
 
     private void playANewGame() {
