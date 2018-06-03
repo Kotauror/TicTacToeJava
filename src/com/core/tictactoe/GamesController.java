@@ -7,7 +7,7 @@ import com.core.tictactoe.game_options.RunGameOption;
 
 public class GamesController {
 
-    CommandLineUI commandLineUI;
+    private CommandLineUI commandLineUI;
 
     private static final String HUMAN_VS_HUMAN = "1";
     private static final String EXIT = "2";
@@ -34,5 +34,9 @@ public class GamesController {
             default:
                 return new NoOption(this.commandLineUI);
         }
+    }
+
+    public CommandLineUI getCommandLineUI() {
+        return this.commandLineUI;
     }
 }

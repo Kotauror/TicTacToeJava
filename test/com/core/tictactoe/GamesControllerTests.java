@@ -22,7 +22,7 @@ public class GamesControllerTests {
 
     @Test
     void gameCreatesAnInstanceOfDisplayer() {
-        assertThat(gamesController.commandLineUI, isA(CommandLineUI.class));
+        assertThat(gamesController.getCommandLineUI(), isA(CommandLineUI.class));
     }
 
     @Test
