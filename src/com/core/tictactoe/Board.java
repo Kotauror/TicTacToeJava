@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Board {
 
-    ArrayList places;
+    private ArrayList places;
 
     Board() {
         this.places = new ArrayList<Integer>();
@@ -41,6 +41,10 @@ public class Board {
 
     Object valueAtPosition(int position) {
         return this.places.get(position);
+    }
+
+    ArrayList getPlaces() {
+        return this.places;
     }
 
     boolean isWon() {

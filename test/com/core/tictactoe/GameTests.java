@@ -31,7 +31,7 @@ public class GameTests {
         assertFalse(board.isTie());
         assertEquals("X", board.winnerSign());
         assertEquals("Y", game.active.sign);
-        assertEquals(asList("X", "Y", "X", "Y", "X", "Y", "X", 7, 8), board.places);
+        assertEquals(asList("X", "Y", "X", "Y", "X", "Y", "X", 7, 8), board.getPlaces());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class GameTests {
 
         assertFalse(board.isWon());
         assertTrue(board.isTie());
-        assertEquals(asList("Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"), board.places);
+        assertEquals(asList("Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"), board.getPlaces());
         assertEquals("none", board.winnerSign());
     }
 }

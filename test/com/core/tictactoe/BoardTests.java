@@ -22,7 +22,7 @@ public class BoardTests {
 
     @Test
     void itIsCreatedWithPlacesArray() {
-        assertThat(board.places,isA(ArrayList.class));
+        assertThat(board.getPlaces(),isA(ArrayList.class));
     }
 
     @Test
