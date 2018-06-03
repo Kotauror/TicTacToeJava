@@ -18,9 +18,9 @@ public class CommandLineUI {
 
     protected void showBoard(Board board) {
         output.println();
-        output.println(board.places.get(0) + " | " + board.places.get(1) + " | " + board.places.get(2));
-        output.println(board.places.get(3) + " | " + board.places.get(4) + " | " + board.places.get(5));
-        output.println(board.places.get(6) + " | " + board.places.get(7) + " | " + board.places.get(8));
+        output.println(board.valueAtPosition(0) + " | " + board.valueAtPosition(1) + " | " + board.valueAtPosition(2));
+        output.println(board.valueAtPosition(3) + " | " + board.valueAtPosition(4) + " | " + board.valueAtPosition(5));
+        output.println(board.valueAtPosition(6) + " | " + board.valueAtPosition(7) + " | " + board.valueAtPosition(8));
         output.println();
     }
 
