@@ -30,8 +30,7 @@ public class GamesController {
     }
 
     private void playANewGame() {
-        Game newGame = new Game(this.commandLineUI, new Board());
-        this.game = newGame;
-        newGame.run();
+        this.game = new Game(this.commandLineUI, new Board());
+        this.game.run();
     }
 }
