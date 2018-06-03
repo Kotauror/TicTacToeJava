@@ -20,15 +20,16 @@ public class GamesController {
         }
     }
 
-    private GameOption getUserOption() {
+    protected GameOption getUserOption() {
         this.commandLineUI.gamingMenu();
         String userInput = this.commandLineUI.getUserInput();
-        if (userInput.equals(HUMAN_VS_HUMAN)) {
-            return new RunGameOption();
-        } else if (userInput.equals(EXIT)) {
-            return new ExitGameOption();
-        } else {
-            return new NoOption();
+        switch (userInput) {
+            case HUMAN_VS_HUMAN:
+                return new RunGameOption();
+            case EXIT:
+                return new ExitGameOption();
+            default:
+                return new NoOption();
         }
     }
 }
