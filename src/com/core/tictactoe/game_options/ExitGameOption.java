@@ -1,6 +1,4 @@
-package com.core.tictactoe;
-
-import com.core.tictactoe.GameOption;
+package com.core.tictactoe.game_options;
 
 public class ExitGameOption extends GameOption {
 

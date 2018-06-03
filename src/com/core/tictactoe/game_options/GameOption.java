@@ -1,4 +1,4 @@
-package com.core.tictactoe;
+package com.core.tictactoe.game_options;
 
 public abstract class GameOption {
 

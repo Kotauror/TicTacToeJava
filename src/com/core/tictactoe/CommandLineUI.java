@@ -9,9 +9,9 @@ public class CommandLineUI {
     PrintStream output;
     Scanner input;
 
-    CommandLineUI(){}
+    public CommandLineUI(){}
 
-    CommandLineUI(PrintStream output, InputStream input){
+    public CommandLineUI(PrintStream output, InputStream input){
         this.output = output;
         this.input = new Scanner(input);
     }
@@ -47,6 +47,10 @@ public class CommandLineUI {
     private boolean isNumeric(String position) {
         String regex = "[0-8]";
         return position.matches(regex);
+    }
+
+    public void noSuchOption() {
+        output.println("There is no such option");
     }
 
     int getPosition(Board board, Player player) {

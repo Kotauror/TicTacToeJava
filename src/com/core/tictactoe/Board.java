@@ -7,7 +7,7 @@ public class Board {
 
     private ArrayList places;
 
-    Board() {
+    public Board() {
         this.places = new ArrayList<Integer>();
         fillPlaces();
     }

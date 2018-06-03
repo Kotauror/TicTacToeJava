@@ -1,5 +1,9 @@
 package com.core.tictactoe;
 
+import com.core.tictactoe.game_options.ExitGameOption;
+import com.core.tictactoe.game_options.GameOption;
+import com.core.tictactoe.game_options.NoOption;
+import com.core.tictactoe.game_options.RunGameOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +40,7 @@ public class GamesControllerTests {
         GameOption option = gamesController.getUserOption();
         assertThat(option, instanceOf(ExitGameOption.class));
     }
+
     @Test
     void getUserOptionReturnsNoOption() {
         String[] fakeUsersInputs = {"3"};
@@ -43,24 +48,4 @@ public class GamesControllerTests {
         GameOption option = gamesController.getUserOption();
         assertThat(option, instanceOf(NoOption.class));
     }
-
-//    @Test
-//    void option1PlaysAGame() {
-//        String[] fakeUsersInputs = {"1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "2"};
-//        gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
-//
-//        gamesController.run();
-//
-//        assertTrue(gamesController.game.board.isWon());
-//    }
-//
-//    @Test
-//    void option2ExitsTheProgram() {
-//        String[] fakeUsersInputs = {"2"};
-//        gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
-//
-//        gamesController.run();
-//
-//        assertNull(gamesController.game);
-//    }
 }
