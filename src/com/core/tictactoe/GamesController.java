@@ -12,11 +12,11 @@ public class GamesController {
     private static final String HUMAN_VS_HUMAN = "1";
     private static final String EXIT = "2";
 
-    GamesController(CommandLineUI commandLineUI) {
+    public GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
     }
 
-    void run() {
+    public void run() {
         while (true) {
             GameOption userOption = this.getUserOption();
             userOption.run();
