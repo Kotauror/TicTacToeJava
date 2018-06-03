@@ -29,7 +29,7 @@ public class CommandLineUI {
     }
 
     protected void askForPosition(Player player) {
-        output.println(player.sign + ", pick a position");
+        output.println(player.getSign() + ", pick a position");
     }
 
     protected void announceWinner(Board board) {
