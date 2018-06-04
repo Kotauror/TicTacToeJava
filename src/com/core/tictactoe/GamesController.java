@@ -18,11 +18,10 @@ public class GamesController {
     }
 
     public void run() {
-        boolean runProgram = true;
-        while (runProgram) {
+        while (true) {
             GameOption userOption = this.getUserOption();
             userOption.run();
-            if (userOption instanceof ExitGameOption) runProgram = false;
+            if (userOption instanceof ExitGameOption) break;
         }
     }
 
