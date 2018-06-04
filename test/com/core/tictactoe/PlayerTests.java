@@ -15,6 +15,6 @@ public class PlayerTests {
 
     @Test
     void playerHasSign() {
-        assertEquals(player.sign, "X");
+        assertEquals(player.getSign(), "X");
     }
 }

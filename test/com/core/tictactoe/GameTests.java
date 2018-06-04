@@ -30,7 +30,7 @@ public class GameTests {
         assertTrue(board.isWon());
         assertFalse(board.isTie());
         assertEquals("X", board.winnerSign());
-        assertEquals("Y", game.active.sign);
+        assertEquals("Y", game.active.getSign());
         assertEquals(asList("X", "Y", "X", "Y", "X", "Y", "X", 7, 8), board.getPlaces());
     }
 

@@ -7,14 +7,14 @@ public class Game {
     Player passive;
     CommandLineUI commandLineUI;
 
-    Game(CommandLineUI commandLineUI, Board board) {
+    public Game(CommandLineUI commandLineUI, Board board) {
         this.commandLineUI = commandLineUI;
         this.board = board;
         this.active = new Player("X");
         this.passive = new Player("Y");
     }
 
-     void run() {
+     public void run() {
         this.commandLineUI.greetUsers();
         while (!this.board.isWon() && !this.board.isTie()) {
             this.playTurn();

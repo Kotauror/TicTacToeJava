@@ -7,7 +7,7 @@ public class Board {
 
     private ArrayList places;
 
-    Board() {
+    public Board() {
         this.places = new ArrayList<Integer>();
         fillPlaces();
     }
@@ -36,7 +36,7 @@ public class Board {
     }
 
     void putSignOnBoard(Player player, int position) {
-        this.places.set(position, player.sign);
+        this.places.set(position, player.getSign());
     }
 
     Object valueAtPosition(int position) {

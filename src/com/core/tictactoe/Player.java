@@ -2,9 +2,13 @@ package com.core.tictactoe;
 
 public class Player {
 
-    public String sign;
+    private String sign;
 
     Player(String sign){
         this.sign = sign;
+    }
+
+    public String getSign() {
+        return this.sign;
     }
 }

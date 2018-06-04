@@ -1,36 +1,49 @@
 package com.core.tictactoe;
 
+import com.core.tictactoe.game_options.ExitGameOption;
+import com.core.tictactoe.game_options.GameOption;
+import com.core.tictactoe.game_options.NoOption;
+import com.core.tictactoe.game_options.RunGameOption;
+
 public class GamesController {
 
-    CommandLineUI commandLineUI;
-    Game game;
+    private CommandLineUI commandLineUI;
 
     private static final String HUMAN_VS_HUMAN = "1";
     private static final String EXIT = "2";
+    private String gameStatus;
 
-    GamesController(CommandLineUI commandLineUI) {
+    public GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
-        this.game = null;
     }
 
-    void run() {
-        boolean exitGame = false;
-        while (!exitGame) {
-            String userOption = this.getUserOption();
-            if (userOption.equals(HUMAN_VS_HUMAN)) {
-                this.playANewGame();
-            } else if (userOption.equals(EXIT))
-                exitGame = true;
+    public void run() {
+        while (true) {
+            GameOption userOption = this.getUserOption();
+            userOption.run();
+            if (userOption instanceof ExitGameOption) break;
         }
     }
 
-    private String getUserOption() {
+    protected GameOption getUserOption() {
         this.commandLineUI.gamingMenu();
-        return this.commandLineUI.getUserInput();
+        String userInput = this.commandLineUI.getUserInput();
+        switch (userInput) {
+            case HUMAN_VS_HUMAN:
+                this.gameStatus = "played";
+                return new RunGameOption(this.commandLineUI);
+            case EXIT:
+                return new ExitGameOption();
+            default:
+                return new NoOption(this.commandLineUI);
+        }
     }
 
-    private void playANewGame() {
-        this.game = new Game(this.commandLineUI, new Board());
-        this.game.run();
+    public CommandLineUI getCommandLineUI() {
+        return this.commandLineUI;
+    }
+
+    public String getGameStatus() {
+        return this.gameStatus;
     }
 }
