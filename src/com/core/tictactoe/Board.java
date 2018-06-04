@@ -21,14 +21,14 @@ public class Board {
             {2, 4, 6}
     };
 
-    private boolean hasFreePlaces() {
+    private boolean hasNoFreePlaces() {
         String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.length; i++) {
             if (Arrays.asList(initialPlaces).contains(this.places[i]))
                 numberOfEmptyPlaces += 1;
         }
-        return numberOfEmptyPlaces != 0;
+        return numberOfEmptyPlaces == 0;
     }
 
     void putSignOnBoard(Player player, int position) {
@@ -53,7 +53,7 @@ public class Board {
     }
 
     boolean isTie() {
-        return !this.isWon() && !this.hasFreePlaces();
+        return !this.isWon() && this.hasNoFreePlaces();
     }
 
     boolean isNonTaken(String position){
