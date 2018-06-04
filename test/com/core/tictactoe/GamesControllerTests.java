@@ -57,6 +57,6 @@ public class GamesControllerTests {
 
         gamesController.run();
 
-        assertEquals("played", gamesController.gameStatus);
+        assertEquals("played", gamesController.getGameStatus());
     }
 }

@@ -11,7 +11,7 @@ public class GamesController {
 
     private static final String HUMAN_VS_HUMAN = "1";
     private static final String EXIT = "2";
-    public String gameStatus;
+    private String gameStatus;
 
     public GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
@@ -42,5 +42,9 @@ public class GamesController {
 
     public CommandLineUI getCommandLineUI() {
         return this.commandLineUI;
+    }
+
+    public String getGameStatus() {
+        return this.gameStatus;
     }
 }
