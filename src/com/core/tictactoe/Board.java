@@ -7,7 +7,7 @@ public class Board {
     private String[] places;
 
     public Board() {
-        this.places = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        this.places = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     }
 
     private final int [][] winningPositions = {
@@ -21,14 +21,8 @@ public class Board {
             {2, 4, 6}
     };
 
-    private boolean hasNoFreePlaces() {
-        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        int numberOfEmptyPlaces = 0;
-        for(int i = 0; i < this.places.length; i++) {
-            if (Arrays.asList(initialPlaces).contains(this.places[i]))
-                numberOfEmptyPlaces += 1;
-        }
-        return numberOfEmptyPlaces == 0;
+    public String[] getPlaces() {
+        return this.places;
     }
 
     void putSignOnBoard(Player player, int position) {
@@ -37,10 +31,6 @@ public class Board {
 
     String valueAtPosition(int position) {
         return this.places[position];
-    }
-
-    public String[] getPlaces() {
-        return this.places;
     }
 
     boolean isWon() {
@@ -67,6 +57,15 @@ public class Board {
             if (numberOfMatchesInSet == set.length) return matcher.toString();
         }
         return "none";
+    }
+
+    private boolean hasNoFreePlaces() {
+        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        int numberOfEmptyPlaces = 0;
+        for (String place : this.places) {
+            if (Arrays.asList(initialPlaces).contains(place)) numberOfEmptyPlaces += 1;
+        }
+        return numberOfEmptyPlaces == 0;
     }
 
     private int countMatchesInSet(int[] set, Object matcher) {
