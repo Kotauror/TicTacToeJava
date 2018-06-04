@@ -2,9 +2,7 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-import static org.hamcrest.CoreMatchers.isA;
-import static org.hamcrest.MatcherAssert.assertThat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTests {
@@ -14,34 +12,29 @@ public class BoardTests {
     private Player player2;
 
     @BeforeEach
-    void instantiateBoard() {
+    void instantiate() {
         board = new Board();
         player = new Player("X");
         player2 = new Player("Y");
     }
 
     @Test
-    void itIsCreatedWithPlacesArray() {
-        assertThat(board.getPlaces(),isA(ArrayList.class));
-    }
-
-    @Test
-    void itHasIntegersFrom0to8InPlacesWhenCreated() {
+    void itHasStringsFrom0to8InPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
-            assertEquals(i, board.valueAtPosition(i));
+            assertEquals(String.valueOf(i), board.valueAtPosition(i));
         }
     }
 
     @Test
-    void itReturnsStringValueFromPosition() {
+    void itReturnsStringSingFromPosition() {
         board.putSignOnBoard(player, 0);
 
         assertEquals("X", board.valueAtPosition(0));
     }
 
     @Test
-    void itReturnsIntegerValueFromPosition() {
-        assertEquals(5, board.valueAtPosition(5));
+    void itReturnsStringValueFromPosition() {
+        assertEquals("5", board.valueAtPosition(5));
     }
 
     @Test

@@ -1,7 +1,7 @@
 package com.core.tictactoe;
 
 import org.junit.jupiter.api.Test;
-import static java.util.Arrays.asList;
+
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +31,8 @@ public class GameTests {
         assertFalse(board.isTie());
         assertEquals("X", board.winnerSign());
         assertEquals("Y", game.active.getSign());
-        assertEquals(asList("X", "Y", "X", "Y", "X", "Y", "X", 7, 8), board.getPlaces());
+        String[] expectedArray = {"X", "Y", "X", "Y", "X", "Y", "X", "7", "8"};
+        assertArrayEquals(expectedArray, board.getPlaces());
     }
 
     @Test
@@ -44,7 +45,8 @@ public class GameTests {
 
         assertFalse(board.isWon());
         assertTrue(board.isTie());
-        assertEquals(asList("Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"), board.getPlaces());
+        String[] expectedArray = {"Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"};
+        assertArrayEquals(expectedArray, board.getPlaces());
         assertEquals("none", board.winnerSign());
     }
 }

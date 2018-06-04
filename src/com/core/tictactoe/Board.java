@@ -1,15 +1,13 @@
 package com.core.tictactoe;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 public class Board {
 
-    private ArrayList places;
+    private String[] places;
 
     public Board() {
-        this.places = new ArrayList<Integer>();
-        fillPlaces();
+        this.places = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8"};
     }
 
     private final int [][] winningPositions = {
@@ -23,27 +21,25 @@ public class Board {
             {2, 4, 6}
     };
 
-    private void fillPlaces() {
-        Collections.addAll(this.places, 0, 1, 2, 3, 4, 5, 6, 7, 8);
-    }
-
     private boolean hasFreePlaces() {
+        String[] initialPlaces = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
         int numberOfEmptyPlaces = 0;
-        for(int i = 0; i < this.places.size(); i++) {
-            if (this.places.contains(i)) numberOfEmptyPlaces += 1;
+        for(int i = 0; i < this.places.length; i++) {
+            if (Arrays.asList(initialPlaces).contains(this.places[i]))
+                numberOfEmptyPlaces += 1;
         }
         return numberOfEmptyPlaces != 0;
     }
 
     void putSignOnBoard(Player player, int position) {
-        this.places.set(position, player.getSign());
+        this.places[position] = player.getSign();
     }
 
-    Object valueAtPosition(int position) {
-        return this.places.get(position);
+    String valueAtPosition(int position) {
+        return this.places[position];
     }
 
-    ArrayList getPlaces() {
+    public String[] getPlaces() {
         return this.places;
     }
 
@@ -61,7 +57,7 @@ public class Board {
     }
 
     boolean isNonTaken(String position){
-        return this.places.contains(Integer.parseInt(position));
+        return Arrays.asList(this.places).contains(position);
     }
 
     String winnerSign() {
