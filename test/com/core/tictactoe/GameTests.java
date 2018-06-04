@@ -2,22 +2,11 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.isA;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTests {
 
     private static Game game;
-
-    @Test
-    void gameHasInstancesOfCLUIBoardAndPlayers() {
-        game = new Game(new CommandLineUI(System.out, System.in), new Board());
-        assertThat(game.active, isA(Player.class));
-        assertThat(game.passive, isA(Player.class));
-        assertThat(game.board, isA(Board.class));
-        assertThat(game.commandLineUI, isA(CommandLineUI.class));
-    }
 
     @Test
     void playsAWinningGame() {

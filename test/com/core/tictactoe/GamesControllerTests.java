@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,11 +18,6 @@ public class GamesControllerTests {
     @BeforeEach
     void instantiate() {
         gamesController = new GamesController(new CommandLineUI(System.out, System.in));
-    }
-
-    @Test
-    void gameCreatesAnInstanceOfDisplayer() {
-        assertThat(gamesController.getCommandLineUI(), isA(CommandLineUI.class));
     }
 
     @Test
