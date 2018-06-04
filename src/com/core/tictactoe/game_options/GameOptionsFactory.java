@@ -10,7 +10,7 @@ public class GameOptionsFactory {
     private static final String HUMAN_VS_HUMAN = "1";
     private static final String EXIT = "2";
 
-    public GameOptionsFactory() {}
+    private GameOptionsFactory() {}
 
     static {
         gameOptions = new HashMap();
@@ -19,10 +19,6 @@ public class GameOptionsFactory {
     }
 
     public static GameOption get(String type) {
-        if (gameOptions.get(type) != null) {
-            return gameOptions.get(type);
-        } else {
-            return new NoOption();
-        }
+        return (gameOptions.get(type) != null) ? gameOptions.get(type) : new NoOption();
     }
 }
