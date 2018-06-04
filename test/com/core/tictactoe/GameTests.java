@@ -21,7 +21,7 @@ public class GameTests {
 
     @Test
     void playsAWinningGame() {
-        String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board board = new Board();
         game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board);
 
@@ -31,13 +31,13 @@ public class GameTests {
         assertFalse(board.isTie());
         assertEquals("X", board.winnerSign());
         assertEquals("Y", game.active.getSign());
-        String[] expectedArray = {"X", "Y", "X", "Y", "X", "Y", "X", "7", "8"};
+        String[] expectedArray = {"X", "Y", "X", "Y", "X", "Y", "X", "8", "9"};
         assertArrayEquals(expectedArray, board.getPlaces());
     }
 
     @Test
     void playsATieGame() {
-        String[] fakeUsersInputs = {"1", "0", "3", "2", "4", "5", "6", "7", "8"};
+        String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         Board board = new Board();
         game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board);
 

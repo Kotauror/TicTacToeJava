@@ -45,7 +45,7 @@ public class CommandLineUI {
     }
 
     private boolean isNumeric(String position) {
-        String regex = "[0-8]";
+        String regex = "[1-9]";
         return position.matches(regex);
     }
 

@@ -19,35 +19,35 @@ public class BoardTests {
     }
 
     @Test
-    void itHasStringsFrom0to8InPlacesWhenCreated() {
+    void itHasStringsFrom1to9InPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
-            assertEquals(String.valueOf(i), board.valueAtPosition(i));
+            assertEquals(String.valueOf(i+1), board.valueAtPosition(i));
         }
     }
 
     @Test
     void itReturnsStringSingFromPosition() {
-        board.putSignOnBoard(player, 0);
+        board.putSignOnBoard(player, 1);
 
         assertEquals("X", board.valueAtPosition(0));
     }
 
     @Test
     void itReturnsStringValueFromPosition() {
-        assertEquals("5", board.valueAtPosition(5));
+        assertEquals("6", board.valueAtPosition(5));
     }
 
     @Test
     void isNotATie() {
-        board.putSignOnBoard(player, 0);
+        board.putSignOnBoard(player, 1);
 
         assertFalse(board.isTie());
     }
 
     @Test
     void isATie() {
-        int[] array1 = {1, 3, 4, 6, 8};
-        int[] array2 = {0, 2, 5, 7};
+        int[] array1 = {2, 4, 5, 7, 9};
+        int[] array2 = {1, 3, 6, 8};
         setupBoard(player, player2, array1, array2);
 
         assertTrue(board.isTie());
@@ -55,35 +55,28 @@ public class BoardTests {
 
     @Test
     void doesNotHaveAWin() {
-        playMoves(player, 0, 5, 2);
+        playMoves(player, 1, 6, 3);
 
         assertFalse(board.isWon());
     }
 
     @Test
-    void hasWinFor0_1_2() {
-        playMoves(player, 0, 1, 2);
+    void hasWinFor1_2_3() {
+        playMoves(player, 1, 2, 3);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void hasWinFor3_4_5() {
-        playMoves(player, 3, 4, 5);
+    void hasWinFor4_5_6() {
+        playMoves(player, 4, 5, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void hasWinFor6_7_8() {
-        playMoves(player, 6, 7, 8);
-
-        assertTrue(board.isWon());
-    }
-
-    @Test
-    void hasWinFor0_3_6() {
-        playMoves(player, 0, 3, 6);
+    void hasWinFor7_8_9() {
+        playMoves(player, 7, 8, 9);
 
         assertTrue(board.isWon());
     }
@@ -103,22 +96,29 @@ public class BoardTests {
     }
 
     @Test
-    void hasWinFor0_4_8() {
-        playMoves(player, 0, 4, 8);
+    void hasWinFor3_6_9() {
+        playMoves(player, 3, 6, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
-    void hasWinFor2_4_6() {
-        playMoves(player, 2, 4, 6);
+    void hasWinFor1_5_9() {
+        playMoves(player, 1, 5, 9);
+
+        assertTrue(board.isWon());
+    }
+
+    @Test
+    void hasWinFor3_5_7() {
+        playMoves(player, 3, 5, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void itChangesWinnerSignWhenGameIsWon() {
-        playMoves(player, 2, 4, 6);
+        playMoves(player, 3, 5, 7);
 
         board.isWon();
         assertEquals("X", board.winnerSign());

@@ -7,7 +7,7 @@ public class Board {
     private String[] places;
 
     public Board() {
-        this.places = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        this.places = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     }
 
     private final int [][] winningPositions = {
@@ -22,7 +22,7 @@ public class Board {
     };
 
     private boolean hasFreePlaces() {
-        String[] initialPlaces = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         int numberOfEmptyPlaces = 0;
         for(int i = 0; i < this.places.length; i++) {
             if (Arrays.asList(initialPlaces).contains(this.places[i]))
@@ -32,7 +32,7 @@ public class Board {
     }
 
     void putSignOnBoard(Player player, int position) {
-        this.places[position] = player.getSign();
+        this.places[position-1] = player.getSign();
     }
 
     String valueAtPosition(int position) {
