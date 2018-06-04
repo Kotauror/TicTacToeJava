@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GamesControllerTests {
 
@@ -47,5 +48,15 @@ public class GamesControllerTests {
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
         GameOption option = gamesController.getUserOption();
         assertThat(option, instanceOf(NoOption.class));
+    }
+
+    @Test
+    void runsTheWholeGame() {
+        String[] fakeUsersInputs = {"1", "0", "1", "2", "3", "4", "5", "6", "2"};
+        gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
+
+        gamesController.run();
+
+        assertEquals("played", gamesController.gameStatus);
     }
 }

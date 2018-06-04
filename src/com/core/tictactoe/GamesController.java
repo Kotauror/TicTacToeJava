@@ -11,15 +11,18 @@ public class GamesController {
 
     private static final String HUMAN_VS_HUMAN = "1";
     private static final String EXIT = "2";
+    public String gameStatus;
 
     public GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
     }
 
     public void run() {
-        while (true) {
+        boolean runThroughOptions = true;
+        while (runThroughOptions) {
             GameOption userOption = this.getUserOption();
             userOption.run();
+            if (userOption instanceof ExitGameOption) runThroughOptions = false;
         }
     }
 
@@ -28,6 +31,7 @@ public class GamesController {
         String userInput = this.commandLineUI.getUserInput();
         switch (userInput) {
             case HUMAN_VS_HUMAN:
+                this.gameStatus = "played";
                 return new RunGameOption(this.commandLineUI);
             case EXIT:
                 return new ExitGameOption();

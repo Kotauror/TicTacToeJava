@@ -4,6 +4,5 @@ public class ExitGameOption extends GameOption {
 
     @Override
     public void run() {
-        System.exit(0);
     }
 }
