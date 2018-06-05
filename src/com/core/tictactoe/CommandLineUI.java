@@ -48,7 +48,7 @@ public class CommandLineUI {
         return input.nextLine();
     }
 
-    int getPosition(Board board, Player player) {
+    int getPositionFromUser(Board board, Player player) {
         while (true) {
            this.askForPosition(player);
            String position = this.getUserInput();

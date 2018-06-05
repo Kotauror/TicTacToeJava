@@ -34,7 +34,7 @@ public class GameTests {
     void playsAWinningGame() {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board, new Player("X"), new Player("Y"));
+        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
 
         game.run();
 
@@ -50,7 +50,7 @@ public class GameTests {
     void playsATieGame() {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board, new Player("X"), new Player("Y"));
+        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
 
         game.run();
 

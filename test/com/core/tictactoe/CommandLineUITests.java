@@ -86,7 +86,7 @@ public class CommandLineUITests {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
-        assertEquals(1, commandLineUI.getPosition(board, player));
+        assertEquals(1, commandLineUI.getPositionFromUser(board, player));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class CommandLineUITests {
         String[] fakeUsersInputs = {"10", "5"};
         StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(System.out, System.in, fakeUsersInputs);
 
-        Object userPosition = fakeCommandLineUI.getPosition(new Board(), new Player("X"));
+        Object userPosition = fakeCommandLineUI.getPositionFromUser(new Board(), new Player("X"));
 
         assertTrue(userPosition.toString().contains("5"));
     }

@@ -36,7 +36,12 @@ public class Game {
 
     private void playTurn() {
         this.commandLineUI.showBoard(this.board);
-        int position = this.commandLineUI.getPosition(this.board, this.active);
+        int position = 0;
+        if (this.active.getClass() == HumanPlayer.class) {
+            position = this.commandLineUI.getPositionFromUser(this.board, this.active);
+        } else {
+            // position = this.active.playMove(); <--- computer playing using minmax
+        }
         this.board.putSignOnBoard(this.active, position);
         this.switchPlayers();
     }
