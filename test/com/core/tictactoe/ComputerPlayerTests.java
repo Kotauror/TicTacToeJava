@@ -19,4 +19,11 @@ public class ComputerPlayerTests {
     void playerHasSign() {
         assertEquals(computerPlayer.getSign(), "X");
     }
+
+    @Test
+    void returnsBestMove() {
+        Board board = new Board();
+        assertEquals(0, computerPlayer.playMove(board, "Y"));
+    }
+
 }
