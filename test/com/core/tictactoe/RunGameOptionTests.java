@@ -14,6 +14,6 @@ public class RunGameOptionTests {
 
         runGameOption.run(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
-        assertTrue(runGameOption.getGame().board.isWon());
+        assertTrue(runGameOption.getGame().getBoard().isWon());
     }
 }

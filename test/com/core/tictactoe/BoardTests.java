@@ -21,7 +21,7 @@ public class BoardTests {
     @Test
     void itHasStringsFrom1to9InPlacesWhenCreated() {
         for(int i = 0; i < 9; i++) {
-            assertEquals(String.valueOf(i+1), board.valueAtPosition(i));
+            assertEquals(String.valueOf(i+1), board.valueAtIndex(i));
         }
     }
 
@@ -29,12 +29,12 @@ public class BoardTests {
     void itReturnsStringSingFromPosition() {
         board.putSignOnBoard(player, 1);
 
-        assertEquals("X", board.valueAtPosition(0));
+        assertEquals("X", board.valueAtIndex(0));
     }
 
     @Test
     void itReturnsStringValueFromPosition() {
-        assertEquals("6", board.valueAtPosition(5));
+        assertEquals("6", board.valueAtIndex(5));
     }
 
     @Test

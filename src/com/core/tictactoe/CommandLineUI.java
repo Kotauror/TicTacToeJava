@@ -22,9 +22,9 @@ public class CommandLineUI {
 
     void showBoard(Board board) {
         output.println();
-        output.println(board.valueAtPosition(0) + " | " + board.valueAtPosition(1) + " | " + board.valueAtPosition(2));
-        output.println(board.valueAtPosition(3) + " | " + board.valueAtPosition(4) + " | " + board.valueAtPosition(5));
-        output.println(board.valueAtPosition(6) + " | " + board.valueAtPosition(7) + " | " + board.valueAtPosition(8));
+        output.println(board.valueAtIndex(0) + " | " + board.valueAtIndex(1) + " | " + board.valueAtIndex(2));
+        output.println(board.valueAtIndex(3) + " | " + board.valueAtIndex(4) + " | " + board.valueAtIndex(5));
+        output.println(board.valueAtIndex(6) + " | " + board.valueAtIndex(7) + " | " + board.valueAtIndex(8));
         output.println();
     }
 

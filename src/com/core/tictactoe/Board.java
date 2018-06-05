@@ -25,17 +25,17 @@ public class Board {
         return this.places;
     }
 
-    void putSignOnBoard(Player player, int position) {
-        this.places[position-1] = player.getSign();
+    void putSignOnBoard(Player player, int userNumber) {
+        this.places[userNumber-1] = player.getSign();
     }
 
-    String valueAtPosition(int position) {
-        return this.places[position];
+    String valueAtIndex(int index) {
+        return this.places[index];
     }
 
     boolean isWon() {
         for (int[] set : winningPositions) {
-            Object matcher = this.valueAtPosition(set[0]);
+            String matcher = this.valueAtIndex(set[0]);
             int numberOfMatchesInSet = countMatchesInSet(set, matcher);
             if (numberOfMatchesInSet == set.length) return true;
         }
@@ -52,9 +52,9 @@ public class Board {
 
     String winnerSign() {
         for (int[] set : winningPositions) {
-            Object matcher = this.valueAtPosition(set[0]);
+            String matcher = this.valueAtIndex(set[0]);
             int numberOfMatchesInSet = countMatchesInSet(set, matcher);
-            if (numberOfMatchesInSet == set.length) return matcher.toString();
+            if (numberOfMatchesInSet == set.length) return matcher;
         }
         return "none";
     }
@@ -68,10 +68,10 @@ public class Board {
         return numberOfEmptyPlaces == 0;
     }
 
-    private int countMatchesInSet(int[] set, Object matcher) {
+    private int countMatchesInSet(int[] set, String matcher) {
         int numberOfMatchedPairs = 0;
         for (int i = 0; i < set.length; i++) {
-            if (this.valueAtPosition(set[i]).equals(matcher)) numberOfMatchedPairs ++;
+            if (this.valueAtIndex(set[i]).equals(matcher)) numberOfMatchedPairs ++;
         }
         return numberOfMatchedPairs;
     }

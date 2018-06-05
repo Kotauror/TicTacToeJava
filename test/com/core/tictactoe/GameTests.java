@@ -1,12 +1,34 @@
 package com.core.tictactoe;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTests {
 
     private static Game game;
+
+    @BeforeEach
+    void instantiate() {
+        game = new Game(new CommandLineUI(System.out, System.in), new Board());
+    }
+
+    @Test
+    public void returnsBoard() {
+        assertThat(game.getBoard(), instanceOf(Board.class));
+    }
+    @Test
+    public void returnsActivePlayer() {
+        assertEquals("X", game.getActivePlayer().getSign());
+    }
+
+    @Test
+    public void returnsPassivePlayer() {
+        assertEquals("Y", game.getPassivePlayer().getSign());
+    }
 
     @Test
     void playsAWinningGame() {
@@ -19,7 +41,7 @@ public class GameTests {
         assertTrue(board.isWon());
         assertFalse(board.isTie());
         assertEquals("X", board.winnerSign());
-        assertEquals("Y", game.active.getSign());
+        assertEquals("Y", game.getActivePlayer().getSign());
         String[] expectedArray = {"X", "Y", "X", "Y", "X", "Y", "X", "8", "9"};
         assertArrayEquals(expectedArray, board.getPlaces());
     }
