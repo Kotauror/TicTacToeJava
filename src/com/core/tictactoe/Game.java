@@ -7,11 +7,11 @@ public class Game {
     private Player passive;
     private CommandLineUI commandLineUI;
 
-    public Game(CommandLineUI commandLineUI, Board board) {
+    public Game(CommandLineUI commandLineUI, Board board, Player playerOne, Player playerTwo) {
         this.commandLineUI = commandLineUI;
         this.board = board;
-        this.active = new Player("X");
-        this.passive = new Player("Y");
+        this.active = playerOne;
+        this.passive =  playerTwo;
     }
 
      public void run() {

@@ -1,5 +1,7 @@
 package com.core.tictactoe.game_options;
 
+import com.core.tictactoe.HumanPlayer;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ public class GameOptionsFactory {
 
     static {
         gameOptions = new HashMap();
-        gameOptions.put(HUMAN_VS_HUMAN, new RunGameOption());
+        gameOptions.put(HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("Y")));
         gameOptions.put(EXIT, new ExitGameOption());
     }
 
