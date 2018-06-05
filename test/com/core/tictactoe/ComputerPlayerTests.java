@@ -21,11 +21,11 @@ public class ComputerPlayerTests {
     }
 
     @Test
-    void returnsWinningPositionWhenThereIsOne() {
+    void returnsBestMoveInTheFirstTurn() {
         Board board = new Board();
         Player player1 = new Player("X");
-        board.putSignOnBoard(player1.getSign(), 1);
-        board.putSignOnBoard(player1.getSign(), 4);
-        assertEquals(7, computerPlayer.playMove(board));
+        board.putSignOnBoard(player1.getSign(), 7);
+        board.putSignOnBoard(player1.getSign(), 8);
+        assertEquals(9, computerPlayer.playMove(board, "X", "Y"));
     }
 }
