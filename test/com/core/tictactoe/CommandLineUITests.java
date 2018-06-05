@@ -101,10 +101,10 @@ public class CommandLineUITests {
 
     private void setUpBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for (int anArraySign1 : arraySign1) {
-            board.putSignOnBoard(player, anArraySign1);
+            board.putSignOnBoard(player.getSign(), anArraySign1);
         }
         for (int anArraySign2 : arraySign2) {
-            board.putSignOnBoard(player2, anArraySign2);
+            board.putSignOnBoard(player2.getSign(), anArraySign2);
         }
     }
 }

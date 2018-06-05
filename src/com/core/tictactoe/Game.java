@@ -42,7 +42,7 @@ public class Game {
         } else {
             // position = this.active.playMove(this.board, this.passive.getSign()); <--- computer playing using minmax
         }
-        this.board.putSignOnBoard(this.active, position);
+        this.board.putSignOnBoard(this.active.getSign(), position);
         this.switchPlayers();
     }
 

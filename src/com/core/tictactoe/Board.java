@@ -26,8 +26,8 @@ public class Board {
         return this.places;
     }
 
-    void putSignOnBoard(Player player, int userNumber) {
-        this.places[userNumber-1] = player.getSign();
+    void putSignOnBoard(String sign, int userNumber) {
+        this.places[userNumber-1] = sign;
     }
 
     String valueAtIndex(int index) {
