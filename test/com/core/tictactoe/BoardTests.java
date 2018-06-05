@@ -3,6 +3,8 @@ package com.core.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTests {
@@ -136,6 +138,18 @@ public class BoardTests {
         board.putSignOnBoard(player, 6);
 
         assertFalse(board.isNonTaken("6"));
+    }
+
+    @Test
+    void returnsArrayListOfFreePlaces() {
+        Player player = new Player("X");
+        board.putSignOnBoard(player, 1);
+        ArrayList<String> freePlaces = new ArrayList<String>();
+        for(int i = 2; i < 10; i++) {
+            freePlaces.add(Integer.toString(i));
+        }
+
+        assertEquals(freePlaces, board.getFreePlaces());
     }
 
     private void playMoves(Player player, int a, int b, int c) {

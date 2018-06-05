@@ -1,5 +1,6 @@
 package com.core.tictactoe;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
@@ -57,6 +58,17 @@ public class Board {
             if (numberOfMatchesInSet == set.length) return matcher;
         }
         return "none";
+    }
+
+    ArrayList<String> getFreePlaces() {
+        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ArrayList<String> freePlaces = new ArrayList<String>();
+        for(int i=0; i < this.places.length; i++) {
+            if (Arrays.asList(initialPlaces).contains(this.places[i])) {
+                freePlaces.add(this.places[i]);
+            }
+        }
+        return freePlaces;
     }
 
     private boolean hasNoFreePlaces() {
