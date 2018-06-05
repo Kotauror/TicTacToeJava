@@ -4,7 +4,7 @@ public class Player {
 
     private String sign;
 
-    Player(String sign){
+    public Player(String sign){
         this.sign = sign;
     }
 
