@@ -2,10 +2,10 @@ package com.core.tictactoe;
 
 public class Game {
 
-    Board board;
-    Player active;
-    Player passive;
-    CommandLineUI commandLineUI;
+    private Board board;
+    private Player active;
+    private Player passive;
+    private CommandLineUI commandLineUI;
 
     public Game(CommandLineUI commandLineUI, Board board) {
         this.commandLineUI = commandLineUI;
@@ -20,6 +20,18 @@ public class Game {
             this.playTurn();
         }
         this.postGame();
+    }
+
+    Board getBoard() {
+        return this.board;
+    }
+
+    Player getActivePlayer() {
+        return this.active;
+    }
+
+    Player getPassivePlayer() {
+        return this.passive;
     }
 
     private void playTurn() {
@@ -39,4 +51,5 @@ public class Game {
         this.commandLineUI.showBoard(this.board);
         this.commandLineUI.announceWinner(this.board);
     }
+
 }

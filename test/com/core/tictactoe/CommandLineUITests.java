@@ -41,7 +41,7 @@ public class CommandLineUITests {
     void showsTheBoard() {
         commandLineUI.showBoard(board);
 
-        assertTrue(output.toString().contains("0 | 1 | 2\n3 | 4 | 5\n6 | 7 | 8"));
+        assertTrue(output.toString().contains("1 | 2 | 3\n4 | 5 | 6\n7 | 8 | 9"));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class CommandLineUITests {
 
     @Test
     void announcesWinnerWHenThereIsOne() {
-        int[] array1 = {0, 1, 2, 3, 4};
-        int[] array2 = {5, 6, 7, 8};
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {6, 7, 8, 9};
         setUpBoard(player, player2, array1, array2);
 
         commandLineUI.announceWinner(board);
@@ -64,8 +64,8 @@ public class CommandLineUITests {
 
     @Test
     void announcesTieIfNoWInner() {
-        int[] array1 = {1, 3, 4, 6, 8};
-        int[] array2 = {0, 2, 5, 7};
+        int[] array1 = {2, 4, 5, 7, 9};
+        int[] array2 = {1, 3, 6, 8};
         setUpBoard(player, player2, array1, array2);
 
         commandLineUI.announceWinner(board);
@@ -83,10 +83,10 @@ public class CommandLineUITests {
 
     @Test
     void returnsPlayerPositionAsIntegerOnValidInput() {
-        InputStream input = new ByteArrayInputStream("0".getBytes());
+        InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
-        assertEquals(0, commandLineUI.getPosition(board, player));
+        assertEquals(1, commandLineUI.getPosition(board, player));
     }
 
     @Test

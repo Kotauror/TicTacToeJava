@@ -10,10 +10,10 @@ public class RunGameOptionTests {
     @Test
     public void runsAGame() {
         String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
-        RunGameOption runGameOption = new RunGameOption(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
+        RunGameOption runGameOption = new RunGameOption();
 
-        runGameOption.run();
+        runGameOption.run(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
-        assertTrue(runGameOption.getGame().board.isWon());
+        assertTrue(runGameOption.getGame().getBoard().isWon());
     }
 }

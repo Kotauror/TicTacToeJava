@@ -6,16 +6,13 @@ import com.core.tictactoe.Game;
 
 public class RunGameOption extends GameOption {
 
-    CommandLineUI commandLineUI;
-    Game game;
+    private Game game;
 
-    public RunGameOption(CommandLineUI commandLineUI) {
-        this.commandLineUI = commandLineUI;
-    }
+    public RunGameOption(){}
 
     @Override
-    public void run() {
-        this.game = new Game(this.commandLineUI, new Board());
+    public void run(CommandLineUI commandLineUI) {
+        this.game = new Game(commandLineUI, new Board());
         this.game.run();
     }
 

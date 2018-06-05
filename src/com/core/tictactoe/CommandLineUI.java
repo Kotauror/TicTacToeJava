@@ -16,41 +16,36 @@ public class CommandLineUI {
         this.input = new Scanner(input);
     }
 
-    protected void showBoard(Board board) {
+    public void noSuchOption() {
+        output.println("There is no such option");
+    }
+
+    void showBoard(Board board) {
         output.println();
-        output.println(board.valueAtPosition(0) + " | " + board.valueAtPosition(1) + " | " + board.valueAtPosition(2));
-        output.println(board.valueAtPosition(3) + " | " + board.valueAtPosition(4) + " | " + board.valueAtPosition(5));
-        output.println(board.valueAtPosition(6) + " | " + board.valueAtPosition(7) + " | " + board.valueAtPosition(8));
+        output.println(board.valueAtIndex(0) + " | " + board.valueAtIndex(1) + " | " + board.valueAtIndex(2));
+        output.println(board.valueAtIndex(3) + " | " + board.valueAtIndex(4) + " | " + board.valueAtIndex(5));
+        output.println(board.valueAtIndex(6) + " | " + board.valueAtIndex(7) + " | " + board.valueAtIndex(8));
         output.println();
     }
 
-    protected void greetUsers(){
+    void greetUsers(){
         output.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    protected void askForPosition(Player player) {
+    void askForPosition(Player player) {
         output.println(player.getSign() + ", pick a position");
     }
 
-    protected void announceWinner(Board board) {
+    void announceWinner(Board board) {
         output.println(!board.winnerSign().equals("none") ? board.winnerSign() + " won!" : "It's a tie!");
     }
 
-    protected void gamingMenu() {
+    void gamingMenu() {
         output.println("If you want to play type 1, if you want to exit type 2");
     }
 
-    protected String getUserInput() {
+    String getUserInput() {
         return input.nextLine();
-    }
-
-    private boolean isNumeric(String position) {
-        String regex = "[0-8]";
-        return position.matches(regex);
-    }
-
-    public void noSuchOption() {
-        output.println("There is no such option");
     }
 
     int getPosition(Board board, Player player) {
@@ -61,5 +56,10 @@ public class CommandLineUI {
                 return Integer.parseInt(position);
             }
         }
+    }
+
+    private boolean isNumeric(String position) {
+        String regex = "[1-9]";
+        return position.matches(regex);
     }
 }
