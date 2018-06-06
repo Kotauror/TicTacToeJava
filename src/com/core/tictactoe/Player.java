@@ -12,7 +12,7 @@ public class Player {
         return this.sign;
     }
 
-    public int playMove(Board board, int level, String maxPlayer, String minPlayer) {
+    public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
         return level;
     }
 }

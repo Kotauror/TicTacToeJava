@@ -53,7 +53,7 @@ public class CommandLineUITests {
 
     @Test
     void asksForPosition() {
-        commandLineUI.askForPosition(player);
+        commandLineUI.askForPosition(player.getSign());
 
         assertTrue(output.toString().contains("X, pick a position\n"));
     }
@@ -93,15 +93,16 @@ public class CommandLineUITests {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
-        assertEquals(1, commandLineUI.getPositionFromUser(board, player));
+        assertEquals(1, commandLineUI.getPositionFromUser(board, player.getSign()));
     }
 
     @Test
     void callsAgainForMoveOnInvalidInput() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "5"};
-        StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(System.out, System.in, fakeUsersInputs);
+        StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs);
 
-        Object userPosition = fakeCommandLineUI.getPositionFromUser(new Board(), new Player("X"));
+        Object userPosition = fakeCommandLineUI.getPositionFromUser(new Board(),"X");
 
         assertTrue(userPosition.toString().contains("5"));
     }

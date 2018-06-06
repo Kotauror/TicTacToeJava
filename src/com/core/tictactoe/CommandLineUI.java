@@ -32,8 +32,8 @@ public class CommandLineUI {
         output.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    void askForPosition(Player player) {
-        output.println(player.getSign() + ", pick a position");
+    void askForPosition(String playerSign) {
+        output.println(playerSign + ", pick a position");
     }
 
     void announceWinner(Board board) {
@@ -52,9 +52,9 @@ public class CommandLineUI {
         return input.nextLine();
     }
 
-    int getPositionFromUser(Board board, Player player) {
+    int getPositionFromUser(Board board, String playerSign) {
         while (true) {
-           this.askForPosition(player);
+           this.askForPosition(playerSign);
            String position = this.getUserInput();
             if (this.isNumeric(position) && board.isNonTaken(position)) {
                 return Integer.parseInt(position);

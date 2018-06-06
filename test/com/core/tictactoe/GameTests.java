@@ -3,6 +3,9 @@ package com.core.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,8 +36,9 @@ public class GameTests {
     @Test
     void playsAWinningGame() {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
 
         game.run();
 
@@ -49,8 +53,9 @@ public class GameTests {
     @Test
     void playsATieGame() {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
 
         game.run();
 

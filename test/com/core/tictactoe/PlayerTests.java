@@ -9,12 +9,17 @@ public class PlayerTests {
     private Player player;
 
     @BeforeEach
-    void instantiatePlayer() {
+    void instantiate() {
         player = new Player("X");
     }
 
     @Test
-    void playerHasSign() {
+    void hasSign() {
         assertEquals(player.getSign(), "X");
+    }
+
+    @Test
+    void returnsLevel() {
+        assertEquals(1, player.playMove(new CommandLineUI(System.out, System.in), new Board(), 1, "X", "Y"));
     }
 }
