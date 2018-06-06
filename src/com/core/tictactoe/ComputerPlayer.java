@@ -40,7 +40,6 @@ public class ComputerPlayer extends Player {
                 return bestScore;
             }
         } else {
-            ArrayList<String> freePlaces2 = board.getFreePlaces();
             int bestScore2 = 1000;
             if (board.isWon() && board.winnerSign() == minPlayer) {
                 return -(10 - level);
@@ -49,7 +48,7 @@ public class ComputerPlayer extends Player {
             } else if (board.isTie()) {
                 return 0;
             }
-            for (String freePlace : freePlaces2) {
+            for (String freePlace : freePlaces) {
                 Board boardClone = new Board(board.getPlaces());
                 boardClone.putSignOnBoard(minPlayer, Integer.parseInt(freePlace));
                 output = playMove(boardClone, level + 1, maxPlayer, minPlayer);
