@@ -4,13 +4,9 @@ import java.util.ArrayList;
 
 public class ComputerPlayer extends Player {
 
-    String opponentSign;
-
-    public ComputerPlayer(String sign, String opponentSign) {
+    public ComputerPlayer(String sign) {
         super(sign);
-        this.opponentSign = opponentSign;
     }
-
 
     public int playMove(Board board, int level, String maxPlayer, String minPlayer) {
         int output = 0;

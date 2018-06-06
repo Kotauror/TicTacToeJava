@@ -41,7 +41,11 @@ public class CommandLineUI {
     }
 
     void gamingMenu() {
-        output.println("If you want to play type 1, if you want to exit type 2");
+        output.println("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type 3");
+    }
+
+    void informOfMove(Player player, int move) {
+        output.println("player " + player.getSign() + " picked position: " + move);
     }
 
     String getUserInput() {

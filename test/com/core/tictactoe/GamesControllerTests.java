@@ -16,7 +16,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGame() {
-        String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "2"};
+        String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "3"};
         gamesController = new GamesController(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs));
 
         gamesController.run();

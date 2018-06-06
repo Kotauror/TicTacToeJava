@@ -11,4 +11,8 @@ public class Player {
     public String getSign() {
         return this.sign;
     }
+
+    public int playMove(Board board, int level, String maxPlayer, String minPlayer) {
+        return level;
+    }
 }

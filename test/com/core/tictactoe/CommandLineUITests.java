@@ -34,7 +34,14 @@ public class CommandLineUITests {
     void showsTheGamingMenu() {
         commandLineUI.gamingMenu();
 
-        assertTrue(output.toString().contains("If you want to play type 1, if you want to exit type 2"));
+        assertTrue(output.toString().contains("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type 3"));
+    }
+
+    @Test
+    void informsOfMove() {
+        commandLineUI.informOfMove(player, 2);
+
+        assertTrue(output.toString().contains("player X picked position: 2"));
     }
 
     @Test

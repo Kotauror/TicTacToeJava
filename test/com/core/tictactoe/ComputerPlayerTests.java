@@ -12,7 +12,7 @@ public class ComputerPlayerTests {
 
     @BeforeEach
     void instantiatePlayer() {
-        computerPlayer = new ComputerPlayer("X", "Y");
+        computerPlayer = new ComputerPlayer("X");
     }
 
     @Test

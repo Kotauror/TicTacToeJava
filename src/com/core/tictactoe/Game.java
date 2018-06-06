@@ -40,8 +40,9 @@ public class Game {
         if (this.active.getClass() == HumanPlayer.class) {
             position = this.commandLineUI.getPositionFromUser(this.board, this.active);
         } else {
-            // position = this.active.playMove(this.board, this.passive.getSign()); <--- computer playing using minmax
+            position = this.active.playMove(this.board, 0, this.active.getSign(), this.passive.getSign());
         }
+        this.commandLineUI.informOfMove(this.active, position);
         this.board.putSignOnBoard(this.active.getSign(), position);
         this.switchPlayers();
     }
