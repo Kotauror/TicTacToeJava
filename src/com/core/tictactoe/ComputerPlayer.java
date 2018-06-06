@@ -4,39 +4,58 @@ import java.util.ArrayList;
 
 public class ComputerPlayer extends Player {
 
-    public ComputerPlayer(String sign) {
+    String opponentSign;
+
+    public ComputerPlayer(String sign, String opponentSign) {
         super(sign);
+        this.opponentSign = opponentSign;
     }
 
-    protected int playMove(Board board, String firstSign, String secondSign) {
+
+    public int playMove(Board board, int level, String maxPlayer, String minPlayer) {
         int output = 0;
-        System.out.println("Active player");
-        System.out.println(firstSign);
-        CommandLineUI clui = new CommandLineUI(System.out, System.in);
-        System.out.println("board before move");
-        clui.showBoard(board);
-        System.out.println("board after move");
         ArrayList<String> freePlaces = board.getFreePlaces();
-        for (String freePlace : freePlaces) {
-            board.putSignOnBoard(firstSign, Integer.parseInt(freePlace));
-            clui.showBoard(board);
-            if (board.isWon() && board.winnerSign() == firstSign) {
-                System.out.println("i won");
-                return 10;
-            } else if (board.isWon() && board.winnerSign() == secondSign) {
-                System.out.println("other won");
-                return -10;
-            } else if (board.isTie()) {
-                System.out.println("its a tie");
-                return 0;
-            } else {
-                System.out.println("we still play");
-                output = playMove(board, secondSign, firstSign);
+        if (level % 2 == 0) {
+            int bestScore = -1000;
+            String bestPlace = "temporary";
+             if (board.isWon() && board.winnerSign() == maxPlayer) {
+                    return (10 -level);
+                } else if (board.isWon() && board.winnerSign() == minPlayer) {
+                    return -(10 - level);
+                } else if (board.isTie()) {
+                    return 0;
+                }
+            for (String freePlace : freePlaces) {
+                Board boardClone = new Board(board.getPlaces());
+                boardClone.putSignOnBoard(maxPlayer, Integer.parseInt(freePlace));
+                output = playMove(boardClone, level + 1, maxPlayer, minPlayer);
+                if (output > bestScore) {
+                    bestPlace = freePlace;
+                    bestScore = output;
+                }
             }
-            board.putSignOnBoard(freePlace, Integer.parseInt(freePlace));
+            if (level == 0 ) {
+                return Integer.parseInt(bestPlace);
+            } else {
+                return bestScore;
+            }
+        } else {
+            ArrayList<String> freePlaces2 = board.getFreePlaces();
+            int bestScore2 = 1000;
+            if (board.isWon() && board.winnerSign() == minPlayer) {
+                return -(10 - level);
+            } else if (board.isWon() && board.winnerSign() == maxPlayer) {
+                return 10 - level;
+            } else if (board.isTie()) {
+                return 0;
+            }
+            for (String freePlace : freePlaces2) {
+                Board boardClone = new Board(board.getPlaces());
+                boardClone.putSignOnBoard(minPlayer, Integer.parseInt(freePlace));
+                output = playMove(boardClone, level + 1, maxPlayer, minPlayer);
+                if (output < bestScore2) bestScore2 = output;
+            }
+            return bestScore2;
         }
-        // return position which led us to 10, if it not available,
-        // return position which led us to 0.
-        return output;
     }
 }
