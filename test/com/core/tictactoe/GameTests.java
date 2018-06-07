@@ -16,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     void instantiate() {
-        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new Player("X"), new Player("Y"));
+        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("Y"));
     }
 
     @Test

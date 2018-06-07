@@ -16,8 +16,8 @@ public class BoardTests {
     @BeforeEach
     void instantiate() {
         board = new Board();
-        player = new Player("X");
-        player2 = new Player("Y");
+        player = new HumanPlayer("X");
+        player2 = new HumanPlayer("Y");
     }
 
     @Test

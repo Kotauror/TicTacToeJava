@@ -1,6 +1,6 @@
 package com.core.tictactoe;
 
-public class Player {
+public abstract class Player {
 
     private String sign;
 
@@ -12,7 +12,5 @@ public class Player {
         return this.sign;
     }
 
-    public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
-        return level;
-    }
+    public abstract int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer);
 }

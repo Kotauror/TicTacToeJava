@@ -17,8 +17,8 @@ public class ComputerPlayerTests {
     void instantiate() {
         computerPlayer = new ComputerPlayer("X");
         commandLineUI = new CommandLineUI(System.out, System.in);
-        player1 = new Player("X");
-        player2 = new Player("Y");
+        player1 = new HumanPlayer("X");
+        player2 = new HumanPlayer("Y");
     }
 
     @Test

@@ -20,7 +20,7 @@ public class CommandLineUITests {
         ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
         commandLineUI = new CommandLineUI(new PrintStream(this.output), input);
         player = new HumanPlayer("X");
-        player2 = new Player("Y");
+        player2 = new HumanPlayer("Y");
         player3 = new ComputerPlayer("Y");
         board = new Board();
     }
