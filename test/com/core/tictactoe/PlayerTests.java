@@ -7,15 +7,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PlayerTests {
 
     private Player player;
+    private CommandLineUI commandLineUI;
 
     @BeforeEach
     void instantiate() {
-        player = new Player("X", new CommandLineUI(System.out, System.in));
+        commandLineUI = new CommandLineUI(System.out, System.in);
+        player = new Player("X", commandLineUI);
     }
 
     @Test
     void hasSign() {
         assertEquals(player.getSign(), "X");
+    }
+
+    @Test
+    void hasCommandLineUI() {
+        assertEquals(player.getCommandLineUI(), commandLineUI);
     }
 
     @Test
