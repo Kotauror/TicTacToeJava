@@ -9,7 +9,6 @@ public class ComputerPlayer extends Player {
     }
 
     public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
-        int output = 0;
         ArrayList<String> freePlaces = board.getFreePlaces();
         if (level % 2 == 0) {
             int bestScoreMaxPlayer = -1000;
@@ -23,7 +22,7 @@ public class ComputerPlayer extends Player {
             }
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
-                output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
+                int output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
@@ -41,7 +40,7 @@ public class ComputerPlayer extends Player {
             }
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
-                output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
+                int output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
             }
             return bestScoreMinPlayer;
@@ -53,8 +52,4 @@ public class ComputerPlayer extends Player {
         boardClone.putSignOnBoard(signOfPlayer, Integer.parseInt(freePlace));
         return boardClone;
     }
-
-
-
-
 }
