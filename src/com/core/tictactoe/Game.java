@@ -36,8 +36,7 @@ public class Game {
 
     private void playTurn() {
         this.commandLineUI.showBoard(this.board);
-        int position = 0;
-        position = this.active.playMove(this.commandLineUI, this.board, 0, this.active.getSign(), this.passive.getSign());
+        int position = this.active.playMove(this.commandLineUI, this.board, 0, this.active.getSign(), this.passive.getSign());
         this.commandLineUI.informOfMove(this.active, position);
         this.board.putSignOnBoard(this.active.getSign(), position);
         this.switchPlayers();
