@@ -9,7 +9,6 @@ public class HumanPlayer extends Player {
     @Override
     public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
         int position = commandLineUI.getPositionFromUser(board, maxPlayer);
-        //return super.playMove(board, level, maxPlayer, minPlayer);
         return position;
     }
 }

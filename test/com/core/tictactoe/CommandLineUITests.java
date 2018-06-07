@@ -12,14 +12,16 @@ public class CommandLineUITests {
     private Board board;
     private Player player;
     private Player player2;
+    private ComputerPlayer player3;
 
     @BeforeEach
     void setup() {
         this.output = new ByteArrayOutputStream();
         ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
         commandLineUI = new CommandLineUI(new PrintStream(this.output), input);
-        player = new Player("X", commandLineUI);
+        player = new HumanPlayer("X", commandLineUI);
         player2 = new Player("Y", commandLineUI);
+        player3 = new ComputerPlayer("Y", commandLineUI);
         board = new Board();
     }
 
@@ -38,10 +40,17 @@ public class CommandLineUITests {
     }
 
     @Test
-    void informsOfMove() {
+    void informsOfMoveOfHumanPlayer() {
         commandLineUI.informOfMove(player, 2);
 
-        assertTrue(output.toString().contains("player X picked position: 2"));
+        assertTrue(output.toString().contains("Player X picked position: 2"));
+    }
+
+    @Test
+    void informsOfMoveOfComputerPlayer() {
+        commandLineUI.informOfMove(player3, 2);
+
+        assertTrue(output.toString().contains("Computer Y picked position: 2"));
     }
 
     @Test
