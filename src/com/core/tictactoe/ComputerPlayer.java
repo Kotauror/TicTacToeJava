@@ -22,19 +22,14 @@ public class ComputerPlayer extends Player {
                 return 0;
             }
             for (String freePlace : freePlaces) {
-                Board boardClone = new Board(board.getPlaces());
-                boardClone.putSignOnBoard(maxPlayer, Integer.parseInt(freePlace));
+                Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
                 output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
                 }
             }
-            if (level == 0 ) {
-                return Integer.parseInt(bestPlace);
-            } else {
-                return bestScoreMaxPlayer;
-            }
+            return level == 0 ? Integer.parseInt(bestPlace) : bestScoreMaxPlayer;
         } else {
             int bestScoreMinPlayer = 1000;
             if (board.isWon() && board.winnerSign() == minPlayer) {
@@ -45,12 +40,21 @@ public class ComputerPlayer extends Player {
                 return 0;
             }
             for (String freePlace : freePlaces) {
-                Board boardClone = new Board(board.getPlaces());
-                boardClone.putSignOnBoard(minPlayer, Integer.parseInt(freePlace));
+                Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
                 output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
             }
             return bestScoreMinPlayer;
         }
     }
+
+    private Board putSignOnNewBoard(Board board, String signOfPlayer, String freePlace) {
+        Board boardClone = new Board(board.getPlaces());
+        boardClone.putSignOnBoard(signOfPlayer, Integer.parseInt(freePlace));
+        return boardClone;
+    }
+
+
+
+
 }
