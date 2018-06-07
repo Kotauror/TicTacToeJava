@@ -10,11 +10,15 @@ public class ComputerPlayerTests {
 
     private ComputerPlayer computerPlayer;
     private CommandLineUI commandLineUI;
+    private Player player1;
+    private Player player2;
 
     @BeforeEach
     void instantiate() {
-        computerPlayer = new ComputerPlayer("X");
+        computerPlayer = new ComputerPlayer("X", commandLineUI);
         commandLineUI = new CommandLineUI(System.out, System.in);
+        player1 = new Player("X", commandLineUI);
+        player2 = new Player("Y", commandLineUI);
     }
 
     @Test
@@ -25,30 +29,30 @@ public class ComputerPlayerTests {
     @Test
     void returnsWinningPositionDiagonal() {
         Board board = new Board();
-        Player player1 = new Player("X");
-        Player player2 = new Player("X");
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("X");
 
         board.putSignOnBoard(player1.getSign(), 1);
-        board.putSignOnBoard(player2.getSign(), 5);
+        board.putSignOnBoard(player1.getSign(), 5);
         assertEquals(9, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
     }
 
     @Test
     void returnsWinningPositionColumn() {
         Board board = new Board();
-        Player player1 = new Player("X");
-        Player player2 = new Player("X");
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("X");
 
         board.putSignOnBoard(player1.getSign(), 1);
-        board.putSignOnBoard(player2.getSign(), 4);
+        board.putSignOnBoard(player1.getSign(), 4);
         assertEquals(7, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
     }
 
     @Test
     void returnsBestMoveOnBoardWith5EmptyMoves() {
         Board board = new Board();
-        Player player1 = new Player("X");
-        Player player2 = new Player("Y");
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("Y");
 
         board.putSignOnBoard(player1.getSign(), 1);
         board.putSignOnBoard(player2.getSign(), 2);
@@ -60,8 +64,8 @@ public class ComputerPlayerTests {
     @Test
     void returnsBestMoveOnBoardWith3EmptyMoves() {
         Board board = new Board();
-        Player player1 = new Player("X");
-        Player player2 = new Player("Y");
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("Y");
 
         board.putSignOnBoard(player1.getSign(), 1);
         board.putSignOnBoard(player2.getSign(), 2);
@@ -75,8 +79,8 @@ public class ComputerPlayerTests {
     @Test
     void preventsOpponentFromWinning() {
         Board board = new Board();
-        Player player1 = new Player("X");
-        Player player2 = new Player("Y");
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("Y");
 
         board.putSignOnBoard(player1.getSign(), 5);
         board.putSignOnBoard(player2.getSign(), 3);
@@ -86,10 +90,26 @@ public class ComputerPlayerTests {
     }
 
     @Test
+    void preventsOpponentFromWinning3() {
+        Board board = new Board();
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("Y");
+
+        board.putSignOnBoard(player1.getSign(), 1);
+        board.putSignOnBoard(player2.getSign(), 2);
+        board.putSignOnBoard(player1.getSign(), 3);
+        board.putSignOnBoard(player2.getSign(), 5);
+        board.putSignOnBoard(player1.getSign(), 8);
+        board.putSignOnBoard(player2.getSign(), 7);
+        assertEquals(4, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+    }
+
+
+    @Test
     void preventsOpponentFromWinning2() {
         Board board = new Board();
-        Player player1 = new Player("X");
-        Player player2 = new Player("Y");
+//        Player player1 = new Player("X");
+//        Player player2 = new Player("Y");
 
         board.putSignOnBoard(player1.getSign(), 1);
         board.putSignOnBoard(player2.getSign(), 5);
@@ -108,7 +128,7 @@ public class ComputerPlayerTests {
     @Test
     void returnsMiddlePositionAsTheSecondTakenPlace() {
         Board board = new Board();
-        Player player1 = new Player("X");
+//        Player player1 = new Player("X");
         board.putSignOnBoard(player1.getSign(), 1);
 
         assertEquals(5, computerPlayer.playMove(commandLineUI, board, 0, "Y", "X"));

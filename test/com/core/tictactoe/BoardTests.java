@@ -16,8 +16,9 @@ public class BoardTests {
     @BeforeEach
     void instantiate() {
         board = new Board();
-        player = new Player("X");
-        player2 = new Player("Y");
+        CommandLineUI commandLineUI = new CommandLineUI(System.out, System.in);
+        player = new Player("X", commandLineUI);
+        player2 = new Player("Y", commandLineUI);
     }
 
     @Test
@@ -142,7 +143,7 @@ public class BoardTests {
 
     @Test
     void returnsArrayListOfFreePlaces() {
-        Player player = new Player("X");
+        // Player player = new Player("X");
         board.putSignOnBoard(player.getSign(), 1);
         ArrayList<String> freePlaces = new ArrayList<String>();
         for(int i = 2; i < 10; i++) {

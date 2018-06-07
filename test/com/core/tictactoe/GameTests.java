@@ -13,10 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTests {
 
     private static Game game;
+    private static CommandLineUI commandLineUI;
 
     @BeforeEach
     void instantiate() {
-        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new Player("X"), new Player("Y"));
+        commandLineUI = new CommandLineUI(System.out, System.in);
+        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new Player("X", commandLineUI), new Player("Y", commandLineUI));
     }
 
     @Test
@@ -38,7 +40,7 @@ public class GameTests {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X", commandLineUI), new HumanPlayer("Y", commandLineUI));
 
         game.run();
 
@@ -55,7 +57,7 @@ public class GameTests {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X", commandLineUI), new HumanPlayer("Y", commandLineUI));
 
         game.run();
 

@@ -10,7 +10,7 @@ public class PlayerTests {
 
     @BeforeEach
     void instantiate() {
-        player = new Player("X");
+        player = new Player("X", new CommandLineUI(System.out, System.in));
     }
 
     @Test

@@ -18,8 +18,8 @@ public class CommandLineUITests {
         this.output = new ByteArrayOutputStream();
         ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
         commandLineUI = new CommandLineUI(new PrintStream(this.output), input);
-        player = new Player("X");
-        player2 = new Player("Y");
+        player = new Player("X", commandLineUI);
+        player2 = new Player("Y", commandLineUI);
         board = new Board();
     }
 
