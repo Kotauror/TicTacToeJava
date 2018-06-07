@@ -1,8 +1,7 @@
 package com.core.tictactoe.game_options;
 
-import com.core.tictactoe.CommandLineUI;
-import com.core.tictactoe.HumanPlayer;
 import com.core.tictactoe.ComputerPlayer;
+import com.core.tictactoe.HumanPlayer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,10 +17,9 @@ public class GameOptionsFactory {
     private GameOptionsFactory() {}
 
     static {
-        CommandLineUI clui = new CommandLineUI(System.out, System.in);
         gameOptions = new HashMap();
-        gameOptions.put(HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X", clui), new HumanPlayer("Y", clui)));
-        gameOptions.put(HUMAN_VS_COMPUTER, new RunGameOption(new HumanPlayer("X", clui), new ComputerPlayer("Y", clui)));
+        gameOptions.put(HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("Y")));
+        gameOptions.put(HUMAN_VS_COMPUTER, new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("Y")));
         gameOptions.put(EXIT, new ExitGameOption());
     }
 

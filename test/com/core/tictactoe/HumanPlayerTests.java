@@ -14,7 +14,7 @@ public class HumanPlayerTests {
 
     @BeforeEach
     void instantiate() {
-        humanPlayer = new HumanPlayer("X", new CommandLineUI(System.out, System.in));
+        humanPlayer = new HumanPlayer("X");
     }
 
     @Test

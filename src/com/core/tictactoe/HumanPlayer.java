@@ -2,8 +2,11 @@ package com.core.tictactoe;
 
 public class HumanPlayer extends Player {
 
-    public HumanPlayer(String sign, CommandLineUI commandlineUI) {
-        super(sign, commandlineUI);
+    private CommandLineUI commandLineUI;
+
+    public HumanPlayer(String sign) {
+        super(sign);
+        this.commandLineUI = new CommandLineUI(System.out, System.in);
     }
 
     @Override

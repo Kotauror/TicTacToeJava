@@ -12,10 +12,9 @@ public class RunGameOptionTests {
 
     @Test
     public void runsAGame() {
-        CommandLineUI commandLineUI = new CommandLineUI(System.out, System.in);
         String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X", commandLineUI), new HumanPlayer("Y", commandLineUI));
+        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("Y"));
 
         runGameOption.run(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
 

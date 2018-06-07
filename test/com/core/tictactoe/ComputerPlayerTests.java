@@ -15,10 +15,10 @@ public class ComputerPlayerTests {
 
     @BeforeEach
     void instantiate() {
-        computerPlayer = new ComputerPlayer("X", commandLineUI);
+        computerPlayer = new ComputerPlayer("X");
         commandLineUI = new CommandLineUI(System.out, System.in);
-        player1 = new Player("X", commandLineUI);
-        player2 = new Player("Y", commandLineUI);
+        player1 = new Player("X");
+        player2 = new Player("Y");
     }
 
     @Test

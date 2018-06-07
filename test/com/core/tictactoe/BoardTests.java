@@ -16,9 +16,8 @@ public class BoardTests {
     @BeforeEach
     void instantiate() {
         board = new Board();
-        CommandLineUI commandLineUI = new CommandLineUI(System.out, System.in);
-        player = new Player("X", commandLineUI);
-        player2 = new Player("Y", commandLineUI);
+        player = new Player("X");
+        player2 = new Player("Y");
     }
 
     @Test

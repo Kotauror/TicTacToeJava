@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class ComputerPlayer extends Player {
 
-    public ComputerPlayer(String sign, CommandLineUI commandlineUI) {
-        super(sign, commandlineUI);
+    public ComputerPlayer(String sign) {
+        super(sign);
     }
 
+    @Override
     public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
         ArrayList<String> freePlaces = board.getFreePlaces();
         if (level % 2 == 0) {
