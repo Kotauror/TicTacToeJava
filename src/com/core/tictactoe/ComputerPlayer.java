@@ -8,17 +8,23 @@ public class ComputerPlayer extends Player {
         super(sign);
     }
 
+    final static int MAX_VALUE_OF_PLACE = 10;
+    final static int TIE_VALUE = 0;
+
+
     @Override
     public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
         if (board.isWon() && board.winnerSign() == maxPlayer) {
-            return (10 -level);
+            return (MAX_VALUE_OF_PLACE - level);
         } else if (board.isWon() && board.winnerSign() == minPlayer) {
-            return -(10 - level);
+            return -(MAX_VALUE_OF_PLACE - level);
         } else if (board.isTie()) {
-            return 0;
+            return TIE_VALUE;
         }
+
         ArrayList<String> freePlaces = board.getFreePlaces();
-        if (level % 2 == 0) {
+
+        if (isMaxPlayerLevel(level)) {
             int bestScoreMaxPlayer = -1000;
             String bestPlace = "temporary";
             for (String freePlace : freePlaces) {
@@ -45,5 +51,9 @@ public class ComputerPlayer extends Player {
         Board boardClone = new Board(board.getPlaces());
         boardClone.putSignOnBoard(signOfPlayer, Integer.parseInt(freePlace));
         return boardClone;
+    }
+
+    private boolean isMaxPlayerLevel(int level) {
+        return (level % 2 == 0);
     }
 }
