@@ -10,17 +10,17 @@ public class ComputerPlayer extends Player {
 
     @Override
     public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
+        if (board.isWon() && board.winnerSign() == maxPlayer) {
+            return (10 -level);
+        } else if (board.isWon() && board.winnerSign() == minPlayer) {
+            return -(10 - level);
+        } else if (board.isTie()) {
+            return 0;
+        }
         ArrayList<String> freePlaces = board.getFreePlaces();
         if (level % 2 == 0) {
             int bestScoreMaxPlayer = -1000;
             String bestPlace = "temporary";
-            if (board.isWon() && board.winnerSign() == maxPlayer) {
-                return (10 -level);
-            } else if (board.isWon() && board.winnerSign() == minPlayer) {
-                return -(10 - level);
-            } else if (board.isTie()) {
-                return 0;
-            }
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
                 int output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
@@ -32,13 +32,6 @@ public class ComputerPlayer extends Player {
             return level == 0 ? Integer.parseInt(bestPlace) : bestScoreMaxPlayer;
         } else {
             int bestScoreMinPlayer = 1000;
-            if (board.isWon() && board.winnerSign() == minPlayer) {
-                return -(10 - level);
-            } else if (board.isWon() && board.winnerSign() == maxPlayer) {
-                return 10 - level;
-            } else if (board.isTie()) {
-                return 0;
-            }
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
                 int output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
