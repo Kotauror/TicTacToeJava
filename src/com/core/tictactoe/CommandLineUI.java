@@ -63,8 +63,22 @@ public class CommandLineUI {
         }
     }
 
+    String askWhoGoesFirst() {
+        while(true) {
+            this.whoGoesFirstInstruction();
+            String option = this.getUserInput();
+            if (Integer.parseInt(option) == 4 || Integer.parseInt(option) == 5) {
+                return option;
+            }
+        }
+    }
+
     private boolean isNumeric(String position) {
         String regex = "[1-9]";
         return position.matches(regex);
+    }
+
+    private void whoGoesFirstInstruction() {
+        output.println("If you want Human to start, enter 4, if you want computer to start, enter 5");
     }
 }

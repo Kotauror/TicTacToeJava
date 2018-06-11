@@ -23,6 +23,9 @@ public class GamesController {
         while (true) {
             this.commandLineUI.gamingMenu();
             String userInput = this.commandLineUI.getUserInput();
+            if (Integer.parseInt(userInput) == 2) {
+                userInput = this.commandLineUI.askWhoGoesFirst();
+            }
             GameOption gameOption = GameOptionsFactory.get(userInput);
             gameOption.run(this.commandLineUI);
             if (gameOption instanceof ExitGameOption) break;
