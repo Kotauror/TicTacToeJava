@@ -34,7 +34,7 @@ public class GameTests {
     }
 
     @Test
-    void playsAWinningGame() {
+    void playsAWinningGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
@@ -51,7 +51,24 @@ public class GameTests {
     }
 
     @Test
-    void playsATieGame() {
+    void playsATieGameOfHumanAndComputer() {
+        String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Board board = new Board();
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("Y"));
+
+        game.run();
+
+        assertFalse(board.isWon());
+        assertTrue(board.isTie());
+        assertEquals("none", board.winnerSign());
+        assertEquals("Y", game.getActivePlayer().getSign());
+        String[] expectedArray = {"X", "X", "Y", "Y", "Y", "X", "X", "Y", "X"};
+        assertArrayEquals(expectedArray, board.getPlaces());
+    }
+
+    @Test
+    void playsATieGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
