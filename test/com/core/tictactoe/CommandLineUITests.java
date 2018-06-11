@@ -12,14 +12,16 @@ public class CommandLineUITests {
     private Board board;
     private Player player;
     private Player player2;
+    private ComputerPlayer player3;
 
     @BeforeEach
     void setup() {
         this.output = new ByteArrayOutputStream();
         ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
         commandLineUI = new CommandLineUI(new PrintStream(this.output), input);
-        player = new Player("X");
-        player2 = new Player("Y");
+        player = new HumanPlayer("X");
+        player2 = new HumanPlayer("Y");
+        player3 = new ComputerPlayer("Y");
         board = new Board();
     }
 
@@ -34,7 +36,21 @@ public class CommandLineUITests {
     void showsTheGamingMenu() {
         commandLineUI.gamingMenu();
 
-        assertTrue(output.toString().contains("If you want to play type 1, if you want to exit type 2"));
+        assertTrue(output.toString().contains("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type 3"));
+    }
+
+    @Test
+    void informsOfMoveOfHumanPlayer() {
+        commandLineUI.informOfMove(player, 2);
+
+        assertTrue(output.toString().contains("Player X picked position: 2"));
+    }
+
+    @Test
+    void informsOfMoveOfComputerPlayer() {
+        commandLineUI.informOfMove(player3, 2);
+
+        assertTrue(output.toString().contains("Computer Y picked position: 2"));
     }
 
     @Test
@@ -46,9 +62,16 @@ public class CommandLineUITests {
 
     @Test
     void asksForPosition() {
-        commandLineUI.askForPosition(player);
+        commandLineUI.askForPosition(player.getSign());
 
         assertTrue(output.toString().contains("X, pick a position\n"));
+    }
+
+    @Test
+    void tellsInstructionHowToPickWhoGoestFirst() {
+        commandLineUI.whoGoesFirstInstruction();
+
+        assertTrue(output.toString().contains("If you want Human to start, enter 4, if you want computer to start, enter 5\n"));
     }
 
     @Test
@@ -86,25 +109,39 @@ public class CommandLineUITests {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
-        assertEquals(1, commandLineUI.getPosition(board, player));
+        assertEquals(1, commandLineUI.getPositionFromUser(board, player.getSign()));
+    }
+
+    @Test
+    void returnsPositionFromUserWhenNotGivenTwo() {
+        assertEquals("3", commandLineUI.askWhoGoesFirst("3"));
+    }
+
+    @Test
+    void asksWhoGoesFirst() {
+        InputStream input = new ByteArrayInputStream("4".getBytes());
+        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+
+        assertEquals("4", commandLineUI.askWhoGoesFirst("2"));
     }
 
     @Test
     void callsAgainForMoveOnInvalidInput() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "5"};
-        StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(System.out, System.in, fakeUsersInputs);
+        StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs);
 
-        Object userPosition = fakeCommandLineUI.getPosition(new Board(), new Player("X"));
+        Object userPosition = fakeCommandLineUI.getPositionFromUser(new Board(),"X");
 
         assertTrue(userPosition.toString().contains("5"));
     }
 
     private void setUpBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for (int anArraySign1 : arraySign1) {
-            board.putSignOnBoard(player, anArraySign1);
+            board.putSignOnBoard(player.getSign(), anArraySign1);
         }
         for (int anArraySign2 : arraySign2) {
-            board.putSignOnBoard(player2, anArraySign2);
+            board.putSignOnBoard(player2.getSign(), anArraySign2);
         }
     }
 }

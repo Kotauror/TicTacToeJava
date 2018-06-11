@@ -3,6 +3,9 @@ package com.core.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     void instantiate() {
-        game = new Game(new CommandLineUI(System.out, System.in), new Board());
+        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("Y"));
     }
 
     @Test
@@ -31,10 +34,11 @@ public class GameTests {
     }
 
     @Test
-    void playsAWinningGame() {
+    void playsAWinningGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board);
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
 
         game.run();
 
@@ -47,10 +51,28 @@ public class GameTests {
     }
 
     @Test
-    void playsATieGame() {
-        String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
+    void playsATieGameOfHumanAndComputer() {
+        String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(System.out, System.in, fakeUsersInputs), board);
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("Y"));
+
+        game.run();
+
+        assertFalse(board.isWon());
+        assertTrue(board.isTie());
+        assertEquals("none", board.winnerSign());
+        assertEquals("Y", game.getActivePlayer().getSign());
+        String[] expectedArray = {"X", "X", "Y", "Y", "Y", "X", "X", "Y", "X"};
+        assertArrayEquals(expectedArray, board.getPlaces());
+    }
+
+    @Test
+    void playsATieGameOfTwoHumanPlayers() {
+        String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Board board = new Board();
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
 
         game.run();
 

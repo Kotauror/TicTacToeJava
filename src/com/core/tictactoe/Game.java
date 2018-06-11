@@ -7,11 +7,11 @@ public class Game {
     private Player passive;
     private CommandLineUI commandLineUI;
 
-    public Game(CommandLineUI commandLineUI, Board board) {
+    public Game(CommandLineUI commandLineUI, Board board, Player playerOne, Player playerTwo) {
         this.commandLineUI = commandLineUI;
         this.board = board;
-        this.active = new Player("X");
-        this.passive = new Player("Y");
+        this.active = playerOne;
+        this.passive =  playerTwo;
     }
 
      public void run() {
@@ -36,8 +36,9 @@ public class Game {
 
     private void playTurn() {
         this.commandLineUI.showBoard(this.board);
-        int position = this.commandLineUI.getPosition(this.board, this.active);
-        this.board.putSignOnBoard(this.active, position);
+        int position = this.active.playMove(this.commandLineUI, this.board, 0, this.active.getSign(), this.passive.getSign());
+        this.commandLineUI.informOfMove(this.active, position);
+        this.board.putSignOnBoard(this.active.getSign(), position);
         this.switchPlayers();
     }
 

@@ -3,6 +3,8 @@ package com.core.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTests {
@@ -14,8 +16,8 @@ public class BoardTests {
     @BeforeEach
     void instantiate() {
         board = new Board();
-        player = new Player("X");
-        player2 = new Player("Y");
+        player = new HumanPlayer("X");
+        player2 = new HumanPlayer("Y");
     }
 
     @Test
@@ -27,7 +29,7 @@ public class BoardTests {
 
     @Test
     void itReturnsStringSingFromPosition() {
-        board.putSignOnBoard(player, 1);
+        board.putSignOnBoard(player.getSign(), 1);
 
         assertEquals("X", board.valueAtIndex(0));
     }
@@ -39,7 +41,7 @@ public class BoardTests {
 
     @Test
     void isNotATie() {
-        board.putSignOnBoard(player, 1);
+        board.putSignOnBoard(player.getSign(), 1);
 
         assertFalse(board.isTie());
     }
@@ -55,70 +57,70 @@ public class BoardTests {
 
     @Test
     void doesNotHaveAWin() {
-        playMoves(player, 1, 6, 3);
+        playMoves(player.getSign(), 1, 6, 3);
 
         assertFalse(board.isWon());
     }
 
     @Test
     void hasWinFor1_2_3() {
-        playMoves(player, 1, 2, 3);
+        playMoves(player.getSign(), 1, 2, 3);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor4_5_6() {
-        playMoves(player, 4, 5, 6);
+        playMoves(player.getSign(), 4, 5, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor7_8_9() {
-        playMoves(player, 7, 8, 9);
+        playMoves(player.getSign(), 7, 8, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor1_4_7() {
-        playMoves(player, 1, 4, 7);
+        playMoves(player.getSign(), 1, 4, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor2_5_8() {
-        playMoves(player, 2, 5, 8);
+        playMoves(player.getSign(), 2, 5, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor3_6_9() {
-        playMoves(player, 3, 6, 9);
+        playMoves(player.getSign(), 3, 6, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor1_5_9() {
-        playMoves(player, 1, 5, 9);
+        playMoves(player.getSign(), 1, 5, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor3_5_7() {
-        playMoves(player, 3, 5, 7);
+        playMoves(player.getSign(), 3, 5, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void itChangesWinnerSignWhenGameIsWon() {
-        playMoves(player, 3, 5, 7);
+        playMoves(player.getSign(), 3, 5, 7);
 
         board.isWon();
         assertEquals("X", board.winnerSign());
@@ -126,30 +128,42 @@ public class BoardTests {
 
     @Test
     void returnsTrueWhenPositionIsNonTaken() {
-        board.putSignOnBoard(player, 6);
+        board.putSignOnBoard(player.getSign(), 6);
 
         assertTrue(board.isNonTaken("2"));
     }
 
     @Test
     void returnsFalseWhenPositionIsTaken() {
-        board.putSignOnBoard(player, 6);
+        board.putSignOnBoard(player.getSign(), 6);
 
         assertFalse(board.isNonTaken("6"));
     }
 
-    private void playMoves(Player player, int a, int b, int c) {
-        board.putSignOnBoard(player, a);
-        board.putSignOnBoard(player, b);
-        board.putSignOnBoard(player, c);
+    @Test
+    void returnsArrayListOfFreePlaces() {
+        // Player player = new Player("X");
+        board.putSignOnBoard(player.getSign(), 1);
+        ArrayList<String> freePlaces = new ArrayList<String>();
+        for(int i = 2; i < 10; i++) {
+            freePlaces.add(Integer.toString(i));
+        }
+
+        assertEquals(freePlaces, board.getFreePlaces());
+    }
+
+    private void playMoves(String sign, int a, int b, int c) {
+        board.putSignOnBoard(sign, a);
+        board.putSignOnBoard(sign, b);
+        board.putSignOnBoard(sign, c);
     }
 
     private void setupBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
         for (int anArraySign1 : arraySign1) {
-            board.putSignOnBoard(player, anArraySign1);
+            board.putSignOnBoard(player.getSign(), anArraySign1);
         }
         for (int anArraySign2 : arraySign2) {
-            board.putSignOnBoard(player2, anArraySign2);
+            board.putSignOnBoard(player2.getSign(), anArraySign2);
         }
     }
 }

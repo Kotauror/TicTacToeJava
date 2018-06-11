@@ -1,10 +1,15 @@
 package com.core.tictactoe;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
 
     private String[] places;
+
+    public Board(String[] places) {
+        this.places = places.clone();
+    }
 
     public Board() {
         this.places = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -25,8 +30,8 @@ public class Board {
         return this.places;
     }
 
-    void putSignOnBoard(Player player, int userNumber) {
-        this.places[userNumber-1] = player.getSign();
+    void putSignOnBoard(String sign, int userNumber) {
+        this.places[userNumber-1] = sign;
     }
 
     String valueAtIndex(int index) {
@@ -57,6 +62,17 @@ public class Board {
             if (numberOfMatchesInSet == set.length) return matcher;
         }
         return "none";
+    }
+
+    ArrayList<String> getFreePlaces() {
+        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ArrayList<String> freePlaces = new ArrayList<String>();
+        for(int i=0; i < this.places.length; i++) {
+            if (Arrays.asList(initialPlaces).contains(this.places[i])) {
+                freePlaces.add(this.places[i]);
+            }
+        }
+        return freePlaces;
     }
 
     private boolean hasNoFreePlaces() {

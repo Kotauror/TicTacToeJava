@@ -32,8 +32,8 @@ public class CommandLineUI {
         output.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    void askForPosition(Player player) {
-        output.println(player.getSign() + ", pick a position");
+    void askForPosition(String playerSign) {
+        output.println(playerSign + ", pick a position");
     }
 
     void announceWinner(Board board) {
@@ -41,21 +41,44 @@ public class CommandLineUI {
     }
 
     void gamingMenu() {
-        output.println("If you want to play type 1, if you want to exit type 2");
+        output.println("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type 3");
+    }
+
+    void informOfMove(Player player, int move) {
+        output.print(player instanceof ComputerPlayer ? "Computer " : "Player ");
+        output.println(player.getSign() + " picked position: " + move);
     }
 
     String getUserInput() {
         return input.nextLine();
     }
 
-    int getPosition(Board board, Player player) {
+    int getPositionFromUser(Board board, String playerSign) {
         while (true) {
-           this.askForPosition(player);
+           this.askForPosition(playerSign);
            String position = this.getUserInput();
             if (this.isNumeric(position) && board.isNonTaken(position)) {
                 return Integer.parseInt(position);
             }
         }
+    }
+
+    String askWhoGoesFirst(String userInput) {
+        if (Integer.parseInt(userInput) == 2) {
+            while (true) {
+                this.whoGoesFirstInstruction();
+                String option = this.getUserInput();
+                if (Integer.parseInt(option) == 4 || Integer.parseInt(option) == 5) {
+                    return option;
+                }
+            }
+        } else {
+            return userInput;
+        }
+    }
+
+    void whoGoesFirstInstruction() {
+        output.println("If you want Human to start, enter 4, if you want computer to start, enter 5");
     }
 
     private boolean isNumeric(String position) {
