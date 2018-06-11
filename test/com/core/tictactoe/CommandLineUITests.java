@@ -20,8 +20,8 @@ public class CommandLineUITests {
         ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
         commandLineUI = new CommandLineUI(new PrintStream(this.output), input);
         player = new HumanPlayer("X");
-        player2 = new HumanPlayer("Y");
-        player3 = new ComputerPlayer("Y");
+        player2 = new HumanPlayer("O");
+        player3 = new ComputerPlayer("O");
         board = new Board();
     }
 
@@ -50,7 +50,7 @@ public class CommandLineUITests {
     void informsOfMoveOfComputerPlayer() {
         commandLineUI.informOfMove(player3, 2);
 
-        assertTrue(output.toString().contains("Computer Y picked position: 2"));
+        assertTrue(output.toString().contains("Computer O picked position: 2"));
     }
 
     @Test
