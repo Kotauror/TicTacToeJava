@@ -8,12 +8,16 @@ public class ComputerPlayer extends Player {
         super(sign);
     }
 
-    final static int MAX_VALUE_OF_PLACE = 10;
-    final static int TIE_VALUE = 0;
+    private final static int MAX_VALUE_OF_PLACE = 10;
+    private final static int TIE_VALUE = 0;
 
 
     @Override
-    public int playMove(CommandLineUI commandLineUI, Board board, int level, String maxPlayer, String minPlayer) {
+    public int playMove(CommandLineUI commandLineUI, Board board, String maxPlayer, String minPlayer) {
+        return miniMaxAlgorithm(board, 0, maxPlayer, minPlayer);
+    }
+
+    private int miniMaxAlgorithm(Board board, Integer level, String maxPlayer, String minPlayer) {
         if (board.isWon() && board.winnerSign() == maxPlayer) {
             return (MAX_VALUE_OF_PLACE - level);
         } else if (board.isWon() && board.winnerSign() == minPlayer) {
@@ -29,7 +33,7 @@ public class ComputerPlayer extends Player {
             String bestPlace = "temporary";
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
-                int output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
+                int output = miniMaxAlgorithm(boardClone, level + 1, maxPlayer, minPlayer);
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
@@ -40,7 +44,7 @@ public class ComputerPlayer extends Player {
             int bestScoreMinPlayer = 1000;
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
-                int output = playMove(commandLineUI, boardClone, level + 1, maxPlayer, minPlayer);
+                int output = miniMaxAlgorithm(boardClone, level + 1, maxPlayer, minPlayer);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
             }
             return bestScoreMinPlayer;
