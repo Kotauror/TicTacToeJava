@@ -18,8 +18,8 @@ public class GameOptionsFactory {
 
     static {
         gameOptions = new HashMap();
-        gameOptions.put(HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("Y")));
-        gameOptions.put(HUMAN_VS_COMPUTER, new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("Y")));
+        gameOptions.put(HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O")));
+        gameOptions.put(HUMAN_VS_COMPUTER, new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O")));
         gameOptions.put(EXIT, new ExitGameOption());
     }
 
