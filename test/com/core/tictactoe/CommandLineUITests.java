@@ -68,6 +68,13 @@ public class CommandLineUITests {
     }
 
     @Test
+    void tellsInstructionHowToPickWhoGoestFirst() {
+        commandLineUI.whoGoesFirstInstruction();
+
+        assertTrue(output.toString().contains("If you want Human to start, enter 4, if you want computer to start, enter 5\n"));
+    }
+
+    @Test
     void announcesWinnerWHenThereIsOne() {
         int[] array1 = {1, 2, 3, 4, 5};
         int[] array2 = {6, 7, 8, 9};
@@ -103,6 +110,19 @@ public class CommandLineUITests {
         CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
 
         assertEquals(1, commandLineUI.getPositionFromUser(board, player.getSign()));
+    }
+
+    @Test
+    void returnsPositionFromUserWhenNotGivenTwo() {
+        assertEquals("3", commandLineUI.askWhoGoesFirst("3"));
+    }
+
+    @Test
+    void asksWhoGoesFirst() {
+        InputStream input = new ByteArrayInputStream("4".getBytes());
+        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+
+        assertEquals("4", commandLineUI.askWhoGoesFirst("2"));
     }
 
     @Test
