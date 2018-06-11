@@ -13,14 +13,16 @@ public class ComputerPlayer extends Player {
 
 
     @Override
-    public int playMove(CommandLineUI commandLineUI, Board board, String maxPlayer, String minPlayer) {
+    public int playMove(CommandLineUI commandLineUI, Board board) {
+        String maxPlayer = board.getActivePlayerSign();
+        String minPlayer = board.getPassivePlayerSign();
         return miniMaxAlgorithm(board, 0, maxPlayer, minPlayer);
     }
 
     private int miniMaxAlgorithm(Board board, Integer level, String maxPlayer, String minPlayer) {
-        if (board.isWon() && board.winnerSign() == maxPlayer) {
+        if (board.isWon() && board.winnerSign().equals(maxPlayer)) {
             return (MAX_VALUE_OF_PLACE - level);
-        } else if (board.isWon() && board.winnerSign() == minPlayer) {
+        } else if (board.isWon() && board.winnerSign().equals(minPlayer)) {
             return -(MAX_VALUE_OF_PLACE - level);
         } else if (board.isTie()) {
             return TIE_VALUE;
