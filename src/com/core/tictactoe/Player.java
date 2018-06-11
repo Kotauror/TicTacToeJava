@@ -12,5 +12,5 @@ public abstract class Player {
         return this.sign;
     }
 
-    public abstract int playMove(CommandLineUI commandLineUI, Board board);
+    public abstract int pickPosition(CommandLineUI commandLineUI, Board board);
 }
