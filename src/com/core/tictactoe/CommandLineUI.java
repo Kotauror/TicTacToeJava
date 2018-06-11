@@ -63,13 +63,17 @@ public class CommandLineUI {
         }
     }
 
-    String askWhoGoesFirst() {
-        while(true) {
-            this.whoGoesFirstInstruction();
-            String option = this.getUserInput();
-            if (Integer.parseInt(option) == 4 || Integer.parseInt(option) == 5) {
-                return option;
+    String askWhoGoesFirst(String userInput) {
+        if (Integer.parseInt(userInput) == 2) {
+            while (true) {
+                this.whoGoesFirstInstruction();
+                String option = this.getUserInput();
+                if (Integer.parseInt(option) == 4 || Integer.parseInt(option) == 5) {
+                    return option;
+                }
             }
+        } else {
+            return userInput;
         }
     }
 

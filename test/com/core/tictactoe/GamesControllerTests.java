@@ -38,7 +38,7 @@ public class GamesControllerTests {
 
         gamesController.run();
 
-        assertThat(gamesController.fitstPlayer, instanceOf(HumanPlayer.class));
+        assertThat(gamesController.firstPlayer, instanceOf(HumanPlayer.class));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class GamesControllerTests {
 
         gamesController.run();
 
-        assertThat(gamesController.fitstPlayer, instanceOf(ComputerPlayer.class));
+        assertThat(gamesController.firstPlayer, instanceOf(ComputerPlayer.class));
     }
 
 }
