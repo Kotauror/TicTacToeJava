@@ -75,6 +75,24 @@ public class Board {
         return freePlaces;
     }
 
+    String getActivePlayerSign() {
+        int XPlayerSignsCounter = 0;
+        int OPlayerSignsCounter = 0;
+        for (String place : this.places) {
+            if(place.equals("X")) {
+                XPlayerSignsCounter++;
+            } else if (place.equals("O")){
+                OPlayerSignsCounter++;
+            }
+        }
+        return XPlayerSignsCounter > OPlayerSignsCounter ? "O" : "X";
+    }
+
+    String getPassivePlayerSign() {
+        String activePlayerSign = getActivePlayerSign();
+        return activePlayerSign.equals("X") ? "O" : "X";
+    }
+
     private boolean hasNoFreePlaces() {
         String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         int numberOfEmptyPlaces = 0;

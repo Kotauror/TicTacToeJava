@@ -10,15 +10,11 @@ public class ComputerPlayerTests {
 
     private ComputerPlayer computerPlayer;
     private CommandLineUI commandLineUI;
-    private Player player1;
-    private Player player2;
 
     @BeforeEach
     void instantiate() {
         computerPlayer = new ComputerPlayer("X");
         commandLineUI = new CommandLineUI(System.out, System.in);
-        player1 = new HumanPlayer("X");
-        player2 = new HumanPlayer("Y");
     }
 
     @Test
@@ -31,7 +27,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "2", "3", "4", "X", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(9, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(9, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
@@ -39,55 +35,55 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "2", "3", "X", "5", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(7, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(7, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
     void returnsBestMoveOnBoardWith5EmptyMoves() {
-        String[] positionsOnBoard = {"X", "Y", "3", "4", "Y", "6", "X", "8", "9"};
+        String[] positionsOnBoard = {"X", "O", "3", "4", "O", "6", "X", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(4, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
     void returnsBestMoveOnBoardWith3EmptyMoves() {
-        String[] positionsOnBoard = {"X", "Y", "X", "4", "Y", "6", "Y", "X", "9"};
+        String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "O", "X", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(4, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
     void preventsOpponentFromWinning() {
-        String[] positionsOnBoard = {"1", "2", "Y", "4", "X", "6", "X", "8", "Y"};
+        String[] positionsOnBoard = {"1", "2", "O", "4", "X", "6", "X", "8", "O"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(6, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(6, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
     void preventsOpponentFromWinning3() {
-        String[] positionsOnBoard = {"X", "Y", "X", "4", "Y", "6", "Y", "X", "9"};
+        String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "O", "X", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(4, computerPlayer.pickPosition(commandLineUI, board));
     }
 
 
     @Test
     void preventsOpponentFromWinning2() {
-        String[] positionsOnBoard = {"X", "Y", "X", "4", "Y", "6", "7", "8", "9"};
+        String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(8, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(8, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
     void returnsTopLeftCornerAsTheFirstTakenPlace() {
         Board board = new Board();
 
-        assertEquals(1, computerPlayer.playMove(commandLineUI, board, 0, "X", "Y"));
+        assertEquals(1, computerPlayer.pickPosition(commandLineUI, board));
     }
 
     @Test
@@ -95,6 +91,6 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(5, computerPlayer.playMove(commandLineUI, board, 0, "Y", "X"));
+        assertEquals(5, computerPlayer.pickPosition(commandLineUI, board));
     }
 }

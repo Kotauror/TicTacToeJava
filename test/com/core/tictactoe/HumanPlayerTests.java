@@ -28,7 +28,7 @@ public class HumanPlayerTests {
         String[] fakeUserInputs = {"1"};
         StubbCommandLineUI stubbCommandLineUI = new StubbCommandLineUI(new PrintStream(output), System.in, fakeUserInputs);
 
-        assertEquals(1, humanPlayer.playMove(stubbCommandLineUI, new Board(), 0, "X", "Y"));
+        assertEquals(1, humanPlayer.pickPosition(stubbCommandLineUI, new Board()));
     }
 }
 

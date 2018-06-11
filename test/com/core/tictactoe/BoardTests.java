@@ -17,7 +17,7 @@ public class BoardTests {
     void instantiate() {
         board = new Board();
         player = new HumanPlayer("X");
-        player2 = new HumanPlayer("Y");
+        player2 = new HumanPlayer("O");
     }
 
     @Test
@@ -150,6 +150,46 @@ public class BoardTests {
         }
 
         assertEquals(freePlaces, board.getFreePlaces());
+    }
+
+    @Test
+    void returnsSignOfActivePlayerWhenGameJustStarted() {
+        assertEquals("X", board.getActivePlayerSign());
+    }
+
+    @Test
+    void returnsSignOfActivePlayerAfterFirstMove() {
+        board.putSignOnBoard(player.getSign(), 1);
+
+        assertEquals("O", board.getActivePlayerSign());
+    }
+
+    @Test
+    void returnsSignOfActivePlayerAfterTwoMoves() {
+        board.putSignOnBoard(player.getSign(), 1);
+        board.putSignOnBoard(player2.getSign(), 2);
+
+        assertEquals("X", board.getActivePlayerSign());
+    }
+
+    @Test
+    void returnsSignOfPassivePlayerWhenGameJustStarted() {
+        assertEquals("O", board.getPassivePlayerSign());
+    }
+
+    @Test
+    void returnsSignOfPassivePlayerAfterFirstMove() {
+        board.putSignOnBoard(player.getSign(), 1);
+
+        assertEquals("X", board.getPassivePlayerSign());
+    }
+
+    @Test
+    void returnsSignOfPassivePlayerAfterTwoMoves() {
+        board.putSignOnBoard(player.getSign(), 1);
+        board.putSignOnBoard(player2.getSign(), 2);
+
+        assertEquals("O", board.getPassivePlayerSign());
     }
 
     private void playMoves(String sign, int a, int b, int c) {

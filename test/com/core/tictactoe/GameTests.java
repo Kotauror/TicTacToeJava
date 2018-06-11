@@ -16,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     void instantiate() {
-        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("O"));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class GameTests {
 
     @Test
     public void returnsPassivePlayer() {
-        assertEquals("Y", game.getPassivePlayer().getSign());
+        assertEquals("O", game.getPassivePlayer().getSign());
     }
 
     @Test
@@ -38,15 +38,15 @@ public class GameTests {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
 
         game.run();
 
         assertTrue(board.isWon());
         assertFalse(board.isTie());
         assertEquals("X", board.winnerSign());
-        assertEquals("Y", game.getActivePlayer().getSign());
-        String[] expectedArray = {"X", "Y", "X", "Y", "X", "Y", "X", "8", "9"};
+        assertEquals("O", game.getActivePlayer().getSign());
+        String[] expectedArray = {"X", "O", "X", "O", "X", "O", "X", "8", "9"};
         assertArrayEquals(expectedArray, board.getPlaces());
     }
 
@@ -55,15 +55,15 @@ public class GameTests {
         String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("O"));
 
         game.run();
 
         assertFalse(board.isWon());
         assertTrue(board.isTie());
         assertEquals("none", board.winnerSign());
-        assertEquals("Y", game.getActivePlayer().getSign());
-        String[] expectedArray = {"X", "X", "Y", "Y", "Y", "X", "X", "Y", "X"};
+        assertEquals("O", game.getActivePlayer().getSign());
+        String[] expectedArray = {"X", "X", "O", "O", "O", "X", "X", "O", "X"};
         assertArrayEquals(expectedArray, board.getPlaces());
     }
 
@@ -72,13 +72,13 @@ public class GameTests {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("Y"));
+        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
 
         game.run();
 
         assertFalse(board.isWon());
         assertTrue(board.isTie());
-        String[] expectedArray = {"Y", "X", "Y", "X", "X", "Y", "X", "Y", "X"};
+        String[] expectedArray = {"O", "X", "O", "X", "X", "O", "X", "O", "X"};
         assertArrayEquals(expectedArray, board.getPlaces());
         assertEquals("none", board.winnerSign());
     }
