@@ -7,7 +7,8 @@ public class NoOption extends GameOption {
     public NoOption(){}
 
     @Override
-    public void run(CommandLineUI commandLineUI) {
+    public boolean run(CommandLineUI commandLineUI) {
         commandLineUI.noSuchOption();
+        return true;
     }
 }

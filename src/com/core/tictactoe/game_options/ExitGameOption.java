@@ -5,6 +5,7 @@ import com.core.tictactoe.CommandLineUI;
 public class ExitGameOption extends GameOption {
 
     @Override
-    public void run(CommandLineUI commandLineUI) {
+    public boolean run(CommandLineUI commandLineUI) {
+        return false;
     }
 }
