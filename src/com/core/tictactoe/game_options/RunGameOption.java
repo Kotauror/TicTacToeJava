@@ -25,4 +25,13 @@ public class RunGameOption extends GameOption {
     public Game getGame() {
         return this.game;
     }
+
+    public Player getPlayerOne() {
+        return this.playerOne;
+    }
+
+    public Player getPlayerTwo() {
+        return this.playerTwo;
+    }
+
 }

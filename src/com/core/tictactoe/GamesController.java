@@ -9,6 +9,7 @@ public class GamesController {
 
     private CommandLineUI commandLineUI;
     private String gameStatus;
+    public Player fitstPlayer;
 
     public GamesController(CommandLineUI commandLineUI) {
         this.commandLineUI = commandLineUI;
@@ -25,7 +26,10 @@ public class GamesController {
             GameOption gameOption = GameOptionsFactory.get(userInput);
             gameOption.run(this.commandLineUI);
             if (gameOption instanceof ExitGameOption) break;
-            if (gameOption instanceof RunGameOption) this.gameStatus = "played";
+            if (gameOption instanceof RunGameOption) {
+                this.gameStatus = "played";
+                this.fitstPlayer = ((RunGameOption) gameOption).getPlayerOne();
+            }
         }
     }
 }
