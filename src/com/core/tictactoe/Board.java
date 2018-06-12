@@ -28,7 +28,7 @@ public class Board {
             {2, 4, 6}
     };
 
-    public String[] getPlaces() {
+    String[] getPlaces() {
         return this.places;
     }
 
@@ -63,11 +63,9 @@ public class Board {
     }
 
     ArrayList<String> getFreePlaces() {
-        ArrayList<String> freePlaces = new ArrayList<String>();
+        ArrayList<String> freePlaces = new ArrayList<>();
         for (String place : this.places) {
-            if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) {
-                freePlaces.add(place);
-            }
+            if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
         }
         return freePlaces;
     }
