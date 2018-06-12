@@ -23,7 +23,7 @@ public class GamesController {
         }
     }
 
-    public boolean getRunProgramStatus() {
-        return this.isRunning;
-    }
+//    public boolean getRunProgramStatus() {
+//        return this.isRunning;
+//    }
 }
