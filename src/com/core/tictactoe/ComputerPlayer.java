@@ -13,7 +13,7 @@ public class ComputerPlayer extends Player {
 
 
     @Override
-    public int pickPosition(CommandLineUI commandLineUI, Board board) {
+    public int pickPosition(CommandLineUi commandLineUi, Board board) {
         String maxPlayer = board.getActivePlayerSign();
         String minPlayer = board.getPassivePlayerSign();
         return miniMaxAlgorithm(board, 0, maxPlayer, minPlayer);

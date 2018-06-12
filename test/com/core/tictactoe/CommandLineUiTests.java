@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CommandLineUITests {
+public class CommandLineUiTests {
 
-    private CommandLineUI commandLineUI;
+    private CommandLineUi commandLineUi;
     private ByteArrayOutputStream output;
     private Board board;
     private Player player;
@@ -18,7 +18,7 @@ public class CommandLineUITests {
     void setup() {
         this.output = new ByteArrayOutputStream();
         ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
-        commandLineUI = new CommandLineUI(new PrintStream(this.output), input);
+        commandLineUi = new CommandLineUi(new PrintStream(this.output), input);
         player = new HumanPlayer("X");
         player2 = new HumanPlayer("O");
         player3 = new ComputerPlayer("O");
@@ -27,49 +27,49 @@ public class CommandLineUITests {
 
     @Test
     void greetsTheUsers() {
-        commandLineUI.greetUsers();
+        commandLineUi.greetUsers();
 
         assertTrue(output.toString().contains("Hello and welcome to Tic-Tac-Toe"));
     }
 
     @Test
     void showsTheGamingMenu() {
-        commandLineUI.gamingMenu();
+        commandLineUi.gamingMenu();
 
         assertTrue(output.toString().contains("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type 3"));
     }
 
     @Test
     void informsOfMoveOfHumanPlayer() {
-        commandLineUI.informOfMove(player, 2);
+        commandLineUi.informOfMove(player, 2);
 
         assertTrue(output.toString().contains("Player X picked position: 2"));
     }
 
     @Test
     void informsOfMoveOfComputerPlayer() {
-        commandLineUI.informOfMove(player3, 2);
+        commandLineUi.informOfMove(player3, 2);
 
         assertTrue(output.toString().contains("Computer O picked position: 2"));
     }
 
     @Test
     void showsTheBoard() {
-        commandLineUI.showBoard(board);
+        commandLineUi.showBoard(board);
 
         assertTrue(output.toString().contains("1 | 2 | 3\n4 | 5 | 6\n7 | 8 | 9"));
     }
 
     @Test
     void asksForPosition() {
-        commandLineUI.askForPosition(player.getSign());
+        commandLineUi.askForPosition(player.getSign());
 
         assertTrue(output.toString().contains("X, pick a position\n"));
     }
 
     @Test
     void tellsInstructionHowToPickWhoGoestFirst() {
-        commandLineUI.whoGoesFirstInstruction();
+        commandLineUi.whoGoesFirstInstruction();
 
         assertTrue(output.toString().contains("If you want Human to start, enter 4, if you want computer to start, enter 5\n"));
     }
@@ -80,7 +80,7 @@ public class CommandLineUITests {
         int[] array2 = {6, 7, 8, 9};
         setUpBoard(player, player2, array1, array2);
 
-        commandLineUI.announceWinner(board);
+        commandLineUi.announceWinner(board);
 
         assertTrue(output.toString().contains("X won!\n"));
     }
@@ -91,7 +91,7 @@ public class CommandLineUITests {
         int[] array2 = {1, 3, 6, 8};
         setUpBoard(player, player2, array1, array2);
 
-        commandLineUI.announceWinner(board);
+        commandLineUi.announceWinner(board);
 
         assertTrue(output.toString().contains("It's a tie!\n"));
     }
@@ -99,37 +99,37 @@ public class CommandLineUITests {
     @Test
     void returnsPositionGivenByPlayer() {
         InputStream input = new ByteArrayInputStream("0".getBytes());
-        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
-        assertEquals("0", commandLineUI.getUserInput());
+        assertEquals("0", commandLineUi.getUserInput());
     }
 
     @Test
     void returnsPlayerPositionAsIntegerOnValidInput() {
         InputStream input = new ByteArrayInputStream("1".getBytes());
-        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
-        assertEquals(1, commandLineUI.getPositionFromUser(board, player.getSign()));
+        assertEquals(1, commandLineUi.getPositionFromUser(board, player.getSign()));
     }
 
     @Test
     void returnsPositionFromUserWhenNotGivenTwo() {
-        assertEquals("3", commandLineUI.askWhoGoesFirst("3"));
+        assertEquals("3", commandLineUi.askWhoGoesFirst("3"));
     }
 
     @Test
     void asksWhoGoesFirst() {
         InputStream input = new ByteArrayInputStream("4".getBytes());
-        CommandLineUI commandLineUI = new CommandLineUI(new PrintStream(output), input);
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
-        assertEquals("4", commandLineUI.askWhoGoesFirst("2"));
+        assertEquals("4", commandLineUi.askWhoGoesFirst("2"));
     }
 
     @Test
     void callsAgainForMoveOnInvalidInput() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "5"};
-        StubbCommandLineUI fakeCommandLineUI = new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs);
+        StubCommandLineUi fakeCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
 
         Object userPosition = fakeCommandLineUI.getPositionFromUser(new Board(),"X");
 

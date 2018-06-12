@@ -15,7 +15,7 @@ public class NoOptionTests {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         NoOption noOption = new NoOption();
 
-        noOption.run(new CommandLineUI(new PrintStream(output), System.in));
+        noOption.run(new CommandLineUi(new PrintStream(output), System.in));
 
         assertEquals("There is no such option\n", output.toString());
     }

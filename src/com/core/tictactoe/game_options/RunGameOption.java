@@ -1,7 +1,7 @@
 package com.core.tictactoe.game_options;
 
 import com.core.tictactoe.Board;
-import com.core.tictactoe.CommandLineUI;
+import com.core.tictactoe.CommandLineUi;
 import com.core.tictactoe.Game;
 import com.core.tictactoe.Player;
 
@@ -17,8 +17,8 @@ public class RunGameOption extends GameOption {
     }
 
     @Override
-    public boolean run(CommandLineUI commandLineUI) {
-        this.game = new Game(commandLineUI, new Board(), playerOne, playerTwo);
+    public boolean run(CommandLineUi commandLineUi) {
+        this.game = new Game(commandLineUi, new Board(), playerOne, playerTwo);
         this.game.run();
         return true;
     }

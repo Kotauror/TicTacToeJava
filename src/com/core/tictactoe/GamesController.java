@@ -5,21 +5,21 @@ import com.core.tictactoe.game_options.GameOptionsFactory;
 
 public class GamesController {
 
-    private CommandLineUI commandLineUI;
+    private CommandLineUi commandLineUi;
     private Boolean runProgram;
 
-    public GamesController(CommandLineUI commandLineUI) {
-        this.commandLineUI = commandLineUI;
+    public GamesController(CommandLineUi commandLineUi) {
+        this.commandLineUi = commandLineUi;
         this.runProgram = true;
     }
 
     public void run() {
         while (this.runProgram) {
-            this.commandLineUI.gamingMenu();
-            String userInput = this.commandLineUI.getUserInput();
-            userInput = this.commandLineUI.askWhoGoesFirst(userInput);
+            this.commandLineUi.gamingMenu();
+            String userInput = this.commandLineUi.getUserInput();
+            userInput = this.commandLineUi.askWhoGoesFirst(userInput);
             GameOption gameOption = GameOptionsFactory.get(userInput);
-            this.runProgram = gameOption.run(this.commandLineUI);
+            this.runProgram = gameOption.run(this.commandLineUi);
         }
     }
 

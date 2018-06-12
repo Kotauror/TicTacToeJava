@@ -14,14 +14,14 @@ public class GamesControllerTests {
 
     @BeforeEach
     void instantiate() {
-        gamesController = new GamesController(new CommandLineUI(System.out, System.in));
+        gamesController = new GamesController(new CommandLineUi(System.out, System.in));
     }
 
     @Test
     void runsTheWholeGameHumanVsHuman() {
         String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "3"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
 
@@ -32,7 +32,7 @@ public class GamesControllerTests {
     void runsTheWholeGameHumanVsComputerAndExits() {
         String[] fakeUsersInputs = {"2", "4", "1", "2", "7", "6", "9", "3"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
 
@@ -43,7 +43,7 @@ public class GamesControllerTests {
     void runsTheWholeGameHumanVsComputerTwiceAndExits() {
         String[] fakeUsersInputs = {"2", "4", "1", "2", "7", "6", "9", "2", "4", "1", "2", "7", "6", "9", "3"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
 
@@ -54,7 +54,7 @@ public class GamesControllerTests {
     void runsTheWholeGameComputerVsHumanAndExits() {
         String[] fakeUsersInputs = {"2", "5", "5", "3", "4", "8", "3"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
 
@@ -65,7 +65,7 @@ public class GamesControllerTests {
     void exitsTheGame() {
         String[] fakeUsersInputs = {"3"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
 

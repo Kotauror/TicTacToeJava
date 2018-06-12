@@ -17,7 +17,7 @@ public class RunGameOptionTests {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"));
 
-        runGameOption.run(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        runGameOption.run(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         assertTrue(runGameOption.getGame().getBoard().isWon());
     }
@@ -28,7 +28,7 @@ public class RunGameOptionTests {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"));
 
-        runGameOption.run(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs));
+        runGameOption.run(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         assertFalse(runGameOption.getGame().getBoard().isWon());
         assertTrue(runGameOption.getGame().getBoard().isTie());
