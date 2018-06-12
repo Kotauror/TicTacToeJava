@@ -6,6 +6,8 @@ import java.util.Arrays;
 public class Board {
 
     private String[] places;
+    private static String FIRST_PLAYER_SIGN = "X";
+    private static String SECOND_PLAYER_SIGN = "O";
 
     public Board(String[] places) {
         this.places = places.clone();
@@ -79,18 +81,18 @@ public class Board {
         int XPlayerSignsCounter = 0;
         int OPlayerSignsCounter = 0;
         for (String place : this.places) {
-            if (place.equals("X")) {
+            if (place.equals(FIRST_PLAYER_SIGN)) {
                 XPlayerSignsCounter++;
-            } else if (place.equals("O")){
+            } else if (place.equals(SECOND_PLAYER_SIGN)){
                 OPlayerSignsCounter++;
             }
         }
-        return XPlayerSignsCounter > OPlayerSignsCounter ? "O" : "X";
+        return XPlayerSignsCounter > OPlayerSignsCounter ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
     String getPassivePlayerSign() {
         String activePlayerSign = getActivePlayerSign();
-        return activePlayerSign.equals("X") ? "O" : "X";
+        return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
     private boolean hasNoFreePlaces() {
