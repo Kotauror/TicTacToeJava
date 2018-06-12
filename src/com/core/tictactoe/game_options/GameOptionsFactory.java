@@ -11,9 +11,9 @@ public class GameOptionsFactory {
     private static final Map<String, GameOption> gameOptions;
 
     private static final String HUMAN_VS_HUMAN = "1";
-    private static final String HUMAN_VS_COMPUTER ="4";
-    private static final String COMPUTER_VS_HUMAN ="5";
-    private static final String EXIT = "3";
+    private static final String HUMAN_VS_COMPUTER ="H";
+    private static final String COMPUTER_VS_HUMAN ="C";
+    private static final String EXIT = "E";
 
 
 

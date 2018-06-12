@@ -33,10 +33,27 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void showsTheGamingMenu() {
-        commandLineUi.gamingMenu();
+    void twoLevelMenuReturns1InFirstMenu() {
+        InputStream input = new ByteArrayInputStream("1".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
-        assertTrue(output.toString().contains("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type 3"));
+        assertEquals("1", commandLineUi.twoLevelMenu());
+    }
+
+    @Test
+    void twoLevelMenuReturnsEInFirstMenu() {
+        InputStream input = new ByteArrayInputStream("E".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+
+        assertEquals("E", commandLineUi.twoLevelMenu());
+    }
+
+    @Test
+    void secondLevelMenuReturnsValidInput() {
+        InputStream input = new ByteArrayInputStream("C".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+
+        assertEquals("C", commandLineUi.secondLevelMenu());
     }
 
     @Test
@@ -65,13 +82,6 @@ public class CommandLineUiTests {
         commandLineUi.askForPosition(player.getSign());
 
         assertTrue(output.toString().contains("X, pick a position\n"));
-    }
-
-    @Test
-    void tellsInstructionHowToPickWhoGoestFirst() {
-        commandLineUi.whoGoesFirstInstruction();
-
-        assertTrue(output.toString().contains("If you want Human to start, enter 4, if you want computer to start, enter 5\n"));
     }
 
     @Test
@@ -110,19 +120,6 @@ public class CommandLineUiTests {
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
         assertEquals(1, commandLineUi.getPositionFromUser(board, player.getSign()));
-    }
-
-    @Test
-    void returnsPositionFromUserWhenNotGivenTwo() {
-        assertEquals("3", commandLineUi.askWhoGoesFirst("3"));
-    }
-
-    @Test
-    void asksWhoGoesFirst() {
-        InputStream input = new ByteArrayInputStream("4".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
-
-        assertEquals("4", commandLineUi.askWhoGoesFirst("2"));
     }
 
     @Test

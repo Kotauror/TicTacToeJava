@@ -15,10 +15,8 @@ public class GamesController {
 
     public void run() {
         while (this.isRunning) {
-            this.commandLineUi.gamingMenu();
-            String userInput = this.commandLineUi.getUserInput();
-            userInput = this.commandLineUi.askWhoGoesFirst(userInput);
-            GameOption gameOption = GameOptionsFactory.get(userInput);
+            String gameMode = this.commandLineUi.twoLevelMenu();
+            GameOption gameOption = GameOptionsFactory.get(gameMode);
             this.isRunning = gameOption.run(this.commandLineUi);
         }
     }

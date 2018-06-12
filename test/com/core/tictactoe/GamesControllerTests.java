@@ -19,7 +19,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsHuman() {
-        String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "3"};
+        String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "E"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
@@ -30,7 +30,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsComputerAndExits() {
-        String[] fakeUsersInputs = {"2", "4", "1", "2", "7", "6", "9", "3"};
+        String[] fakeUsersInputs = {"2", "H", "1", "2", "7", "6", "9", "E"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
@@ -41,7 +41,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsComputerTwiceAndExits() {
-        String[] fakeUsersInputs = {"2", "4", "1", "2", "7", "6", "9", "2", "4", "1", "2", "7", "6", "9", "3"};
+        String[] fakeUsersInputs = {"2", "H", "1", "2", "7", "6", "9", "2", "H", "1", "2", "7", "6", "9", "E"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
@@ -52,7 +52,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameComputerVsHumanAndExits() throws NoSuchFieldException, IllegalAccessException {
-        String[] fakeUsersInputs = {"2", "5", "5", "3", "4", "8", "3"};
+        String[] fakeUsersInputs = {"2", "C", "5", "3", "4", "8", "E"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
@@ -68,7 +68,7 @@ public class GamesControllerTests {
 
     @Test
     void exitsTheGame() {
-        String[] fakeUsersInputs = {"3"};
+        String[] fakeUsersInputs = {"E"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
