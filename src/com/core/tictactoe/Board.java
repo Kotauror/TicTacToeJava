@@ -63,10 +63,9 @@ public class Board {
     }
 
     ArrayList<String> getFreePlaces() {
-        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ArrayList<String> freePlaces = new ArrayList<String>();
         for (String place : this.places) {
-            if (Arrays.asList(initialPlaces).contains(place)) {
+            if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) {
                 freePlaces.add(place);
             }
         }
