@@ -1,7 +1,5 @@
 package com.core.tictactoe;
 
-import java.util.ArrayList;
-
 public class ComputerPlayer extends Player {
 
     public ComputerPlayer(String sign) {
@@ -28,7 +26,7 @@ public class ComputerPlayer extends Player {
             return TIE_VALUE;
         }
 
-        ArrayList<String> freePlaces = board.getFreePlaces();
+        String[] freePlaces = board.getFreePlaces();
 
         if (isMaxPlayerDepth(depth)) {
             int bestScoreMaxPlayer = -1000;

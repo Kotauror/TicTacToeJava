@@ -62,17 +62,17 @@ public class Board {
         return "none";
     }
 
-    ArrayList<String> getFreePlaces() {
+    String[] getFreePlaces() {
         ArrayList<String> freePlaces = new ArrayList<>();
         for (String place : this.places) {
             if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
         }
-        return freePlaces;
+        return freePlaces.toArray(new String[freePlaces.size()]);
     }
 
     String getActivePlayerSign() {
-        ArrayList<String> freePlaces = getFreePlaces();
-        return freePlaces.size() % 2 != 0 ? FIRST_PLAYER_SIGN : SECOND_PLAYER_SIGN;
+        String[] freePlaces = getFreePlaces();
+        return freePlaces.length % 2 != 0 ? FIRST_PLAYER_SIGN : SECOND_PLAYER_SIGN;
     }
 
     String getPassivePlayerSign() {
