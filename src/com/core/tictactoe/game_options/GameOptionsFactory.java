@@ -15,8 +15,6 @@ public class GameOptionsFactory {
     private static final String COMPUTER_VS_HUMAN ="C";
     private static final String EXIT = "E";
 
-
-
     private GameOptionsFactory() {}
 
     static {
