@@ -41,12 +41,8 @@ public class Board {
     }
 
     boolean isWon() {
-        for (int[] winPath : winningPositions) {
-            String currentSign = this.valueAtIndex(winPath[0]);
-            int currentSignsInWinPath = countCurrentSignsInWinPath(winPath, currentSign);
-            if (currentSignsInWinPath == winPath.length) return true;
-        }
-        return false;
+        String winnerSign = winnerSign();
+        return !winnerSign.equals("none");
     }
 
     boolean isTie() {
