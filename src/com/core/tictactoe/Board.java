@@ -88,10 +88,9 @@ public class Board {
     }
 
     private boolean hasNoFreePlaces() {
-        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         int numberOfEmptyPlaces = 0;
         for (String place : this.places) {
-            if (Arrays.asList(initialPlaces).contains(place)) numberOfEmptyPlaces += 1;
+            if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) numberOfEmptyPlaces += 1;
         }
         return numberOfEmptyPlaces == 0;
     }
