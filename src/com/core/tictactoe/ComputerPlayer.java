@@ -19,34 +19,34 @@ public class ComputerPlayer extends Player {
         return miniMaxAlgorithm(board, 0, maxPlayer, minPlayer);
     }
 
-    private int miniMaxAlgorithm(Board board, Integer level, String maxPlayer, String minPlayer) {
+    private int miniMaxAlgorithm(Board board, Integer depth, String maxPlayer, String minPlayer) {
         if (board.isWon() && board.winnerSign().equals(maxPlayer)) {
-            return (MAX_VALUE_OF_PLACE - level);
+            return (MAX_VALUE_OF_PLACE - depth);
         } else if (board.isWon() && board.winnerSign().equals(minPlayer)) {
-            return -(MAX_VALUE_OF_PLACE - level);
+            return -(MAX_VALUE_OF_PLACE - depth);
         } else if (board.isTie()) {
             return TIE_VALUE;
         }
 
         ArrayList<String> freePlaces = board.getFreePlaces();
 
-        if (isMaxPlayerLevel(level)) {
+        if (isMaxPlayerDepth(depth)) {
             int bestScoreMaxPlayer = -1000;
             String bestPlace = "temporary";
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
-                int output = miniMaxAlgorithm(boardClone, level + 1, maxPlayer, minPlayer);
+                int output = miniMaxAlgorithm(boardClone, depth + 1, maxPlayer, minPlayer);
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
                 }
             }
-            return level == 0 ? Integer.parseInt(bestPlace) : bestScoreMaxPlayer;
+            return depth == 0 ? Integer.parseInt(bestPlace) : bestScoreMaxPlayer;
         } else {
             int bestScoreMinPlayer = 1000;
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
-                int output = miniMaxAlgorithm(boardClone, level + 1, maxPlayer, minPlayer);
+                int output = miniMaxAlgorithm(boardClone, depth + 1, maxPlayer, minPlayer);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
             }
             return bestScoreMinPlayer;
@@ -59,7 +59,7 @@ public class ComputerPlayer extends Player {
         return boardClone;
     }
 
-    private boolean isMaxPlayerLevel(int level) {
-        return (level % 2 == 0);
+    private boolean isMaxPlayerDepth(int depth) {
+        return (depth % 2 == 0);
     }
 }
