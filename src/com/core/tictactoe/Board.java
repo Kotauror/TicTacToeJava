@@ -39,10 +39,10 @@ public class Board {
     }
 
     boolean isWon() {
-        for (int[] set : winningPositions) {
-            String matcher = this.valueAtIndex(set[0]);
-            int numberOfMatchesInSet = countMatchesInSet(set, matcher);
-            if (numberOfMatchesInSet == set.length) return true;
+        for (int[] winPath : winningPositions) {
+            String currentSign = this.valueAtIndex(winPath[0]);
+            int currentSignsInWinPath = countCurrentSignsInWinPath(winPath, currentSign);
+            if (currentSignsInWinPath == winPath.length) return true;
         }
         return false;
     }
@@ -56,10 +56,10 @@ public class Board {
     }
 
     String winnerSign() {
-        for (int[] set : winningPositions) {
-            String matcher = this.valueAtIndex(set[0]);
-            int numberOfMatchesInSet = countMatchesInSet(set, matcher);
-            if (numberOfMatchesInSet == set.length) return matcher;
+        for (int[] winPath : winningPositions) {
+            String currentSign = this.valueAtIndex(winPath[0]);
+            int currentSignsInWinPath = countCurrentSignsInWinPath(winPath, currentSign);
+            if (currentSignsInWinPath == winPath.length) return currentSign;
         }
         return "none";
     }
@@ -67,9 +67,9 @@ public class Board {
     ArrayList<String> getFreePlaces() {
         String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ArrayList<String> freePlaces = new ArrayList<String>();
-        for(int i=0; i < this.places.length; i++) {
-            if (Arrays.asList(initialPlaces).contains(this.places[i])) {
-                freePlaces.add(this.places[i]);
+        for (String place : this.places) {
+            if (Arrays.asList(initialPlaces).contains(place)) {
+                freePlaces.add(place);
             }
         }
         return freePlaces;
@@ -79,7 +79,7 @@ public class Board {
         int XPlayerSignsCounter = 0;
         int OPlayerSignsCounter = 0;
         for (String place : this.places) {
-            if(place.equals("X")) {
+            if (place.equals("X")) {
                 XPlayerSignsCounter++;
             } else if (place.equals("O")){
                 OPlayerSignsCounter++;
@@ -102,11 +102,11 @@ public class Board {
         return numberOfEmptyPlaces == 0;
     }
 
-    private int countMatchesInSet(int[] set, String matcher) {
-        int numberOfMatchedPairs = 0;
-        for (int i = 0; i < set.length; i++) {
-            if (this.valueAtIndex(set[i]).equals(matcher)) numberOfMatchedPairs ++;
+    private int countCurrentSignsInWinPath(int[] winPath, String currentSign) {
+        int numberOfCurrentSignsInWinPath = 0;
+        for (int aPlaceInWinPath : winPath) {
+            if (this.valueAtIndex(aPlaceInWinPath).equals(currentSign)) numberOfCurrentSignsInWinPath++;
         }
-        return numberOfMatchedPairs;
+        return numberOfCurrentSignsInWinPath;
     }
 }
