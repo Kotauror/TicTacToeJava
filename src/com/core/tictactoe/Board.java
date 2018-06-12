@@ -6,6 +6,8 @@ import java.util.Arrays;
 public class Board {
 
     private String[] places;
+    private static String FIRST_PLAYER_SIGN = "X";
+    private static String SECOND_PLAYER_SIGN = "O";
 
     public Board(String[] places) {
         this.places = places.clone();
@@ -26,7 +28,7 @@ public class Board {
             {2, 4, 6}
     };
 
-    public String[] getPlaces() {
+    String[] getPlaces() {
         return this.places;
     }
 
@@ -39,12 +41,8 @@ public class Board {
     }
 
     boolean isWon() {
-        for (int[] winPath : winningPositions) {
-            String currentSign = this.valueAtIndex(winPath[0]);
-            int currentSignsInWinPath = countCurrentSignsInWinPath(winPath, currentSign);
-            if (currentSignsInWinPath == winPath.length) return true;
-        }
-        return false;
+        String winnerSign = winnerSign();
+        return !winnerSign.equals("none");
     }
 
     boolean isTie() {
@@ -64,40 +62,28 @@ public class Board {
         return "none";
     }
 
-    ArrayList<String> getFreePlaces() {
-        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        ArrayList<String> freePlaces = new ArrayList<String>();
+    String[] getFreePlaces() {
+        ArrayList<String> freePlaces = new ArrayList<>();
         for (String place : this.places) {
-            if (Arrays.asList(initialPlaces).contains(place)) {
-                freePlaces.add(place);
-            }
+            if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
         }
-        return freePlaces;
+        return freePlaces.toArray(new String[freePlaces.size()]);
     }
 
     String getActivePlayerSign() {
-        int XPlayerSignsCounter = 0;
-        int OPlayerSignsCounter = 0;
-        for (String place : this.places) {
-            if (place.equals("X")) {
-                XPlayerSignsCounter++;
-            } else if (place.equals("O")){
-                OPlayerSignsCounter++;
-            }
-        }
-        return XPlayerSignsCounter > OPlayerSignsCounter ? "O" : "X";
+        String[] freePlaces = getFreePlaces();
+        return freePlaces.length % 2 != 0 ? FIRST_PLAYER_SIGN : SECOND_PLAYER_SIGN;
     }
 
     String getPassivePlayerSign() {
         String activePlayerSign = getActivePlayerSign();
-        return activePlayerSign.equals("X") ? "O" : "X";
+        return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
     private boolean hasNoFreePlaces() {
-        String[] initialPlaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         int numberOfEmptyPlaces = 0;
         for (String place : this.places) {
-            if (Arrays.asList(initialPlaces).contains(place)) numberOfEmptyPlaces += 1;
+            if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) numberOfEmptyPlaces += 1;
         }
         return numberOfEmptyPlaces == 0;
     }

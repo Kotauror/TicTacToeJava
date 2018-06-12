@@ -5,17 +5,17 @@ public class Game {
     private Board board;
     private Player active;
     private Player passive;
-    private CommandLineUI commandLineUI;
+    private CommandLineUi commandLineUi;
 
-    public Game(CommandLineUI commandLineUI, Board board, Player playerOne, Player playerTwo) {
-        this.commandLineUI = commandLineUI;
+    public Game(CommandLineUi commandLineUi, Board board, Player playerOne, Player playerTwo) {
+        this.commandLineUi = commandLineUi;
         this.board = board;
         this.active = playerOne;
         this.passive =  playerTwo;
     }
 
      public void run() {
-        this.commandLineUI.greetUsers();
+        this.commandLineUi.greetUsers();
         while (!this.board.isWon() && !this.board.isTie()) {
             this.playTurn();
         }
@@ -35,9 +35,9 @@ public class Game {
     }
 
     private void playTurn() {
-        this.commandLineUI.showBoard(this.board);
-        int position = this.active.pickPosition(this.commandLineUI, this.board);
-        this.commandLineUI.informOfMove(this.active, position);
+        this.commandLineUi.showBoard(this.board);
+        int position = this.active.pickPosition(this.commandLineUi, this.board);
+        this.commandLineUi.informOfMove(this.active, position);
         this.board.putSignOnBoard(this.active.getSign(), position);
         this.switchPlayers();
     }
@@ -49,8 +49,8 @@ public class Game {
     }
 
     private void postGame() {
-        this.commandLineUI.showBoard(this.board);
-        this.commandLineUI.announceWinner(this.board);
+        this.commandLineUi.showBoard(this.board);
+        this.commandLineUi.announceWinner(this.board);
     }
 
 }

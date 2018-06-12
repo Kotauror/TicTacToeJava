@@ -26,9 +26,9 @@ public class HumanPlayerTests {
     void returnsAMove() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         String[] fakeUserInputs = {"1"};
-        StubbCommandLineUI stubbCommandLineUI = new StubbCommandLineUI(new PrintStream(output), System.in, fakeUserInputs);
+        StubCommandLineUi stubCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUserInputs);
 
-        assertEquals(1, humanPlayer.pickPosition(stubbCommandLineUI, new Board()));
+        assertEquals(1, humanPlayer.pickPosition(stubCommandLineUI, new Board()));
     }
 }
 

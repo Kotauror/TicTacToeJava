@@ -149,7 +149,7 @@ public class BoardTests {
             freePlaces.add(Integer.toString(i));
         }
 
-        assertEquals(freePlaces, board.getFreePlaces());
+        assertArrayEquals(freePlaces.toArray(new String[freePlaces.size()]), board.getFreePlaces());
     }
 
     @Test

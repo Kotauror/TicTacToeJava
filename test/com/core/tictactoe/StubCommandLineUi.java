@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class StubbCommandLineUI extends CommandLineUI {
+public class StubCommandLineUi extends CommandLineUi {
 
     private ArrayList inputs;
 
-    public StubbCommandLineUI(PrintStream output, InputStream input, String[] fakeUsersInputs) {
+    public StubCommandLineUi(PrintStream output, InputStream input, String[] fakeUsersInputs) {
         this.output = output;
         this.input = new Scanner(input);
         this.inputs = new ArrayList<String>();

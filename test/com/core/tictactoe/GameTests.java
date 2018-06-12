@@ -16,7 +16,7 @@ public class GameTests {
 
     @BeforeEach
     void instantiate() {
-        game = new Game(new CommandLineUI(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("O"));
+        game = new Game(new CommandLineUi(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("O"));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class GameTests {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
+        game = new Game(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
 
         game.run();
 
@@ -55,7 +55,7 @@ public class GameTests {
         String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("O"));
+        game = new Game(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("O"));
 
         game.run();
 
@@ -72,7 +72,7 @@ public class GameTests {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Board board = new Board();
-        game = new Game(new StubbCommandLineUI(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
+        game = new Game(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
 
         game.run();
 

@@ -4,14 +4,14 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class CommandLineUI {
+public class CommandLineUi {
 
     PrintStream output;
     Scanner input;
 
-    public CommandLineUI(){}
+    public CommandLineUi(){}
 
-    public CommandLineUI(PrintStream output, InputStream input){
+    public CommandLineUi(PrintStream output, InputStream input){
         this.output = output;
         this.input = new Scanner(input);
     }
