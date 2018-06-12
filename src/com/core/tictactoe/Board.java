@@ -78,16 +78,8 @@ public class Board {
     }
 
     String getActivePlayerSign() {
-        int XPlayerSignsCounter = 0;
-        int OPlayerSignsCounter = 0;
-        for (String place : this.places) {
-            if (place.equals(FIRST_PLAYER_SIGN)) {
-                XPlayerSignsCounter++;
-            } else if (place.equals(SECOND_PLAYER_SIGN)){
-                OPlayerSignsCounter++;
-            }
-        }
-        return XPlayerSignsCounter > OPlayerSignsCounter ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
+        ArrayList<String> freePlaces = getFreePlaces();
+        return freePlaces.size() % 2 != 0 ? FIRST_PLAYER_SIGN : SECOND_PLAYER_SIGN;
     }
 
     String getPassivePlayerSign() {
