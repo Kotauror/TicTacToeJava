@@ -33,10 +33,6 @@ public class StubCommandLineUi extends CommandLineUi {
 
     protected void greetUsers() {}
 
-    protected void askForPosition(Player player) {}
-
     protected void announceWinner(Board board) {}
-
-    protected void gamingMenu() {}
 }
 
