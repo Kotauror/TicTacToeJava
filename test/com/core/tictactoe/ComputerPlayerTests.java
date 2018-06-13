@@ -55,6 +55,14 @@ public class ComputerPlayerTests {
     }
 
     @Test
+    void returnsBestMoveOnBoardWith4EmptyMoves() {
+        String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "7", "X", "9"};
+        Board board = new Board(positionsOnBoard);
+
+        assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
+    }
+
+    @Test
     void preventsOpponentFromWinning() {
         String[] positionsOnBoard = {"1", "2", "O", "4", "X", "6", "X", "8", "O"};
         Board board = new Board(positionsOnBoard);
@@ -70,7 +78,6 @@ public class ComputerPlayerTests {
         assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
     }
 
-
     @Test
     void preventsOpponentFromWinning2() {
         String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "7", "8", "9"};
@@ -80,10 +87,10 @@ public class ComputerPlayerTests {
     }
 
     @Test
-    void returnsTopLeftCornerAsTheFirstTakenPlace() {
+    void returnsMiddleAsTheFirstTakenPlace() {
         Board board = new Board();
 
-        assertEquals(1, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(5, computerPlayer.pickPosition(commandLineUi, board));
     }
 
     @Test

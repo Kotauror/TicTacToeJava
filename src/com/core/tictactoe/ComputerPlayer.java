@@ -37,6 +37,8 @@ public class ComputerPlayer extends Player {
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
+                } if (output < bestScoreMaxPlayer) {
+                    break;
                 }
             }
             return depth == 0 ? Integer.parseInt(bestPlace) : bestScoreMaxPlayer;
@@ -46,6 +48,7 @@ public class ComputerPlayer extends Player {
                 Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
                 int output = miniMaxAlgorithm(boardClone, depth + 1, maxPlayer, minPlayer);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
+                if (output > bestScoreMinPlayer) break;
             }
             return bestScoreMinPlayer;
         }
