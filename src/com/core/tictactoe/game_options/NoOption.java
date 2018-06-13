@@ -4,11 +4,15 @@ import com.core.tictactoe.CommandLineUi;
 
 public class NoOption extends GameOption {
 
-    public NoOption(){}
+    private CommandLineUi commandLineUi;
+
+    public NoOption(CommandLineUi commandLineUi){
+        this.commandLineUi = commandLineUi;
+    }
 
     @Override
-    public boolean run(CommandLineUi commandLineUi) {
-        commandLineUi.noSuchOption();
+    public boolean run() {
+        this.commandLineUi.noSuchOption();
         return true;
     }
 }

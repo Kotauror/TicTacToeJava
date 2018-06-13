@@ -15,9 +15,10 @@ public class RunGameOptionTests {
     public void runsAHumanVsHumanGame() {
         String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"));
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"), stubCommandLineUi);
 
-        runGameOption.run(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
+        runGameOption.run();
 
         assertTrue(runGameOption.getGame().getBoard().isWon());
     }
@@ -26,9 +27,10 @@ public class RunGameOptionTests {
     public void runsAHumanVsComputerGame() {
         String[] fakeUsersInputs = {"0", "1", "2", "7", "6", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"));
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"), stubCommandLineUi);
 
-        runGameOption.run(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
+        runGameOption.run();
 
         assertFalse(runGameOption.getGame().getBoard().isWon());
         assertTrue(runGameOption.getGame().getBoard().isTie());

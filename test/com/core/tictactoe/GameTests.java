@@ -13,10 +13,19 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTests {
 
     private static Game game;
+    private static Board board;
+    private static HumanPlayer humanPlayerX;
+    private static HumanPlayer humanPlayerO;
+    private static ComputerPlayer computerPlayerO;
+
 
     @BeforeEach
     void instantiate() {
-        game = new Game(new CommandLineUi(System.out, System.in), new Board(), new HumanPlayer("X"), new HumanPlayer("O"));
+        board = new Board();
+        humanPlayerX = new HumanPlayer("X");
+        humanPlayerO = new HumanPlayer("O");
+        computerPlayerO = new ComputerPlayer("O");
+        game = new Game(new CommandLineUi(System.out, System.in), board, humanPlayerX, humanPlayerO);
     }
 
     @Test
@@ -37,8 +46,8 @@ public class GameTests {
     void playsAWinningGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Board board = new Board();
-        game = new Game(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        game = new Game(stubCommandLineUi, board, humanPlayerX, humanPlayerO);
 
         game.run();
 
@@ -54,8 +63,8 @@ public class GameTests {
     void playsATieGameOfHumanAndComputer() {
         String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Board board = new Board();
-        game = new Game(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new ComputerPlayer("O"));
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        game = new Game(stubCommandLineUi, board, humanPlayerX, computerPlayerO);
 
         game.run();
 
@@ -71,8 +80,8 @@ public class GameTests {
     void playsATieGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Board board = new Board();
-        game = new Game(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs), board, new HumanPlayer("X"), new HumanPlayer("O"));
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        game = new Game(stubCommandLineUi, board, humanPlayerX, humanPlayerO);
 
         game.run();
 
