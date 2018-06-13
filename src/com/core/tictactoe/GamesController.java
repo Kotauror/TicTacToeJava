@@ -18,7 +18,7 @@ public class GamesController {
             GameOptionsFactory factory = new GameOptionsFactory(this.commandLineUi);
             String gameMode = this.commandLineUi.twoLevelMenu();
             GameOption gameOption = factory.get(gameMode);
-            this.isRunning = gameOption.run(this.commandLineUi);
+            this.isRunning = gameOption.run();
         }
     }
 

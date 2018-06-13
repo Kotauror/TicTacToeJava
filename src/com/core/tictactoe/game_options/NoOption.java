@@ -11,8 +11,8 @@ public class NoOption extends GameOption {
     }
 
     @Override
-    public boolean run(CommandLineUi commandLineUi) {
-        commandLineUi.noSuchOption();
+    public boolean run() {
+        this.commandLineUi.noSuchOption();
         return true;
     }
 }
