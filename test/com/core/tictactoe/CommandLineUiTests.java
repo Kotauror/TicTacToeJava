@@ -49,11 +49,33 @@ public class CommandLineUiTests {
     }
 
     @Test
+    void twoLevelMenuAsksAgainOnInvalidInput() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"10", "1"};
+        StubCommandLineUi fakeCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+
+        Object userOption = fakeCommandLineUI.twoLevelMenu();
+
+        assertTrue(userOption.toString().contains("1"));
+    }
+
+    @Test
     void secondLevelMenuReturnsValidInput() {
         InputStream input = new ByteArrayInputStream("C".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
         assertEquals("C", commandLineUi.secondLevelMenu());
+    }
+
+    @Test
+    void secondLevelMenuAsksAgainOnInvalidInput() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"K", "H"};
+        StubCommandLineUi fakeCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+
+        Object userOption = fakeCommandLineUI.secondLevelMenu();
+
+        assertTrue(userOption.toString().contains("H"));
     }
 
     @Test
