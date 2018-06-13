@@ -13,7 +13,7 @@ public class NoOptionTests {
     @Test
     public void optionUnknown() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        NoOption noOption = new NoOption();
+        NoOption noOption = new NoOption(new CommandLineUi(new PrintStream(output), System.in));
 
         noOption.run(new CommandLineUi(new PrintStream(output), System.in));
 

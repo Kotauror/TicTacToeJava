@@ -13,7 +13,7 @@ public class GameOptionsFactoryTests {
 
     @BeforeEach
     public void instantiate() {
-        factory = new GameOptionsFactory();
+        factory = new GameOptionsFactory(new CommandLineUi(System.out, System.in));
     }
 
     @Test

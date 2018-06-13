@@ -1,5 +1,6 @@
 package com.core.tictactoe.game_options;
 
+import com.core.tictactoe.CommandLineUi;
 import com.core.tictactoe.ComputerPlayer;
 import com.core.tictactoe.HumanPlayer;
 
@@ -9,17 +10,12 @@ import java.util.Map;
 public class GameOptionsFactory {
 
     private HashMap<GameMode, GameOption> gameOptions;
+    private CommandLineUi commandLineUi;
 
-    public GameOptionsFactory() {
+    public GameOptionsFactory(CommandLineUi commandLineUi) {
+        this.commandLineUi = commandLineUi;
         this.gameOptions = new HashMap();
         createGameOptions();
-    }
-
-    private void createGameOptions() {
-        gameOptions.put(GameMode.HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O")));
-        gameOptions.put(GameMode.HUMAN_VS_COMPUTER, new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O")));
-        gameOptions.put(GameMode.COMPUTER_VS_HUMAN, new RunGameOption(new ComputerPlayer("X"), new HumanPlayer("O")));
-        gameOptions.put(GameMode.EXIT, new ExitGameOption());
     }
 
     public GameOption get(String type) {
@@ -29,6 +25,13 @@ public class GameOptionsFactory {
                 return entry.getValue();
             }
         }
-        return new NoOption();
+        return new NoOption(this.commandLineUi);
+    }
+
+    private void createGameOptions() {
+        gameOptions.put(GameMode.HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"), this.commandLineUi));
+        gameOptions.put(GameMode.HUMAN_VS_COMPUTER, new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"), this.commandLineUi));
+        gameOptions.put(GameMode.COMPUTER_VS_HUMAN, new RunGameOption(new ComputerPlayer("X"), new HumanPlayer("O"), this.commandLineUi));
+        gameOptions.put(GameMode.EXIT, new ExitGameOption());
     }
 }
