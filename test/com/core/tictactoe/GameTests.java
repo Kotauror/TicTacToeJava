@@ -16,6 +16,7 @@ public class GameTests {
     private static Board board;
     private static HumanPlayer humanPlayerX;
     private static HumanPlayer humanPlayerO;
+    private static ComputerPlayer computerPlayerX;
     private static ComputerPlayer computerPlayerO;
 
 
@@ -24,6 +25,7 @@ public class GameTests {
         board = new Board();
         humanPlayerX = new HumanPlayer("X");
         humanPlayerO = new HumanPlayer("O");
+        computerPlayerX = new ComputerPlayer("X");
         computerPlayerO = new ComputerPlayer("O");
         game = new Game(new CommandLineUi(System.out, System.in), board, humanPlayerX, humanPlayerO);
     }
@@ -91,6 +93,23 @@ public class GameTests {
         assertArrayEquals(expectedArray, board.getPlaces());
         assertEquals("none", board.winnerSign());
     }
+
+    @Test
+    void playsATieGameOfTwoComputers() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), System.in);
+        game = new Game(commandLineUi, board, computerPlayerX, computerPlayerO);
+
+        game.run();
+
+        assertFalse(board.isWon());
+        assertTrue(board.isTie());
+        String[] expectedArray = {"X", "X", "O", "O", "O", "X", "X", "O", "X"};
+        assertArrayEquals(expectedArray, board.getPlaces());
+        assertEquals("none", board.winnerSign());
+    }
+
+
 }
 
 
