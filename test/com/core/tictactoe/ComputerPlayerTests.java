@@ -78,6 +78,7 @@ public class ComputerPlayerTests {
         assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
     }
 
+
     @Test
     void preventsOpponentFromWinning2() {
         String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "7", "8", "9"};
@@ -87,10 +88,10 @@ public class ComputerPlayerTests {
     }
 
     @Test
-    void returnsMiddleAsTheFirstTakenPlace() {
+    void returnsTopLeftCornerAsTheFirstTakenPlace() {
         Board board = new Board();
 
-        assertEquals(5, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(1, computerPlayer.pickPosition(commandLineUi, board));
     }
 
     @Test

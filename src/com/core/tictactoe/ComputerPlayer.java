@@ -14,10 +14,10 @@ public class ComputerPlayer extends Player {
     public int pickPosition(CommandLineUi commandLineUi, Board board) {
         String maxPlayer = board.getActivePlayerSign();
         String minPlayer = board.getPassivePlayerSign();
-        return miniMaxAlgorithm(board, 0, maxPlayer, minPlayer);
+        return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayer, minPlayer);
     }
 
-    private int miniMaxAlgorithm(Board board, Integer depth, String maxPlayer, String minPlayer) {
+    private int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayer, String minPlayer) {
         if (board.isWon() && board.winnerSign().equals(maxPlayer)) {
             return (MAX_VALUE_OF_PLACE - depth);
         } else if (board.isWon() && board.winnerSign().equals(minPlayer)) {
@@ -33,22 +33,23 @@ public class ComputerPlayer extends Player {
             String bestPlace = "temporary";
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
-                int output = miniMaxAlgorithm(boardClone, depth + 1, maxPlayer, minPlayer);
+                int output = miniMaxAlgorithm(boardClone,depth + 1, alpha, beta, maxPlayer, minPlayer);
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
-                } if (output < bestScoreMaxPlayer) {
-                    break;
                 }
+                if (bestScoreMaxPlayer > alpha) alpha = bestScoreMaxPlayer;
+                if (beta <= alpha) break;
             }
             return depth == 0 ? Integer.parseInt(bestPlace) : bestScoreMaxPlayer;
         } else {
             int bestScoreMinPlayer = 1000;
             for (String freePlace : freePlaces) {
                 Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
-                int output = miniMaxAlgorithm(boardClone, depth + 1, maxPlayer, minPlayer);
+                int output = miniMaxAlgorithm(boardClone, depth + 1, alpha, beta, maxPlayer, minPlayer);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
-                if (output > bestScoreMinPlayer) break;
+                if (bestScoreMinPlayer < beta) beta = bestScoreMinPlayer;
+                if (beta <= alpha) break;
             }
             return bestScoreMinPlayer;
         }
