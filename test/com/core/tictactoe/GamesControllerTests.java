@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-//import java.lang.reflect.Field;
-
 public class GamesControllerTests {
 
     private GamesController gamesController;
@@ -24,8 +22,6 @@ public class GamesControllerTests {
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
-
-        // assertFalse(gamesController.getRunProgramStatus());
     }
 
     @Test
@@ -35,8 +31,6 @@ public class GamesControllerTests {
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
-
-        // assertFalse(gamesController.getRunProgramStatus());
     }
 
     @Test
@@ -46,24 +40,15 @@ public class GamesControllerTests {
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
-
-        // assertFalse(gamesController.getRunProgramStatus());
     }
 
     @Test
-    void runsTheWholeGameComputerVsHumanAndExits() throws NoSuchFieldException, IllegalAccessException {
+    void runsTheWholeGameComputerVsHumanAndExits() {
         String[] fakeUsersInputs = {"2", "C", "5", "3", "4", "8", "E"};
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
-
-        // Field field = GamesController.class.getDeclaredField("isRunning");
-        // field.setAccessible(true);
-        // field.get(gamesController);
-
-
-        // assertFalse((Boolean) field.get(gamesController));
     }
 
     @Test
@@ -73,8 +58,6 @@ public class GamesControllerTests {
         gamesController = new GamesController(new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs));
 
         gamesController.run();
-
-        // assertFalse(gamesController.getRunProgramStatus());
     }
 
 }
