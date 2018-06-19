@@ -97,12 +97,12 @@ public class CommandLineUi {
     }
 
     private boolean inputIsValidInFirstMenu(String input) {
-        String regex = "[1, 2, E, e]";
+        String regex = "[1, 2, E]";
         return input.matches(regex);
     }
 
     private boolean inputIsValidInSecondMenu(String input) {
-        String regex = "[C, c, H, h]";
+        String regex = "[C, H]";
         return input.matches(regex);
     }
 }
