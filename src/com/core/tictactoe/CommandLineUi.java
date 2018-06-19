@@ -84,11 +84,16 @@ public class CommandLineUi {
     }
 
     private void showSecondLevelMenu() {
-        output.println("If you want Human to start type H, if you want Computer to start type C");
+        output.println("~~~~ Pick who goes first ~~~~");
+        output.println("> type H if you want the Human to start");
+        output.println("> type C if you want the Computer to start");
     }
 
     private void showFirstLevelMenu() {
-        output.println("If you want to play Human vs Human type 1, if you want to play against computer type 2, to exit type E");
+        output.println("~~~~ Select the type of game ~~~~");
+        output.println("> type 1 for a Human vs Human game");
+        output.println("> type 2 to play with unbeatable Computer");
+        output.println("> type E to Exit");
     }
 
     private boolean isNumeric(String position) {
