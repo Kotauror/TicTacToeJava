@@ -47,8 +47,8 @@ public class GameTests {
     @Test
     void playsAWinningGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         game = new Game(stubCommandLineUi, board, humanPlayerX, humanPlayerO);
 
         game.run();
@@ -64,8 +64,8 @@ public class GameTests {
     @Test
     void playsATieGameOfHumanAndComputer() {
         String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         game = new Game(stubCommandLineUi, board, humanPlayerX, computerPlayerO);
 
         game.run();
@@ -81,8 +81,8 @@ public class GameTests {
     @Test
     void playsATieGameOfTwoHumanPlayers() {
         String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         game = new Game(stubCommandLineUi, board, humanPlayerX, humanPlayerO);
 
         game.run();
@@ -96,8 +96,8 @@ public class GameTests {
 
     @Test
     void playsATieGameOfTwoComputers() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), System.in);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(outputStream), System.in);
         game = new Game(commandLineUi, board, computerPlayerX, computerPlayerO);
 
         game.run();
@@ -108,8 +108,6 @@ public class GameTests {
         assertArrayEquals(expectedArray, board.getPlaces());
         assertEquals("none", board.winnerSign());
     }
-
-
 }
 
 

@@ -12,11 +12,11 @@ public class NoOptionTests {
 
     @Test
     public void optionUnknown() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        NoOption noOption = new NoOption(new CommandLineUi(new PrintStream(output), System.in));
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        NoOption noOption = new NoOption(new CommandLineUi(new PrintStream(outputStream), System.in));
 
         noOption.run();
 
-        assertEquals("There is no such option\n", output.toString());
+        assertEquals("There is no such option\n", outputStream.toString());
     }
 }
