@@ -49,6 +49,14 @@ public class CommandLineUiTests {
     }
 
     @Test
+    void twoLevelMenuRegexIsCaseUnsensitive() {
+        InputStream input = new ByteArrayInputStream("e".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+
+        assertEquals("E", commandLineUi.twoLevelMenu());
+    }
+
+    @Test
     void twoLevelMenuAsksAgainOnInvalidInput() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "1"};
@@ -62,6 +70,14 @@ public class CommandLineUiTests {
     @Test
     void secondLevelMenuReturnsValidInput() {
         InputStream input = new ByteArrayInputStream("C".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+
+        assertEquals("C", commandLineUi.secondLevelMenu());
+    }
+
+    @Test
+    void secondLevelMenuisCaseUnsensitive() {
+        InputStream input = new ByteArrayInputStream("c".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
 
         assertEquals("C", commandLineUi.secondLevelMenu());
