@@ -1,6 +1,6 @@
 package com.core.tictactoe;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.core.tictactoe.game_options.GameOptionsFactory;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -8,18 +8,10 @@ import java.io.PrintStream;
 
 public class GamesControllerTests {
 
-    private GamesController gamesController;
-
-    @BeforeEach
-    void instantiate() {
-        gamesController = new GamesController(new CommandLineUi(System.out, System.in));
-    }
-
     @Test
     void runsTheWholeGameHumanVsHuman() {
         String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "E"};
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs));
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
     }
@@ -27,8 +19,7 @@ public class GamesControllerTests {
     @Test
     void runsTheWholeGameHumanVsComputerAndExits() {
         String[] fakeUsersInputs = {"2", "H", "1", "2", "7", "6", "9", "E"};
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs));
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
     }
@@ -36,8 +27,7 @@ public class GamesControllerTests {
     @Test
     void runsTheWholeGameHumanVsComputerTwiceAndExits() {
         String[] fakeUsersInputs = {"2", "H", "1", "2", "7", "6", "9", "2", "H", "1", "2", "7", "6", "9", "E"};
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs));
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
     }
@@ -45,8 +35,7 @@ public class GamesControllerTests {
     @Test
     void runsTheWholeGameComputerVsHumanAndExits() {
         String[] fakeUsersInputs = {"2", "C", "5", "3", "4", "8", "E"};
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs));
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
     }
@@ -54,9 +43,16 @@ public class GamesControllerTests {
     @Test
     void exitsTheGame() {
         String[] fakeUsersInputs = {"E"};
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        gamesController = new GamesController(new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs));
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
     }
+
+    private GamesController gamesControllerCreator(String[] fakeUserInputs) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
+        GameOptionsFactory gameOptionsFactory = new GameOptionsFactory(stubCommandLineUi);
+        return new GamesController(stubCommandLineUi, gameOptionsFactory);
+    }
+
 }
