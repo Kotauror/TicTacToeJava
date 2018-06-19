@@ -18,25 +18,25 @@ public class GameOptionsFactoryTests {
 
     @Test
     public void returnsInstanceOfNoOption() {
-        GameOption option = gameOptionsFactory.get("7");
+        GameOption option = gameOptionsFactory.getGameOption("7");
         assertThat(option, instanceOf(NoOption.class));
     }
 
     @Test
     public void returnsInstanceOfRunGameOptionFor2() {
-        GameOption option = gameOptionsFactory.get("H");
+        GameOption option = gameOptionsFactory.getGameOption("H");
         assertThat(option, instanceOf(RunGameOption.class));
     }
 
     @Test
     public void returnsInstanceOfRunGameOptionFor1() {
-        GameOption option = gameOptionsFactory.get("C");
+        GameOption option = gameOptionsFactory.getGameOption("C");
         assertThat(option, instanceOf(RunGameOption.class));
     }
 
     @Test
     public void returnsInstanceOfExitGameOption() {
-        GameOption option = gameOptionsFactory.get("E");
+        GameOption option = gameOptionsFactory.getGameOption("E");
         assertThat(option, instanceOf(ExitGameOption.class));
     }
 }
