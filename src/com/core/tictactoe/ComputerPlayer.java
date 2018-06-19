@@ -12,15 +12,15 @@ public class ComputerPlayer extends Player {
 
     @Override
     public int pickPosition(CommandLineUi commandLineUi, Board board) {
-        String maxPlayer = board.getActivePlayerSign();
-        String minPlayer = board.getPassivePlayerSign();
-        return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayer, minPlayer);
+        String maxPlayerSign = board.getActivePlayerSign();
+        String minPlayerSign = board.getPassivePlayerSign();
+        return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayerSign, minPlayerSign);
     }
 
-    private int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayer, String minPlayer) {
-        if (board.isWon() && board.winnerSign().equals(maxPlayer)) {
+    private int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayerSign) {
+        if (board.isWon() && board.winnerSign().equals(maxPlayerSign)) {
             return (MAX_VALUE_OF_PLACE - depth);
-        } else if (board.isWon() && board.winnerSign().equals(minPlayer)) {
+        } else if (board.isWon() && board.winnerSign().equals(minPlayerSign)) {
             return -(MAX_VALUE_OF_PLACE - depth);
         } else if (board.isTie()) {
             return TIE_VALUE;
@@ -32,8 +32,8 @@ public class ComputerPlayer extends Player {
             int bestScoreMaxPlayer = -1000;
             String bestPlace = "temporary";
             for (String freePlace : freePlaces) {
-                Board boardClone = putSignOnNewBoard(board, maxPlayer, freePlace);
-                int output = miniMaxAlgorithm(boardClone,depth + 1, alpha, beta, maxPlayer, minPlayer);
+                Board boardClone = putSignOnNewBoard(board, maxPlayerSign, freePlace);
+                int output = miniMaxAlgorithm(boardClone,depth + 1, alpha, beta, maxPlayerSign, minPlayerSign);
                 if (output > bestScoreMaxPlayer) {
                     bestPlace = freePlace;
                     bestScoreMaxPlayer = output;
@@ -45,8 +45,8 @@ public class ComputerPlayer extends Player {
         } else {
             int bestScoreMinPlayer = 1000;
             for (String freePlace : freePlaces) {
-                Board boardClone = putSignOnNewBoard(board, minPlayer, freePlace);
-                int output = miniMaxAlgorithm(boardClone, depth + 1, alpha, beta, maxPlayer, minPlayer);
+                Board boardClone = putSignOnNewBoard(board, minPlayerSign, freePlace);
+                int output = miniMaxAlgorithm(boardClone, depth + 1, alpha, beta, maxPlayerSign, minPlayerSign);
                 if (output < bestScoreMinPlayer) bestScoreMinPlayer = output;
                 if (bestScoreMinPlayer < beta) beta = bestScoreMinPlayer;
                 if (beta <= alpha) break;
