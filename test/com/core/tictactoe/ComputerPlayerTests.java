@@ -101,4 +101,11 @@ public class ComputerPlayerTests {
 
         assertEquals(5, computerPlayer.pickPosition(commandLineUi, board));
     }
+
+    @Test
+    void returnsATypeOfPlayerAsAString() {
+        String playerType = computerPlayer.getTypeAsAString();
+
+        assertEquals("Computer", playerType);
+    }
 }

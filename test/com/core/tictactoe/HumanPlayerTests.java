@@ -30,6 +30,13 @@ public class HumanPlayerTests {
 
         assertEquals(1, humanPlayer.pickPosition(stubCommandLineUi, new Board()));
     }
+
+    @Test
+    void returnsATypeOfPlayerAsAString() {
+        String playerType = humanPlayer.getTypeAsAString();
+
+        assertEquals("Player", playerType);
+    }
 }
 
 
