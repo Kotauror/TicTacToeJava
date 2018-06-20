@@ -34,10 +34,6 @@ public class Board {
         return this.places;
     }
 
-    int getSize() {
-        return this.size;
-    }
-
     void putSignOnBoard(String sign, int userNumber) {
         this.places[userNumber-1] = sign;
     }

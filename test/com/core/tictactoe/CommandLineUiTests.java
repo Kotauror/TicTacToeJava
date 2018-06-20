@@ -104,11 +104,20 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void showsTheBoard() {
+    void shows3x3Board() {
         commandLineUi.showBoard(board);
 
         assertTrue(output.toString().contains("1 | 2 | 3\n4 | 5 | 6\n7 | 8 | 9"));
     }
+
+    @Test
+    void shows4x4Board() {
+        Board board = new Board(4);
+        commandLineUi.showBoard(board);
+
+        assertTrue(output.toString().contains("1 | 2 | 3 | 4\n5 | 6 | 7 | 8\n9 | 10 | 11 | 12\n13 | 14 | 15 | 16"));
+    }
+
 
     @Test
     void asksForPosition() {

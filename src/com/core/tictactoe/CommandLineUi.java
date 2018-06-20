@@ -23,10 +23,15 @@ public class CommandLineUi {
     }
 
     void showBoard(Board board) {
+        String[][] rowsInBoard = board.getRowsInBoard();
         output.println();
-        output.println(board.valueAtIndex(0) + " | " + board.valueAtIndex(1) + " | " + board.valueAtIndex(2));
-        output.println(board.valueAtIndex(3) + " | " + board.valueAtIndex(4) + " | " + board.valueAtIndex(5));
-        output.println(board.valueAtIndex(6) + " | " + board.valueAtIndex(7) + " | " + board.valueAtIndex(8));
+        for (String[] row : rowsInBoard) {
+            for (int i = 0; i < row.length; i++) {
+                output.print(row[i]);
+                if (i != row.length - 1) output.print(" | ");
+            }
+            output.println();
+        }
         output.println();
     }
 
