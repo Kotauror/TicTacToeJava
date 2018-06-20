@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BoardTests {
 
     private Board board;
-    private Player player;
-    private Player player2;
+    private Player humanPlayerX;
+    private Player humanPlayerO;
 
     @BeforeEach
     void instantiate() {
         board = new Board();
-        player = new HumanPlayer("X");
-        player2 = new HumanPlayer("O");
+        humanPlayerX = new HumanPlayer("X");
+        humanPlayerO = new HumanPlayer("O");
     }
 
     @Test
@@ -29,7 +29,7 @@ public class BoardTests {
 
     @Test
     void itReturnsStringSingFromPosition() {
-        board.putSignOnBoard(player.getSign(), 1);
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
 
         assertEquals("X", board.valueAtIndex(0));
     }
@@ -41,7 +41,7 @@ public class BoardTests {
 
     @Test
     void isNotATie() {
-        board.putSignOnBoard(player.getSign(), 1);
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
 
         assertFalse(board.isTie());
     }
@@ -50,77 +50,77 @@ public class BoardTests {
     void isATie() {
         int[] array1 = {2, 4, 5, 7, 9};
         int[] array2 = {1, 3, 6, 8};
-        setupBoard(player, player2, array1, array2);
+        setupBoard(humanPlayerX, humanPlayerO, array1, array2);
 
         assertTrue(board.isTie());
     }
 
     @Test
     void doesNotHaveAWin() {
-        playMoves(player.getSign(), 1, 6, 3);
+        playMoves(humanPlayerX.getSign(), 1, 6, 3);
 
         assertFalse(board.isWon());
     }
 
     @Test
     void hasWinFor1_2_3() {
-        playMoves(player.getSign(), 1, 2, 3);
+        playMoves(humanPlayerX.getSign(), 1, 2, 3);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor4_5_6() {
-        playMoves(player.getSign(), 4, 5, 6);
+        playMoves(humanPlayerX.getSign(), 4, 5, 6);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor7_8_9() {
-        playMoves(player.getSign(), 7, 8, 9);
+        playMoves(humanPlayerX.getSign(), 7, 8, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor1_4_7() {
-        playMoves(player.getSign(), 1, 4, 7);
+        playMoves(humanPlayerX.getSign(), 1, 4, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor2_5_8() {
-        playMoves(player.getSign(), 2, 5, 8);
+        playMoves(humanPlayerX.getSign(), 2, 5, 8);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor3_6_9() {
-        playMoves(player.getSign(), 3, 6, 9);
+        playMoves(humanPlayerX.getSign(), 3, 6, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor1_5_9() {
-        playMoves(player.getSign(), 1, 5, 9);
+        playMoves(humanPlayerX.getSign(), 1, 5, 9);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void hasWinFor3_5_7() {
-        playMoves(player.getSign(), 3, 5, 7);
+        playMoves(humanPlayerX.getSign(), 3, 5, 7);
 
         assertTrue(board.isWon());
     }
 
     @Test
     void itChangesWinnerSignWhenGameIsWon() {
-        playMoves(player.getSign(), 3, 5, 7);
+        playMoves(humanPlayerX.getSign(), 3, 5, 7);
 
         board.isWon();
         assertEquals("X", board.winnerSign());
@@ -128,22 +128,22 @@ public class BoardTests {
 
     @Test
     void returnsTrueWhenPositionIsNonTaken() {
-        board.putSignOnBoard(player.getSign(), 6);
+        board.putSignOnBoard(humanPlayerX.getSign(), 6);
 
         assertTrue(board.isNonTaken("2"));
     }
 
     @Test
     void returnsFalseWhenPositionIsTaken() {
-        board.putSignOnBoard(player.getSign(), 6);
+        board.putSignOnBoard(humanPlayerX.getSign(), 6);
 
         assertFalse(board.isNonTaken("6"));
     }
 
     @Test
     void returnsArrayListOfFreePlaces() {
-        // Player player = new Player("X");
-        board.putSignOnBoard(player.getSign(), 1);
+        // Player humanPlayerX = new Player("X");
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
         ArrayList<String> freePlaces = new ArrayList<String>();
         for(int i = 2; i < 10; i++) {
             freePlaces.add(Integer.toString(i));
@@ -159,15 +159,15 @@ public class BoardTests {
 
     @Test
     void returnsSignOfActivePlayerAfterFirstMove() {
-        board.putSignOnBoard(player.getSign(), 1);
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
 
         assertEquals("O", board.getActivePlayerSign());
     }
 
     @Test
     void returnsSignOfActivePlayerAfterTwoMoves() {
-        board.putSignOnBoard(player.getSign(), 1);
-        board.putSignOnBoard(player2.getSign(), 2);
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
+        board.putSignOnBoard(humanPlayerO.getSign(), 2);
 
         assertEquals("X", board.getActivePlayerSign());
     }
@@ -179,15 +179,15 @@ public class BoardTests {
 
     @Test
     void returnsSignOfPassivePlayerAfterFirstMove() {
-        board.putSignOnBoard(player.getSign(), 1);
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
 
         assertEquals("X", board.getPassivePlayerSign());
     }
 
     @Test
     void returnsSignOfPassivePlayerAfterTwoMoves() {
-        board.putSignOnBoard(player.getSign(), 1);
-        board.putSignOnBoard(player2.getSign(), 2);
+        board.putSignOnBoard(humanPlayerX.getSign(), 1);
+        board.putSignOnBoard(humanPlayerO.getSign(), 2);
 
         assertEquals("O", board.getPassivePlayerSign());
     }

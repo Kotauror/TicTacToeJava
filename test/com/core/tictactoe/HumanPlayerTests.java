@@ -24,11 +24,18 @@ public class HumanPlayerTests {
 
     @Test
     void returnsAMove() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String[] fakeUserInputs = {"1"};
-        StubCommandLineUi stubCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUserInputs);
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
 
-        assertEquals(1, humanPlayer.pickPosition(stubCommandLineUI, new Board()));
+        assertEquals(1, humanPlayer.pickPosition(stubCommandLineUi, new Board()));
+    }
+
+    @Test
+    void returnsATypeOfPlayerAsAString() {
+        String playerType = humanPlayer.getTypeAsAString();
+
+        assertEquals("Player", playerType);
     }
 }
 

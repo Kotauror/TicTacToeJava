@@ -14,4 +14,9 @@ public class HumanPlayer extends Player {
         int position = commandLineUi.getPositionFromUser(board, this.getSign());
         return position;
     }
+
+    @Override
+    public String getTypeAsAString() {
+        return "Player";
+    }
 }

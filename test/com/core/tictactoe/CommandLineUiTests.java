@@ -10,18 +10,18 @@ public class CommandLineUiTests {
     private CommandLineUi commandLineUi;
     private ByteArrayOutputStream output;
     private Board board;
-    private Player player;
-    private Player player2;
-    private ComputerPlayer player3;
+    private Player humanPlayerX;
+    private Player humanPlayerO;
+    private ComputerPlayer computerPlayerO;
 
     @BeforeEach
     void setup() {
         this.output = new ByteArrayOutputStream();
-        ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
-        commandLineUi = new CommandLineUi(new PrintStream(this.output), input);
-        player = new HumanPlayer("X");
-        player2 = new HumanPlayer("O");
-        player3 = new ComputerPlayer("O");
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("".getBytes());
+        commandLineUi = new CommandLineUi(new PrintStream(this.output), inputStream);
+        humanPlayerX = new HumanPlayer("X");
+        humanPlayerO = new HumanPlayer("O");
+        computerPlayerO = new ComputerPlayer("O");
         board = new Board();
     }
 
@@ -33,77 +33,72 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void twoLevelMenuReturns1InFirstMenu() {
-        InputStream input = new ByteArrayInputStream("1".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+    void mainMenuReturns1InFirstMenu() {
+        InputStream inputStream = new ByteArrayInputStream("1".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("1", commandLineUi.twoLevelMenu());
+        assertEquals("1", commandLineUi.mainMenu());
     }
 
     @Test
-    void twoLevelMenuReturnsEInFirstMenu() {
-        InputStream input = new ByteArrayInputStream("E".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+    void mainMenuReturnsEInFirstMenu() {
+        InputStream inputStream = new ByteArrayInputStream("E".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("E", commandLineUi.twoLevelMenu());
+        assertEquals("E", commandLineUi.mainMenu());
     }
 
     @Test
-    void twoLevelMenuRegexIsCaseUnsensitive() {
-        InputStream input = new ByteArrayInputStream("e".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+    void mainMenuRegexIsCaseInsensitive() {
+        InputStream inputStream = new ByteArrayInputStream("e".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("E", commandLineUi.twoLevelMenu());
+        assertEquals("E", commandLineUi.mainMenu());
     }
 
     @Test
-    void twoLevelMenuAsksAgainOnInvalidInput() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
+    void twoLevelMenuReturnsWhoGoesFirstAtSecondLevel() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"2", "H"};
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
+
+        Object userOption = stubCommandLineUi.mainMenu();
+
+        assertTrue(userOption.toString().contains("2H"));
+    }
+
+    @Test
+    void twoLevelMenuAsksAgainOnInvalidInputOnFirstLevel() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"10", "2", "B", "C"};
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
+
+        Object userOption = stubCommandLineUi.mainMenu();
+
+        assertTrue(userOption.toString().contains("2C"));
+    }
+
+    @Test
+    void twoLevelMenuAsksAgainOnInvalidInputOnSecondLevel() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "1"};
-        StubCommandLineUi fakeCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userOption = fakeCommandLineUI.twoLevelMenu();
+        Object userOption = stubCommandLineUi.mainMenu();
 
         assertTrue(userOption.toString().contains("1"));
     }
 
     @Test
-    void secondLevelMenuReturnsValidInput() {
-        InputStream input = new ByteArrayInputStream("C".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
-
-        assertEquals("C", commandLineUi.secondLevelMenu());
-    }
-
-    @Test
-    void secondLevelMenuisCaseUnsensitive() {
-        InputStream input = new ByteArrayInputStream("c".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
-
-        assertEquals("C", commandLineUi.secondLevelMenu());
-    }
-
-    @Test
-    void secondLevelMenuAsksAgainOnInvalidInput() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        String[] fakeUsersInputs = {"K", "H"};
-        StubCommandLineUi fakeCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
-
-        Object userOption = fakeCommandLineUI.secondLevelMenu();
-
-        assertTrue(userOption.toString().contains("H"));
-    }
-
-    @Test
     void informsOfMoveOfHumanPlayer() {
-        commandLineUi.informOfMove(player, 2);
+        commandLineUi.informOfMove(humanPlayerX, 2);
 
         assertTrue(output.toString().contains("Player X picked position: 2"));
     }
 
     @Test
     void informsOfMoveOfComputerPlayer() {
-        commandLineUi.informOfMove(player3, 2);
+        commandLineUi.informOfMove(computerPlayerO, 2);
 
         assertTrue(output.toString().contains("Computer O picked position: 2"));
     }
@@ -117,7 +112,7 @@ public class CommandLineUiTests {
 
     @Test
     void asksForPosition() {
-        commandLineUi.askForPosition(player.getSign());
+        commandLineUi.askForPosition(humanPlayerX.getSign());
 
         assertTrue(output.toString().contains("X, pick a position\n"));
     }
@@ -126,7 +121,7 @@ public class CommandLineUiTests {
     void announcesWinnerWHenThereIsOne() {
         int[] array1 = {1, 2, 3, 4, 5};
         int[] array2 = {6, 7, 8, 9};
-        setUpBoard(player, player2, array1, array2);
+        setUpBoard(humanPlayerX, humanPlayerO, array1, array2);
 
         commandLineUi.announceWinner(board);
 
@@ -137,7 +132,7 @@ public class CommandLineUiTests {
     void announcesTieIfNoWInner() {
         int[] array1 = {2, 4, 5, 7, 9};
         int[] array2 = {1, 3, 6, 8};
-        setUpBoard(player, player2, array1, array2);
+        setUpBoard(humanPlayerX, humanPlayerO, array1, array2);
 
         commandLineUi.announceWinner(board);
 
@@ -146,37 +141,38 @@ public class CommandLineUiTests {
 
     @Test
     void returnsPositionGivenByPlayer() {
-        InputStream input = new ByteArrayInputStream("0".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+        InputStream inputStream = new ByteArrayInputStream("0".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
         assertEquals("0", commandLineUi.getUserInput());
     }
 
     @Test
     void returnsPlayerPositionAsIntegerOnValidInput() {
-        InputStream input = new ByteArrayInputStream("1".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), input);
+        InputStream inputStream = new ByteArrayInputStream("1".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals(1, commandLineUi.getPositionFromUser(board, player.getSign()));
+        assertEquals(1, commandLineUi.getPositionFromUser(board, humanPlayerX.getSign()));
     }
 
     @Test
     void callsAgainForMoveOnInvalidInput() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "5"};
-        StubCommandLineUi fakeCommandLineUI = new StubCommandLineUi(new PrintStream(output), System.in, fakeUsersInputs);
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userPosition = fakeCommandLineUI.getPositionFromUser(new Board(),"X");
+        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(),"X");
 
         assertTrue(userPosition.toString().contains("5"));
     }
 
-    private void setUpBoard(Player player, Player player2, int[] arraySign1, int[] arraySign2) {
-        for (int anArraySign1 : arraySign1) {
-            board.putSignOnBoard(player.getSign(), anArraySign1);
+    private void setUpBoard(Player player, Player player2, int[] placesOfPlayer1, int[] placesOfPlayer2) {
+        for (int place : placesOfPlayer1) {
+            board.putSignOnBoard(player.getSign(), place);
+
         }
-        for (int anArraySign2 : arraySign2) {
-            board.putSignOnBoard(player2.getSign(), anArraySign2);
+        for (int place : placesOfPlayer2) {
+            board.putSignOnBoard(player2.getSign(), place);
         }
     }
 }

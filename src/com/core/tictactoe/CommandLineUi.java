@@ -1,5 +1,7 @@
 package com.core.tictactoe;
 
+import com.core.tictactoe.game_options.GameMode;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -40,33 +42,15 @@ public class CommandLineUi {
         output.println(!board.winnerSign().equals("none") ? board.winnerSign() + " won!" : "It's a tie!");
     }
 
-    String twoLevelMenu() {
-        while (true) {
-            this.showFirstLevelMenu();
-            String userInputInFirstMenu = this.getUserInput();
-            if (inputIsValidInFirstMenu(userInputInFirstMenu)) {
-                if (userInputInFirstMenu.equals("2")) {
-                    return secondLevelMenu();
-                } else {
-                    return userInputInFirstMenu.toUpperCase();
-                }
-            }
-        }
-    }
-
-    String secondLevelMenu() {
-        while (true) {
-            this.showSecondLevelMenu();
-            String userInputInSecondMenu = this.getUserInput();
-            if (inputIsValidInSecondMenu(userInputInSecondMenu)) {
-                return userInputInSecondMenu.toUpperCase();
-            }
-        }
+    String mainMenu() {
+        String gameModeString = typeOfGameMenu();
+        String orderString = OrderMenu(gameModeString);
+        return gameModeString + orderString;
     }
 
     void informOfMove(Player player, int move) {
-        output.print(player instanceof ComputerPlayer ? "Computer " : "Player ");
-        output.println(player.getSign() + " picked position: " + move);
+        output.print(player.getTypeAsAString());
+        output.println(" " + player.getSign() + " picked position: " + move);
     }
 
     String getUserInput() {
@@ -83,13 +67,40 @@ public class CommandLineUi {
         }
     }
 
-    private void showSecondLevelMenu() {
+    private String typeOfGameMenu() {
+        while(true) {
+            this.showGameModeMenu();
+            String mode = this.getUserInput();
+            if (isValidGameMode(mode)) return mode.toUpperCase();
+        }
+    }
+
+    private boolean isValidGameMode(String input) {
+        String regex = "[1, 2, E, e]";
+        return input.matches(regex);
+    }
+
+    private String OrderMenu(String typeOfGame) {
+        if (!typeOfGame.equals(GameMode.PLAY_WITH_COMPUTER.value())) return "";
+        while (true) {
+            this.showOrderMenu();
+            String order = this.getUserInput();
+            if (isValidGameOrder(order)) return order.toUpperCase();
+        }
+    }
+
+    private boolean isValidGameOrder(String input) {
+        String regex = "[C, H, c, h]";
+        return input.matches(regex);
+    }
+
+    private void showOrderMenu() {
         output.println("~~~~ Pick who goes first ~~~~");
         output.println("> type H if you want the Human to start");
         output.println("> type C if you want the Computer to start");
     }
 
-    private void showFirstLevelMenu() {
+    private void showGameModeMenu() {
         output.println("~~~~ Select the type of game ~~~~");
         output.println("> type 1 for a Human vs Human game");
         output.println("> type 2 to play with unbeatable Computer");
@@ -99,15 +110,5 @@ public class CommandLineUi {
     private boolean isNumeric(String position) {
         String regex = "[1-9]";
         return position.matches(regex);
-    }
-
-    private boolean inputIsValidInFirstMenu(String input) {
-        String regex = "[1, 2, E, e]";
-        return input.matches(regex);
-    }
-
-    private boolean inputIsValidInSecondMenu(String input) {
-        String regex = "[C, H, c, h]";
-        return input.matches(regex);
     }
 }
