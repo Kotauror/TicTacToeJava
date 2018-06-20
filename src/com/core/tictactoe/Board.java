@@ -13,8 +13,8 @@ public class Board {
         this.places = places.clone();
     }
 
-    public Board() {
-        this.places = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public Board(int size) {
+        this.places = createPlaces(size);
     }
 
     private final int [][] winningPositions = {
@@ -67,7 +67,7 @@ public class Board {
         for (String place : this.places) {
             if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
         }
-        return freePlaces.toArray(new String[freePlaces.size()]);
+        return freePlaces.toArray(new String[0]);
     }
 
     String getActivePlayerSign() {
@@ -79,6 +79,16 @@ public class Board {
         String activePlayerSign = getActivePlayerSign();
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
+
+    private String[] createPlaces(int size) {
+        int numberOfPlacesOnBoard = size * size;
+        ArrayList<String> places = new ArrayList<>();
+        for (int i = 1; i <= numberOfPlacesOnBoard; i++) {
+            places.add(String.valueOf(i));
+        }
+        return places.toArray(new String[0]);
+    }
+
 
     private boolean hasNoFreePlaces() {
         int numberOfEmptyPlaces = 0;

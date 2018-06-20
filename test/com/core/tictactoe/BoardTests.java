@@ -15,14 +15,22 @@ public class BoardTests {
 
     @BeforeEach
     void instantiate() {
-        board = new Board();
+        board = new Board(3);
         humanPlayerX = new HumanPlayer("X");
         humanPlayerO = new HumanPlayer("O");
     }
 
     @Test
-    void itHasStringsFrom1to9InPlacesWhenCreated() {
+    void itHasStringsFrom1to9InPlacesWhenCreatedWithSize3() {
         for(int i = 0; i < 9; i++) {
+            assertEquals(String.valueOf(i+1), board.valueAtIndex(i));
+        }
+    }
+
+    @Test
+    void itHasStringsFrom1to16InPlacesWhenCreatedWithSize4() {
+        board = new Board(4);
+        for(int i = 0; i < 16; i++) {
             assertEquals(String.valueOf(i+1), board.valueAtIndex(i));
         }
     }

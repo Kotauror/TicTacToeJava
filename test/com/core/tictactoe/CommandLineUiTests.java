@@ -22,7 +22,7 @@ public class CommandLineUiTests {
         humanPlayerX = new HumanPlayer("X");
         humanPlayerO = new HumanPlayer("O");
         computerPlayerO = new ComputerPlayer("O");
-        board = new Board();
+        board = new Board(3);
     }
 
     @Test
@@ -161,7 +161,7 @@ public class CommandLineUiTests {
         String[] fakeUsersInputs = {"10", "5"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(),"X");
+        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(3),"X");
 
         assertTrue(userPosition.toString().contains("5"));
     }
