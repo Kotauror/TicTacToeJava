@@ -36,6 +36,28 @@ public class BoardTests {
     }
 
     @Test
+    void returnsPlacesSortedInRowsFor3x3Board() {
+        String[] row1 = {"1", "2", "3"};
+        String[] row2 = {"4", "5", "6"};
+        String[] row3 = {"7", "8", "9"};
+        String[][] expectedArray = {row1, row2, row3};
+
+        assertArrayEquals(expectedArray, board.getRowsInBoard());
+    }
+
+    @Test
+    void returnsPlacesSortedInRowsFor4x4Board() {
+        board = new Board(4);
+        String[] row1 = {"1", "2", "3", "4"};
+        String[] row2 = {"5", "6", "7", "8"};
+        String[] row3 = {"9", "10", "11", "12"};
+        String[] row4 = {"13", "14", "15", "16"};
+        String[][] expectedArray = {row1, row2, row3, row4};
+
+        assertArrayEquals(expectedArray, board.getRowsInBoard());
+    }
+
+    @Test
     void itReturnsStringSingFromPosition() {
         board.putSignOnBoard(humanPlayerX.getSign(), 1);
 

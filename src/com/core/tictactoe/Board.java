@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class Board {
 
     private String[] places;
+    private int size;
     private static String FIRST_PLAYER_SIGN = "X";
     private static String SECOND_PLAYER_SIGN = "O";
 
@@ -14,6 +15,7 @@ public class Board {
     }
 
     public Board(int size) {
+        this.size = size;
         this.places = createPlaces(size);
     }
 
@@ -30,6 +32,10 @@ public class Board {
 
     String[] getPlaces() {
         return this.places;
+    }
+
+    int getSize() {
+        return this.size;
     }
 
     void putSignOnBoard(String sign, int userNumber) {
@@ -78,6 +84,20 @@ public class Board {
     String getPassivePlayerSign() {
         String activePlayerSign = getActivePlayerSign();
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
+    }
+
+    String[][] getRowsInBoard() {
+        String[][] rowsInBoard = new String[this.size][];
+        int currentRow = 0;
+        int rowStartIndex = 0;
+        int rowEndIndex = this.size;
+        while(currentRow < this.size) {
+            rowsInBoard[currentRow] = Arrays.copyOfRange(this.places, rowStartIndex, rowEndIndex);
+            rowStartIndex = rowEndIndex;
+            rowEndIndex = rowStartIndex + this.size;
+            currentRow++;
+        }
+        return rowsInBoard;
     }
 
     private String[] createPlaces(int size) {
