@@ -44,8 +44,8 @@ public class CommandLineUi {
 
     String mainMenu() {
         String gameModeString = typeOfGameMenu();
-        if (gameModeString.equals(GameMode.PLAY_WITH_COMPUTER.value())) gameModeString = whoGoesFirstMenu(gameModeString);
-        return gameModeString;
+        String whoGoesFirstString = whoGoesFirstMenu(gameModeString);
+        return gameModeString + whoGoesFirstString;
     }
 
     void informOfMove(Player player, int move) {
@@ -81,10 +81,11 @@ public class CommandLineUi {
     }
 
     private String whoGoesFirstMenu(String typeOfGame) {
+        if (!typeOfGame.equals(GameMode.PLAY_WITH_COMPUTER.value())) return "";
         while (true) {
             this.showOrderMenu();
             String order = this.getUserInput();
-            if (isValidGameOrder(order)) return typeOfGame + order.toUpperCase();
+            if (isValidGameOrder(order)) return order.toUpperCase();
         }
     }
 
