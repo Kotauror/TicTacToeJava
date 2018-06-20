@@ -44,8 +44,8 @@ public class CommandLineUi {
 
     String mainMenu() {
         String gameModeString = typeOfGameMenu();
-        String whoGoesFirstString = whoGoesFirstMenu(gameModeString);
-        return gameModeString + whoGoesFirstString;
+        String orderString = OrderMenu(gameModeString);
+        return gameModeString + orderString;
     }
 
     void informOfMove(Player player, int move) {
@@ -80,7 +80,7 @@ public class CommandLineUi {
         return input.matches(regex);
     }
 
-    private String whoGoesFirstMenu(String typeOfGame) {
+    private String OrderMenu(String typeOfGame) {
         if (!typeOfGame.equals(GameMode.PLAY_WITH_COMPUTER.value())) return "";
         while (true) {
             this.showOrderMenu();
