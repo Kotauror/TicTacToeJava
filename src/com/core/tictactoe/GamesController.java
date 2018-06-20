@@ -17,7 +17,7 @@ public class GamesController {
 
     public void run() {
         while (this.isRunning) {
-            String gameMode = this.commandLineUi.twoLevelMenu();
+            String gameMode = this.commandLineUi.mainMenu();
             GameOption gameOption = this.gameOptionsFactory.getGameOption(gameMode);
             this.isRunning = gameOption.run();
         }

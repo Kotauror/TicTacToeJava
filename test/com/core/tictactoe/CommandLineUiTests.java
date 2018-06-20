@@ -33,65 +33,60 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void twoLevelMenuReturns1InFirstMenu() {
+    void mainMenuReturns1InFirstMenu() {
         InputStream inputStream = new ByteArrayInputStream("1".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("1", commandLineUi.twoLevelMenu());
+        assertEquals("1", commandLineUi.mainMenu());
     }
 
     @Test
-    void twoLevelMenuReturnsEInFirstMenu() {
+    void mainMenuReturnsEInFirstMenu() {
         InputStream inputStream = new ByteArrayInputStream("E".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("E", commandLineUi.twoLevelMenu());
+        assertEquals("E", commandLineUi.mainMenu());
     }
 
     @Test
-    void twoLevelMenuRegexIsCaseInsensitive() {
+    void mainMenuRegexIsCaseInsensitive() {
         InputStream inputStream = new ByteArrayInputStream("e".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("E", commandLineUi.twoLevelMenu());
+        assertEquals("E", commandLineUi.mainMenu());
     }
 
     @Test
-    void twoLevelMenuAsksAgainOnInvalidInput() {
+    void twoLevelMenuReturnsWhoGoesFirstAtSecondLevel() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"2", "H"};
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
+
+        Object userOption = stubCommandLineUi.mainMenu();
+
+        assertTrue(userOption.toString().contains("2H"));
+    }
+
+    @Test
+    void twoLevelMenuAsksAgainOnInvalidInputOnFirstLevel() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"10", "2", "B", "C"};
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
+
+        Object userOption = stubCommandLineUi.mainMenu();
+
+        assertTrue(userOption.toString().contains("2C"));
+    }
+
+    @Test
+    void twoLevelMenuAsksAgainOnInvalidInputOnSecondLevel() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"10", "1"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userOption = stubCommandLineUi.twoLevelMenu();
+        Object userOption = stubCommandLineUi.mainMenu();
 
         assertTrue(userOption.toString().contains("1"));
-    }
-
-    @Test
-    void secondLevelMenuReturnsValidInput() {
-        InputStream inputStream = new ByteArrayInputStream("C".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
-
-        assertEquals("C", commandLineUi.secondLevelMenu());
-    }
-
-    @Test
-    void secondLevelMenuIsCaseInsensitive() {
-        InputStream inputStream = new ByteArrayInputStream("c".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
-
-        assertEquals("C", commandLineUi.secondLevelMenu());
-    }
-
-    @Test
-    void secondLevelMenuAsksAgainOnInvalidInput() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        String[] fakeUsersInputs = {"K", "H"};
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-
-        Object userOption = stubCommandLineUi.secondLevelMenu();
-
-        assertTrue(userOption.toString().contains("H"));
     }
 
     @Test

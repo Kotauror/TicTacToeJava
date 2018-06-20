@@ -24,13 +24,13 @@ public class GameOptionsFactoryTests {
 
     @Test
     public void returnsInstanceOfRunGameOptionFor2() {
-        GameOption option = gameOptionsFactory.getGameOption("H");
+        GameOption option = gameOptionsFactory.getGameOption("2H");
         assertThat(option, instanceOf(RunGameOption.class));
     }
 
     @Test
     public void returnsInstanceOfRunGameOptionFor1() {
-        GameOption option = gameOptionsFactory.getGameOption("C");
+        GameOption option = gameOptionsFactory.getGameOption("2C");
         assertThat(option, instanceOf(RunGameOption.class));
     }
 
