@@ -75,12 +75,22 @@ public class CommandLineUi {
         }
     }
 
+    private boolean isValidGameMode(String input) {
+        String regex = "[1, 2, E, e]";
+        return input.matches(regex);
+    }
+
     private String whoGoesFirstMenu(String typeOfGame) {
         while (true) {
             this.showOrderMenu();
             String order = this.getUserInput();
             if (isValidGameOrder(order)) return typeOfGame + order.toUpperCase();
         }
+    }
+
+    private boolean isValidGameOrder(String input) {
+        String regex = "[C, H, c, h]";
+        return input.matches(regex);
     }
 
     private void showOrderMenu() {
@@ -99,15 +109,5 @@ public class CommandLineUi {
     private boolean isNumeric(String position) {
         String regex = "[1-9]";
         return position.matches(regex);
-    }
-
-    private boolean isValidGameMode(String input) {
-        String regex = "[1, 2, E, e]";
-        return input.matches(regex);
-    }
-
-    private boolean isValidGameOrder(String input) {
-        String regex = "[C, H, c, h]";
-        return input.matches(regex);
     }
 }
