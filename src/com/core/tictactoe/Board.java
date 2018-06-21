@@ -137,9 +137,7 @@ public class Board {
     private String[] createPlaces(int size) {
         int numberOfPlacesOnBoard = size * size;
         ArrayList<String> places = new ArrayList<>();
-        for (int i = 1; i <= numberOfPlacesOnBoard; i++) {
-            places.add(String.valueOf(i));
-        }
+        IntStream.rangeClosed(1, numberOfPlacesOnBoard).forEach(i -> places.add(String.valueOf(i)));
         return places.toArray(new String[0]);
     }
 
