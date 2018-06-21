@@ -78,14 +78,10 @@ public class Board {
 
     String[][] getRowsInBoard() {
         String[][] arrayOfRows = new String[this.size][];
-        int currentLineNumber = 0;
-        int lineStartIndex = 0;
-        int lineEndIndex = this.size;
-        while (currentLineNumber < this.size) {
-            arrayOfRows[currentLineNumber] = Arrays.copyOfRange(this.places, lineStartIndex, lineEndIndex);
-            lineStartIndex = lineEndIndex;
-            lineEndIndex = lineStartIndex + this.size;
-            currentLineNumber++;
+        int currentRow = 0;
+        for(int i = 0; i < this.places.length; i+= size) {
+            arrayOfRows[currentRow] = Arrays.copyOfRange(this.places, i, i + this.size);
+            currentRow++;
         }
         return arrayOfRows;
     }
@@ -96,8 +92,7 @@ public class Board {
         String[][] rowsInBoard = getRowsInBoard();
         lines.addAll(Arrays.asList(rowsInBoard));
 
-        String[][] columnsInBoard = getColumnsInBoard(rowsInBoard);
-        lines.addAll(Arrays.asList(columnsInBoard));
+        lines.addAll(Arrays.asList(getColumnsInBoard(rowsInBoard)));
 
         lines.add(this.getTopLeftDiagonal(rowsInBoard));
         lines.add(this.getTopRightDiagonal(rowsInBoard));
@@ -122,21 +117,21 @@ public class Board {
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
-        ArrayList<String> diagonalLine = new ArrayList<>();
+        String[] diagonalLine = new String[this.size];
         for (int i = 0; i < this.size; i++) {
-            diagonalLine.add(rowsInBoard[i][i]);
+            diagonalLine[i] = (rowsInBoard[i][i]);
         }
-        return diagonalLine.toArray(new String[0]);
+        return diagonalLine;
     }
 
     private String[] getTopRightDiagonal(String[][] rowsInBoard) {
-        ArrayList<String> diagonalLine = new ArrayList<>();
+        String[] diagonalLine = new String[this.size];
         int indexOfPlaceInRow = this.size - 1;
         for (int i = 0; i < this.size; i++) {
-            diagonalLine.add(rowsInBoard[i][indexOfPlaceInRow]);
+            diagonalLine[i] = rowsInBoard[i][indexOfPlaceInRow];
             indexOfPlaceInRow--;
         }
-        return diagonalLine.toArray(new String[0]);
+        return diagonalLine;
     }
 
     private String[] createPlaces(int size) {
