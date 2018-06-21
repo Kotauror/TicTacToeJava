@@ -82,12 +82,26 @@ public class Board {
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
-    String[][] getRowsInBoard() {
+    String[][] getAllVectors() {
+        ArrayList<String[]> vectors = new ArrayList<>();
+
+        String[][] rowsInBoard = getRowsInBoard();
+        vectors.addAll(Arrays.asList(rowsInBoard));
+
+        String[][] columnsInBoard = getColumnsInBoard(rowsInBoard);
+        vectors.addAll(Arrays.asList(columnsInBoard));
+
+        vectors.add(this.getTopLeftDiagonal(rowsInBoard));
+        vectors.add(this.getTopRightDiagonal(rowsInBoard));
+
+        return vectors.toArray(new String[0][0]);
+    }
+
+    private String[][] getRowsInBoard() {
         return this.createArrayOfVectors(this.places);
     }
 
-    String[][] getColumnsInBoard() {
-        String[][] rowsInBoard = getRowsInBoard();
+    private String[][] getColumnsInBoard(String[][] rowsInBoard) {
         int currentColumn = 0;
         ArrayList<String> columnsArray = new ArrayList<>();
         while (currentColumn < this.size) {
@@ -99,8 +113,7 @@ public class Board {
         return createArrayOfVectors(columnsArray.toArray(new String[0]));
     }
 
-    String[] getTopLeftDiagonal() {
-        String[][] rowsInBoard = getRowsInBoard();
+    private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
         ArrayList<String> diagonalVector = new ArrayList<>();
         for (int i = 0; i < this.size; i++) {
             diagonalVector.add(rowsInBoard[i][i]);
@@ -108,8 +121,7 @@ public class Board {
         return diagonalVector.toArray(new String[0]);
     }
 
-    String[] getTopRightDiagonal() {
-        String[][] rowsInBoard = getRowsInBoard();
+    private String[] getTopRightDiagonal(String[][] rowsInBoard) {
         ArrayList<String> diagonalVector = new ArrayList<>();
         int indexOfPlaceInRow = this.size-1;
         for (int i = 0; i < this.size; i++) {
