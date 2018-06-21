@@ -90,7 +90,7 @@ public class Board {
         String[][] rowsInBoard = getRowsInBoard();
         int currentColumn = 0;
         ArrayList<String> columnsArray = new ArrayList<>();
-        while(currentColumn < this.size) {
+        while (currentColumn < this.size) {
             for (String[] row : rowsInBoard) {
                 columnsArray.add(row[currentColumn]);
             }
@@ -99,12 +99,21 @@ public class Board {
         return createArrayOfVectors(columnsArray.toArray(new String[0]));
     }
 
+    String[] getTopLeftDiagonal() {
+        String[][] rowsInBoard = getRowsInBoard();
+        ArrayList<String> diagonalOne = new ArrayList<>();
+        for (int i = 0; i < this.size; i++) {
+            diagonalOne.add(rowsInBoard[i][i]);
+        }
+        return diagonalOne.toArray(new String[0]);
+    }
+
     private String[][] createArrayOfVectors(String[] array) {
         String[][] arrayOfVectors = new String[this.size][];
         int currentVector = 0;
         int vectorStartIndex = 0;
         int vectorEndIndex = this.size;
-        while(currentVector < this.size) {
+        while (currentVector < this.size) {
             arrayOfVectors[currentVector] = Arrays.copyOfRange(array, vectorStartIndex, vectorEndIndex);
             vectorStartIndex = vectorEndIndex;
             vectorEndIndex = vectorStartIndex + this.size;

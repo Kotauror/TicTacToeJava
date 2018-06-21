@@ -93,6 +93,21 @@ public class BoardTests {
         assertArrayEquals(expectedArray, board.getColumnsInBoard());
     }
 
+    @Test
+    void returnsPlacesSortedInLeftDiagonalFor3x3Board() {
+        Board board = new Board(3);
+        String[] diagonalOne = {"1", "5", "9"};
+
+        assertArrayEquals(diagonalOne, board.getTopLeftDiagonal());
+    }
+
+    @Test
+    void returnsPlacesSortedInLeftDiagonalFor4x4Board() {
+        Board board = new Board(4);
+        String[] diagonalOne = {"1", "6", "11", "16"};
+
+        assertArrayEquals(diagonalOne, board.getTopLeftDiagonal());
+    }
 
     @Test
     void itReturnsStringSingFromPosition() {
