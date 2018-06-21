@@ -101,11 +101,22 @@ public class Board {
 
     String[] getTopLeftDiagonal() {
         String[][] rowsInBoard = getRowsInBoard();
-        ArrayList<String> diagonalOne = new ArrayList<>();
+        ArrayList<String> diagonalVector = new ArrayList<>();
         for (int i = 0; i < this.size; i++) {
-            diagonalOne.add(rowsInBoard[i][i]);
+            diagonalVector.add(rowsInBoard[i][i]);
         }
-        return diagonalOne.toArray(new String[0]);
+        return diagonalVector.toArray(new String[0]);
+    }
+
+    String[] getTopRightDiagonal() {
+        String[][] rowsInBoard = getRowsInBoard();
+        ArrayList<String> diagonalVector = new ArrayList<>();
+        int indexOfPlaceInRow = this.size-1;
+        for (int i = 0; i < this.size; i++) {
+            diagonalVector.add(rowsInBoard[i][indexOfPlaceInRow]);
+            indexOfPlaceInRow--;
+        }
+        return diagonalVector.toArray(new String[0]);
     }
 
     private String[][] createArrayOfVectors(String[] array) {
