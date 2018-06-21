@@ -2,6 +2,7 @@ package com.core.tictactoe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static java.lang.Math.sqrt;
 
@@ -76,7 +77,17 @@ public class Board {
     }
 
     String[][] getRowsInBoard() {
-        return this.createArrayOfLines(this.places);
+        String[][] arrayOfRows = new String[this.size][];
+        int currentLineNumber = 0;
+        int lineStartIndex = 0;
+        int lineEndIndex = this.size;
+        while (currentLineNumber < this.size) {
+            arrayOfRows[currentLineNumber] = Arrays.copyOfRange(this.places, lineStartIndex, lineEndIndex);
+            lineStartIndex = lineEndIndex;
+            lineEndIndex = lineStartIndex + this.size;
+            currentLineNumber++;
+        }
+        return arrayOfRows;
     }
 
     private String[][] getAllLines() {
@@ -95,15 +106,19 @@ public class Board {
     }
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
-        int currentColumn = 0;
-        ArrayList<String> columnsArray = new ArrayList<>();
-        while (currentColumn < this.size) {
-            for (String[] row : rowsInBoard) {
-                columnsArray.add(row[currentColumn]);
-            }
-            currentColumn++;
+        ArrayList<String[]> columnsArray = new ArrayList<>();
+        IntStream.range(0, this.size).forEach(i -> addSingleColumnToColumnsArray(i, columnsArray, rowsInBoard));
+        return columnsArray.toArray(new String[0][0]);
+    }
+
+    private void addSingleColumnToColumnsArray(int i, ArrayList<String[]> columns, String[][] rowsInBoard) {
+        String[] column = new String[this.size];
+        int elementIndexInColumn = 0;
+        for (String[] row : rowsInBoard) {
+            column[elementIndexInColumn] = row[i];
+            elementIndexInColumn++;
         }
-        return createArrayOfLines(columnsArray.toArray(new String[0]));
+        columns.add(column);
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
@@ -122,20 +137,6 @@ public class Board {
             indexOfPlaceInRow--;
         }
         return diagonalLine.toArray(new String[0]);
-    }
-
-    private String[][] createArrayOfLines(String[] array) {
-        String[][] arrayOfLines = new String[this.size][];
-        int currentLineNumber = 0;
-        int lineStartIndex = 0;
-        int lineEndIndex = this.size;
-        while (currentLineNumber < this.size) {
-            arrayOfLines[currentLineNumber] = Arrays.copyOfRange(array, lineStartIndex, lineEndIndex);
-            lineStartIndex = lineEndIndex;
-            lineEndIndex = lineStartIndex + this.size;
-            currentLineNumber++;
-        }
-        return arrayOfLines;
     }
 
     private String[] createPlaces(int size) {
