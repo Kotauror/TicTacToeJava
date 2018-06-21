@@ -48,11 +48,11 @@ public class Board {
     }
 
     String winnerSign() {
-        String[][] vectors = this.getAllVectors();
-        for (String[] vector : vectors) {
-            String currentSign = vector[0];
-            int numberOfCurrentSignsInVector = countCurrentSignsInWinPath(vector, currentSign);
-            if (numberOfCurrentSignsInVector == vector.length) return currentSign;
+        String[][] lines = this.getAllLines();
+        for (String[] line : lines) {
+            String currentSign = line[0];
+            int numberOfCurrentSignsInLine = countCurrentSignsInWinPath(line, currentSign);
+            if (numberOfCurrentSignsInLine == line.length) return currentSign;
         }
         return "none";
     }
@@ -76,22 +76,22 @@ public class Board {
     }
 
     String[][] getRowsInBoard() {
-        return this.createArrayOfVectors(this.places);
+        return this.createArrayOfLines(this.places);
     }
 
-    private String[][] getAllVectors() {
-        ArrayList<String[]> vectors = new ArrayList<>();
+    private String[][] getAllLines() {
+        ArrayList<String[]> lines = new ArrayList<>();
 
         String[][] rowsInBoard = getRowsInBoard();
-        vectors.addAll(Arrays.asList(rowsInBoard));
+        lines.addAll(Arrays.asList(rowsInBoard));
 
         String[][] columnsInBoard = getColumnsInBoard(rowsInBoard);
-        vectors.addAll(Arrays.asList(columnsInBoard));
+        lines.addAll(Arrays.asList(columnsInBoard));
 
-        vectors.add(this.getTopLeftDiagonal(rowsInBoard));
-        vectors.add(this.getTopRightDiagonal(rowsInBoard));
+        lines.add(this.getTopLeftDiagonal(rowsInBoard));
+        lines.add(this.getTopRightDiagonal(rowsInBoard));
 
-        return vectors.toArray(new String[0][0]);
+        return lines.toArray(new String[0][0]);
     }
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
@@ -103,39 +103,39 @@ public class Board {
             }
             currentColumn++;
         }
-        return createArrayOfVectors(columnsArray.toArray(new String[0]));
+        return createArrayOfLines(columnsArray.toArray(new String[0]));
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
-        ArrayList<String> diagonalVector = new ArrayList<>();
+        ArrayList<String> diagonalLine = new ArrayList<>();
         for (int i = 0; i < this.size; i++) {
-            diagonalVector.add(rowsInBoard[i][i]);
+            diagonalLine.add(rowsInBoard[i][i]);
         }
-        return diagonalVector.toArray(new String[0]);
+        return diagonalLine.toArray(new String[0]);
     }
 
     private String[] getTopRightDiagonal(String[][] rowsInBoard) {
-        ArrayList<String> diagonalVector = new ArrayList<>();
-        int indexOfPlaceInRow = this.size-1;
+        ArrayList<String> diagonalLine = new ArrayList<>();
+        int indexOfPlaceInRow = this.size - 1;
         for (int i = 0; i < this.size; i++) {
-            diagonalVector.add(rowsInBoard[i][indexOfPlaceInRow]);
+            diagonalLine.add(rowsInBoard[i][indexOfPlaceInRow]);
             indexOfPlaceInRow--;
         }
-        return diagonalVector.toArray(new String[0]);
+        return diagonalLine.toArray(new String[0]);
     }
 
-    private String[][] createArrayOfVectors(String[] array) {
-        String[][] arrayOfVectors = new String[this.size][];
-        int currentVector = 0;
-        int vectorStartIndex = 0;
-        int vectorEndIndex = this.size;
-        while (currentVector < this.size) {
-            arrayOfVectors[currentVector] = Arrays.copyOfRange(array, vectorStartIndex, vectorEndIndex);
-            vectorStartIndex = vectorEndIndex;
-            vectorEndIndex = vectorStartIndex + this.size;
-            currentVector++;
+    private String[][] createArrayOfLines(String[] array) {
+        String[][] arrayOfLines = new String[this.size][];
+        int currentLineNumber = 0;
+        int lineStartIndex = 0;
+        int lineEndIndex = this.size;
+        while (currentLineNumber < this.size) {
+            arrayOfLines[currentLineNumber] = Arrays.copyOfRange(array, lineStartIndex, lineEndIndex);
+            lineStartIndex = lineEndIndex;
+            lineEndIndex = lineStartIndex + this.size;
+            currentLineNumber++;
         }
-        return arrayOfVectors;
+        return arrayOfLines;
     }
 
     private String[] createPlaces(int size) {
@@ -155,10 +155,10 @@ public class Board {
         return numberOfEmptyPlaces == 0;
     }
 
-    private int countCurrentSignsInWinPath(String[] vector, String currentSign) {
+    private int countCurrentSignsInWinPath(String[] line, String currentSign) {
         int numberOfCurrentSignsInWinPath = 0;
-        for (String aPlaceInVector : vector) {
-            if (aPlaceInVector.equals(currentSign)) numberOfCurrentSignsInWinPath++;
+        for (String aPlaceInLine : line) {
+            if (aPlaceInLine.equals(currentSign)) numberOfCurrentSignsInWinPath++;
         }
         return numberOfCurrentSignsInWinPath;
     }

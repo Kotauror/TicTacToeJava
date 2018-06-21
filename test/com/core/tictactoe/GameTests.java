@@ -38,6 +38,7 @@ public class GameTests {
     public void returnsBoard() {
         assertThat(game.getBoard(), instanceOf(Board.class));
     }
+
     @Test
     public void returnsActivePlayer() {
         assertEquals("X", game.getActivePlayer().getSign());
@@ -145,5 +146,3 @@ public class GameTests {
         assertArrayEquals(expectedArray, board4x4.getPlaces());
     }
 }
-
-
