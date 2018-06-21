@@ -3,6 +3,8 @@ package com.core.tictactoe;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.lang.Math.sqrt;
+
 public class Board {
 
     private String[] places;
@@ -12,23 +14,13 @@ public class Board {
 
     public Board(String[] places) {
         this.places = places.clone();
+        this.size = this.countSize();
     }
 
     public Board(int size) {
         this.size = size;
         this.places = createPlaces(size);
     }
-
-    private final int [][] winningPositions = {
-            {0, 1, 2},
-            {3, 4, 5},
-            {6, 7, 8},
-            {0, 3, 6},
-            {1, 4, 7},
-            {2, 5, 8},
-            {0, 4, 8},
-            {2, 4, 6}
-    };
 
     String[] getPlaces() {
         return this.places;
@@ -56,10 +48,11 @@ public class Board {
     }
 
     String winnerSign() {
-        for (int[] winPath : winningPositions) {
-            String currentSign = this.valueAtIndex(winPath[0]);
-            int currentSignsInWinPath = countCurrentSignsInWinPath(winPath, currentSign);
-            if (currentSignsInWinPath == winPath.length) return currentSign;
+        String[][] vectors = this.getAllVectors();
+        for (String[] vector : vectors) {
+            String currentSign = vector[0];
+            int numberOfCurrentSignsInVector = countCurrentSignsInWinPath(vector, currentSign);
+            if (numberOfCurrentSignsInVector == vector.length) return currentSign;
         }
         return "none";
     }
@@ -82,7 +75,11 @@ public class Board {
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
-    String[][] getAllVectors() {
+    String[][] getRowsInBoard() {
+        return this.createArrayOfVectors(this.places);
+    }
+
+    private String[][] getAllVectors() {
         ArrayList<String[]> vectors = new ArrayList<>();
 
         String[][] rowsInBoard = getRowsInBoard();
@@ -95,10 +92,6 @@ public class Board {
         vectors.add(this.getTopRightDiagonal(rowsInBoard));
 
         return vectors.toArray(new String[0][0]);
-    }
-
-    private String[][] getRowsInBoard() {
-        return this.createArrayOfVectors(this.places);
     }
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
@@ -154,7 +147,6 @@ public class Board {
         return places.toArray(new String[0]);
     }
 
-
     private boolean hasNoFreePlaces() {
         int numberOfEmptyPlaces = 0;
         for (String place : this.places) {
@@ -163,11 +155,16 @@ public class Board {
         return numberOfEmptyPlaces == 0;
     }
 
-    private int countCurrentSignsInWinPath(int[] winPath, String currentSign) {
+    private int countCurrentSignsInWinPath(String[] vector, String currentSign) {
         int numberOfCurrentSignsInWinPath = 0;
-        for (int aPlaceInWinPath : winPath) {
-            if (this.valueAtIndex(aPlaceInWinPath).equals(currentSign)) numberOfCurrentSignsInWinPath++;
+        for (String aPlaceInVector : vector) {
+            if (aPlaceInVector.equals(currentSign)) numberOfCurrentSignsInWinPath++;
         }
         return numberOfCurrentSignsInWinPath;
+    }
+
+    private int countSize() {
+        Double boardSize = sqrt(this.places.length);
+        return boardSize.intValue();
     }
 }
