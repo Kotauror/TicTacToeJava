@@ -22,7 +22,7 @@ public class GameTests {
 
     @BeforeEach
     void instantiate() {
-        board = new Board();
+        board = new Board(3);
         humanPlayerX = new HumanPlayer("X");
         humanPlayerO = new HumanPlayer("O");
         computerPlayerX = new ComputerPlayer("X");

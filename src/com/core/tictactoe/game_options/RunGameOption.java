@@ -20,7 +20,7 @@ public class RunGameOption extends GameOption {
 
     @Override
     public boolean run() {
-        this.game = new Game(this.commandLineUi, new Board(), playerOne, playerTwo);
+        this.game = new Game(this.commandLineUi, new Board(3), playerOne, playerTwo);
         this.game.run();
         return true;
     }

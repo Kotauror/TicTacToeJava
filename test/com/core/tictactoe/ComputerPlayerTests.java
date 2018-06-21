@@ -89,7 +89,7 @@ public class ComputerPlayerTests {
 
     @Test
     void returnsTopLeftCornerAsTheFirstTakenPlace() {
-        Board board = new Board();
+        Board board = new Board(3);
 
         assertEquals(1, computerPlayer.pickPosition(commandLineUi, board));
     }

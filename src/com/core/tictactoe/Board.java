@@ -13,8 +13,8 @@ public class Board {
         this.places = places.clone();
     }
 
-    public Board() {
-        this.places = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public Board(int size) {
+        this.places = createPlaces(size);
     }
 
     private final int [][] winningPositions = {
@@ -94,5 +94,14 @@ public class Board {
             if (this.valueAtIndex(aPlaceInWinPath).equals(currentSign)) numberOfCurrentSignsInWinPath++;
         }
         return numberOfCurrentSignsInWinPath;
+    }
+
+    private String[] createPlaces(int size) {
+        int numberOfPlacesOnBoard = size * size;
+        ArrayList<String> places = new ArrayList<>();
+        for (int i = 1; i <= numberOfPlacesOnBoard; i++) {
+            places.add(String.valueOf(i));
+        }
+        return places.toArray(new String[0]);
     }
 }
