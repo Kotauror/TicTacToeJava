@@ -128,12 +128,8 @@ public class Board {
     private String[][] createArrayOfLines(String[] array) {
         String[][] arrayOfLines = new String[this.size][];
         int currentLineNumber = 0;
-        int lineStartIndex = 0;
-        int lineEndIndex = this.size;
-        while (currentLineNumber < this.size) {
-            arrayOfLines[currentLineNumber] = Arrays.copyOfRange(array, lineStartIndex, lineEndIndex);
-            lineStartIndex = lineEndIndex;
-            lineEndIndex = lineStartIndex + this.size;
+        for(int i = 0; i < array.length; i+= size) {
+            arrayOfLines[currentLineNumber] = Arrays.copyOfRange(array, i, i + size);
             currentLineNumber++;
         }
         return arrayOfLines;
