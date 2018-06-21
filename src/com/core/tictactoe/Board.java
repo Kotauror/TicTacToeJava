@@ -108,21 +108,21 @@ public class Board {
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
-        ArrayList<String> diagonalLine = new ArrayList<>();
+        String[] diagonalLine = new String[this.size];
         for (int i = 0; i < this.size; i++) {
-            diagonalLine.add(rowsInBoard[i][i]);
+            diagonalLine[i] = rowsInBoard[i][i];
         }
-        return diagonalLine.toArray(new String[0]);
+        return diagonalLine;
     }
 
     private String[] getTopRightDiagonal(String[][] rowsInBoard) {
-        ArrayList<String> diagonalLine = new ArrayList<>();
+        String[] diagonalLine = new String[this.size];
         int indexOfPlaceInRow = this.size - 1;
         for (int i = 0; i < this.size; i++) {
-            diagonalLine.add(rowsInBoard[i][indexOfPlaceInRow]);
+            diagonalLine[i] = rowsInBoard[i][indexOfPlaceInRow];
             indexOfPlaceInRow--;
         }
-        return diagonalLine.toArray(new String[0]);
+        return diagonalLine;
     }
 
     private String[][] createArrayOfLines(String[] array) {
