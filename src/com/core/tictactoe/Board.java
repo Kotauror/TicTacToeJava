@@ -83,17 +83,34 @@ public class Board {
     }
 
     String[][] getRowsInBoard() {
-        String[][] rowsInBoard = new String[this.size][];
-        int currentRow = 0;
-        int rowStartIndex = 0;
-        int rowEndIndex = this.size;
-        while(currentRow < this.size) {
-            rowsInBoard[currentRow] = Arrays.copyOfRange(this.places, rowStartIndex, rowEndIndex);
-            rowStartIndex = rowEndIndex;
-            rowEndIndex = rowStartIndex + this.size;
-            currentRow++;
+        return this.createArrayOfVectors(this.places);
+    }
+
+    String[][] getColumnsInBoard() {
+        String[][] rowsInBoard = getRowsInBoard();
+        int currentColumn = 0;
+        ArrayList<String> columnsArray = new ArrayList<>();
+        while(currentColumn < this.size) {
+            for (String[] row : rowsInBoard) {
+                columnsArray.add(row[currentColumn]);
+            }
+            currentColumn++;
         }
-        return rowsInBoard;
+        return createArrayOfVectors(columnsArray.toArray(new String[0]));
+    }
+
+    private String[][] createArrayOfVectors(String[] array) {
+        String[][] arrayOfVectors = new String[this.size][];
+        int currentVector = 0;
+        int vectorStartIndex = 0;
+        int vectorEndIndex = this.size;
+        while(currentVector < this.size) {
+            arrayOfVectors[currentVector] = Arrays.copyOfRange(array, vectorStartIndex, vectorEndIndex);
+            vectorStartIndex = vectorEndIndex;
+            vectorEndIndex = vectorStartIndex + this.size;
+            currentVector++;
+        }
+        return arrayOfVectors;
     }
 
     private String[] createPlaces(int size) {

@@ -58,6 +58,43 @@ public class BoardTests {
     }
 
     @Test
+    void returnsPlacesSortedInColumnsFor3x3Board() {
+        Board board = new Board(3);
+        String[] col1 = {"1", "4", "7"};
+        String[] col2 = {"2", "5", "8"};
+        String[] col3 = {"3", "6", "9"};
+        String[][] expectedArray = {col1, col2, col3};
+
+        assertArrayEquals(expectedArray, board.getColumnsInBoard());
+    }
+
+    @Test
+    void returnsPlacesSortedInColumnsFor4x4Board() {
+        Board board = new Board(4);
+        String[] col1 = {"1", "5", "9", "13"};
+        String[] col2 = {"2", "6", "10", "14"};
+        String[] col3 = {"3", "7", "11", "15"};
+        String[] col4 = {"4", "8", "12", "16"};
+        String[][] expectedArray = {col1, col2, col3, col4};
+
+        assertArrayEquals(expectedArray, board.getColumnsInBoard());
+    }
+
+    @Test
+    void returnsPlacesSortedInColumnsFor5x5Board() {
+        Board board = new Board(5);
+        String[] col1 = {"1", "6", "11", "16", "21"};
+        String[] col2 = {"2", "7", "12", "17", "22"};
+        String[] col3 = {"3", "8", "13", "18", "23"};
+        String[] col4 = {"4", "9", "14", "19", "24"};
+        String[] col5 = {"5", "10", "15", "20", "25"};
+        String[][] expectedArray = {col1, col2, col3, col4, col5};
+
+        assertArrayEquals(expectedArray, board.getColumnsInBoard());
+    }
+
+
+    @Test
     void itReturnsStringSingFromPosition() {
         board.putSignOnBoard(humanPlayerX.getSign(), 1);
 
