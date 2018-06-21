@@ -51,8 +51,8 @@ public class Board {
         String[][] lines = this.getAllLines();
         for (String[] line : lines) {
             String currentSign = line[0];
-            int numberOfCurrentSignsInLine = countCurrentSignsInWinPath(line, currentSign);
-            if (numberOfCurrentSignsInLine == line.length) return currentSign;
+            int signsInLine = countCurrentSignsInLine(line, currentSign);
+            if (this.lineHasAWinner(signsInLine, line.length)) return currentSign;
         }
         return "none";
     }
@@ -155,16 +155,20 @@ public class Board {
         return numberOfEmptyPlaces == 0;
     }
 
-    private int countCurrentSignsInWinPath(String[] line, String currentSign) {
-        int numberOfCurrentSignsInWinPath = 0;
+    private int countCurrentSignsInLine(String[] line, String currentSign) {
+        int numberOfCurrentSignsinLine = 0;
         for (String aPlaceInLine : line) {
-            if (aPlaceInLine.equals(currentSign)) numberOfCurrentSignsInWinPath++;
+            if (aPlaceInLine.equals(currentSign)) numberOfCurrentSignsinLine++;
         }
-        return numberOfCurrentSignsInWinPath;
+        return numberOfCurrentSignsinLine;
     }
 
     private int countSize() {
         Double boardSize = sqrt(this.places.length);
         return boardSize.intValue();
+    }
+
+    private boolean lineHasAWinner(int signsInLine, int lineLength) {
+        return signsInLine == lineLength;
     }
 }
