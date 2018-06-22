@@ -8,9 +8,17 @@ import java.io.PrintStream;
 
 public class GamesControllerTests {
 
+    private final static String HUMAN_VS_HUMAN_GAME = "1";
+    private final static String HUMAN_VS_COMPUTER_GAME = "2";
+    private final static String BOARD_3_x_3 = "3";
+    private final static String COMPUTER_GOES_FIRST = "C";
+    private final static String HUMAN_GOES_FIRST = "H";
+    private final static String EXIT_GAME = "E";
+
+
     @Test
     void runsTheWholeGameHumanVsHuman() {
-        String[] fakeUsersInputs = {"1", "3", "1", "2", "3", "4", "5", "6", "7", "E"};
+        String[] fakeUsersInputs = {HUMAN_VS_HUMAN_GAME, BOARD_3_x_3, "1", "2", "3", "4", "5", "6", "7", EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -18,7 +26,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsComputerAndExits() {
-        String[] fakeUsersInputs = {"2", "H", "3", "1", "2", "7", "6", "9", "E"};
+        String[] fakeUsersInputs = {HUMAN_VS_COMPUTER_GAME, HUMAN_GOES_FIRST, BOARD_3_x_3, "1", "2", "7", "6", "9", EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -26,7 +34,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsComputerTwiceAndExits() {
-        String[] fakeUsersInputs = {"2", "H", "3", "1", "2", "7", "6", "9", "2", "H", "3", "1", "2", "7", "6", "9", "E"};
+        String[] fakeUsersInputs = {HUMAN_VS_COMPUTER_GAME, HUMAN_GOES_FIRST, BOARD_3_x_3, "1", "2", "7", "6", "9", HUMAN_VS_COMPUTER_GAME, HUMAN_GOES_FIRST, BOARD_3_x_3, "1", "2", "7", "6", "9", EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -34,7 +42,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameComputerVsHumanAndExits() {
-        String[] fakeUsersInputs = {"2", "C", "3", "5", "3", "4", "8", "E"};
+        String[] fakeUsersInputs = {HUMAN_VS_COMPUTER_GAME, COMPUTER_GOES_FIRST, BOARD_3_x_3, "5", "3", "4", "8", EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -42,7 +50,7 @@ public class GamesControllerTests {
 
     @Test
     void exitsTheGame() {
-        String[] fakeUsersInputs = {"E"};
+        String[] fakeUsersInputs = {EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -50,7 +58,7 @@ public class GamesControllerTests {
 
     @Test
     void asksAgainForBoardSizeAndRunsTheWholeGameOnValidInput() {
-        String[] fakeUsersInputs = {"1", "invalid input", "3", "1", "2", "3", "4", "5", "6", "7", "E"};
+        String[] fakeUsersInputs = {HUMAN_VS_HUMAN_GAME, "invalid input", "3", "1", "2", "3", "4", "5", "6", "7", EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -58,7 +66,7 @@ public class GamesControllerTests {
 
     @Test
     void asksAgainWhenUserInputIsOutsideOfRangeOfBoardAndRunsTheWholeGameOnValidInput() {
-        String[] fakeUsersInputs = {"1", "invalid input", "3", "1", "200", "2", "3", "4", "5", "6", "7", "E"};
+        String[] fakeUsersInputs = {HUMAN_VS_HUMAN_GAME, "invalid input", BOARD_3_x_3, "1", "200", "2", "3", "4", "5", "6", "7", EXIT_GAME};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
