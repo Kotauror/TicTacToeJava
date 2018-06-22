@@ -115,7 +115,7 @@ public class CommandLineUi {
     private void showGameModeMenu() {
         output.println("~~~~ Select the type of game ~~~~");
         output.println("> type 1 for a Human vs Human game");
-        output.println("> type 2 to play with unbeatable Computer");
+        output.println("> type 2 to play with Computer");
         output.println("> type E to Exit");
     }
 

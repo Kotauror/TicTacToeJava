@@ -1,5 +1,7 @@
 package com.core.tictactoe;
 
+import java.util.Random;
+
 public class ComputerPlayer extends Player {
 
     public ComputerPlayer(String sign) {
@@ -19,7 +21,12 @@ public class ComputerPlayer extends Player {
     public int pickPosition(CommandLineUi commandLineUi, Board board) {
         String maxPlayerSign = board.getActivePlayerSign();
         String minPlayerSign = board.getPassivePlayerSign();
-        return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayerSign, minPlayerSign);
+        String[] freePlacesInBoard = board.getFreePlaces();
+        if (freePlacesInBoard.length < 14) {
+            return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayerSign, minPlayerSign);
+        } else {
+            return randomMove(freePlacesInBoard);
+        }
     }
 
     private int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayer) {
@@ -68,5 +75,10 @@ public class ComputerPlayer extends Player {
 
     private boolean isMaxPlayerDepth(int depth) {
         return (depth % 2 == 0);
+    }
+
+    private int randomMove(String[] availableMoves) {
+        int random = new Random().nextInt(availableMoves.length);
+        return random+1;
     }
 }

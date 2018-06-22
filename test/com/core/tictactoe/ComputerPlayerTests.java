@@ -108,4 +108,18 @@ public class ComputerPlayerTests {
 
         assertEquals("Computer", playerType);
     }
+
+    @Test
+    void returns1whenRunningMinimax() {
+        StubComputerPlayer stubComputerPlayer = new StubComputerPlayer("X");
+
+        assertEquals(1, stubComputerPlayer.pickPosition(commandLineUi, new Board(3)));
+    }
+
+    @Test
+    void returns2whenRandomizingMove() {
+        StubComputerPlayer stubComputerPlayer = new StubComputerPlayer("X");
+
+        assertEquals(2, stubComputerPlayer.pickPosition(commandLineUi, new Board(5)));
+    }
 }
