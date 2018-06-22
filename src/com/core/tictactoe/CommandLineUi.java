@@ -24,10 +24,11 @@ public class CommandLineUi {
 
     void showBoard(Board board) {
         String[][] rowsInBoard = board.getRowsInBoard();
-        output.println();
         for (String[] row : rowsInBoard) {
             for (int i = 0; i < row.length; i++) {
                 output.print(row[i]);
+                if (!row[i].equals("X") && !row[i].equals("O") && Integer.parseInt(row[i]) < 10 ) output.print(" ");
+                if (row[i].equals("X") || row[i].equals("O")) output.print(" ");
                 if (i != row.length - 1) output.print(" | ");
             }
             output.println();
@@ -66,9 +67,15 @@ public class CommandLineUi {
         while (true) {
            this.askForPosition(playerSign);
            String position = this.getUserInput();
-            if (this.isNumeric(position) && board.isNonTaken(position)) {
-                return Integer.parseInt(position);
-            }
+            if (board.isNonTaken(position)) return Integer.parseInt(position);
+        }
+    }
+
+    public int getBoardSize() {
+        while(true) {
+            this.showBoardSizeOptions();
+            String size = this.getUserInput();
+            if (isValidBoardSize(size)) return Integer.parseInt(size);
         }
     }
 
@@ -112,8 +119,14 @@ public class CommandLineUi {
         output.println("> type E to Exit");
     }
 
-    private boolean isNumeric(String position) {
-        String regex = "[1-9]";
-        return position.matches(regex);
+    private void showBoardSizeOptions() {
+        output.println("~~~~ Select the size of board ~~~~");
+        output.println("> Type a number from 2 to 8 to define the size of board ");
+        output.println("> eg. enter 3 for 3x3, enter 4 for 4x4");
+    }
+
+    private boolean isValidBoardSize(String size) {
+        String regex = "[2-8]";
+        return size.matches(regex);
     }
 }

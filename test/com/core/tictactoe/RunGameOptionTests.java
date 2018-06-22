@@ -11,9 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RunGameOptionTests {
 
+    private final static String BOARD_3_x_3 = "3";
+
     @Test
     public void runsAHumanVsHumanGame() {
-        String[] fakeUsersInputs = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        String[] fakeUsersInputs = {BOARD_3_x_3, "1", "2", "3", "4", "5", "6", "7", "8"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"), stubCommandLineUi);
@@ -25,7 +27,7 @@ public class RunGameOptionTests {
 
     @Test
     public void runsAHumanVsComputerGame() {
-        String[] fakeUsersInputs = {"0", "1", "2", "7", "6", "9"};
+        String[] fakeUsersInputs = {BOARD_3_x_3, "1", "2", "7", "6", "9"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"), stubCommandLineUi);

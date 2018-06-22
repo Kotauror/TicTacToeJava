@@ -20,12 +20,17 @@ public class RunGameOption extends GameOption {
 
     @Override
     public boolean run() {
-        this.game = new Game(this.commandLineUi, new Board(3), playerOne, playerTwo);
+        int boardSize = this.getBoardSize();
+        this.game = new Game(this.commandLineUi, new Board(boardSize), playerOne, playerTwo);
         this.game.run();
         return true;
     }
 
     public Game getGame() {
         return this.game;
+    }
+
+    private int getBoardSize() {
+        return this.commandLineUi.getBoardSize();
     }
 }
