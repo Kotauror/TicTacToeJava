@@ -107,7 +107,7 @@ public class CommandLineUiTests {
     void shows3x3Board() {
         commandLineUi.showBoard(board);
 
-        assertTrue(output.toString().contains("1 | 2 | 3\n4 | 5 | 6\n7 | 8 | 9"));
+        assertTrue(output.toString().contains("1  | 2  | 3 \n4  | 5  | 6 \n7  | 8  | 9 "));
     }
 
     @Test
@@ -115,9 +115,18 @@ public class CommandLineUiTests {
         Board board = new Board(4);
         commandLineUi.showBoard(board);
 
-        assertTrue(output.toString().contains("1 | 2 | 3 | 4\n5 | 6 | 7 | 8\n9 | 10 | 11 | 12\n13 | 14 | 15 | 16"));
+        assertTrue(output.toString().contains("1  | 2  | 3  | 4 \n5  | 6  | 7  | 8 \n9  | 10 | 11 | 12\n13 | 14 | 15 | 16"));
     }
 
+    @Test
+    void shows4x4BoardWithUserMarksInIt() {
+        Board board = new Board(4);
+        board.putSignOnBoard("X", 3);
+        board.putSignOnBoard("X", 12);
+        commandLineUi.showBoard(board);
+
+        assertTrue(output.toString().contains("1  | 2  | X  | 4 \n5  | 6  | 7  | 8 \n9  | 10 | 11 | X \n13 | 14 | 15 | 16"));
+    }
 
     @Test
     void asksForPosition() {

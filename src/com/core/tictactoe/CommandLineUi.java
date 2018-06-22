@@ -24,10 +24,11 @@ public class CommandLineUi {
 
     void showBoard(Board board) {
         String[][] rowsInBoard = board.getRowsInBoard();
-        output.println();
         for (String[] row : rowsInBoard) {
             for (int i = 0; i < row.length; i++) {
                 output.print(row[i]);
+                if (!row[i].equals("X") && !row[i].equals("O") && Integer.parseInt(row[i]) < 10 ) output.print(" ");
+                if (row[i].equals("X") || row[i].equals("O")) output.print(" ");
                 if (i != row.length - 1) output.print(" | ");
             }
             output.println();
