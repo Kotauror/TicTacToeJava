@@ -66,9 +66,7 @@ public class CommandLineUi {
         while (true) {
            this.askForPosition(playerSign);
            String position = this.getUserInput();
-            if (this.isNumeric(position) && board.isNonTaken(position)) {
-                return Integer.parseInt(position);
-            }
+            if (board.isNonTaken(position)) return Integer.parseInt(position);
         }
     }
 
@@ -76,7 +74,7 @@ public class CommandLineUi {
         while(true) {
             this.showBoardSizeOptions();
             String size = this.getUserInput();
-            if (isValidBoarsSize(size)) return Integer.parseInt(size);
+            if (isValidBoardSize(size)) return Integer.parseInt(size);
         }
     }
 
@@ -126,12 +124,7 @@ public class CommandLineUi {
         output.println("> eg. enter 3 for 3x3, enter 4 for 4x4");
     }
 
-    private boolean isNumeric(String position) {
-        String regex = "[1-9]";
-        return position.matches(regex);
-    }
-
-    private boolean isValidBoarsSize(String size) {
+    private boolean isValidBoardSize(String size) {
         String regex = "[2-8]";
         return size.matches(regex);
     }

@@ -56,6 +56,14 @@ public class GamesControllerTests {
         gamesController.run();
     }
 
+    @Test
+    void asksAgainWhenUserInputIsOutsideOfRangeOfBoardAndRunsTheWholeGameOnValidInput() {
+        String[] fakeUsersInputs = {"1", "invalid input", "3", "1", "200", "2", "3", "4", "5", "6", "7", "E"};
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
+
+        gamesController.run();
+    }
+
     private GamesController gamesControllerCreator(String[] fakeUserInputs) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
