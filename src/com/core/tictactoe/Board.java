@@ -2,6 +2,7 @@ package com.core.tictactoe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static java.lang.Math.sqrt;
@@ -105,13 +106,9 @@ public class Board {
     }
 
     private void addColumnToColumnsArray(int i, ArrayList<String[]> columnsArray, String[][] rowsInBoard) {
-        String[] column = new String[this.size];
-        int indexOfElementInColumn = 0;
-        for (String[] row : rowsInBoard) {
-            column[indexOfElementInColumn] = row[i];
-            indexOfElementInColumn++;
-        }
-        columnsArray.add(column);
+        List<String> column = new ArrayList<>();
+        Arrays.stream(rowsInBoard).forEach(row -> column.add(row[i]));
+        columnsArray.add(column.toArray(new String[0]));
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
