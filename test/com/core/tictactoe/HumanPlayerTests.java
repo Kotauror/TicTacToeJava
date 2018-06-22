@@ -28,7 +28,7 @@ public class HumanPlayerTests {
         String[] fakeUserInputs = {"1"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
 
-        assertEquals(1, humanPlayer.pickPosition(stubCommandLineUi, new Board()));
+        assertEquals(1, humanPlayer.pickPosition(stubCommandLineUi, new Board(3)));
     }
 
     @Test

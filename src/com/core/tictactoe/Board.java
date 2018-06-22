@@ -2,31 +2,27 @@ package com.core.tictactoe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import static java.lang.Math.sqrt;
 
 public class Board {
 
     private String[] places;
+    private int size;
     private static String FIRST_PLAYER_SIGN = "X";
     private static String SECOND_PLAYER_SIGN = "O";
 
     public Board(String[] places) {
         this.places = places.clone();
+        this.size = this.countSize();
     }
 
-    public Board() {
-        this.places = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public Board(int size) {
+        this.size = size;
+        this.places = createPlaces(size);
     }
-
-    private final int [][] winningPositions = {
-            {0, 1, 2},
-            {3, 4, 5},
-            {6, 7, 8},
-            {0, 3, 6},
-            {1, 4, 7},
-            {2, 5, 8},
-            {0, 4, 8},
-            {2, 4, 6}
-    };
 
     String[] getPlaces() {
         return this.places;
@@ -54,10 +50,11 @@ public class Board {
     }
 
     String winnerSign() {
-        for (int[] winPath : winningPositions) {
-            String currentSign = this.valueAtIndex(winPath[0]);
-            int currentSignsInWinPath = countCurrentSignsInWinPath(winPath, currentSign);
-            if (currentSignsInWinPath == winPath.length) return currentSign;
+        String[][] lines = this.getAllLines();
+        for (String[] line : lines) {
+            String currentSign = line[0];
+            int signsInLine = countCurrentSignsInLine(line, currentSign);
+            if (this.lineHasAWinner(signsInLine)) return currentSign;
         }
         return "none";
     }
@@ -67,7 +64,7 @@ public class Board {
         for (String place : this.places) {
             if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
         }
-        return freePlaces.toArray(new String[freePlaces.size()]);
+        return freePlaces.toArray(new String[0]);
     }
 
     String getActivePlayerSign() {
@@ -80,6 +77,63 @@ public class Board {
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
+    String[][] getRowsInBoard() {
+        String[][] arrayOfRows = new String[this.size][];
+        int currentRow = 0;
+        for (int i = 0; i < this.places.length; i+= size) {
+            arrayOfRows[currentRow] = Arrays.copyOfRange(this.places, i, i + this.size);
+            currentRow++;
+        }
+        return arrayOfRows;
+    }
+
+    private String[][] getAllLines() {
+        ArrayList<String[]> allLinesInBoard = new ArrayList<>();
+        String[][] rowsInBoard = getRowsInBoard();
+
+        allLinesInBoard.addAll(Arrays.asList(rowsInBoard));
+        allLinesInBoard.addAll(Arrays.asList(getColumnsInBoard(rowsInBoard)));
+        allLinesInBoard.add(this.getTopLeftDiagonal(rowsInBoard));
+        allLinesInBoard.add(this.getTopRightDiagonal(rowsInBoard));
+
+        return allLinesInBoard.toArray(new String[0][0]);
+    }
+
+    private String[][] getColumnsInBoard(String[][] rowsInBoard) {
+        ArrayList<String[]> columnsArray = new ArrayList<>();
+        IntStream.range(0, this.size).forEach(i -> addColumnToColumnsArray(i, columnsArray, rowsInBoard));
+        return columnsArray.toArray(new String[0][0]);
+    }
+
+    private void addColumnToColumnsArray(int i, ArrayList<String[]> columnsArray, String[][] rowsInBoard) {
+        List<String> column = new ArrayList<>();
+        Arrays.stream(rowsInBoard).forEach(row -> column.add(row[i]));
+        columnsArray.add(column.toArray(new String[0]));
+    }
+
+    private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
+        String[] diagonalLine = new String[this.size];
+        IntStream.range(0, this.size).forEach(i -> diagonalLine[i] = rowsInBoard[i][i]);
+        return diagonalLine;
+    }
+
+    private String[] getTopRightDiagonal(String[][] rowsInBoard) {
+        String[] diagonalLine = new String[this.size];
+        int indexOfPlaceInRow = this.size - 1;
+        for (int i = 0; i < this.size; i++) {
+            diagonalLine[i] = rowsInBoard[i][indexOfPlaceInRow];
+            indexOfPlaceInRow--;
+        }
+        return diagonalLine;
+    }
+
+    private String[] createPlaces(int size) {
+        int numberOfPlacesOnBoard = size * size;
+        ArrayList<String> places = new ArrayList<>();
+        IntStream.rangeClosed(1, numberOfPlacesOnBoard).forEach(i -> places.add(String.valueOf(i)));
+        return places.toArray(new String[0]);
+    }
+
     private boolean hasNoFreePlaces() {
         int numberOfEmptyPlaces = 0;
         for (String place : this.places) {
@@ -88,11 +142,20 @@ public class Board {
         return numberOfEmptyPlaces == 0;
     }
 
-    private int countCurrentSignsInWinPath(int[] winPath, String currentSign) {
-        int numberOfCurrentSignsInWinPath = 0;
-        for (int aPlaceInWinPath : winPath) {
-            if (this.valueAtIndex(aPlaceInWinPath).equals(currentSign)) numberOfCurrentSignsInWinPath++;
+    private int countCurrentSignsInLine(String[] line, String currentSign) {
+        int numberOfCurrentSignsInLine = 0;
+        for (String aPlaceInLine : line) {
+            if (aPlaceInLine.equals(currentSign)) numberOfCurrentSignsInLine++;
         }
-        return numberOfCurrentSignsInWinPath;
+        return numberOfCurrentSignsInLine;
+    }
+
+    private int countSize() {
+        Double boardSize = sqrt(this.places.length);
+        return boardSize.intValue();
+    }
+
+    private boolean lineHasAWinner(int signsInLine) {
+        return signsInLine == this.size;
     }
 }
