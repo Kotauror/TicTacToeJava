@@ -53,7 +53,7 @@ public class Board {
         for (String[] line : lines) {
             String currentSign = line[0];
             int signsInLine = countCurrentSignsInLine(line, currentSign);
-            if (this.lineHasAWinner(signsInLine, line.length)) return currentSign;
+            if (this.lineHasAWinner(signsInLine)) return currentSign;
         }
         return "none";
     }
@@ -79,7 +79,7 @@ public class Board {
     String[][] getRowsInBoard() {
         String[][] arrayOfRows = new String[this.size][];
         int currentRow = 0;
-        for(int i = 0; i < this.places.length; i+= size) {
+        for (int i = 0; i < this.places.length; i+= size) {
             arrayOfRows[currentRow] = Arrays.copyOfRange(this.places, i, i + this.size);
             currentRow++;
         }
@@ -87,33 +87,31 @@ public class Board {
     }
 
     private String[][] getAllLines() {
-        ArrayList<String[]> lines = new ArrayList<>();
-
+        ArrayList<String[]> allLinesInBoard = new ArrayList<>();
         String[][] rowsInBoard = getRowsInBoard();
-        lines.addAll(Arrays.asList(rowsInBoard));
 
-        lines.addAll(Arrays.asList(getColumnsInBoard(rowsInBoard)));
+        allLinesInBoard.addAll(Arrays.asList(rowsInBoard));
+        allLinesInBoard.addAll(Arrays.asList(getColumnsInBoard(rowsInBoard)));
+        allLinesInBoard.add(this.getTopLeftDiagonal(rowsInBoard));
+        allLinesInBoard.add(this.getTopRightDiagonal(rowsInBoard));
 
-        lines.add(this.getTopLeftDiagonal(rowsInBoard));
-        lines.add(this.getTopRightDiagonal(rowsInBoard));
-
-        return lines.toArray(new String[0][0]);
+        return allLinesInBoard.toArray(new String[0][0]);
     }
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
         ArrayList<String[]> columnsArray = new ArrayList<>();
-        IntStream.range(0, this.size).forEach(i -> addSingleColumnToColumnsArray(i, columnsArray, rowsInBoard));
+        IntStream.range(0, this.size).forEach(i -> addColumnToColumnsArray(i, columnsArray, rowsInBoard));
         return columnsArray.toArray(new String[0][0]);
     }
 
-    private void addSingleColumnToColumnsArray(int i, ArrayList<String[]> columns, String[][] rowsInBoard) {
+    private void addColumnToColumnsArray(int i, ArrayList<String[]> columnsArray, String[][] rowsInBoard) {
         String[] column = new String[this.size];
-        int elementIndexInColumn = 0;
+        int indexOfElementInColumn = 0;
         for (String[] row : rowsInBoard) {
-            column[elementIndexInColumn] = row[i];
-            elementIndexInColumn++;
+            column[indexOfElementInColumn] = row[i];
+            indexOfElementInColumn++;
         }
-        columns.add(column);
+        columnsArray.add(column);
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
@@ -150,11 +148,11 @@ public class Board {
     }
 
     private int countCurrentSignsInLine(String[] line, String currentSign) {
-        int numberOfCurrentSignsinLine = 0;
+        int numberOfCurrentSignsInLine = 0;
         for (String aPlaceInLine : line) {
-            if (aPlaceInLine.equals(currentSign)) numberOfCurrentSignsinLine++;
+            if (aPlaceInLine.equals(currentSign)) numberOfCurrentSignsInLine++;
         }
-        return numberOfCurrentSignsinLine;
+        return numberOfCurrentSignsInLine;
     }
 
     private int countSize() {
@@ -162,7 +160,7 @@ public class Board {
         return boardSize.intValue();
     }
 
-    private boolean lineHasAWinner(int signsInLine, int lineLength) {
-        return signsInLine == lineLength;
+    private boolean lineHasAWinner(int signsInLine) {
+        return signsInLine == this.size;
     }
 }
