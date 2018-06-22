@@ -113,9 +113,7 @@ public class Board {
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
         String[] diagonalLine = new String[this.size];
-        for (int i = 0; i < this.size; i++) {
-            diagonalLine[i] = (rowsInBoard[i][i]);
-        }
+        IntStream.range(0, this.size).forEach(i -> diagonalLine[i] = rowsInBoard[i][i]);
         return diagonalLine;
     }
 
