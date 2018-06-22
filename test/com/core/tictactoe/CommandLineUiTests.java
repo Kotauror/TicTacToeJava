@@ -175,6 +175,25 @@ public class CommandLineUiTests {
         assertTrue(userPosition.toString().contains("5"));
     }
 
+    @Test
+    void returnsBoardSizeAsIntegerOnValidInput() {
+        InputStream inputStream = new ByteArrayInputStream("2".getBytes());
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
+
+        assertEquals(2, commandLineUi.getBoardSize());
+    }
+
+    @Test
+    void callsAgainForBoardSizeOnInvalidInput() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String[] fakeUsersInputs = {"x", "5"};
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
+
+        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(3),"X");
+
+        assertTrue(userPosition.toString().contains("5"));
+    }
+
     private void setUpBoard(Player player, Player player2, int[] placesOfPlayer1, int[] placesOfPlayer2) {
         for (int place : placesOfPlayer1) {
             board.putSignOnBoard(player.getSign(), place);

@@ -72,6 +72,14 @@ public class CommandLineUi {
         }
     }
 
+    int getBoardSize() {
+        while(true) {
+            this.showBoardSizeOptions();
+            String size = this.getUserInput();
+            if (isValidBoarsSize(size)) return Integer.parseInt(size);
+        }
+    }
+
     private String typeOfGameMenu() {
         while(true) {
             this.showGameModeMenu();
@@ -112,8 +120,19 @@ public class CommandLineUi {
         output.println("> type E to Exit");
     }
 
+    private void showBoardSizeOptions() {
+        output.println("~~~~ Select the size of board ~~~~");
+        output.println("> Type a number from 2 to 8 to define the size of board ");
+        output.println("> eg. enter 3 for 3x3, enter 4 for 4x4");
+    }
+
     private boolean isNumeric(String position) {
         String regex = "[1-9]";
         return position.matches(regex);
+    }
+
+    private boolean isValidBoarsSize(String size) {
+        String regex = "[2-8]";
+        return size.matches(regex);
     }
 }
