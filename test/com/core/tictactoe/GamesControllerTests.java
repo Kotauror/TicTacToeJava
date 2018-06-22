@@ -10,7 +10,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsHuman() {
-        String[] fakeUsersInputs = {"1", "1", "2", "3", "4", "5", "6", "7", "E"};
+        String[] fakeUsersInputs = {"1", "3", "1", "2", "3", "4", "5", "6", "7", "E"};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -18,7 +18,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsComputerAndExits() {
-        String[] fakeUsersInputs = {"2", "H", "1", "2", "7", "6", "9", "E"};
+        String[] fakeUsersInputs = {"2", "H", "3", "1", "2", "7", "6", "9", "E"};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -26,7 +26,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameHumanVsComputerTwiceAndExits() {
-        String[] fakeUsersInputs = {"2", "H", "1", "2", "7", "6", "9", "2", "H", "1", "2", "7", "6", "9", "E"};
+        String[] fakeUsersInputs = {"2", "H", "3", "1", "2", "7", "6", "9", "2", "H", "3", "1", "2", "7", "6", "9", "E"};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -34,7 +34,7 @@ public class GamesControllerTests {
 
     @Test
     void runsTheWholeGameComputerVsHumanAndExits() {
-        String[] fakeUsersInputs = {"2", "C", "5", "3", "4", "8", "E"};
+        String[] fakeUsersInputs = {"2", "C", "3", "5", "3", "4", "8", "E"};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();
@@ -43,6 +43,14 @@ public class GamesControllerTests {
     @Test
     void exitsTheGame() {
         String[] fakeUsersInputs = {"E"};
+        GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
+
+        gamesController.run();
+    }
+
+    @Test
+    void asksAgainForBoardSizeAndRunsTheWholeGameOnValidInput() {
+        String[] fakeUsersInputs = {"1", "invalid input", "3", "1", "2", "3", "4", "5", "6", "7", "E"};
         GamesController gamesController = gamesControllerCreator(fakeUsersInputs);
 
         gamesController.run();

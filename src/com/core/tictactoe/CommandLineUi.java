@@ -72,7 +72,7 @@ public class CommandLineUi {
         }
     }
 
-    int getBoardSize() {
+    public int getBoardSize() {
         while(true) {
             this.showBoardSizeOptions();
             String size = this.getUserInput();

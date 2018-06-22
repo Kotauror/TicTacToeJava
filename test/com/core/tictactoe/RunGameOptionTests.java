@@ -18,7 +18,7 @@ public class RunGameOptionTests {
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"), stubCommandLineUi);
 
-        runGameOption.run();
+        runGameOption.run(3);
 
         assertTrue(runGameOption.getGame().getBoard().isWon());
     }
@@ -30,7 +30,7 @@ public class RunGameOptionTests {
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
         RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"), stubCommandLineUi);
 
-        runGameOption.run();
+        runGameOption.run(3);
 
         assertFalse(runGameOption.getGame().getBoard().isWon());
         assertTrue(runGameOption.getGame().getBoard().isTie());
