@@ -19,18 +19,18 @@ public class RunGameOption extends GameOption {
     }
 
     @Override
-    public boolean run(int boardSize) {
+    public boolean run() {
+        int boardSize = this.getBoardSize();
         this.game = new Game(this.commandLineUi, new Board(boardSize), playerOne, playerTwo);
         this.game.run();
         return true;
     }
 
-    @Override
-    public int getBoardSize() {
-        return this.commandLineUi.getBoardSize();
-    }
-
     public Game getGame() {
         return this.game;
+    }
+
+    private int getBoardSize() {
+        return this.commandLineUi.getBoardSize();
     }
 }

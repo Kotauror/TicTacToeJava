@@ -11,13 +11,8 @@ public class NoOption extends GameOption {
     }
 
     @Override
-    public boolean run(int boardSize) {
+    public boolean run() {
         this.commandLineUi.noSuchOption();
         return true;
-    }
-
-    @Override
-    public int getBoardSize() {
-        return 0;
     }
 }

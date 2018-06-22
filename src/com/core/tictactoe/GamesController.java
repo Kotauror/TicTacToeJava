@@ -19,8 +19,8 @@ public class GamesController {
         while (this.isRunning) {
             String gameMode = this.commandLineUi.mainMenu();
             GameOption gameOption = this.gameOptionsFactory.getGameOption(gameMode);
-            int boardSize = gameOption.getBoardSize();
-            this.isRunning = gameOption.run(boardSize);
+            // int boardSize = gameOption.getBoardSize();
+            this.isRunning = gameOption.run();
         }
     }
 }
