@@ -2,7 +2,7 @@ package com.core.tictactoe;
 
 public class StubComputerPlayer extends ComputerPlayer {
 
-    private final int RUNNINGM_INIMAX = 1;
+    private final int RUNNING_MINIMAX = 1;
     private final int RANDOMIZING = 2;
 
     public StubComputerPlayer(String sign) {
@@ -10,14 +10,15 @@ public class StubComputerPlayer extends ComputerPlayer {
     }
 
     @Override
-    public int pickPosition(CommandLineUi commandLineUi, Board board) {
-        String[] freePlacesInBoard = board.getFreePlaces();
-        if (freePlacesInBoard.length < 14) {
-            return RUNNINGM_INIMAX;
-        } else {
-            return RANDOMIZING;
-        }
+    protected int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayer) {
+        return RUNNING_MINIMAX;
     }
+
+    @Override
+    protected int randomMove(String[] availableMoves) {
+        return RANDOMIZING;
+    }
+
 }
 
 

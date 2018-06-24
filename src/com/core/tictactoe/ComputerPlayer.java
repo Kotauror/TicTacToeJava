@@ -29,7 +29,7 @@ public class ComputerPlayer extends Player {
         }
     }
 
-    private int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayer) {
+     protected int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayer) {
         if (board.isWon() && board.winnerSign().equals(maxPlayerSign)) {
             return (MAX_VALUE_OF_PLACE - depth);
         } else if (board.isWon() && board.winnerSign().equals(minPlayer)) {
@@ -67,6 +67,11 @@ public class ComputerPlayer extends Player {
         }
     }
 
+    protected int randomMove(String[] availableMoves) {
+        int random = new Random().nextInt(availableMoves.length);
+        return random+1;
+    }
+
     private Board putSignOnNewBoard(Board board, String signOfPlayer, String freePlace) {
         Board boardClone = new Board(board.getPlaces());
         boardClone.putSignOnBoard(signOfPlayer, Integer.parseInt(freePlace));
@@ -75,10 +80,5 @@ public class ComputerPlayer extends Player {
 
     private boolean isMaxPlayerDepth(int depth) {
         return (depth % 2 == 0);
-    }
-
-    private int randomMove(String[] availableMoves) {
-        int random = new Random().nextInt(availableMoves.length);
-        return random+1;
     }
 }
