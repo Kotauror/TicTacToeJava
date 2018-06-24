@@ -10,6 +10,9 @@ public class ComputerPlayer extends Player {
 
     private final static int MAX_VALUE_OF_PLACE = 10;
     private final static int TIE_VALUE = 0;
+    private final static int INITIAL_ALPHA = -10000000;
+    private final static int INITIAL_BETA = 10000000;
+    private final static int MINIMAX_THRESHOLD = 14;
 
 
     @Override
@@ -22,8 +25,8 @@ public class ComputerPlayer extends Player {
         String maxPlayerSign = board.getActivePlayerSign();
         String minPlayerSign = board.getPassivePlayerSign();
         String[] freePlacesInBoard = board.getFreePlaces();
-        if (freePlacesInBoard.length < 14) {
-            return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayerSign, minPlayerSign);
+        if (freePlacesInBoard.length < MINIMAX_THRESHOLD) {
+            return miniMaxAlgorithm(board, 0, INITIAL_ALPHA, INITIAL_BETA, maxPlayerSign, minPlayerSign);
         } else {
             return randomMove(freePlacesInBoard);
         }
