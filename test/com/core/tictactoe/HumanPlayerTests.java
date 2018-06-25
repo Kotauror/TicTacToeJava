@@ -33,7 +33,7 @@ public class HumanPlayerTests {
 
     @Test
     void returnsATypeOfPlayerAsAString() {
-        String playerType = humanPlayer.getTypeAsAString();
+        String playerType = humanPlayer.getType();
 
         assertEquals("Player", playerType);
     }

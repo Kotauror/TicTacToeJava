@@ -16,7 +16,7 @@ public class ComputerPlayer extends Player {
 
 
     @Override
-    public String getTypeAsAString() {
+    public String getType() {
         return "Computer";
     }
 

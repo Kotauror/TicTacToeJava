@@ -13,7 +13,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public String getTypeAsAString() {
+    public String getType() {
         return "Player";
     }
 }

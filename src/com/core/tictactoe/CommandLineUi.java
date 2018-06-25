@@ -55,7 +55,7 @@ public class CommandLineUi {
     }
 
     public void informOfMove(Player player, int move) {
-        output.print(player.getTypeAsAString());
+        output.print(player.getType());
         output.println(" " + player.getSign() + " picked position: " + move);
     }
 

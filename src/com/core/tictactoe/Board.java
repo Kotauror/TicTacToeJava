@@ -100,9 +100,9 @@ public class Board {
     }
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
-        ArrayList<String[]> columnsArray = new ArrayList<>();
-        IntStream.range(0, this.size).forEach(i -> columnsArray.add(getColumn(i, rowsInBoard)));
-        return columnsArray.toArray(new String[0][0]);
+        ArrayList<String[]> columnsInBoard = new ArrayList<>();
+        IntStream.range(0, this.size).forEach(i -> columnsInBoard.add(getColumn(i, rowsInBoard)));
+        return columnsInBoard.toArray(new String[0][0]);
     }
 
     private String[] getColumn(int i, String[][] rowsInBoard) {

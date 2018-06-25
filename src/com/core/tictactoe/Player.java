@@ -14,5 +14,5 @@ public abstract class Player {
 
     public abstract int pickPosition(CommandLineUi commandLineUi, Board board);
 
-    public abstract String getTypeAsAString();
+    public abstract String getType();
 }
