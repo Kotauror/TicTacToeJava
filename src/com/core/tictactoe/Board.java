@@ -101,14 +101,14 @@ public class Board {
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
         ArrayList<String[]> columnsArray = new ArrayList<>();
-        IntStream.range(0, this.size).forEach(i -> addColumnToColumnsArray(i, columnsArray, rowsInBoard));
+        IntStream.range(0, this.size).forEach(i -> columnsArray.add(getColumn(i, rowsInBoard)));
         return columnsArray.toArray(new String[0][0]);
     }
 
-    private void addColumnToColumnsArray(int i, ArrayList<String[]> columnsArray, String[][] rowsInBoard) {
+    private String[] getColumn(int i, String[][] rowsInBoard) {
         List<String> column = new ArrayList<>();
         Arrays.stream(rowsInBoard).forEach(row -> column.add(row[i]));
-        columnsArray.add(column.toArray(new String[0]));
+        return column.toArray(new String[0]);
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
