@@ -23,17 +23,17 @@ public class StubCommandLineUi extends CommandLineUi {
         }
     }
 
-    protected String getUserInput() {
+    public String getUserInput() {
         String first = this.inputs.get(0).toString();
         this.inputs.remove(0);
         return first;
     }
 
-    protected void showBoard(Board board) {}
+    public void showBoard(Board board) {}
 
-    protected void greetUsers() {}
+    public void greetUsers() {}
 
-    protected void announceWinner(Board board) {}
+    public void announceWinner(Board board) {}
 
     void printImRandomizing() {
         output.println("Im randomizing");
