@@ -93,8 +93,7 @@ public class Board {
 
         allLinesInBoard.addAll(Arrays.asList(rowsInBoard));
         allLinesInBoard.addAll(Arrays.asList(getColumnsInBoard(rowsInBoard)));
-        allLinesInBoard.add(this.getTopLeftDiagonal(rowsInBoard));
-        allLinesInBoard.add(this.getTopRightDiagonal(rowsInBoard));
+        allLinesInBoard.addAll(Arrays.asList(getDiagonalsInBoard(rowsInBoard)));
 
         return allLinesInBoard.toArray(new String[0][0]);
     }
@@ -109,6 +108,13 @@ public class Board {
         List<String> column = new ArrayList<>();
         Arrays.stream(rowsInBoard).forEach(row -> column.add(row[i]));
         return column.toArray(new String[0]);
+    }
+
+    private String[][] getDiagonalsInBoard(String[][] rowsInBoard) {
+        ArrayList<String[]> diagonalsInBoard = new ArrayList<>();
+        diagonalsInBoard.add(getTopLeftDiagonal(rowsInBoard));
+        diagonalsInBoard.add(getTopRightDiagonal(rowsInBoard));
+        return diagonalsInBoard.toArray(new String[0][0]);
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {
