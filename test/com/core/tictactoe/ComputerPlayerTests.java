@@ -108,4 +108,16 @@ public class ComputerPlayerTests {
 
         assertEquals("Computer", playerType);
     }
+
+    @Test
+    void pickPositionSwitchesBetweenMiniMaxAndRandom() {
+        Board board = new Board(4);
+        board.putSignOnBoard("X", 7);
+        board.putSignOnBoard("O", 15);
+        StubComputerPlayer stubComputerPlayer = new StubComputerPlayer("X");
+
+        assertEquals(2, stubComputerPlayer.pickPosition(commandLineUi, board));
+        board.putSignOnBoard("X", 13);
+        assertEquals(1, stubComputerPlayer.pickPosition(commandLineUi, board));
+    }
 }

@@ -1,5 +1,7 @@
 package com.core.tictactoe;
 
+import java.util.Random;
+
 public class ComputerPlayer extends Player {
 
     public ComputerPlayer(String sign) {
@@ -8,6 +10,9 @@ public class ComputerPlayer extends Player {
 
     private final static int MAX_VALUE_OF_PLACE = 10;
     private final static int TIE_VALUE = 0;
+    private final static int INITIAL_ALPHA = -10000000;
+    private final static int INITIAL_BETA = 10000000;
+    private final static int MINIMAX_THRESHOLD = 14;
 
 
     @Override
@@ -19,10 +24,15 @@ public class ComputerPlayer extends Player {
     public int pickPosition(CommandLineUi commandLineUi, Board board) {
         String maxPlayerSign = board.getActivePlayerSign();
         String minPlayerSign = board.getPassivePlayerSign();
-        return miniMaxAlgorithm(board, 0, -10000000, +10000000, maxPlayerSign, minPlayerSign);
+        String[] freePlacesInBoard = board.getFreePlaces();
+        if (freePlacesInBoard.length < MINIMAX_THRESHOLD) {
+            return miniMaxAlgorithm(board, 0, INITIAL_ALPHA, INITIAL_BETA, maxPlayerSign, minPlayerSign);
+        } else {
+            return randomMove(freePlacesInBoard);
+        }
     }
 
-    private int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayer) {
+     protected int miniMaxAlgorithm(Board board, Integer depth, Integer alpha, Integer beta, String maxPlayerSign, String minPlayer) {
         if (board.isWon() && board.winnerSign().equals(maxPlayerSign)) {
             return (MAX_VALUE_OF_PLACE - depth);
         } else if (board.isWon() && board.winnerSign().equals(minPlayer)) {
@@ -58,6 +68,11 @@ public class ComputerPlayer extends Player {
             }
             return bestScoreMinPlayer;
         }
+    }
+
+    protected int randomMove(String[] availableMoves) {
+        int random = new Random().nextInt(availableMoves.length);
+        return random+1;
     }
 
     private Board putSignOnNewBoard(Board board, String signOfPlayer, String freePlace) {
