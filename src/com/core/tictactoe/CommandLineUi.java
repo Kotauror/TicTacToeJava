@@ -50,7 +50,7 @@ public class CommandLineUi {
 
     String mainMenu() {
         String gameModeString = typeOfGameMenu();
-        String orderString = OrderMenu(gameModeString);
+        String orderString = orderMenu(gameModeString);
         return gameModeString + orderString;
     }
 
@@ -92,7 +92,7 @@ public class CommandLineUi {
         return input.matches(regex);
     }
 
-    private String OrderMenu(String typeOfGame) {
+    private String orderMenu(String typeOfGame) {
         if (!typeOfGame.equals(GameMode.PLAY_WITH_COMPUTER.value())) return "";
         while (true) {
             this.showOrderMenu();
