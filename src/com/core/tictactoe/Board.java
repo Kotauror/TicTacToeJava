@@ -24,32 +24,32 @@ public class Board {
         this.places = createPlaces(size);
     }
 
-    String[] getPlaces() {
+    public String[] getPlaces() {
         return this.places;
     }
 
-    void putSignOnBoard(String sign, int userNumber) {
+    public void putSignOnBoard(String sign, int userNumber) {
         this.places[userNumber-1] = sign;
     }
 
-    String valueAtIndex(int index) {
+    public String valueAtIndex(int index) {
         return this.places[index];
     }
 
-    boolean isWon() {
+    public boolean isWon() {
         String winnerSign = winnerSign();
         return !winnerSign.equals("none");
     }
 
-    boolean isTie() {
+    public boolean isTie() {
         return !this.isWon() && this.hasNoFreePlaces();
     }
 
-    boolean isNonTaken(String position){
+    public boolean isNonTaken(String position){
         return Arrays.asList(this.places).contains(position);
     }
 
-    String winnerSign() {
+    public String winnerSign() {
         String[][] lines = this.getAllLines();
         for (String[] line : lines) {
             String currentSign = line[0];
@@ -59,7 +59,7 @@ public class Board {
         return "none";
     }
 
-    String[] getFreePlaces() {
+    public String[] getFreePlaces() {
         ArrayList<String> freePlaces = new ArrayList<>();
         for (String place : this.places) {
             if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
@@ -67,17 +67,17 @@ public class Board {
         return freePlaces.toArray(new String[0]);
     }
 
-    String getActivePlayerSign() {
+    public String getActivePlayerSign() {
         String[] freePlaces = getFreePlaces();
         return freePlaces.length % 2 != 0 ? FIRST_PLAYER_SIGN : SECOND_PLAYER_SIGN;
     }
 
-    String getPassivePlayerSign() {
+    public String getPassivePlayerSign() {
         String activePlayerSign = getActivePlayerSign();
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
-    String[][] getRowsInBoard() {
+    public String[][] getRowsInBoard() {
         String[][] arrayOfRows = new String[this.size][];
         int currentRow = 0;
         for (int i = 0; i < this.places.length; i+= size) {

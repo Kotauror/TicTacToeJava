@@ -22,7 +22,7 @@ public class CommandLineUi {
         output.println("There is no such option");
     }
 
-    void showBoard(Board board) {
+    public void showBoard(Board board) {
         String[][] rowsInBoard = board.getRowsInBoard();
         for (String[] row : rowsInBoard) {
             for (int i = 0; i < row.length; i++) {
@@ -36,34 +36,34 @@ public class CommandLineUi {
         output.println();
     }
 
-    void greetUsers(){
+    public void greetUsers(){
         output.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    void askForPosition(String playerSign) {
+    public void askForPosition(String playerSign) {
         output.println(playerSign + ", pick a position");
     }
 
-    void announceWinner(Board board) {
+    public void announceWinner(Board board) {
         output.println(!board.winnerSign().equals("none") ? board.winnerSign() + " won!" : "It's a tie!");
     }
 
-    String mainMenu() {
+    public String mainMenu() {
         String gameModeString = typeOfGameMenu();
         String orderString = orderMenu(gameModeString);
         return gameModeString + orderString;
     }
 
-    void informOfMove(Player player, int move) {
+    public void informOfMove(Player player, int move) {
         output.print(player.getTypeAsAString());
         output.println(" " + player.getSign() + " picked position: " + move);
     }
 
-    String getUserInput() {
+    public String getUserInput() {
         return input.nextLine();
     }
 
-    int getPositionFromUser(Board board, String playerSign) {
+    public int getPositionFromUser(Board board, String playerSign) {
         while (true) {
            this.askForPosition(playerSign);
            String position = this.getUserInput();
