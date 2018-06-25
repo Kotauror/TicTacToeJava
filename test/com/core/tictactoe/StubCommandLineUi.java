@@ -34,13 +34,5 @@ public class StubCommandLineUi extends CommandLineUi {
     public void greetUsers() {}
 
     public void announceWinner(Board board) {}
-
-    void printImRandomizing() {
-        output.println("Im randomizing");
-    }
-
-    void printImminimaxing() {
-        output.println("Im minimaxing");
-    }
 }
 
