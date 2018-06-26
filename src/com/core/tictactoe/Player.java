@@ -16,7 +16,7 @@ public abstract class Player {
 
     public abstract String getType();
 
-    public String getPrompt() {
+    public String getPositionPrompt() {
         return this.sign + ", pick a position";
     }
 }
