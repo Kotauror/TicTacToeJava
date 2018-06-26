@@ -8,7 +8,7 @@ public class HumanPlayer extends Player {
 
     @Override
     public int pickPosition(CommandLineUi commandLineUi, Board board) {
-        String position = commandLineUi.getUserOption(board.getFreePlaces(), this.getPositionPrompt());
+        String position = commandLineUi.getMoveChoice(board, this.getPositionPrompt());
         return Integer.parseInt(position);
     }
 

@@ -17,7 +17,7 @@ public class RunGameOption extends GameOption {
 
     @Override
     public boolean run() {
-        String boardSize = this.commandLineUi.getUserOption(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
+        String boardSize = this.commandLineUi.getBoardChoice(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
         this.game = new Game(this.commandLineUi, new Board(Integer.parseInt(boardSize)), playerOne, playerTwo);
         this.game.run();
         return true;

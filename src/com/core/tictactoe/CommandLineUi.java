@@ -54,6 +54,14 @@ public class CommandLineUi {
         output.println(" " + player.getSign() + " picked position: " + move);
     }
 
+    public String getMoveChoice(Board board, String infoForUser) {
+        return getUserOption(board.getFreePlaces(), infoForUser);
+    }
+
+    public String getBoardChoice(String[] validBoardSizes, String infoForUser) {
+        return getUserOption(validBoardSizes, infoForUser);
+    }
+
     public String mainMenu() {
         String[] validGamesTypes = {"1", "2", "E", "e"};
         String[] validGameOrders = {"c", "C", "h", "H"};
@@ -66,7 +74,7 @@ public class CommandLineUi {
         return gameModeString + orderString;
     }
 
-    public String getUserOption(String[] validOptions, String infoForUser) {
+    private String getUserOption(String[] validOptions, String infoForUser) {
         while (true) {
             this.printMessage(infoForUser);
             String input = this.getUserInput();

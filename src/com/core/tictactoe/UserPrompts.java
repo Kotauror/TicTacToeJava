@@ -7,10 +7,10 @@ public abstract class UserPrompts {
     }
 
     public static String getGameModePrompt() {
-        return "~~~~ Select the type of game ~~~~\\n> type 1 for a Human vs Human game\\n> type 2 to play with Computer\\n> type E to Exit\"";
+        return "~~~~ Select the type of game ~~~~\n> type 1 for a Human vs Human game\n> type 2 to play with Computer\n> type E to Exit";
     }
 
     public static String getGameOrderPrompt() {
-        return "~~~~ Pick who goes first ~~~~\\n> type H if you want the Human to start\\n> type C if you want the COmputer to start\"";
+        return "~~~~ Pick who goes first ~~~~\n> type H if you want the Human to start\n> type C if you want the COmputer to start";
     }
 }

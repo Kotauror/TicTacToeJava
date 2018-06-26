@@ -166,32 +166,11 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void validateInputMethodReturnsInputOnValidGameMode() {
-        InputStream inputStream = new ByteArrayInputStream("1".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
-        String[] validGamesTypes = {"1", "2", "E", "e"};
-
-        assertEquals("1", commandLineUi.getUserOption(validGamesTypes, UserPrompts.getBoardSizePrompt()));
-    }
-
-    @Test
-    void validateInputMethodCallsAgainForValidGameModeValidGameMode() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        String[] fakeUsersInputs = {"10", "2"};
-        String[] validGamesTypes = {"1", "2", "E", "e"};
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-
-        Object userPosition = stubCommandLineUi.getUserOption(validGamesTypes, UserPrompts.getGameModePrompt());
-
-        assertTrue(userPosition.toString().contains("2"));
-    }
-
-    @Test
     void validateInputMethodReturnsBoardSizeOnValidInput() {
         InputStream inputStream = new ByteArrayInputStream("2".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals("2", commandLineUi.getUserOption(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt()));
+        assertEquals("2", commandLineUi.getBoardChoice(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt()));
     }
 
     @Test
@@ -200,7 +179,7 @@ public class CommandLineUiTests {
         String[] fakeUsersInputs = {"x", "5"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userPosition = stubCommandLineUi.getUserOption(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
+        Object userPosition = stubCommandLineUi.getBoardChoice(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
 
         assertTrue(userPosition.toString().contains("5"));
     }
