@@ -166,39 +166,41 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void returnsPlayerPositionAsIntegerOnValidInput() {
+    void validateInputMethodReturnsInputOnValidGameMode() {
         InputStream inputStream = new ByteArrayInputStream("1".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
+        String[] validGamesTypes = {"1", "2", "E", "e"};
 
-        assertEquals(1, commandLineUi.getPositionFromUser(board, humanPlayerX.getSign()));
+        assertEquals("1", commandLineUi.getUserOption(validGamesTypes, UserPrompts.getBoardSizePrompt()));
     }
 
     @Test
-    void callsAgainForMoveOnInvalidInput() {
+    void validateInputMethodCallsAgainForValidGameModeValidGameMode() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        String[] fakeUsersInputs = {"10", "5"};
+        String[] fakeUsersInputs = {"10", "2"};
+        String[] validGamesTypes = {"1", "2", "E", "e"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(3),"X");
+        Object userPosition = stubCommandLineUi.getUserOption(validGamesTypes, UserPrompts.getGameModePrompt());
 
-        assertTrue(userPosition.toString().contains("5"));
+        assertTrue(userPosition.toString().contains("2"));
     }
 
     @Test
-    void returnsBoardSizeAsIntegerOnValidInput() {
+    void validateInputMethodReturnsBoardSizeOnValidInput() {
         InputStream inputStream = new ByteArrayInputStream("2".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals(2, commandLineUi.getBoardSize());
+        assertEquals("2", commandLineUi.getUserOption(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt()));
     }
 
     @Test
-    void callsAgainForBoardSizeOnInvalidInput() {
+    void validateInputMethodCallsAgainForBoardSizeOnInvalidInput() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"x", "5"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(3),"X");
+        Object userPosition = stubCommandLineUi.getUserOption(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
 
         assertTrue(userPosition.toString().contains("5"));
     }

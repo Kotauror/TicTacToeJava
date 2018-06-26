@@ -15,4 +15,8 @@ public abstract class Player {
     public abstract int pickPosition(CommandLineUi commandLineUi, Board board);
 
     public abstract String getType();
+
+    public String getPrompt() {
+        return this.sign + ", pick a position";
+    }
 }

@@ -13,6 +13,7 @@ public class Board {
     private int size;
     private static String FIRST_PLAYER_SIGN = "X";
     private static String SECOND_PLAYER_SIGN = "O";
+    private static String[] VALID_BOARD_SIZES = {"1", "2", "3", "4", "5", "6", "7", "8"};
 
     public Board(String[] places) {
         this.places = places.clone();
@@ -22,6 +23,10 @@ public class Board {
     public Board(int size) {
         this.size = size;
         this.places = createPlaces(size);
+    }
+
+    public static String[] getValidBoardSizes() {
+        return VALID_BOARD_SIZES;
     }
 
     public String[] getPlaces() {

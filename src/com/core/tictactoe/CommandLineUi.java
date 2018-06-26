@@ -49,77 +49,36 @@ public class CommandLineUi {
         output.println(!board.winnerSign().equals("none") ? board.winnerSign() + " won!" : "It's a tie!");
     }
 
-    public String mainMenu() {
-        String gameModeString = typeOfGameMenu();
-        String orderString = orderMenu(gameModeString);
-        return gameModeString + orderString;
-    }
-
     public void informOfMove(Player player, int move) {
         output.print(player.getType());
         output.println(" " + player.getSign() + " picked position: " + move);
+    }
+
+    public String mainMenu() {
+        String[] validGamesTypes = {"1", "2", "E", "e"};
+        String[] validGameOrders = {"c", "C", "h", "H"};
+
+        String gameModeString = getUserOption(validGamesTypes, UserPrompts.getGameModePrompt());
+        String orderString = "";
+        if (gameModeString.equals(GameMode.PLAY_WITH_COMPUTER.value())) {
+            orderString = getUserOption(validGameOrders, UserPrompts.getGameOrderPrompt());
+        }
+        return gameModeString + orderString;
+    }
+
+    public String getUserOption(String[] validOptions, String infoForUser) {
+        while (true) {
+            this.printMessage(infoForUser);
+            String input = this.getUserInput();
+            if (Arrays.asList(validOptions).contains(input)) return input.toUpperCase();
+        }
     }
 
     public String getUserInput() {
         return input.nextLine();
     }
 
-    public int getPositionFromUser(Board board, String playerSign) {
-        while (true) {
-            this.askForPosition(playerSign);
-            String position = this.getUserInput();
-            if (validateInput(position, board.getFreePlaces())) return Integer.parseInt(position);
-        }
-    }
-
-    public int getBoardSize() {
-        String[] validBoardSizes = {"1", "2", "3", "4", "5", "6", "7", "8"};
-        while(true) {
-            this.showBoardSizeOptions();
-            String size = this.getUserInput();
-            if (validateInput(size, validBoardSizes)) return Integer.parseInt(size);
-        }
-    }
-
-    private String typeOfGameMenu() {
-        String[] validGamesTypes = {"1", "2", "E", "e"};
-        while(true) {
-            this.showGameModeMenu();
-            String mode = this.getUserInput();
-            if (validateInput(mode, validGamesTypes)) return mode.toUpperCase();
-        }
-    }
-
-    private String orderMenu(String typeOfGame) {
-        if (!typeOfGame.equals(GameMode.PLAY_WITH_COMPUTER.value())) return "";
-        String[] validGameOrders = {"c", "C", "h", "H"};
-        while (true) {
-            this.showOrderMenu();
-            String order = this.getUserInput();
-            if (validateInput(order, validGameOrders)) return order.toUpperCase();
-        }
-    }
-
-    private boolean validateInput(String input, String[] matchingElements) {
-        return Arrays.asList(matchingElements).contains(input);
-    }
-
-    private void showOrderMenu() {
-        output.println("~~~~ Pick who goes first ~~~~");
-        output.println("> type H if you want the Human to start");
-        output.println("> type C if you want the Computer to start");
-    }
-
-    private void showGameModeMenu() {
-        output.println("~~~~ Select the type of game ~~~~");
-        output.println("> type 1 for a Human vs Human game");
-        output.println("> type 2 to play with Computer");
-        output.println("> type E to Exit");
-    }
-
-    private void showBoardSizeOptions() {
-        output.println("~~~~ Select the size of board ~~~~");
-        output.println("> Type a number from 2 to 8 to define the size of board ");
-        output.println("> eg. enter 3 for 3x3, enter 4 for 4x4");
+    private void printMessage(String message) {
+        output.println(message);
     }
 }
