@@ -104,7 +104,7 @@ public class ComputerPlayerTests {
 
     @Test
     void returnsATypeOfPlayerAsAString() {
-        String playerType = computerPlayer.getTypeAsAString();
+        String playerType = computerPlayer.getType();
 
         assertEquals("Computer", playerType);
     }

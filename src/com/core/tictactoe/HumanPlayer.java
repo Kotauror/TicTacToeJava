@@ -8,12 +8,12 @@ public class HumanPlayer extends Player {
 
     @Override
     public int pickPosition(CommandLineUi commandLineUi, Board board) {
-        int position = commandLineUi.getPositionFromUser(board, this.getSign());
-        return position;
+        String position = commandLineUi.getMoveChoice(board, this.getPositionPrompt());
+        return Integer.parseInt(position);
     }
 
     @Override
-    public String getTypeAsAString() {
+    public String getType() {
         return "Player";
     }
 }

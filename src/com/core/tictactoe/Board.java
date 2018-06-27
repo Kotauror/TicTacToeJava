@@ -13,6 +13,7 @@ public class Board {
     private int size;
     private static String FIRST_PLAYER_SIGN = "X";
     private static String SECOND_PLAYER_SIGN = "O";
+    private static String[] VALID_BOARD_SIZES = {"1", "2", "3", "4", "5", "6", "7", "8"};
 
     public Board(String[] places) {
         this.places = places.clone();
@@ -24,32 +25,36 @@ public class Board {
         this.places = createPlaces(size);
     }
 
-    String[] getPlaces() {
+    public static String[] getValidBoardSizes() {
+        return VALID_BOARD_SIZES;
+    }
+
+    public String[] getPlaces() {
         return this.places;
     }
 
-    void putSignOnBoard(String sign, int userNumber) {
+    public void putSignOnBoard(String sign, int userNumber) {
         this.places[userNumber-1] = sign;
     }
 
-    String valueAtIndex(int index) {
+    public String valueAtIndex(int index) {
         return this.places[index];
     }
 
-    boolean isWon() {
+    public boolean isWon() {
         String winnerSign = winnerSign();
         return !winnerSign.equals("none");
     }
 
-    boolean isTie() {
+    public boolean isTie() {
         return !this.isWon() && this.hasNoFreePlaces();
     }
 
-    boolean isNonTaken(String position){
+    public boolean isNonTaken(String position){
         return Arrays.asList(this.places).contains(position);
     }
 
-    String winnerSign() {
+    public String winnerSign() {
         String[][] lines = this.getAllLines();
         for (String[] line : lines) {
             String currentSign = line[0];
@@ -59,7 +64,7 @@ public class Board {
         return "none";
     }
 
-    String[] getFreePlaces() {
+    public String[] getFreePlaces() {
         ArrayList<String> freePlaces = new ArrayList<>();
         for (String place : this.places) {
             if (!place.equals(FIRST_PLAYER_SIGN) && !place.equals(SECOND_PLAYER_SIGN)) freePlaces.add(place);
@@ -67,17 +72,17 @@ public class Board {
         return freePlaces.toArray(new String[0]);
     }
 
-    String getActivePlayerSign() {
+    public String getActivePlayerSign() {
         String[] freePlaces = getFreePlaces();
         return freePlaces.length % 2 != 0 ? FIRST_PLAYER_SIGN : SECOND_PLAYER_SIGN;
     }
 
-    String getPassivePlayerSign() {
+    public String getPassivePlayerSign() {
         String activePlayerSign = getActivePlayerSign();
         return activePlayerSign.equals(FIRST_PLAYER_SIGN) ? SECOND_PLAYER_SIGN : FIRST_PLAYER_SIGN;
     }
 
-    String[][] getRowsInBoard() {
+    public String[][] getRowsInBoard() {
         String[][] arrayOfRows = new String[this.size][];
         int currentRow = 0;
         for (int i = 0; i < this.places.length; i+= size) {
@@ -93,22 +98,28 @@ public class Board {
 
         allLinesInBoard.addAll(Arrays.asList(rowsInBoard));
         allLinesInBoard.addAll(Arrays.asList(getColumnsInBoard(rowsInBoard)));
-        allLinesInBoard.add(this.getTopLeftDiagonal(rowsInBoard));
-        allLinesInBoard.add(this.getTopRightDiagonal(rowsInBoard));
+        allLinesInBoard.addAll(Arrays.asList(getDiagonalsInBoard(rowsInBoard)));
 
         return allLinesInBoard.toArray(new String[0][0]);
     }
 
     private String[][] getColumnsInBoard(String[][] rowsInBoard) {
-        ArrayList<String[]> columnsArray = new ArrayList<>();
-        IntStream.range(0, this.size).forEach(i -> addColumnToColumnsArray(i, columnsArray, rowsInBoard));
-        return columnsArray.toArray(new String[0][0]);
+        ArrayList<String[]> columnsInBoard = new ArrayList<>();
+        IntStream.range(0, this.size).forEach(i -> columnsInBoard.add(getColumn(i, rowsInBoard)));
+        return columnsInBoard.toArray(new String[0][0]);
     }
 
-    private void addColumnToColumnsArray(int i, ArrayList<String[]> columnsArray, String[][] rowsInBoard) {
+    private String[] getColumn(int i, String[][] rowsInBoard) {
         List<String> column = new ArrayList<>();
         Arrays.stream(rowsInBoard).forEach(row -> column.add(row[i]));
-        columnsArray.add(column.toArray(new String[0]));
+        return column.toArray(new String[0]);
+    }
+
+    private String[][] getDiagonalsInBoard(String[][] rowsInBoard) {
+        ArrayList<String[]> diagonalsInBoard = new ArrayList<>();
+        diagonalsInBoard.add(getTopLeftDiagonal(rowsInBoard));
+        diagonalsInBoard.add(getTopRightDiagonal(rowsInBoard));
+        return diagonalsInBoard.toArray(new String[0][0]);
     }
 
     private String[] getTopLeftDiagonal(String[][] rowsInBoard) {

@@ -14,7 +14,7 @@ public class Game {
         this.passive =  playerTwo;
     }
 
-     public void run() {
+    public void run() {
         this.commandLineUi.greetUsers();
         while (!this.board.isWon() && !this.board.isTie()) {
             this.playTurn();
@@ -22,15 +22,15 @@ public class Game {
         this.postGame();
     }
 
-    Board getBoard() {
+    public Board getBoard() {
         return this.board;
     }
 
-    Player getActivePlayer() {
+    public Player getActivePlayer() {
         return this.active;
     }
 
-    Player getPassivePlayer() {
+    public Player getPassivePlayer() {
         return this.passive;
     }
 

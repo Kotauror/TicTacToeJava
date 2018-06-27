@@ -166,39 +166,20 @@ public class CommandLineUiTests {
     }
 
     @Test
-    void returnsPlayerPositionAsIntegerOnValidInput() {
-        InputStream inputStream = new ByteArrayInputStream("1".getBytes());
-        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
-
-        assertEquals(1, commandLineUi.getPositionFromUser(board, humanPlayerX.getSign()));
-    }
-
-    @Test
-    void callsAgainForMoveOnInvalidInput() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        String[] fakeUsersInputs = {"10", "5"};
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-
-        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(3),"X");
-
-        assertTrue(userPosition.toString().contains("5"));
-    }
-
-    @Test
-    void returnsBoardSizeAsIntegerOnValidInput() {
+    void validateInputMethodReturnsBoardSizeOnValidInput() {
         InputStream inputStream = new ByteArrayInputStream("2".getBytes());
         CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(output), inputStream);
 
-        assertEquals(2, commandLineUi.getBoardSize());
+        assertEquals("2", commandLineUi.getBoardChoice(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt()));
     }
 
     @Test
-    void callsAgainForBoardSizeOnInvalidInput() {
+    void validateInputMethodCallsAgainForBoardSizeOnInvalidInput() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         String[] fakeUsersInputs = {"x", "5"};
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
 
-        Object userPosition = stubCommandLineUi.getPositionFromUser(new Board(3),"X");
+        Object userPosition = stubCommandLineUi.getBoardChoice(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
 
         assertTrue(userPosition.toString().contains("5"));
     }

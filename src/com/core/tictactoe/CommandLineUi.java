@@ -4,6 +4,7 @@ import com.core.tictactoe.game_options.GameMode;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CommandLineUi {
@@ -22,7 +23,7 @@ public class CommandLineUi {
         output.println("There is no such option");
     }
 
-    void showBoard(Board board) {
+    public void showBoard(Board board) {
         String[][] rowsInBoard = board.getRowsInBoard();
         for (String[] row : rowsInBoard) {
             for (int i = 0; i < row.length; i++) {
@@ -36,97 +37,56 @@ public class CommandLineUi {
         output.println();
     }
 
-    void greetUsers(){
+    public void greetUsers(){
         output.println("Hello and welcome to Tic-Tac-Toe");
     }
 
-    void askForPosition(String playerSign) {
+    public void askForPosition(String playerSign) {
         output.println(playerSign + ", pick a position");
     }
 
-    void announceWinner(Board board) {
+    public void announceWinner(Board board) {
         output.println(!board.winnerSign().equals("none") ? board.winnerSign() + " won!" : "It's a tie!");
     }
 
-    String mainMenu() {
-        String gameModeString = typeOfGameMenu();
-        String orderString = OrderMenu(gameModeString);
-        return gameModeString + orderString;
-    }
-
-    void informOfMove(Player player, int move) {
-        output.print(player.getTypeAsAString());
+    public void informOfMove(Player player, int move) {
+        output.print(player.getType());
         output.println(" " + player.getSign() + " picked position: " + move);
     }
 
-    String getUserInput() {
+    public String getMoveChoice(Board board, String infoForUser) {
+        return getUserOption(board.getFreePlaces(), infoForUser);
+    }
+
+    public String getBoardChoice(String[] validBoardSizes, String infoForUser) {
+        return getUserOption(validBoardSizes, infoForUser);
+    }
+
+    public String mainMenu() {
+        String[] validGamesTypes = {"1", "2", "E", "e"};
+        String[] validGameOrders = {"c", "C", "h", "H"};
+
+        String gameModeString = getUserOption(validGamesTypes, UserPrompts.getGameModePrompt());
+        String orderString = "";
+        if (gameModeString.equals(GameMode.PLAY_WITH_COMPUTER.value())) {
+            orderString = getUserOption(validGameOrders, UserPrompts.getGameOrderPrompt());
+        }
+        return gameModeString + orderString;
+    }
+
+    private String getUserOption(String[] validOptions, String infoForUser) {
+        while (true) {
+            this.printMessage(infoForUser);
+            String input = this.getUserInput();
+            if (Arrays.asList(validOptions).contains(input)) return input.toUpperCase();
+        }
+    }
+
+    public String getUserInput() {
         return input.nextLine();
     }
 
-    int getPositionFromUser(Board board, String playerSign) {
-        while (true) {
-           this.askForPosition(playerSign);
-           String position = this.getUserInput();
-            if (board.isNonTaken(position)) return Integer.parseInt(position);
-        }
-    }
-
-    public int getBoardSize() {
-        while(true) {
-            this.showBoardSizeOptions();
-            String size = this.getUserInput();
-            if (isValidBoardSize(size)) return Integer.parseInt(size);
-        }
-    }
-
-    private String typeOfGameMenu() {
-        while(true) {
-            this.showGameModeMenu();
-            String mode = this.getUserInput();
-            if (isValidGameMode(mode)) return mode.toUpperCase();
-        }
-    }
-
-    private boolean isValidGameMode(String input) {
-        String regex = "[1, 2, E, e]";
-        return input.matches(regex);
-    }
-
-    private String OrderMenu(String typeOfGame) {
-        if (!typeOfGame.equals(GameMode.PLAY_WITH_COMPUTER.value())) return "";
-        while (true) {
-            this.showOrderMenu();
-            String order = this.getUserInput();
-            if (isValidGameOrder(order)) return order.toUpperCase();
-        }
-    }
-
-    private boolean isValidGameOrder(String input) {
-        String regex = "[C, H, c, h]";
-        return input.matches(regex);
-    }
-
-    private void showOrderMenu() {
-        output.println("~~~~ Pick who goes first ~~~~");
-        output.println("> type H if you want the Human to start");
-        output.println("> type C if you want the Computer to start");
-    }
-
-    private void showGameModeMenu() {
-        output.println("~~~~ Select the type of game ~~~~");
-        output.println("> type 1 for a Human vs Human game");
-        output.println("> type 2 to play with Computer");
-        output.println("> type E to Exit");
-    }
-
-    private void showBoardSizeOptions() {
-        output.println("~~~~ Select the size of board ~~~~");
-        output.println("> Type a number from 2 to 8 to define the size of board ");
-        output.println("> eg. enter 3 for 3x3, enter 4 for 4x4");
-    }
-
-    private boolean isValidBoardSize(String size) {
-        String regex = "[2-8]";
-        return size.matches(regex);
+    private void printMessage(String message) {
+        output.println(message);
     }
 }
