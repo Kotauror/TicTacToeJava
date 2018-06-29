@@ -7,6 +7,8 @@ public class Game {
     private Player passive;
     private CommandLineUi commandLineUi;
 
+    public Game(){}
+
     public Game(CommandLineUi commandLineUi, Board board, Player playerOne, Player playerTwo) {
         this.commandLineUi = commandLineUi;
         this.board = board;

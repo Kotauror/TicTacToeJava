@@ -4,6 +4,8 @@ public abstract class Player {
 
     private String sign;
 
+    public Player(){}
+
     public Player(String sign){
         this.sign = sign;
     }
