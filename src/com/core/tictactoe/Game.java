@@ -24,6 +24,10 @@ public class Game {
 
     public Player getPassivePlayer() { return this.passive; }
 
+    protected void putSingOnBoard(int position) {
+        this.getBoard().putSignOnBoard(this.getActivePlayer().getSign(), position);
+    }
+
     protected void switchPlayers() {
         Player playerTemp = this.active;
         this.active = this.passive;
