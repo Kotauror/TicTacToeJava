@@ -18,7 +18,7 @@ public class RunCommandLineGameOptionTests {
         String[] fakeUsersInputs = {BOARD_3_x_3, "1", "2", "3", "4", "5", "6", "7", "8"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"), stubCommandLineUi);
+        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X", stubCommandLineUi), new HumanPlayer("O", stubCommandLineUi), stubCommandLineUi);
 
         runGameOption.run();
 
@@ -30,7 +30,7 @@ public class RunCommandLineGameOptionTests {
         String[] fakeUsersInputs = {BOARD_3_x_3, "1", "2", "7", "6", "9"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"), stubCommandLineUi);
+        RunGameOption runGameOption = new RunGameOption(new HumanPlayer("X", stubCommandLineUi), new ComputerPlayer("O"), stubCommandLineUi);
 
         runGameOption.run();
 

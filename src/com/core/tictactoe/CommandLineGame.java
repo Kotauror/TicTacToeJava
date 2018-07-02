@@ -21,7 +21,7 @@ public class CommandLineGame extends Game {
 
     private void playTurn() {
         this.commandLineUi.showBoard(this.getBoard());
-        int position = this.getActivePlayer().pickPosition(this.commandLineUi, this.getBoard());
+        int position = this.getActivePlayer().pickPosition(this.getBoard());
         this.commandLineUi.informOfMove(this.getActivePlayer(), position);
         this.getBoard().putSignOnBoard(this.getActivePlayer().getSign(), position);
         this.switchPlayers();

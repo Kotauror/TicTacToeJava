@@ -2,13 +2,13 @@ package com.core.tictactoe;
 
 public class HumanPlayer extends Player {
 
-    public HumanPlayer(String sign) {
-        super(sign);
+    public HumanPlayer(String sign, CommandLineUi commandLineUi) {
+        super(sign, commandLineUi);
     }
 
     @Override
-    public int pickPosition(CommandLineUi commandLineUi, Board board) {
-        String position = commandLineUi.getMoveChoice(board, this.getPositionPrompt());
+    public int pickPosition(Board board) {
+        String position = getCommandLineUi().getMoveChoice(board, this.getPositionPrompt());
         return Integer.parseInt(position);
     }
 

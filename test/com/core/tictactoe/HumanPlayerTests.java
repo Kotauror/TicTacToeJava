@@ -15,7 +15,10 @@ public class HumanPlayerTests {
 
     @BeforeEach
     void instantiate() {
-        humanPlayer = new HumanPlayer("X");
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        String[] fakeUserInputs = {"1"};
+        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
+        humanPlayer = new HumanPlayer("X", stubCommandLineUi);
     }
 
     @Test
@@ -25,11 +28,11 @@ public class HumanPlayerTests {
 
     @Test
     void returnsAMove() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        String[] fakeUserInputs = {"1"};
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
+//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//        String[] fakeUserInputs = {"1"};
+//        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUserInputs);
 
-        assertEquals(1, humanPlayer.pickPosition(stubCommandLineUi, new Board(3)));
+        assertEquals(1, humanPlayer.pickPosition(new Board(3)));
     }
 
     @Test

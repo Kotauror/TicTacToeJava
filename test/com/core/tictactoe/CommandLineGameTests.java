@@ -2,6 +2,7 @@ package com.core.tictactoe;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CommandLineGameTests {
 
     private static CommandLineGame commandLineGame;
+    private static CommandLineUi commandLineUi;
     private static Board board4x4;
     private static Board board3x3;
     private static Board board2x2;
@@ -27,10 +29,11 @@ public class CommandLineGameTests {
         board4x4 = new Board(4);
         board3x3 = new Board(3);
         board2x2 = new Board(2);
-        humanPlayerX = new HumanPlayer("X");
-        humanPlayerO = new HumanPlayer("O");
+        humanPlayerX = new HumanPlayer("X", commandLineUi);
+        humanPlayerO = new HumanPlayer("O", commandLineUi);
         computerPlayerX = new ComputerPlayer("X");
         computerPlayerO = new ComputerPlayer("O");
+        commandLineUi = new CommandLineUi(System.out, System.in);
         commandLineGame = new CommandLineGame(new CommandLineUi(System.out, System.in), board3x3, humanPlayerX, humanPlayerO);
     }
 
@@ -51,10 +54,15 @@ public class CommandLineGameTests {
 
     @Test
     void playsAWinningGameOfTwoHumanPlayersOnBoard3x3() {
-        String[] fakeUsersInputs = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] fakeUsersInputsPlayerOne = {"1", "3", "5", "7", "9"};
+        String[] fakeUsersInputsPlayerTwo = {"2", "4", "6", "8"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-        commandLineGame = new CommandLineGame(stubCommandLineUi, board3x3, humanPlayerX, humanPlayerO);
+        StubCommandLineUi stubCommandLineUiPlayerOne = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputsPlayerOne);
+        StubCommandLineUi stubCommandLineUiPlayerTwo = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputsPlayerTwo);
+        humanPlayerX = new HumanPlayer("X", stubCommandLineUiPlayerOne);
+        humanPlayerO = new HumanPlayer("O", stubCommandLineUiPlayerTwo);
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(outputStream), System.in);
+        commandLineGame = new CommandLineGame(commandLineUi, board3x3, humanPlayerX, humanPlayerO);
 
         commandLineGame.run();
 
@@ -71,6 +79,7 @@ public class CommandLineGameTests {
         String[] fakeUsersInputs = {"1", "2", "7", "6", "9"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
+        humanPlayerX = new HumanPlayer("X", stubCommandLineUi);
         commandLineGame = new CommandLineGame(stubCommandLineUi, board3x3, humanPlayerX, computerPlayerO);
 
         commandLineGame.run();
@@ -85,10 +94,15 @@ public class CommandLineGameTests {
 
     @Test
     void playsATieGameOfTwoHumanPlayersOnBoard3x3() {
-        String[] fakeUsersInputs = {"2", "1", "4", "3", "5", "6", "7", "8", "9"};
+        String[] fakeUsersInputsPlayerOne = {"2", "4", "5", "7", "9"};
+        String[] fakeUsersInputsPlayerTwo = {"1", "3", "6", "8"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-        commandLineGame = new CommandLineGame(stubCommandLineUi, board3x3, humanPlayerX, humanPlayerO);
+        StubCommandLineUi stubCommandLineUiPlayerOne = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputsPlayerOne);
+        StubCommandLineUi stubCommandLineUiPlayerTwo = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputsPlayerTwo);
+        humanPlayerX = new HumanPlayer("X", stubCommandLineUiPlayerOne);
+        humanPlayerO = new HumanPlayer("O", stubCommandLineUiPlayerTwo);
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(outputStream), System.in);
+        commandLineGame = new CommandLineGame(commandLineUi, board3x3, humanPlayerX, humanPlayerO);
 
         commandLineGame.run();
 
@@ -131,10 +145,15 @@ public class CommandLineGameTests {
 
     @Test
     void playsAWinningGameOfTwoHumanPlayersOnBoard4x4() {
-        String[] fakeUsersInputs = {"1", "5", "2", "6", "3", "7", "4", "8"};
+        String[] fakeUsersInputsPlayerOne = {"1", "2", "3", "4"};
+        String[] fakeUsersInputsPlayerTwo = {"5", "6", "7", "8"};
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        StubCommandLineUi stubCommandLineUi = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputs);
-        commandLineGame = new CommandLineGame(stubCommandLineUi, board4x4, humanPlayerX, humanPlayerO);
+        StubCommandLineUi stubCommandLineUiPlayerOne = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputsPlayerOne);
+        StubCommandLineUi stubCommandLineUiPlayerTwo = new StubCommandLineUi(new PrintStream(outputStream), System.in, fakeUsersInputsPlayerTwo);
+        humanPlayerX = new HumanPlayer("X", stubCommandLineUiPlayerOne);
+        humanPlayerO = new HumanPlayer("O", stubCommandLineUiPlayerTwo);
+        CommandLineUi commandLineUi = new CommandLineUi(new PrintStream(outputStream), System.in);
+        commandLineGame = new CommandLineGame(commandLineUi, board4x4, humanPlayerX, humanPlayerO);
 
         commandLineGame.run();
 
