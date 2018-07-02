@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RunGameOptionTests {
+public class RunCommandLineGameOptionTests {
 
     private final static String BOARD_3_x_3 = "3";
 
@@ -22,7 +22,7 @@ public class RunGameOptionTests {
 
         runGameOption.run();
 
-        assertTrue(runGameOption.getGame().getBoard().isWon());
+        assertTrue(runGameOption.getCommandLineGame().getBoard().isWon());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class RunGameOptionTests {
 
         runGameOption.run();
 
-        assertFalse(runGameOption.getGame().getBoard().isWon());
-        assertTrue(runGameOption.getGame().getBoard().isTie());
+        assertFalse(runGameOption.getCommandLineGame().getBoard().isWon());
+        assertTrue(runGameOption.getCommandLineGame().getBoard().isTie());
     }
 }
