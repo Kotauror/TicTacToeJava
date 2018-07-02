@@ -36,18 +36,18 @@ public class Game {
         return this.passive;
     }
 
+    protected void switchPlayers() {
+        Player playerTemp = this.active;
+        this.active = this.passive;
+        this.passive = playerTemp;
+    }
+
     private void playTurn() {
         this.commandLineUi.showBoard(this.board);
         int position = this.active.pickPosition(this.commandLineUi, this.board);
         this.commandLineUi.informOfMove(this.active, position);
         this.board.putSignOnBoard(this.active.getSign(), position);
         this.switchPlayers();
-    }
-
-    private void switchPlayers() {
-        Player playerTemp = this.active;
-        this.active = this.passive;
-        this.passive = playerTemp;
     }
 
     private void postGame() {
