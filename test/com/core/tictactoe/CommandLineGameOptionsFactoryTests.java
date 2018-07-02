@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class GameOptionsFactoryTests {
+public class CommandLineGameOptionsFactoryTests {
 
     private GameOptionsFactory gameOptionsFactory;
 

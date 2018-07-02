@@ -11,6 +11,7 @@ public class BoardTests {
 
     private Board board3x3;
     private Board board4x4;
+    private CommandLineUi commandLineUi;
     private Player humanPlayerX;
     private Player humanPlayerO;
 
@@ -18,8 +19,9 @@ public class BoardTests {
     void instantiate() {
         board3x3 = new Board(3);
         board4x4 = new Board(4);
-        humanPlayerX = new HumanPlayer("X");
-        humanPlayerO = new HumanPlayer("O");
+        commandLineUi = new CommandLineUi(System.out, System.in);
+        humanPlayerX = new HumanPlayer("X", commandLineUi);
+        humanPlayerO = new HumanPlayer("O", commandLineUi);
     }
 
     @Test

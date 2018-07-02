@@ -4,7 +4,7 @@ import com.core.tictactoe.*;
 
 public class RunGameOption extends GameOption {
 
-    private Game game;
+    private CommandLineGame commandLineGame;
     private Player playerOne;
     private Player playerTwo;
     private CommandLineUi commandLineUi;
@@ -18,12 +18,12 @@ public class RunGameOption extends GameOption {
     @Override
     public boolean run() {
         String boardSize = this.commandLineUi.getBoardChoice(Board.getValidBoardSizes(), UserPrompts.getBoardSizePrompt());
-        this.game = new Game(this.commandLineUi, new Board(Integer.parseInt(boardSize)), playerOne, playerTwo);
-        this.game.run();
+        this.commandLineGame = new CommandLineGame(this.commandLineUi, new Board(Integer.parseInt(boardSize)), playerOne, playerTwo);
+        this.commandLineGame.run();
         return true;
     }
 
-    public Game getGame() {
-        return this.game;
+    public CommandLineGame getCommandLineGame() {
+        return this.commandLineGame;
     }
 }

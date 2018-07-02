@@ -28,7 +28,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "2", "3", "4", "X", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(9, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(9, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "2", "3", "X", "5", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(7, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(7, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "O", "3", "4", "O", "6", "X", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(4, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "O", "X", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(4, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "7", "X", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(4, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -68,7 +68,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"1", "2", "O", "4", "X", "6", "X", "8", "O"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(6, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(6, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "O", "X", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(4, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(4, computerPlayer.pickPosition(board));
     }
 
 
@@ -85,14 +85,14 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "O", "X", "4", "O", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(8, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(8, computerPlayer.pickPosition(board));
     }
 
     @Test
     void returnsTopLeftCornerAsTheFirstTakenPlace() {
         Board board = new Board(3);
 
-        assertEquals(1, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(1, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class ComputerPlayerTests {
         String[] positionsOnBoard = {"X", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board board = new Board(positionsOnBoard);
 
-        assertEquals(5, computerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(5, computerPlayer.pickPosition(board));
     }
 
     @Test
@@ -117,8 +117,8 @@ public class ComputerPlayerTests {
         board.putSignOnBoard("O", 15);
         StubComputerPlayer stubComputerPlayer = new StubComputerPlayer("X");
 
-        assertEquals(2, stubComputerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(2, stubComputerPlayer.pickPosition(board));
         board.putSignOnBoard("X", 13);
-        assertEquals(1, stubComputerPlayer.pickPosition(commandLineUi, board));
+        assertEquals(1, stubComputerPlayer.pickPosition(board));
     }
 }

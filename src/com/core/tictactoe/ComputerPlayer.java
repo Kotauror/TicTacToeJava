@@ -5,7 +5,7 @@ import java.util.Random;
 public class ComputerPlayer extends Player {
 
     public ComputerPlayer(String sign) {
-        super(sign);
+        super(sign, null);
     }
 
     private final static int MAX_VALUE_OF_PLACE = 10;
@@ -21,7 +21,7 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public int pickPosition(CommandLineUi commandLineUi, Board board) {
+    public int pickPosition(Board board) {
         String maxPlayerSign = board.getActivePlayerSign();
         String minPlayerSign = board.getPassivePlayerSign();
         String[] freePlacesInBoard = board.getFreePlaces();

@@ -19,8 +19,8 @@ public class CommandLineUiTests {
         this.output = new ByteArrayOutputStream();
         ByteArrayInputStream inputStream = new ByteArrayInputStream("".getBytes());
         commandLineUi = new CommandLineUi(new PrintStream(this.output), inputStream);
-        humanPlayerX = new HumanPlayer("X");
-        humanPlayerO = new HumanPlayer("O");
+        humanPlayerX = new HumanPlayer("X", commandLineUi);
+        humanPlayerO = new HumanPlayer("O", commandLineUi);
         computerPlayerO = new ComputerPlayer("O");
         board = new Board(3);
     }

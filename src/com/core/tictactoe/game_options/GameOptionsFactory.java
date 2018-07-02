@@ -29,9 +29,9 @@ public class GameOptionsFactory {
     }
 
     private void createGameOptions() {
-        gameOptionsMap.put(GameMode.HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X"), new HumanPlayer("O"), this.commandLineUi));
-        gameOptionsMap.put(GameMode.PLAY_WITH_COMPUTER_HUMAN_GOES_FIRST, new RunGameOption(new HumanPlayer("X"), new ComputerPlayer("O"), this.commandLineUi));
-        gameOptionsMap.put(GameMode.PLAY_WITH_COMPUTER_COMPUTER_GOES_FIRST, new RunGameOption(new ComputerPlayer("X"), new HumanPlayer("O"), this.commandLineUi));
+        gameOptionsMap.put(GameMode.HUMAN_VS_HUMAN, new RunGameOption(new HumanPlayer("X", this.commandLineUi), new HumanPlayer("O", this.commandLineUi), this.commandLineUi));
+        gameOptionsMap.put(GameMode.PLAY_WITH_COMPUTER_HUMAN_GOES_FIRST, new RunGameOption(new HumanPlayer("X", this.commandLineUi), new ComputerPlayer("O"), this.commandLineUi));
+        gameOptionsMap.put(GameMode.PLAY_WITH_COMPUTER_COMPUTER_GOES_FIRST, new RunGameOption(new ComputerPlayer("X"), new HumanPlayer("O", this.commandLineUi), this.commandLineUi));
         gameOptionsMap.put(GameMode.EXIT, new ExitGameOption());
     }
 }
